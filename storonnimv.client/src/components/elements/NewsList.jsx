@@ -1,14 +1,22 @@
-// import {useContext} from "react";
+import {useContext, useEffect, useState} from "react";
 
 import {ListGroup} from "react-bootstrap";
 
 import {NewsListItem} from "./NewsListItem";
-// import {GlobalContext} from "../contexts/GlobalContext";
+import {GlobalContext} from "../contexts/GlobalContext";
 
 const NewsList = () => {
-    // const {sendRequest} = useContext(GlobalContext);
-    
-    const newsList = [];
+    const {sendRequest} = useContext(GlobalContext);
+    const [newsList, setNewsList] = useState([]);
+
+    useEffect(() => {
+        const fetchNews = async () => {
+            const data = await sendRequest("https://localhost:7295/api/news");
+            setNewsList(data);
+        };
+
+        fetchNews();
+    }, [sendRequest]);
     
     return (
         <ListGroup className="news-list">

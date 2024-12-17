@@ -8,7 +8,7 @@ const GlobalContextProvider = ({ children }) => {
         try {
             const config = {
                 method,
-                apiUrl,
+                url: apiUrl,
                 headers
             };
             
