@@ -1,9 +1,9 @@
-import '../../styles/elements/Header.css';
+import '../../../styles/elements/Shared/Header.css';
 
 import React, {useContext} from 'react';
-import {Container, Navbar, Nav} from 'react-bootstrap';
+import {Container, Nav, Navbar} from 'react-bootstrap';
 import {NavLink} from 'react-router-dom';
-import {GlobalContext} from "../contexts/GlobalContext";
+import {GlobalContext} from "../../contexts/Shared/GlobalContext";
 
 const Header = () => {
     const {bgImage} = useContext(GlobalContext);

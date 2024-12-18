@@ -1,11 +1,11 @@
 import {Route, Routes} from "react-router-dom";
 
-import {Schedule} from "./Schedule";
-import {News} from "./News";
-import {Music} from "./Music";
-import {Group} from "./Group";
-import {Contacts} from "./Contacts";
-import {Home} from "./Home";
+import {Schedule} from "../Schedule";
+import {News} from "../News";
+import {Music} from "../Music";
+import {Group} from "../Group";
+import {Contacts} from "../Contacts";
+import {Home} from "../Home";
 
 const Page = () => {
     return (

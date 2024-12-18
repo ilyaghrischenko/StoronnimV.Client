@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import {Container} from "react-bootstrap";
 
 import {HomeContextProvider} from "../contexts/HomeContext";
-import {GlobalContext} from "../contexts/GlobalContext";
+import {GlobalContext} from "../contexts/Shared/GlobalContext";
 
 const Home = () => {
     const {setBgImage} = useContext(GlobalContext);

@@ -1,7 +1,7 @@
 import React from "react";
 import {Container} from "react-bootstrap";
 
-import '../../styles/elements/Footer.css';
+import '../../../styles/elements/Shared/Footer.css';
 
 const Footer = () => {
     return (

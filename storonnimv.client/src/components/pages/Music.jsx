@@ -1,7 +1,7 @@
 import {useContext} from "react";
 import {Container} from "react-bootstrap";
 
-import {GlobalContext} from "../contexts/GlobalContext";
+import {GlobalContext} from "../contexts/Shared/GlobalContext";
 import {MusicContextProvider} from "../contexts/MusicContext";
 
 const Music = () => {

@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import {Container} from "react-bootstrap";
 
-import {GlobalContext} from "../contexts/GlobalContext";
+import {GlobalContext} from "../contexts/Shared/GlobalContext";
 import {ScheduleContextProvider} from "../contexts/ScheduleContext";
 
 const Schedule = () => {

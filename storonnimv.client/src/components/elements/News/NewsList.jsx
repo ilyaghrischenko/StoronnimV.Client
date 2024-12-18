@@ -3,20 +3,20 @@ import {useContext, useEffect, useState} from "react";
 import {ListGroup} from "react-bootstrap";
 
 import {NewsListItem} from "./NewsListItem";
-import {GlobalContext} from "../contexts/GlobalContext";
+import {NewsContext} from "../../contexts/NewsContext";
 
 const NewsList = () => {
-    const {sendRequest} = useContext(GlobalContext);
+    const {getNews} = useContext(NewsContext);
     const [newsList, setNewsList] = useState([]);
 
     useEffect(() => {
         const fetchNews = async () => {
-            const data = await sendRequest("https://localhost:7295/api/news");
+            const data = await getNews();
             setNewsList(data);
         };
 
         fetchNews();
-    }, [sendRequest]);
+    }, [getNews]);
     
     return (
         <ListGroup className="news-list">

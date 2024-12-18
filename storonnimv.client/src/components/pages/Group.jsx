@@ -1,8 +1,10 @@
 import {useContext} from "react";
 import {Container} from "react-bootstrap";
 
-import {GlobalContext} from "../contexts/GlobalContext";
+import {GlobalContext} from "../contexts/Shared/GlobalContext";
 import {GroupContextProvider} from "../contexts/GroupContext";
+import {MembersList} from "../elements/Group/MembersList";
+import {About} from "../elements/Group/About";
 
 const Group = () => {
     const {setBgImage} = useContext(GlobalContext);
@@ -11,7 +13,8 @@ const Group = () => {
     return (
         <GroupContextProvider>
             <Container>
-                <h1>GROUP</h1>
+                <About />
+                <MembersList />
             </Container>
         </GroupContextProvider>
     );
