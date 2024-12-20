@@ -1,12 +1,12 @@
-import {Container} from "react-bootstrap";
+import {ListGroupItem} from "react-bootstrap";
 
 const Member = ({member}) => {
     return (
-        <Container>
+        <ListGroupItem>
             <p>Full name: {member.fullName}</p>
             <p>Role: {member.role}</p>
             <br/>
-        </Container>
+        </ListGroupItem>
     );
 };
 
