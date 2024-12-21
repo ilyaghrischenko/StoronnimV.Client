@@ -11,7 +11,7 @@ const NewsContextProvider = ({children}) => {
     };
 
     const value = {
-        getNews
+        getNews,
     };
     
     return (

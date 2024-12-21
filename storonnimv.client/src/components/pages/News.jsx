@@ -6,8 +6,9 @@ import {NewsContextProvider} from "../contexts/NewsContext";
 import {NewsList} from "../elements/News/NewsList";
 
 const News = () => {
-    const {setBgImage} = useContext(GlobalContext);
+    const {setBgImage, setHeaderTitle} = useContext(GlobalContext);
     setBgImage('photo.jpg');
+    setHeaderTitle('Новини');
     
     return (
         <NewsContextProvider>

@@ -5,8 +5,9 @@ import {GlobalContext} from "../contexts/Shared/GlobalContext";
 import {MusicContextProvider} from "../contexts/MusicContext";
 
 const Music = () => {
-    const {setBgImage} = useContext(GlobalContext);
+    const {setBgImage, setHeaderTitle} = useContext(GlobalContext);
     setBgImage('photo.jpg');
+    setHeaderTitle('Музика');
     
     return (
         <MusicContextProvider>

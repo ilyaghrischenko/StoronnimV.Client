@@ -6,7 +6,7 @@ import {NavLink} from 'react-router-dom';
 import {GlobalContext} from "../../contexts/Shared/GlobalContext";
 
 const Header = () => {
-    const {bgImage} = useContext(GlobalContext);
+    const {bgImage, headerTitle} = useContext(GlobalContext);
     
     return (
         <Container
@@ -62,6 +62,10 @@ const Header = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
+
+            <Container className="header-title-container">
+                <p className="header-title">{headerTitle}</p>
+            </Container>
         </Container>
     );
 };

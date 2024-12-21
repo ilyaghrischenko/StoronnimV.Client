@@ -4,7 +4,7 @@ const ScheduleContext = createContext();
 
 const ScheduleContextProvider = ({children}) => {
     const value = {
-        
+
     };
     
     return (

@@ -4,7 +4,7 @@ const MusicContext = createContext();
 
 const MusicContextProvider = ({children}) => {
     const value = {
-        
+
     };
     
     return (

@@ -4,7 +4,7 @@ const ContactsContext = createContext();
 
 const ContactsContextProvider = ({children}) => {
     const value = {
-        
+
     };
     
     return (

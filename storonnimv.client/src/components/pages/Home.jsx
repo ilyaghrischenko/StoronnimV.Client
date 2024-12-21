@@ -5,9 +5,10 @@ import {HomeContextProvider} from "../contexts/HomeContext";
 import {GlobalContext} from "../contexts/Shared/GlobalContext";
 
 const Home = () => {
-    const {setBgImage} = useContext(GlobalContext);
+    const {setBgImage, setHeaderTitle} = useContext(GlobalContext);
     setBgImage('photo.jpg');
-    
+    setHeaderTitle('Головна');
+
     return (
         <HomeContextProvider>
             <Container>

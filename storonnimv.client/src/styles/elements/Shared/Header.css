@@ -20,3 +20,16 @@
 .link-item {
     background-color: red;
 }
+
+.header-title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.header-title {
+    font-weight: bold;
+    color: white;
+    font-size: 45px;
+}

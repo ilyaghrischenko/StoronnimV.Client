@@ -25,11 +25,14 @@ const GlobalContextProvider = ({ children }) => {
     }
     
     const [bgImage, setBgImage] = useState(null);
+    const [headerTitle, setHeaderTitle] = useState("Головна");
     
     const value = {
         sendRequest,
         bgImage,
-        setBgImage
+        setBgImage,
+        headerTitle,
+        setHeaderTitle
     };
     
     return (

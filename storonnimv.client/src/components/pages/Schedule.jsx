@@ -5,8 +5,9 @@ import {GlobalContext} from "../contexts/Shared/GlobalContext";
 import {ScheduleContextProvider} from "../contexts/ScheduleContext";
 
 const Schedule = () => {
-    const {setBgImage} = useContext(GlobalContext);
+    const {setBgImage, setHeaderTitle} = useContext(GlobalContext);
     setBgImage('photo.jpg');
+    setHeaderTitle('Афіша');
     
     return (
         <ScheduleContextProvider>

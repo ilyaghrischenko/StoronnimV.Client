@@ -7,8 +7,9 @@ import {MembersList} from "../elements/Group/MembersList";
 import {About} from "../elements/Group/About";
 
 const Group = () => {
-    const {setBgImage} = useContext(GlobalContext);
+    const {setBgImage, setHeaderTitle} = useContext(GlobalContext);
     setBgImage('photo.jpg');
+    setHeaderTitle('Група');
     
     return (
         <GroupContextProvider>

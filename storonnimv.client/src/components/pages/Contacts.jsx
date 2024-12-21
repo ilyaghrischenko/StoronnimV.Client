@@ -5,8 +5,9 @@ import {GlobalContext} from "../contexts/Shared/GlobalContext";
 import {ContactsContextProvider} from "../contexts/ContactsContext";
 
 const Contacts = () => {
-    const {setBgImage} = useContext(GlobalContext);
+    const {setBgImage, setHeaderTitle} = useContext(GlobalContext);
     setBgImage('photo.jpg');
+    setHeaderTitle('Контакти');
     
     return (
         <ContactsContextProvider>
