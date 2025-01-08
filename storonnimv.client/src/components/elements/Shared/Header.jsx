@@ -51,13 +51,6 @@ const Header = () => {
 
                                 Група
                             </Nav.Link>
-                            <Nav.Link
-                                as={NavLink}
-                                to="/contacts"
-                                className="link-item">
-
-                                Контакти
-                            </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

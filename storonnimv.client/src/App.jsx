@@ -1,7 +1,8 @@
 import {Container} from 'react-bootstrap';
 import {BrowserRouter as Router} from "react-router-dom";
 
-import './styles/App.css';
+import './styles/Shared/App.css';
+import './styles/Shared/Scroll.css';
 
 // Components
 import {GlobalContextProvider} from "./components/contexts/Shared/GlobalContext";
