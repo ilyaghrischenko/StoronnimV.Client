@@ -11,8 +11,20 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "ilyaghrischenko"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ilyaghrischenko/StoronnimV.Client.git",
+    "accountId": "f5f44a53-056a-48d4-a60b-fb6819021fde"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -28,7 +40,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "feature/home-page",
     "last_opened_file_path": "D:/GitHub/StoronnimV.Client/storonnimv.client",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -46,7 +58,7 @@
     ]
   }
 }]]></component>
-  <component name="RunManager" selected="npm.npm start">
+  <component name="RunManager">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
     </configuration>
@@ -79,6 +91,8 @@
       <workItem from="1736371073384" duration="3741000" />
       <workItem from="1736375782771" duration="77000" />
       <workItem from="1736438635932" duration="4689000" />
+      <workItem from="1736443745510" duration="16000" />
+      <workItem from="1736444148744" duration="1769000" />
     </task>
     <task id="LOCAL-00001" summary="replace all files to typescript">
       <option name="closed" value="true" />

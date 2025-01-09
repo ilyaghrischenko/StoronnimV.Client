@@ -4,10 +4,6 @@ import axios from "axios";
 // Определяем интерфейс для значения контекста
 interface GlobalContextType {
     sendRequest: (apiUrl: string, method?: string, body?: any, headers?: Record<string, string>) => Promise<any | undefined>;
-    bgImage: string | null;
-    setBgImage: React.Dispatch<React.SetStateAction<string | null>>;
-    headerTitle: string;
-    setHeaderTitle: React.Dispatch<React.SetStateAction<string>>;
 }
 
 // Создаем контекст с типизацией
@@ -41,17 +37,9 @@ const GlobalContextProvider: React.FC<GlobalContextProviderProps> = ({ children 
         }
     }
 
-    // Состояния
-    const [bgImage, setBgImage] = useState<string | null>(null);
-    const [headerTitle, setHeaderTitle] = useState<string>("Головна");
-
     // Значение контекста
     const value: GlobalContextType = {
         sendRequest,
-        bgImage,
-        setBgImage,
-        headerTitle,
-        setHeaderTitle,
     };
 
     return (

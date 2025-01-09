@@ -7,30 +7,28 @@
 
 .navbar-container {
     display: flex;
-    /*justify-content: space-between;*/
-    justify-content: space-between;
+    justify-content: center; /* Размещаем блоки с левым и правым контентом */
     align-items: center;
-
+    gap: 80px;
     padding-top: 20px;
     margin: 0 20px;
 }
 
+.left-nav, .right-nav {
+    display: flex;
+    gap: 80px;
+}
+
 .header {
     display: flex;
-    gap: 15px;
     justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Чтобы центрированный логотип не сжимался */
 }
 
 .link-item {
     background-color: red;
-    border-radius: 10px;
-}
-
-.header-title-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+    font-size: 30px;
 }
 
 .header-title {
