@@ -1,0 +1,40 @@
+﻿.header-container {
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.navbar-container {
+    display: flex;
+    /*justify-content: space-between;*/
+    justify-content: space-between;
+    align-items: center;
+
+    padding-top: 20px;
+    margin: 0 20px;
+}
+
+.header {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.link-item {
+    background-color: red;
+    border-radius: 10px;
+}
+
+.header-title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.header-title {
+    font-weight: bold;
+    color: white;
+    font-size: 45px;
+}
