@@ -11,7 +11,6 @@ const Header: FC = () => {
         >
             <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
                 <Container className="navbar-container">
-                    {/* Левый блок с разделами */}
                     <Nav className="left-nav">
                         <Nav.Link as={NavLink} to="/schedule" className="link-item">
                             Афіша
