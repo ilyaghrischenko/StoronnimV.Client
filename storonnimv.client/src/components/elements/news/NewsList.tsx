@@ -1,8 +1,7 @@
-﻿import {FC, useContext, useEffect, useState} from "react";
+﻿import {FC, useContext, useEffect} from "react";
 import {NewsContext} from "../../contexts/NewsContext";
 import {NewsListItem} from "./NewsListItem";
 import {ListGroup} from "react-bootstrap";
-import {INewsShortItem} from "../../../models/news/INewsShortItem";
 
 const NewsList: FC = () => {
     const newsContext = useContext(NewsContext);
@@ -11,24 +10,9 @@ const NewsList: FC = () => {
         throw new Error("NewsContext must be used within a NewsContextProvider");
     }
 
-    const { getNews } = newsContext;
+    const { fetchNews, newsList } = newsContext;
 
-    const [newsList, setNewsList] = useState<INewsShortItem[]>([]);
     useEffect(() => {
-        const fetchNews = async (): Promise<void> => {
-            try {
-                const data = await getNews();
-                if (!data) {
-                    console.error("No data received from the API");
-                    return;
-                }
-
-                setNewsList(data);
-            } catch (error) {
-                console.error("Error fetching news:", error);
-            }
-        };
-
         fetchNews();
     }, [])
 

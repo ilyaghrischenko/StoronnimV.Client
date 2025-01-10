@@ -1,9 +1,10 @@
 ﻿import {INewsShortItem} from "../../models/news/INewsShortItem";
-import {createContext, FC, ReactNode, useContext} from "react";
+import {createContext, FC, ReactNode, useContext, useState} from "react";
 import {GlobalContext} from "./shared/GlobalContext";
 
 interface NewsContextType {
-    getNews: () => Promise<INewsShortItem[] | undefined>;
+    newsList: INewsShortItem[];
+    fetchNews: () => Promise<void>;
 }
 
 const NewsContext = createContext<NewsContextType | undefined>(undefined);
@@ -37,8 +38,24 @@ const NewsContextProvider: FC<NewsContextProviderProps> = ({children}) => {
         }
     }
 
+    const [newsList, setNewsList] = useState<INewsShortItem[]>([]);
+    const fetchNews = async (): Promise<void> => {
+        try {
+            const data = await getNews();
+            if (!data) {
+                console.error("No data received from the API");
+                return;
+            }
+
+            setNewsList(data);
+        } catch (error) {
+            console.error("Error fetching news:", error);
+        }
+    };
+
     const value: NewsContextType = {
-        getNews
+        newsList,
+        fetchNews
     }
 
     return <NewsContext.Provider value={value}>{children}</NewsContext.Provider>
