@@ -1,10 +1,14 @@
-﻿import {INewsShortItem} from "../../models/news/INewsShortItem";
-import {createContext, FC, ReactNode, useContext, useState} from "react";
-import {GlobalContext} from "./shared/GlobalContext";
+﻿import { INewsShortItem } from "../../models/news/INewsShortItem";
+import { createContext, FC, ReactNode, useContext, useState } from "react";
+import { GlobalContext } from "./shared/GlobalContext";
+import { IPaginationNewsResponse } from "../../models/news/IPaginationNewsResponse";
 
 interface NewsContextType {
     newsList: INewsShortItem[];
-    fetchNews: () => Promise<void>;
+    currentPage: number;
+    totalPages: number;
+    fetchNews: (pageNumber?: number) => Promise<void>;
+    paginate: (pageNumber: number) => void;
 }
 
 const NewsContext = createContext<NewsContextType | undefined>(undefined);
@@ -13,52 +17,47 @@ interface NewsContextProviderProps {
     children: ReactNode;
 }
 
-const NewsContextProvider: FC<NewsContextProviderProps> = ({children}) => {
+const NewsContextProvider: FC<NewsContextProviderProps> = ({ children }) => {
     const globalContext = useContext(GlobalContext);
 
     if (!globalContext) {
         throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const {sendRequest} = globalContext;
-
-    const getNews = async (): Promise<INewsShortItem[] | undefined> => {
-        try {
-            const data: INewsShortItem[] = await sendRequest("http://localhost:8080/api/news");
-
-            if (!data) {
-                console.error("No data received from the API");
-                return undefined;
-            }
-
-            return data;
-        } catch (error) {
-            console.error("Error fetching news:", error);
-            return undefined;
-        }
-    }
+    const { sendRequest } = globalContext;
 
     const [newsList, setNewsList] = useState<INewsShortItem[]>([]);
-    const fetchNews = async (): Promise<void> => {
-        try {
-            const data = await getNews();
-            if (!data) {
-                console.error("No data received from the API");
-                return;
-            }
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [totalPages, setTotalPages] = useState<number>(1);
 
-            setNewsList(data);
+    const fetchNews = async (pageNumber: number = currentPage): Promise<void> => {
+        try {
+            const data: IPaginationNewsResponse = await sendRequest(
+                `http://localhost:8080/api/news/page/${pageNumber}`
+            );
+            setNewsList(data.shortNews);
+            setCurrentPage(data.currentPage);
+            setTotalPages(data.totalPages);
         } catch (error) {
-            console.error("Error fetching news:", error);
+            console.error("Error while fetching news: ", error);
+        }
+    };
+
+    const paginate = (pageNumber: number) => {
+        if (pageNumber >= 1 && pageNumber <= totalPages) {
+            fetchNews(pageNumber);
         }
     };
 
     const value: NewsContextType = {
         newsList,
-        fetchNews
-    }
+        currentPage,
+        totalPages,
+        fetchNews,
+        paginate,
+    };
 
-    return <NewsContext.Provider value={value}>{children}</NewsContext.Provider>
+    return <NewsContext.Provider value={value}>{children}</NewsContext.Provider>;
 };
 
-export {NewsContext, NewsContextProvider};
+export { NewsContext, NewsContextProvider };
