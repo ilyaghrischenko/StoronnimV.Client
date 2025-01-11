@@ -1,10 +1,10 @@
-﻿import React, { createContext, useContext, ReactNode } from "react";
+﻿import React, {createContext, ReactNode, useContext, useState} from "react";
 import {IGroupPageFullInfo} from "../../models/group/IGroupInfo";
-import { GlobalContext } from "./shared/GlobalContext";
+import {GlobalContext} from "./shared/GlobalContext";
 
 interface GroupContextType {
-    getGroupPageFullInfo: () => Promise<IGroupPageFullInfo | undefined>;
-    loading: boolean;
+    fetchGroupInfo: () => Promise<void>;
+    fullInfo: IGroupPageFullInfo;
 }
 
 const GroupContext = createContext<GroupContextType | undefined>(undefined);
@@ -20,32 +20,36 @@ const GroupContextProvider: React.FC<GroupContextProviderProps> = ({ children })
         throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const { sendRequest, loading } = globalContext;
+    const { sendRequest } = globalContext;
 
-    const getGroupPageFullInfo = async (): Promise<IGroupPageFullInfo | undefined> => {
+    const [fullInfo, setFullInfo] = useState<IGroupPageFullInfo>({
+        groupPage: {
+            id: 0,
+            photoUrl: "",
+            description: ""
+        },
+        members: []
+    });
+
+    const fetchGroupInfo = async (): Promise<void> => {
         try {
-            const data = await sendRequest("http://localhost:8080/api/group");
+            const data: IGroupPageFullInfo = await sendRequest("http://localhost:8080/api/group");
 
             if (!data) {
                 console.error("No data received from the API");
-                return undefined;
+                return;
             }
 
-            const groupPageFullInfo: IGroupPageFullInfo = {
-                groupPage: data.groupPage,
-                members: data.members,
-            };
-
-            return groupPageFullInfo;
+            setFullInfo(data);
         } catch (error) {
-            console.error("Error fetching group page full info:", error);
-            return undefined;
+            console.error("Error fetching news:", error);
+            return;
         }
     };
 
     const value: GroupContextType = {
-        getGroupPageFullInfo,
-        loading
+        fetchGroupInfo,
+        fullInfo
     };
 
     return <GroupContext.Provider value={value}>{children}</GroupContext.Provider>;
