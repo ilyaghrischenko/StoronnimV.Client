@@ -1,8 +1,9 @@
-﻿import React, { createContext, ReactNode } from "react";
+﻿import React, {createContext, ReactNode, useContext} from "react";
+import {GlobalContext} from "./shared/GlobalContext";
 
 // Тип контекста
 interface ScheduleContextType {
-    // Определите свойства и методы, которые будут доступны через контекст
+    loading: boolean;
 }
 
 // Создаем контекст с типизацией
@@ -13,8 +14,16 @@ interface ScheduleContextProviderProps {
 }
 
 const ScheduleContextProvider: React.FC<ScheduleContextProviderProps> = ({ children }) => {
+    const globalContext = useContext(GlobalContext);
+
+    if (!globalContext) {
+        throw new Error("GlobalContext must be used within a GlobalContextProvider");
+    }
+
+    const { sendRequest, loading } = globalContext;
+
     const value: ScheduleContextType = {
-        // Добавьте свойства или методы, которые хотите передавать через контекст
+        loading
     };
 
     return (

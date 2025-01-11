@@ -2,6 +2,7 @@
 import { NewsContext } from "../../contexts/NewsContext";
 import { Container, ListGroup, Pagination } from "react-bootstrap";
 import { NewsListItem } from "./NewsListItem";
+import {Loading} from "../shared/Loading";
 
 // import "../../../styles/elements/news/NewsList.css";
 
@@ -12,11 +13,17 @@ const NewsList: FC = () => {
         throw new Error("NewsContext must be used within a NewsContextProvider");
     }
 
-    const { newsList, currentPage, totalPages, paginate } = newsContext;
+    const { newsList, currentPage, totalPages, paginate, loading } = newsContext;
 
     useEffect(() => {
         paginate(currentPage);
     }, []);
+
+    if (loading) {
+        return (
+            <Loading />
+        );
+    }
 
     return (
         <Container>

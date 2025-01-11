@@ -9,6 +9,7 @@ interface NewsContextType {
     totalPages: number;
     fetchNews: (pageNumber?: number) => Promise<void>;
     paginate: (pageNumber: number) => void;
+    loading: boolean;
 }
 
 const NewsContext = createContext<NewsContextType | undefined>(undefined);
@@ -24,7 +25,7 @@ const NewsContextProvider: FC<NewsContextProviderProps> = ({ children }) => {
         throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const { sendRequest } = globalContext;
+    const { sendRequest, loading } = globalContext;
 
     const [newsList, setNewsList] = useState<INewsShortItem[]>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
@@ -55,6 +56,7 @@ const NewsContextProvider: FC<NewsContextProviderProps> = ({ children }) => {
         totalPages,
         fetchNews,
         paginate,
+        loading
     };
 
     return <NewsContext.Provider value={value}>{children}</NewsContext.Provider>;

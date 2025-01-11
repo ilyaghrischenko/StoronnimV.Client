@@ -1,8 +1,9 @@
-﻿import React, { createContext, ReactNode } from "react";
+﻿import React, {createContext, ReactNode, useContext} from "react";
+import {GlobalContext} from "./shared/GlobalContext";
 
 // Тип контекста
 interface HomeContextType {
-    // Здесь можно указать свойства и методы, которые будут доступны в контексте
+    loading: boolean;
 }
 
 // Создаем контекст с типизацией
@@ -13,8 +14,16 @@ interface HomeContextProviderProps {
 }
 
 const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) => {
+    const globalContext = useContext(GlobalContext);
+
+    if (!globalContext) {
+        throw new Error("GlobalContext must be used within a GlobalContextProvider");
+    }
+
+    const { sendRequest, loading } = globalContext;
+
     const value: HomeContextType = {
-        // Добавьте свойства или методы, которые должны быть доступны в контексте
+        loading
     };
 
     return (
