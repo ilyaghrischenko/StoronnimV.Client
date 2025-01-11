@@ -4,7 +4,7 @@ import { Container, ListGroup, Pagination } from "react-bootstrap";
 import { NewsListItem } from "./NewsListItem";
 import {Loading} from "../shared/Loading";
 
-// import "../../../styles/elements/news/NewsList.css";
+import "../../../styles/elements/news/NewsList.css";
 
 const NewsList: FC = () => {
     const newsContext = useContext(NewsContext);

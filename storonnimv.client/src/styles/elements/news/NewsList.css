@@ -1,16 +1,20 @@
-﻿.pagination {
+﻿.news-list {
+    display: grid;
+    /* Сетка: 3 столбца по равной ширине */
+    grid-template-columns: repeat(3, 1fr);
+    /* 4 строки с автоматической высотой */
+    grid-template-rows: repeat(4, auto);
+    /* Разрыв между элементами */
+    gap: 3rem;
+}
+
+.pagination {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-}
+    align-items: center;
+    flex-direction: row;
+    gap: 30px;
 
-.pagination button.active {
-    background-color: #007bff;
-    color: #fff;
-}
-
-.pagination button:disabled {
-    background-color: #e0e0e0;
-    cursor: not-allowed;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
