@@ -2,6 +2,7 @@
 import {IMember} from "../../../../models/group/IGroupInfo";
 import {FC} from "react";
 import {ShortMemberItem} from "./ShortMemberItem";
+import "../../../../styles/elements/group/GroupMembers.css";
 
 interface IShortMembersProps {
     members: IMember[];
@@ -9,7 +10,7 @@ interface IShortMembersProps {
 
 const ShortMembers:FC<IShortMembersProps> = ({members}) => {
     return (
-        <ListGroup>
+        <ListGroup className='members-list'>
             {members.map((member) => (
                 <ShortMemberItem member={member} key={member.id} />
             ))}
