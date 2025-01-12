@@ -26,12 +26,12 @@
     &quot;assignee&quot;: &quot;ilyaghrischenko&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/ilyaghrischenko/StoronnimV.Client.git&quot;,
-    &quot;accountId&quot;: &quot;f5f44a53-056a-48d4-a60b-fb6819021fde&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ilyaghrischenko/StoronnimV.Client.git",
+    "accountId": "f8f43f91-6ace-4e90-97df-a0c4ba8c89f6"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -56,7 +56,8 @@
     "nodejs_interpreter_path": "node",
     "nodejs_package_manager_path": "npm",
     "npm.npm start.executor": "Run",
-    "ts.external.directory.path": "D:\\GitHub\\StoronnimV.Client\\storonnimv.client\\node_modules\\typescript\\lib",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "ts.external.directory.path": "D:\\ForProgramming\\Projects\\MyProjects\\React\\StoronnimV.Client\\storonnimv.client\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -100,6 +101,7 @@
       <workItem from="1736438635932" duration="4689000" />
       <workItem from="1736443745510" duration="16000" />
       <workItem from="1736444148744" duration="1769000" />
+      <workItem from="1736631670248" duration="99000" />
     </task>
     <task id="LOCAL-00001" summary="replace all files to typescript">
       <option name="closed" value="true" />

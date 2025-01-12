@@ -1,9 +1,12 @@
-﻿import React, {createContext, ReactNode, useContext} from "react";
+﻿import React, {createContext, ReactNode, useContext, useState} from "react";
 import {GlobalContext} from "./shared/GlobalContext";
+import {IScheduleListItem} from "../../models/schedule/IScheduleListItem";
 
 // Тип контекста
 interface ScheduleContextType {
+    schedules: IScheduleListItem[];
     loading: boolean;
+    fetchSchedules: () => Promise<void>;
 }
 
 // Создаем контекст с типизацией
@@ -22,7 +25,21 @@ const ScheduleContextProvider: React.FC<ScheduleContextProviderProps> = ({ child
 
     const { sendRequest, loading } = globalContext;
 
+    const [schedules, setSchedules] = useState<IScheduleListItem[]>([]);
+
+    const fetchSchedules = async (): Promise<void> => {
+        try {
+            const data: IScheduleListItem[] = await sendRequest("http://localhost:8080/api/schedules");
+            setSchedules(data);
+        } catch (error) {
+            console.error("Error fetching schedules:", error);
+            return;
+        }
+    };
+
     const value: ScheduleContextType = {
+        schedules,
+        fetchSchedules,
         loading
     };
 
