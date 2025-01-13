@@ -48,7 +48,12 @@ const NewsContextProvider: FC<NewsContextProviderProps> = ({ children }) => {
     };
 
     const paginate = (pageNumber: number) => {
-        const savedTotalPages = Number(sessionStorage.getItem("totalPages"));
+        const savedTotalPagesString = sessionStorage.getItem("totalPages");
+        const savedTotalPages = savedTotalPagesString ? Number(savedTotalPagesString) : 0;
+
+        if (savedTotalPages === 0) {
+            fetchNews(pageNumber);
+        }
 
         if (pageNumber >= 1 && pageNumber <= savedTotalPages) {
             fetchNews(pageNumber);
