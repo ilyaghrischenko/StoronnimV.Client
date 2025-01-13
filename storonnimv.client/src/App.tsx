@@ -7,6 +7,7 @@ import {Page} from "./components/pages/shared/Page";
 import {Footer} from "./components/elements/shared/Footer";
 
 import './styles/shared/App.css';
+import {ModalWindow} from "./components/elements/shared/ModalWindow";
 
 function App() : JSX.Element {
   return (
@@ -17,6 +18,7 @@ function App() : JSX.Element {
                   <Page />
                   <Footer />
               </Router>
+              <ModalWindow/>
           </Container>
       </GlobalContextProvider>
   );

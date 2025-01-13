@@ -1,19 +1,29 @@
-﻿import { FC, useContext, useEffect } from "react";
-import { NewsContext } from "../../contexts/NewsContext";
-import { Container, ListGroup, Pagination } from "react-bootstrap";
-import { NewsListItem } from "./NewsListItem";
+﻿import {FC, useContext, useEffect} from "react";
+import {NewsContext} from "../../contexts/NewsContext";
+import {Container, Pagination} from "react-bootstrap";
+import {NewsListItem} from "./NewsListItem";
 import {Loading} from "../shared/Loading";
 
 import "../../../styles/elements/news/NewsList.css";
+import {List} from "../shared/GenericList/List";
+import {ListItem} from "../shared/GenericList/ListItem";
+import {INewsShortItem} from "../../../models/news/INewsShortItem";
+import {GlobalContext} from "../../contexts/shared/GlobalContext";
 
 const NewsList: FC = () => {
     const newsContext = useContext(NewsContext);
+    const globalContext = useContext(GlobalContext);
 
+    if (!globalContext) {
+        throw new Error("GlobalContext must be used within a GlobalContextProvider");
+    }
     if (!newsContext) {
         throw new Error("NewsContext must be used within a NewsContextProvider");
     }
 
-    const { newsList, currentPage, totalPages, paginate, loading } = newsContext;
+    const {OnShowModal} = globalContext;
+
+    const {newsList, currentPage, totalPages, paginate, loading} = newsContext;
 
     useEffect(() => {
         paginate(currentPage);
@@ -21,21 +31,26 @@ const NewsList: FC = () => {
 
     if (loading) {
         return (
-            <Loading />
+            <Loading/>
         );
     }
 
     return (
         <Container>
-            <ListGroup className="news-list">
-                {newsList.length > 0 ? (
-                    newsList.map((item) => (
-                        <NewsListItem newsItem={item} key={item.id} />
-                    ))
-                ) : (
-                    <p>Новин поки нема</p>
+
+            <List
+                className="news-list"
+                items={newsList}
+                renderItem={(item: INewsShortItem) => (
+                    <ListItem className="news-item"
+                              item={item}
+                              renderItem={(item: INewsShortItem) =>
+                                  <NewsListItem newsItem={item}/>}
+                              onClick={() => OnShowModal(<NewsListItem newsItem={item}/>)}
+                    />
                 )}
-            </ListGroup>
+            >
+            </List>
 
             {/* Элементы управления пагинацией */}
             <Container className="pagination">
@@ -68,4 +83,4 @@ const NewsList: FC = () => {
     );
 };
 
-export { NewsList };
+export {NewsList};

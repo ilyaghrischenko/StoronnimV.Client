@@ -5,6 +5,11 @@ import axios from "axios";
 interface GlobalContextType {
     sendRequest: (apiUrl: string, method?: string, body?: any, headers?: Record<string, string>) => Promise<any | undefined>;
     loading: boolean;
+    showModal: boolean;
+    OnShowModal: (mContent: ReactNode, mTitle?: string) => void;
+    OnHideModal: () => void;
+    modalContent: ReactNode;
+    modalTitle: string;
 }
 
 // Создаем контекст с типизацией
@@ -14,7 +19,22 @@ interface GlobalContextProviderProps {
     children: ReactNode;
 }
 
-const GlobalContextProvider: FC<GlobalContextProviderProps> = ({ children }) => {
+const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
+
+    const [showModal, setShowModal] = useState<boolean>(false);
+    const [modalContent, setModalContent] = useState<ReactNode>(null);
+    const [modalTitle, setModalTitle] = useState<string>("");
+
+    const OnShowModal = (mContent: ReactNode, mTitle: string = "") => {
+        setModalTitle(mTitle);
+        setModalContent(mContent);
+        setShowModal(true);
+    };
+    const OnHideModal = () => {
+        setShowModal(false);
+    };
+
+
     // Асинхронная функция для отправки запросов
     async function sendRequest(
         apiUrl: string,
@@ -44,6 +64,11 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({ children }) => 
 
     // Значение контекста
     const value: GlobalContextType = {
+        modalTitle,
+        modalContent,
+        showModal,
+        OnShowModal,
+        OnHideModal,
         sendRequest,
         loading
     };
@@ -55,4 +80,4 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({ children }) => 
     );
 };
 
-export { GlobalContextProvider, GlobalContext };
+export {GlobalContextProvider, GlobalContext};

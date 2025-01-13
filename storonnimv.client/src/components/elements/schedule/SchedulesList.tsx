@@ -1,18 +1,26 @@
 ﻿import {FC, useContext, useEffect} from "react";
 import {ScheduleListItem} from "./ScheduleListItem";
 import {ScheduleContext} from "../../contexts/ScheduleContext";
-import {ListGroup} from "react-bootstrap";
 import {Loading} from "../shared/Loading";
+import {List} from "../shared/GenericList/List";
+import {IScheduleListItem} from "../../../models/schedule/IScheduleListItem";
+import {ListItem} from "../shared/GenericList/ListItem";
+import {GlobalContext} from "../../contexts/shared/GlobalContext";
 
 
 const SchedulesList: FC = () => {
-    const context = useContext(ScheduleContext);
+    const scheduleContext = useContext(ScheduleContext);
+    const globalContext = useContext(GlobalContext);
 
-    if (!context) {
+    if (!globalContext) {
+        throw new Error("GlobalContext must be used within a GlobalContextProvider");
+    }
+    if (!scheduleContext) {
         throw new Error("ScheduleContext must be used within a ScheduleContextProvider");
     }
 
-    const { fetchSchedules, schedules, loading } = context;
+    const { fetchSchedules, schedules, loading} = scheduleContext;
+    const { OnShowModal } = globalContext;
 
     useEffect(() => {
         fetchSchedules();
@@ -25,11 +33,20 @@ const SchedulesList: FC = () => {
     }
 
     return (
-        <ListGroup>
-            {schedules.map((schedule) => (
-                <ScheduleListItem key={schedule.id} schedule={schedule}/>
-            ))}
-        </ListGroup>
+
+        <List
+            items={schedules}
+            renderItem={(schedule: IScheduleListItem) => (
+                <ListItem item={schedule}
+                          renderItem={(schedule: IScheduleListItem) =>
+                              <ScheduleListItem schedule={schedule}/>}
+                          onClick={() => OnShowModal(<ScheduleListItem schedule={schedule}/>)}
+                />
+            )}
+
+        >
+
+        </List>
     );
 };
 
