@@ -2,6 +2,7 @@
 import {ScheduleListItem} from "./ScheduleListItem";
 import {ScheduleContext} from "../../contexts/ScheduleContext";
 import {ListGroup} from "react-bootstrap";
+import {Loading} from "../shared/Loading";
 
 
 const SchedulesList: FC = () => {
@@ -11,12 +12,17 @@ const SchedulesList: FC = () => {
         throw new Error("ScheduleContext must be used within a ScheduleContextProvider");
     }
 
-    const { fetchSchedules, schedules } = context;
+    const { fetchSchedules, schedules, loading } = context;
 
     useEffect(() => {
         fetchSchedules();
     }, []);
 
+    if (loading) {
+        return (
+            <Loading />
+        );
+    }
 
     return (
         <ListGroup>

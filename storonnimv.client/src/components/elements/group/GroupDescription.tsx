@@ -4,19 +4,26 @@ import {Container} from "react-bootstrap";
 import {Description} from "./groupPageComponents/Description";
 import {ShortMembers} from "./groupPageComponents/ShortMembers";
 import {GroupContext} from "../../contexts/GroupContext";
+import {Loading} from "../shared/Loading";
 
 const GroupDescription: FC = () => {
-    const newsContext = useContext(GroupContext);
+    const groupContext = useContext(GroupContext);
 
-    if (!newsContext) {
+    if (!groupContext) {
         throw new Error("GroupContext must be used within a GroupContextProvider");
     }
 
-    const { fetchGroupInfo, fullInfo } = newsContext;
+    const { fetchGroupInfo, fullInfo, loading } = groupContext;
 
     useEffect(() => {
         fetchGroupInfo();
     }, []);
+
+    if (loading) {
+        return (
+            <Loading />
+        );
+    }
 
     return (
         <Container>

@@ -5,6 +5,7 @@ import {GlobalContext} from "./shared/GlobalContext";
 interface GroupContextType {
     fetchGroupInfo: () => Promise<void>;
     fullInfo: IGroupPageFullInfo;
+    loading: boolean;
 }
 
 const GroupContext = createContext<GroupContextType | undefined>(undefined);
@@ -20,7 +21,7 @@ const GroupContextProvider: React.FC<GroupContextProviderProps> = ({ children })
         throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const { sendRequest } = globalContext;
+    const { sendRequest, loading } = globalContext;
 
     const [fullInfo, setFullInfo] = useState<IGroupPageFullInfo>({
         groupPage: {
@@ -49,7 +50,8 @@ const GroupContextProvider: React.FC<GroupContextProviderProps> = ({ children })
 
     const value: GroupContextType = {
         fetchGroupInfo,
-        fullInfo
+        fullInfo,
+        loading
     };
 
     return <GroupContext.Provider value={value}>{children}</GroupContext.Provider>;
