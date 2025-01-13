@@ -1,5 +1,4 @@
-﻿import {FC, useContext, useEffect, useState} from "react";
-import {IGroupPageFullInfo} from "../../../models/group/IGroupInfo";
+﻿import {FC, useContext, useEffect} from "react";
 import {Container} from "react-bootstrap";
 import {Description} from "./groupPageComponents/Description";
 import {ShortMembers} from "./groupPageComponents/ShortMembers";
@@ -16,7 +15,7 @@ const GroupDescription: FC = () => {
     const { fetchGroupInfo, fullInfo, loading } = groupContext;
 
     useEffect(() => {
-        fetchGroupInfo();
+        fetchGroupInfo().then(r => console.log(r));
     }, []);
 
     if (loading) {

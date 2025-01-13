@@ -1,4 +1,4 @@
-﻿import {Image, ListGroupItem} from "react-bootstrap";
+﻿import {Image} from "react-bootstrap";
 import {IMember} from "../../../../models/group/IGroupInfo";
 import {FC} from "react";
 import "../../../../styles/elements/group/GroupMembers.css";
@@ -9,11 +9,11 @@ interface IMemberItemProps {
 
 const ShortMemberItem: FC<IMemberItemProps> = ({member}) => {
     return (
-        <ListGroupItem className="member-item">
+        <div>
             <Image className="member-short-photo" src = {member.photoUrl} fluid />
             <p>{member.fullName}</p>
             <p>{member.role}</p>
-        </ListGroupItem>
+        </div>
     );
 };
 
