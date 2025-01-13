@@ -39,13 +39,18 @@ const NewsContextProvider: FC<NewsContextProviderProps> = ({ children }) => {
             setNewsList(data.shortNews);
             setCurrentPage(data.currentPage);
             setTotalPages(data.totalPages);
+
+            sessionStorage.setItem("currentPage", String(data.currentPage));
+            sessionStorage.setItem("totalPages", String(data.totalPages));
         } catch (error) {
             console.error("Error while fetching news: ", error);
         }
     };
 
     const paginate = (pageNumber: number) => {
-        if (pageNumber >= 1 && pageNumber <= totalPages) {
+        const savedTotalPages = Number(sessionStorage.getItem("totalPages"));
+
+        if (pageNumber >= 1 && pageNumber <= savedTotalPages) {
             fetchNews(pageNumber);
         }
     };
