@@ -1,11 +1,14 @@
 ﻿import React, {createContext, ReactNode, useContext, useState} from "react";
 import {GlobalContext} from "./shared/GlobalContext";
+import {IMusicPlatformItem} from "../../models/music/IMusicPlatformItem";
 
 // Тип контекста
 interface MusicContextType {
     loading: boolean;
     fetchEmbedData: () => Promise<void>;
     embedHtml: string;
+    musicPlatforms: IMusicPlatformItem[];
+    fetchMusicPlatforms: () => Promise<void>;
 }
 
 // Создаем контекст с типизацией
@@ -30,16 +33,28 @@ const MusicContextProvider: React.FC<MusicContextProviderProps> = ({ children })
         try {
             const data = await sendRequest(`https://soundcloud.com/oembed?format=json&url=${encodeURIComponent('https://soundcloud.com/apostolkremenchug')}`)
             setEmbedHtml(data.html);
-            console.dir(data);
         } catch (error) {
             console.error('Error fetching SoundCloud embed data', error);
+        }
+    };
+
+    const [musicPlatforms, setMusicPlatforms] = useState<IMusicPlatformItem[]>([]);
+
+    const fetchMusicPlatforms = async () : Promise<void> => {
+        try {
+            const data: IMusicPlatformItem[] = await sendRequest('http://localhost:8080/api/music');
+            setMusicPlatforms(data);
+        } catch (error) {
+            console.error('Error fetching music platforms', error);
         }
     };
 
     const value: MusicContextType = {
         loading,
         fetchEmbedData,
-        embedHtml
+        embedHtml,
+        musicPlatforms,
+        fetchMusicPlatforms
     };
 
     return (
