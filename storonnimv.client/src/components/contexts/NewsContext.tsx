@@ -7,8 +7,8 @@ interface NewsContextType {
     newsList: INewsShortItem[];
     currentPage: number;
     totalPages: number;
-    fetchNews: (pageNumber?: number) => Promise<void>;
-    paginate: (pageNumber: number) => void;
+    fetchNews: (pageNumber?: number, pageSize?: number) => Promise<void>;
+    paginate: (pageNumber: number, pageSize?: number) => void;
     loading: boolean;
 }
 
@@ -31,10 +31,10 @@ const NewsContextProvider: FC<NewsContextProviderProps> = ({ children }) => {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [totalPages, setTotalPages] = useState<number>(1);
 
-    const fetchNews = async (pageNumber: number = currentPage): Promise<void> => {
+    const fetchNews = async (pageNumber: number = currentPage, pageSize: number = 9): Promise<void> => {
         try {
             const data: IPaginationNewsResponse = await sendRequest(
-                `http://localhost:8080/api/news/page/${pageNumber}`
+                `http://localhost:8080/api/news/page/${pageNumber}?pageSize=${pageSize}`
             );
             setNewsList(data.shortNews);
             setCurrentPage(data.currentPage);
@@ -47,16 +47,16 @@ const NewsContextProvider: FC<NewsContextProviderProps> = ({ children }) => {
         }
     };
 
-    const paginate = (pageNumber: number) => {
+    const paginate = (pageNumber: number, pageSize: number = 9) => {
         const savedTotalPagesString = sessionStorage.getItem("totalPages");
         const savedTotalPages = savedTotalPagesString ? Number(savedTotalPagesString) : 0;
 
         if (savedTotalPages === 0) {
-            fetchNews(pageNumber);
+            fetchNews(pageNumber, pageSize);
         }
 
         if (pageNumber >= 1 && pageNumber <= savedTotalPages) {
-            fetchNews(pageNumber);
+            fetchNews(pageNumber, pageSize);
         }
     };
 
