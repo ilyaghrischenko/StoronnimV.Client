@@ -6,7 +6,7 @@ import {NewsList} from "../elements/news/NewsList";
 const News: FC = () => {
     return (
         <NewsContextProvider>
-            <Container>
+            <Container className='page'>
                 <NewsList />
             </Container>
         </NewsContextProvider>

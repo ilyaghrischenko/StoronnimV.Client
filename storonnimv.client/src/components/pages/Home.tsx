@@ -5,13 +5,15 @@ import {ScheduleHomeContainer} from "../elements/home/ScheduleHomeContainer";
 import {NewsHomeList} from "../elements/home/NewsHomeList";
 import {PromotionVideoHome} from "../elements/home/PromotionVideoHome";
 
+import '../../styles/pages/Home.css';
+
 const Home: FC = () => {
     return (
         <HomeContextProvider>
-            <Container>
-                <ScheduleHomeContainer />
-                <NewsHomeList />
-                <PromotionVideoHome />
+            <Container className='home-container page'>
+                <ScheduleHomeContainer className='schedule-grid' />
+                <NewsHomeList className='news-grid' />
+                <PromotionVideoHome className='video-grid' />
             </Container>
         </HomeContextProvider>
     );

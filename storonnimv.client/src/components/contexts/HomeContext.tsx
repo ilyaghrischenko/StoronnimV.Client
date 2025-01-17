@@ -1,13 +1,13 @@
 ﻿import React, {createContext, ReactNode, useContext, useState} from "react";
 import {GlobalContext} from "./shared/GlobalContext";
-import {IScheduleListItem} from "../../models/schedule/IScheduleListItem";
 import {IHomeNewsItem} from "../../models/home/IHomeNewsItem";
 import {IVideoModel} from "../../models/video/IVideoModel";
+import {IScheduleHomeItem} from "../../models/home/IScheduleHomeItem";
 
 // Тип контекста
 interface HomeContextType {
     loading: boolean;
-    homeSchedule: IScheduleListItem;
+    homeSchedule: IScheduleHomeItem;
     fetchHomeSchedule: () => Promise<void>;
     homeNewsList: IHomeNewsItem[];
     fetchHomeNewsList: () => Promise<void>;
@@ -32,18 +32,17 @@ const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) =
 
     const { sendRequest, loading } = globalContext;
 
-    const [homeSchedule, setHomeSchedule] = useState<IScheduleListItem>({
+    const [homeSchedule, setHomeSchedule] = useState<IScheduleHomeItem>({
         id: 1,
         photo: '',
         title: '',
         performanceDateTime: '',
-        location: '',
-        status: ''
+        location: ''
     });
 
     const fetchHomeSchedule = async () : Promise<void> => {
         try {
-            const data: IScheduleListItem = await sendRequest('http://localhost:8080/api/home/schedule');
+            const data: IScheduleHomeItem = await sendRequest('http://localhost:8080/api/home/schedule');
             setHomeSchedule(data);
         } catch (error) {
             console.error("Error while fetching schedule for home: ", error);

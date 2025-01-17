@@ -9,7 +9,7 @@ import '../../styles/pages/Music.css';
 const Music: FC = () => {
     return (
         <MusicContextProvider>
-            <Container className='music-page-container'>
+            <Container className='music-page-container page'>
                 <MusicPlatforms />
                 <SoundCloudContainer />
             </Container>

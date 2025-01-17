@@ -5,7 +5,11 @@ import {Loading} from "../shared/Loading";
 
 import '../../../styles/elements/home/PromotionVideoHome.css';
 
-const PromotionVideoHome: FC = () => {
+interface PromotionVideoHomeProps {
+    className?: string;
+}
+
+const PromotionVideoHome: FC<PromotionVideoHomeProps> = ({className}) => {
     const homeContext = useContext(HomeContext);
 
     if (!homeContext) {
@@ -25,10 +29,7 @@ const PromotionVideoHome: FC = () => {
     }
 
     return (
-        <Container className='promotion-video-home-container'>
-            <p>{homePromotionVideo.id}</p>
-            <p>{homePromotionVideo.title}</p>
-
+        <Container className={`promotion-video-home-container ${className}`}>
             <video className='promotion-video-home' controls preload='none'>
                 <source src={homePromotionVideo.url} type='video/mp4' />
             </video>

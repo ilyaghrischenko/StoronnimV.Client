@@ -6,7 +6,7 @@ import {SchedulesList} from "../elements/schedule/SchedulesList";
 const Schedule: FC = () => {
     return (
         <ScheduleContextProvider>
-            <Container>
+            <Container className='page'>
                 <SchedulesList/>
             </Container>
         </ScheduleContextProvider>

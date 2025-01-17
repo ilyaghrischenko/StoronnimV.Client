@@ -1,0 +1,21 @@
+﻿.schedule-home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+}
+
+.schedule-home-container-item-photo {
+    width: 100%;
+    height: auto;
+}
+
+.schedule-home-container-item-title {
+    text-align: center;
+}
+
+.date-and-location-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}

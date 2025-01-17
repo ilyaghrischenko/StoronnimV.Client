@@ -1,14 +1,18 @@
-﻿import {Container} from "react-bootstrap";
-import {List} from "../shared/GenericList/List";
+﻿import {List} from "../shared/GenericList/List";
 import {FC, useContext, useEffect} from "react";
-import {GlobalContext} from "../../contexts/shared/GlobalContext";
 import {HomeContext} from "../../contexts/HomeContext";
 import {IHomeNewsItem} from "../../../models/home/IHomeNewsItem";
 import {ListItem} from "../shared/GenericList/ListItem";
 import {NewsHomeListItem} from "./NewsHomeListItem";
 import {Loading} from "../shared/Loading";
 
-const NewsHomeList: FC = () => {
+import '../../../styles/elements/home/NewsHomeList.css';
+
+interface NewsHomeListProps {
+    className?: string;
+}
+
+const NewsHomeList: FC<NewsHomeListProps> = ({className}) => {
     const homeContext = useContext(HomeContext);
 
     if (!homeContext) {
@@ -29,7 +33,7 @@ const NewsHomeList: FC = () => {
 
     return (
         <List
-            className='home-news-list'
+            className={`home-news-list ${className}`}
             items={homeNewsList}
             renderItem={(item: IHomeNewsItem) => (
                 <ListItem

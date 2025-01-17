@@ -3,7 +3,13 @@ import {HomeContext} from "../../contexts/HomeContext";
 import {Loading} from "../shared/Loading";
 import {Container, Image} from "react-bootstrap";
 
-const ScheduleHomeContainer: FC = () => {
+import '../../../styles/elements/home/ScheduleHomeContainer.css';
+
+interface ScheduleHomeContainerProps {
+    className?: string;
+}
+
+const ScheduleHomeContainer: FC<ScheduleHomeContainerProps> = ({className}) => {
     const homeContext = useContext(HomeContext);
 
     if (!homeContext) {
@@ -18,22 +24,23 @@ const ScheduleHomeContainer: FC = () => {
 
     if (loading) {
         return (
-            <Loading />
+            <Loading/>
         );
     }
 
     return (
         <Container
-                className='schedule-home-container'
-                onClick={() => onClickHomeElementHandler('schedule')}>
-            <p>{homeSchedule.id}</p>
-            <Image src={homeSchedule.photo} />
-            <p>{homeSchedule.title}</p>
-            <p>{homeSchedule.performanceDateTime}</p>
-            <p>{homeSchedule.location}</p>
-            <p>{homeSchedule.status}</p>
+            className={`schedule-home-container ${className}`}
+            onClick={() => onClickHomeElementHandler('schedule')}>
+            <Image className='schedule-home-container-item-photo' src={homeSchedule.photo}/>
+            <p className='schedule-home-container-item-title'>{homeSchedule.title}</p>
+
+            <Container className='date-and-location-container'>
+                <p className='schedule-home-container-item-location'>{homeSchedule.location}</p>
+                <p className='schedule-home-container-item-date-time'>{homeSchedule.performanceDateTime}</p>
+            </Container>
         </Container>
     );
 };
 
-export { ScheduleHomeContainer };
+export {ScheduleHomeContainer};

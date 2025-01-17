@@ -1,6 +1,8 @@
 ﻿import {FC} from "react";
 import {IHomeNewsItem} from "../../../models/home/IHomeNewsItem";
-import {Container} from "react-bootstrap";
+import {Container, Image} from "react-bootstrap";
+
+import '../../../styles/elements/home/NewsHomeListItem.css';
 
 interface INewsHomeListItemProps {
     item: IHomeNewsItem;
@@ -8,10 +10,9 @@ interface INewsHomeListItemProps {
 
 const NewsHomeListItem: FC<INewsHomeListItemProps> = ({item}) => {
     return (
-        <Container>
-            <p>{item.id}</p>
-            <p>{item.title}</p>
-            <p>{item.date}</p>
+        <Container className='news-home-list-item-container'>
+            <Image className='news-home-list-item-image' src={item.photo} />
+            <p className='news-home-list-item-title'>{item.title}</p>
         </Container>
     );
 };

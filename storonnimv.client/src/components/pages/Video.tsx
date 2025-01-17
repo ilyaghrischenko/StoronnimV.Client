@@ -9,7 +9,7 @@ interface VideoProps {
 const Video: FC<VideoProps> = ({children}) => {
     return (
         <VideoContextProvider>
-            <Container>
+            <Container className='page'>
                 {children}
             </Container>
         </VideoContextProvider>

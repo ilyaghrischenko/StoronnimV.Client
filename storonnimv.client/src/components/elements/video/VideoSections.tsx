@@ -17,7 +17,7 @@ const VideoSections: FC<VideoSectionsProps> = ({topImage, bottomLeftImage, botto
     ];
 
     return (
-        <div className="sections-container">
+        <div className="sections-container page">
             <Link className="top-section" to={`/video/section/${videoCategories[0].id}`}>
                 <div className="top-section">
                     {topImage ? (
