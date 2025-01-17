@@ -39,7 +39,7 @@ const VideoContextProvider: React.FC<VideoContextProviderProps> = ({children}) =
 
             try {
                 const data: IPaginationResponse<IVideoModel> = await sendRequest(
-                    `http://localhost:8080/api/news/page/${videoType}/${pageNumber}?pageSize=${pageSize}`
+                    `http://localhost:8080/api/videos/page/${videoType}/${pageNumber}?pageSize=${pageSize}`
                 );
                 setVideoList(data.items);
                 setCurrentPage(data.currentPage);

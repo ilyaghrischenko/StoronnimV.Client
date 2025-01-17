@@ -31,7 +31,7 @@ const Header: FC = () => {
                         <Nav.Link as={NavLink} to="/group" className="link-item">
                             Група
                         </Nav.Link>
-                        <Nav.Link as={NavLink} to="/video" className="link-item">
+                        <Nav.Link as={NavLink} to="/video/sections" className="link-item">
                             Відео
                         </Nav.Link>
                     </Nav>

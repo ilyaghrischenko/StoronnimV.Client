@@ -2,12 +2,15 @@
 import {Container} from "react-bootstrap";
 import {VideoContextProvider} from "../contexts/VideoContext";
 
+interface VideoProps {
+    children: React.ReactNode;
+}
 
-const Video: FC = () => {
+const Video: FC<VideoProps> = ({children}) => {
     return (
         <VideoContextProvider>
             <Container>
-                Video
+                {children}
             </Container>
         </VideoContextProvider>
     );
