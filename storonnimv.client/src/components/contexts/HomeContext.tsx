@@ -53,7 +53,7 @@ const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) =
 
     const fetchHomeNewsList = async () : Promise<void> => {
         try {
-            const data: IHomeNewsItem[] = await sendRequest('http://localhost:8080/api/home/news/4');
+            const data: IHomeNewsItem[] = await sendRequest('http://localhost:8080/api/home/news/6');
             setHomeNewsList(data);
         } catch (error) {
             console.error("Error while fetching news for home: ", error);
