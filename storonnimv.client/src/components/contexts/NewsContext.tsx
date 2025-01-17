@@ -1,7 +1,7 @@
 ﻿import { INewsShortItem } from "../../models/news/INewsShortItem";
 import { createContext, FC, ReactNode, useContext, useState } from "react";
 import { GlobalContext } from "./shared/GlobalContext";
-import { IPaginationNewsResponse } from "../../models/news/IPaginationNewsResponse";
+import {IPaginationResponse} from "../../models/shared/IPaginationResponse";
 
 interface NewsContextType {
     newsList: INewsShortItem[];
@@ -33,10 +33,10 @@ const NewsContextProvider: FC<NewsContextProviderProps> = ({ children }) => {
 
     const fetchNews = async (pageNumber: number = currentPage, pageSize: number = 9): Promise<void> => {
         try {
-            const data: IPaginationNewsResponse = await sendRequest(
+            const data: IPaginationResponse<INewsShortItem> = await sendRequest(
                 `http://localhost:8080/api/news/page/${pageNumber}?pageSize=${pageSize}`
             );
-            setNewsList(data.shortNews);
+            setNewsList(data.items);
             setCurrentPage(data.currentPage);
             setTotalPages(data.totalPages);
 
@@ -47,16 +47,17 @@ const NewsContextProvider: FC<NewsContextProviderProps> = ({ children }) => {
         }
     };
 
-    const paginate = (pageNumber: number, pageSize: number = 9) => {
+    const paginate =
+        async (pageNumber: number, pageSize: number = 9): Promise<void> => {
         const savedTotalPagesString = sessionStorage.getItem("totalPages");
         const savedTotalPages = savedTotalPagesString ? Number(savedTotalPagesString) : 0;
 
         if (savedTotalPages === 0) {
-            fetchNews(pageNumber, pageSize);
+            await fetchNews(pageNumber, pageSize);
         }
 
         if (pageNumber >= 1 && pageNumber <= savedTotalPages) {
-            fetchNews(pageNumber, pageSize);
+            await fetchNews(pageNumber, pageSize);
         }
     };
 

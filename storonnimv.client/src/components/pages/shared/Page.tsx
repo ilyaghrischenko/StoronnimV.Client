@@ -5,6 +5,7 @@ import {Schedule} from "../Schedule";
 import {News} from "../News";
 import {Music} from "../Music";
 import {Group} from "../Group";
+import {Video} from "../Video";
 
 const Page: FC = () => {
     return (
@@ -14,6 +15,7 @@ const Page: FC = () => {
             <Route path="/news" element={<News />}/>
             <Route path="/music" element={<Music />}/>
             <Route path="/group" element={<Group />}/>
+            <Route path="/video" element={<Video />}/>
         </Routes>
     );
 };
