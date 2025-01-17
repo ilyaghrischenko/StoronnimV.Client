@@ -1,6 +1,6 @@
 ﻿import {Container} from "react-bootstrap";
 import {List} from "../shared/GenericList/List";
-import {useContext, useEffect} from "react";
+import {FC, useContext, useEffect} from "react";
 import {GlobalContext} from "../../contexts/shared/GlobalContext";
 import {HomeContext} from "../../contexts/HomeContext";
 import {IHomeNewsItem} from "../../../models/home/IHomeNewsItem";
@@ -8,7 +8,7 @@ import {ListItem} from "../shared/GenericList/ListItem";
 import {NewsHomeListItem} from "./NewsHomeListItem";
 import {Loading} from "../shared/Loading";
 
-const NewsHomeList = () => {
+const NewsHomeList: FC = () => {
     const homeContext = useContext(HomeContext);
 
     if (!homeContext) {
@@ -36,12 +36,11 @@ const NewsHomeList = () => {
                     className='home-news-list-item'
                     item={item}
                     renderItem={(item: IHomeNewsItem) =>
-                        <NewsHomeListItem item={item} />}
+                        <NewsHomeListItem key={item.id} item={item} />}
                     onClick={() => onClickHomeElementHandler('news')}
                 />
             )}
         >
-
         </List>
     );
 };

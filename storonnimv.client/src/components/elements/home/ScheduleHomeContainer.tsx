@@ -10,7 +10,7 @@ const ScheduleHomeContainer: FC = () => {
         throw new Error("HomeContext must be used within a HomeContextProvider");
     }
 
-    const {loading, homeSchedule, fetchHomeSchedule} = homeContext;
+    const {loading, homeSchedule, fetchHomeSchedule, onClickHomeElementHandler} = homeContext;
 
     useEffect(() => {
         fetchHomeSchedule();
@@ -23,7 +23,9 @@ const ScheduleHomeContainer: FC = () => {
     }
 
     return (
-        <Container className='schedule-home-container'>
+        <Container
+                className='schedule-home-container'
+                onClick={() => onClickHomeElementHandler('schedule')}>
             <p>{homeSchedule.id}</p>
             <Image src={homeSchedule.photo} />
             <p>{homeSchedule.title}</p>

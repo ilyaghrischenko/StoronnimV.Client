@@ -2,6 +2,7 @@
 import {GlobalContext} from "./shared/GlobalContext";
 import {IScheduleListItem} from "../../models/schedule/IScheduleListItem";
 import {IHomeNewsItem} from "../../models/home/IHomeNewsItem";
+import {IVideoModel} from "../../models/video/IVideoModel";
 
 // Тип контекста
 interface HomeContextType {
@@ -11,6 +12,8 @@ interface HomeContextType {
     homeNewsList: IHomeNewsItem[];
     fetchHomeNewsList: () => Promise<void>;
     onClickHomeElementHandler: (section: string) => void;
+    homePromotionVideo: IVideoModel;
+    fetchHomePromotionVideo: () => Promise<void>;
 }
 
 // Создаем контекст с типизацией
@@ -51,10 +54,25 @@ const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) =
 
     const fetchHomeNewsList = async () : Promise<void> => {
         try {
-            const data: IHomeNewsItem[] = await sendRequest('http://localhost:8080/api/home/news');
+            const data: IHomeNewsItem[] = await sendRequest('http://localhost:8080/api/home/news/4');
             setHomeNewsList(data);
         } catch (error) {
             console.error("Error while fetching news for home: ", error);
+        }
+    };
+
+    const [homePromotionVideo, setHomePromotionVideo] = useState<IVideoModel>({
+        id: 0,
+        title: '',
+        url: ''
+    });
+
+    const fetchHomePromotionVideo = async () : Promise<void> => {
+        try {
+            const data: IVideoModel = await sendRequest('http://localhost:8080/api/home/video');
+            setHomePromotionVideo(data);
+        } catch (error) {
+            console.error("Error while fetching video for home: ", error);
         }
     };
 
@@ -68,7 +86,9 @@ const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) =
         fetchHomeSchedule,
         homeNewsList,
         fetchHomeNewsList,
-        onClickHomeElementHandler
+        onClickHomeElementHandler,
+        homePromotionVideo,
+        fetchHomePromotionVideo
     };
 
     return (

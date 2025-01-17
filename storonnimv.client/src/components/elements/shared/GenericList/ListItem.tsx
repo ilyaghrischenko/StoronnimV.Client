@@ -1,4 +1,5 @@
-﻿
+﻿import {ListGroupItem} from "react-bootstrap";
+
 interface ListItemProps<T> {
     className?: string;
     item: T; // Один объект списка
@@ -14,8 +15,8 @@ export function ListItem<T>({ item, renderItem, onClick, className}: ListItemPro
     };
 
     return (
-        <div className={className} onClick={handleClick} style={{ cursor: onClick ? "pointer" : "default" }}>
+        <ListGroupItem className={className} onClick={handleClick} style={{ cursor: onClick ? "pointer" : "default" }}>
             {renderItem(item)}
-        </div>
+        </ListGroupItem>
     );
 }

@@ -48,8 +48,8 @@ const NewsList: FC = () => {
                     <ListItem className="news-item"
                               item={item}
                               renderItem={(item: INewsShortItem) =>
-                                  <NewsListItem newsItem={item}/>}
-                              onClick={() => OnShowModal(<NewsListItem newsItem={item}/>)}
+                                  <NewsListItem key={item.id} newsItem={item}/>}
+                              onClick={() => OnShowModal(<NewsListItem key={item.id} newsItem={item}/>)}
                     />
                 )}
             >
