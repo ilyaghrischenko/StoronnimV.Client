@@ -1,4 +1,5 @@
-﻿
+﻿import {ListGroup} from "react-bootstrap";
+
 interface ListProps<T> {
     className?: string;
     items: T[];
@@ -7,8 +8,8 @@ interface ListProps<T> {
 
 export function List<T>(props: ListProps<T>) {
     return (
-        <div className={props.className}>
+        <ListGroup className={props.className}>
             {props.items.map(props.renderItem)}
-        </div>
+        </ListGroup>
     );
 }

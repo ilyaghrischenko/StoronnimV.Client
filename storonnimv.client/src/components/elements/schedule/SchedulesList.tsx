@@ -39,8 +39,8 @@ const SchedulesList: FC = () => {
             renderItem={(schedule: IScheduleListItem) => (
                 <ListItem item={schedule}
                           renderItem={(schedule: IScheduleListItem) =>
-                              <ScheduleListItem schedule={schedule}/>}
-                          onClick={() => OnShowModal(<ScheduleListItem schedule={schedule}/>)}
+                              <ScheduleListItem key={schedule.id} schedule={schedule}/>}
+                          onClick={() => OnShowModal(<ScheduleListItem key={schedule.id} schedule={schedule}/>)}
                 />
             )}
 

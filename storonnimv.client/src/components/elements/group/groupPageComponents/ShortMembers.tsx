@@ -24,9 +24,9 @@ const ShortMembers:FC<IShortMembersProps> = ({members}) => {
             items={members}
             renderItem={(member: IMember) => (
                 <ListItem className="member-item"
-                    onClick={() => OnShowModal(<ShortMemberItem member={member}/>, member.fullName)}
+                    onClick={() => OnShowModal(<ShortMemberItem key={member.id} member={member}/>, member.fullName)}
                     item={member}
-                    renderItem={(member: IMember) => <ShortMemberItem member={member}/>}
+                    renderItem={(member: IMember) => <ShortMemberItem key={member.id} member={member}/>}
                 />
             )}
         />
