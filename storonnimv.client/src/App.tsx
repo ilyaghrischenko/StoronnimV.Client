@@ -1,4 +1,4 @@
-import React, {JSX} from 'react';
+import {JSX} from 'react';
 import {GlobalContextProvider} from "./components/contexts/shared/GlobalContext";
 import {Container} from "react-bootstrap";
 import {BrowserRouter as Router} from "react-router-dom";
