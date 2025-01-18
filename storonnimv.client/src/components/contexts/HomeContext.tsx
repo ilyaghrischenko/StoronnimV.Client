@@ -76,7 +76,7 @@ const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) =
     };
 
     const onClickHomeElementHandler = (section: string) => {
-        window.location.href = `http://localhost:3000/${section}`;
+        window.location.href = `http://localhost:5173/${section}`;
     };
 
     const value: HomeContextType = {
