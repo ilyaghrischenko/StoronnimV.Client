@@ -9,11 +9,11 @@ interface ScheduleListItemProps {
 export const ScheduleListItem: FC<ScheduleListItemProps> = ({schedule}) => {
     return (
         <div className='schedule-list-item'>
-            <Image className='item-photo' src={schedule.photo} fluid />
-            <p className='item-title'>{schedule.title}</p>
-            <p className='item-date'>{schedule.performanceDateTime}</p>
-            <p className='item-location'>{schedule.location}</p>
-            <p className='item-status'>{schedule.status}</p>
+            <Image className='schedule-list-item__photo' src={schedule.photo} fluid />
+            <p className='schedule-list-item__title'>{schedule.title}</p>
+            <p className='schedule-list-item__date'>{schedule.performanceDateTime}</p>
+            <p className='schedule-list-item__location'>{schedule.location}</p>
+            <p className='schedule-list-item__status'>{schedule.status}</p>
         </div>
     );
 };

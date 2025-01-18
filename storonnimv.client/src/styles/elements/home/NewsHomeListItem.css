@@ -3,11 +3,11 @@
     flex-direction: column;
 }
 
-.news-home-list-item-image {
+.news-home-list-item-container__image {
     width: 100%;
     height: auto;
 }
 
-.news-home-list-item-title {
+.news-home-list-item-container__title {
     text-align: center;
 }

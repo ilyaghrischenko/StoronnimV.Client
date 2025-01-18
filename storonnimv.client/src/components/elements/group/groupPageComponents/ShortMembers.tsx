@@ -20,10 +20,10 @@ const ShortMembers:FC<IShortMembersProps> = ({members}) => {
     const { OnShowModal } = context;
 
     return (
-        <List className="members-list"
+        <List className="short-members-list"
             items={members}
             renderItem={(member: IMember) => (
-                <ListItem className="member-item"
+                <ListItem className="short-members-list__item"
                     onClick={() => OnShowModal(<ShortMemberItem key={member.id} member={member}/>, member.fullName)}
                     item={member}
                     renderItem={(member: IMember) => <ShortMemberItem key={member.id} member={member}/>}

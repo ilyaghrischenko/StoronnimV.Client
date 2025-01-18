@@ -11,8 +11,8 @@ interface INewsHomeListItemProps {
 const NewsHomeListItem: FC<INewsHomeListItemProps> = ({item}) => {
     return (
         <Container className='news-home-list-item-container'>
-            <Image className='news-home-list-item-image' src={item.photo} />
-            <p className='news-home-list-item-title'>{item.title}</p>
+            <Image className='news-home-list-item-container__image' src={item.photo} />
+            <p className='news-home-list-item-container__title'>{item.title}</p>
         </Container>
     );
 };

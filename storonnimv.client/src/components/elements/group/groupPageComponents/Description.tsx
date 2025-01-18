@@ -10,9 +10,9 @@ interface IDescriptionProps {
 const Description: FC<IDescriptionProps> = ({groupInfo}) => {
 
     return (
-        <Container className='container-with-border'>
-            <Image className='group-photo' src = {groupInfo.photoUrl} fluid />
-            <p className='group-description'>{groupInfo.description}</p>
+        <Container className='description-container'>
+            <Image className='description-container__photo' src = {groupInfo.photoUrl} fluid />
+            <p className='description-container__description'>{groupInfo.description}</p>
         </Container>
     );
 }

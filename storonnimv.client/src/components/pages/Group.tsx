@@ -6,7 +6,7 @@ import {GroupDescription} from "../elements/group/GroupDescription";
 const Group: FC = () => {
     return (
         <GroupContextProvider>
-            <Container className='page'>
+            <Container className='group-page page'>
                 <GroupDescription/>
             </Container>
         </GroupContextProvider>

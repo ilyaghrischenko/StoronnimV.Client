@@ -1,9 +1,10 @@
-﻿import React, { FC } from "react";
+﻿import { FC } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 import "../../../styles/elements/shared/Header.css";
 
+//TODO: дописать правильные стили
 const Header: FC = () => {
     return (
         <Container

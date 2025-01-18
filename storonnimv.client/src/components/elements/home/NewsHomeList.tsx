@@ -33,11 +33,10 @@ const NewsHomeList: FC<NewsHomeListProps> = ({className}) => {
 
     return (
         <List
-            className={`home-news-list ${className}`}
+            className={`news-home-list ${className}`}
             items={homeNewsList}
             renderItem={(item: IHomeNewsItem) => (
                 <ListItem
-                    className='home-news-list-item'
                     item={item}
                     renderItem={(item: IHomeNewsItem) =>
                         <NewsHomeListItem key={item.id} item={item} />}

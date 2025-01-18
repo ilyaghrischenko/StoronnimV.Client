@@ -1,4 +1,4 @@
-﻿.group-photo {
+﻿.description-container__photo {
     display: block; /* Чтобы убрать поведение inline-элемента */
     margin: 0 auto 50px auto; /* Центрирование по горизонтали */
     width: 50%; /* Задание ширины в 70% */
@@ -6,13 +6,13 @@
     height: auto; /* Сохранение пропорций */
 }
 
-.container-with-border {
+.description-container {
     border: 2px solid #ccc; /* Рамка толщиной 2px с цветом #ccc */
     border-radius: 8px; /* Скругление углов (по желанию) */
     padding: 15px; /* Отступы внутри контейнера (по желанию) */
 }
 
-.group-description {
+.description-container__description {
     display: block;
     margin: 0 auto;
     width: 80%;

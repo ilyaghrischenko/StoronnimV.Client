@@ -1,4 +1,4 @@
-﻿.members-list {
+﻿.short-members-list {
     display: flex; /* Выводим элементы в ряд */
     margin: 0 auto; /* Центрирование по горизонтали */
     flex-wrap: wrap; /* Перенос на новую строку, если не помещаются */
@@ -9,7 +9,7 @@
     width: 60%; /* Ширина контейнера */
 }
 
-.member-item {
+.short-members-list__item {
     display: flex;
     flex-direction: column; /* Располагаем фото сверху, текст снизу */
     align-items: center; /* Центрируем содержимое */
@@ -22,7 +22,7 @@
     background-color: #f8f9fa; /* Цвет фона (опционально) */
 }
 
-.member-short-photo {
+.short-member-item-container__photo {
     width: 100%; /* Занимает всю ширину блока */
     height: auto; /* Автоматическая высота */
     max-height: 70%; /* Ограниваем высоту фото 70% от квадрата */

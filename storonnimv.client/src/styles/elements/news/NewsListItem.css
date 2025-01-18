@@ -6,7 +6,7 @@
     gap: 15px;
 }
 
-.item-photo {
+.news-list-item__photo {
     height: auto;
     width: 100%;
     background-size: cover;
@@ -14,7 +14,7 @@
     background-repeat: no-repeat;
 }
 
-.item-title {
+.news-list-item__title {
     font-size: 50px;
     font-weight: bold;
 }

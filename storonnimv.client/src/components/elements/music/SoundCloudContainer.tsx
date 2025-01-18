@@ -27,7 +27,7 @@ const SoundCloudContainer: FC = () => {
     return (
         <Container className='soundcloud-container'>
             <Container
-                className="soundcloud-embed"
+                className="soundcloud-container__embed"
                 dangerouslySetInnerHTML={{ __html: embedHtml}}/>
         </Container>
     );

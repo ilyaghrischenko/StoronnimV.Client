@@ -39,14 +39,12 @@ const NewsList: FC = () => {
     }
 
     return (
-        <Container>
-
+        <Container className='news-list-container'>
             <List
-                className="news-list"
+                className="news-list-container__list"
                 items={newsList}
                 renderItem={(item: INewsShortItem) => (
-                    <ListItem className="news-item"
-                              item={item}
+                    <ListItem item={item}
                               renderItem={(item: INewsShortItem) =>
                                   <NewsListItem key={item.id} newsItem={item}/>}
                               onClick={() => OnShowModal(<NewsListItem key={item.id} newsItem={item}/>)}
@@ -56,7 +54,7 @@ const NewsList: FC = () => {
             </List>
 
             {/* Элементы управления пагинацией */}
-            <Container className="pagination">
+            <Container className="news-list-container__pagination">
                 <Pagination>
                     {/* Кнопка "Предыдущая страница" */}
                     <Pagination.Prev

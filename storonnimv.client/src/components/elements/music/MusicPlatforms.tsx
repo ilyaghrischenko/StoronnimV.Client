@@ -1,8 +1,7 @@
 ﻿import {FC, useContext, useEffect} from "react";
-import {ListGroup, ListGroupItem} from "react-bootstrap";
+import {ListGroup} from "react-bootstrap";
 
 import '../../../styles/elements/music/MusicPlatforms.css';
-import {IMusicPlatformItem} from "../../../models/music/IMusicPlatformItem";
 import {MusicPlatformItem} from "./MusicPlatformItem";
 import {MusicContext} from "../../contexts/MusicContext";
 import {Loading} from "../shared/Loading";
@@ -28,7 +27,7 @@ const MusicPlatforms: FC = () => {
 
     return (
         <ListGroup className='music-platforms-container'>
-            {musicPlatforms.map((item, key) =>
+            {musicPlatforms.map((item) =>
                 <MusicPlatformItem item={item} key={item.id}/>)}
         </ListGroup>
     );

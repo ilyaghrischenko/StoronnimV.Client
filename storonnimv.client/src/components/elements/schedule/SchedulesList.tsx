@@ -35,6 +35,7 @@ const SchedulesList: FC = () => {
     return (
 
         <List
+            className='schedules-list'
             items={schedules}
             renderItem={(schedule: IScheduleListItem) => (
                 <ListItem item={schedule}
@@ -44,9 +45,7 @@ const SchedulesList: FC = () => {
                 />
             )}
 
-        >
-
-        </List>
+        />
     );
 };
 

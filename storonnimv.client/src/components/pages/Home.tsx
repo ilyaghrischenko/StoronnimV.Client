@@ -10,7 +10,7 @@ import '../../styles/pages/Home.css';
 const Home: FC = () => {
     return (
         <HomeContextProvider>
-            <Container className='home-container page'>
+            <Container className='home-page page'>
                 <ScheduleHomeContainer className='schedule-grid' />
                 <NewsHomeList className='news-grid' />
                 <PromotionVideoHome className='video-grid' />
