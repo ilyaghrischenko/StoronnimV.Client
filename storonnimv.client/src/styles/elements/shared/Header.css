@@ -14,7 +14,7 @@
     margin: 0 20px;
 }
 
-.left-nav, .right-nav {
+.navbar-container__left-nav, .navbar-container__right-nav {
     display: flex;
     gap: 80px;
 }
@@ -26,13 +26,7 @@
     flex-grow: 1; /* Чтобы центрированный логотип не сжимался */
 }
 
-.link-item {
+.navbar-container__link-item {
     background-color: red;
     font-size: 30px;
-}
-
-.header-title {
-    font-weight: bold;
-    color: white;
-    font-size: 45px;
 }

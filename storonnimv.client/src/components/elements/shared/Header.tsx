@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 
 import "../../../styles/elements/shared/Header.css";
 
-//TODO: дописать правильные стили
 const Header: FC = () => {
     return (
         <Container
@@ -12,11 +11,11 @@ const Header: FC = () => {
         >
             <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
                 <Container className="navbar-container">
-                    <Nav className="left-nav">
-                        <Nav.Link as={NavLink} to="/schedule" className="link-item">
+                    <Nav className="navbar-container__left-nav">
+                        <Nav.Link as={NavLink} to="/schedule" className="navbar-container__link-item">
                             Афіша
                         </Nav.Link>
-                        <Nav.Link as={NavLink} to="/news" className="link-item">
+                        <Nav.Link as={NavLink} to="/news" className="navbar-container__link-item">
                             Новини
                         </Nav.Link>
                     </Nav>
@@ -25,14 +24,14 @@ const Header: FC = () => {
                         Стороннім В
                     </Navbar.Brand>
 
-                    <Nav className="right-nav">
-                        <Nav.Link as={NavLink} to="/music" className="link-item">
+                    <Nav className="navbar-container__right-nav">
+                        <Nav.Link as={NavLink} to="/music" className="navbar-container__link-item">
                             Музика
                         </Nav.Link>
-                        <Nav.Link as={NavLink} to="/group" className="link-item">
+                        <Nav.Link as={NavLink} to="/group" className="navbar-container__link-item">
                             Група
                         </Nav.Link>
-                        <Nav.Link as={NavLink} to="/video/sections" className="link-item">
+                        <Nav.Link as={NavLink} to="/video/sections" className="navbar-container__link-item">
                             Відео
                         </Nav.Link>
                     </Nav>

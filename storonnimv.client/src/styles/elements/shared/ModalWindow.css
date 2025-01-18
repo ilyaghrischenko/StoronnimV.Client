@@ -1,5 +1,5 @@
 ﻿/* ModalWindow.css */
-.custom-modal {
+.modal-window {
     background-color: rgba(0, 0, 0); /* Цвет фона модального окна */
     z-index: 1050; /* Убедиться, что модальное окно выше остальных элементов */
     width: 80% !important;
@@ -15,13 +15,13 @@
     flex-direction: column; /* Для корректной работы header, body и footer */
 }
 
-.custom-modal .modal-content {
+.modal-window .modal-content {
     height: 100%; /* Чтобы занять всю высоту */
     display: flex;
     flex-direction: column;
 }
 
-.custom-modal .modal-body {
+.modal-window .modal-body {
     overflow-y: auto; /* Скроллинг только содержимого модального окна */
     flex: 1;
 }
@@ -37,20 +37,20 @@
 }
 
 /* Заголовок модального окна */
-.custom-modal .modal-header {
+.modal-window .modal-header {
     display: flex;
     justify-content: center; /* Центрируем заголовок */
     align-items: center;
     width: 100%;
 }
 
-.custom-modal .modal-title {
+.modal-window .modal-window__title {
     font-size: 20px; /* Размер шрифта для заголовка */
     margin: 0;
 }
 
 /* Кнопка закрытия */
-.custom-modal .close {
+.modal-window .close {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -67,12 +67,12 @@
     cursor: pointer;
 }
 
-.custom-modal .close:hover {
+.modal-window .close:hover {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Изменение стиля крестика */
-.custom-modal .close:before {
+.modal-window .close:before {
     content: "×"; /* Символ крестика */
     font-size: 20px;
 }

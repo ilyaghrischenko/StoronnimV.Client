@@ -1,18 +1,18 @@
-﻿import {FC, useContext, useEffect} from "react";
-import {Container, Pagination} from "react-bootstrap";
-import {GlobalContext} from "../../contexts/shared/GlobalContext";
-import {Loading} from "../shared/Loading";
-import {List} from "../shared/GenericList/List";
-import {ListItem} from "../shared/GenericList/ListItem";
-import {VideoContext} from "../../contexts/VideoContext";
-import {useParams} from "react-router-dom";
-import {IVideoModel} from "../../../models/video/IVideoModel";
-import {VideoListItem} from "./VideoListItem";
+﻿import { FC, useContext, useEffect } from "react";
+import { Container, Pagination } from "react-bootstrap";
+import { GlobalContext } from "../../contexts/shared/GlobalContext";
+import { Loading } from "../shared/Loading";
+import { List } from "../shared/GenericList/List";
+import { ListItem } from "../shared/GenericList/ListItem";
+import { VideoContext } from "../../contexts/VideoContext";
+import { useParams } from "react-router-dom";
+import { IVideoModel } from "../../../models/video/IVideoModel";
+import { VideoListItem } from "./VideoListItem";
+
 import "../../../styles/elements/video/VideoList.css";
 
 const VideoList: FC = () => {
-
-    const {id} =  useParams<{id: string}>();
+    const { id } = useParams<{ id: string }>();
 
     const videoContext = useContext(VideoContext);
     const globalContext = useContext(GlobalContext);
@@ -24,46 +24,44 @@ const VideoList: FC = () => {
         throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
     if (!videoContext) {
-        throw new Error("NewsContext must be used within a NewsContextProvider");
+        throw new Error("VideoContext must be used within a VideoContextProvider");
     }
 
-
-    const {videoList, currentPage, totalPages, paginate, loading} = videoContext;
+    const { videoList, currentPage, totalPages, paginate, loading } = videoContext;
 
     useEffect(() => {
         const savedPage = sessionStorage.getItem("currentPage");
         const page = savedPage ? Number(savedPage) : 1;
 
-        paginate(id,page);
+        paginate(id, page);
     }, []);
 
     if (loading) {
-        return (
-            <Loading/>
-        );
+        return <Loading />;
     }
 
     return (
-        <Container>
-
+        <Container className="video-list-container">
             <List
                 className="video-list"
                 items={videoList}
                 renderItem={(item: IVideoModel) => (
-                    <ListItem className="video-item"
-                              item={item}
-                              renderItem={(item: IVideoModel) =>
-                                  <VideoListItem videoItem={item}/>}
+                    <ListItem
+                        className="video-list__item"
+                        item={item}
+                        renderItem={(item: IVideoModel) => (
+                            <VideoListItem videoItem={item} />
+                        )}
                     />
                 )}
-            >
-            </List>
+            ></List>
 
             {/* Элементы управления пагинацией */}
-            <Container className="pagination">
-                <Pagination>
+            <Container>
+                <Pagination className="video-list__pagination">
                     {/* Кнопка "Предыдущая страница" */}
                     <Pagination.Prev
+                        className="video-list__pagination-item"
                         onClick={() => paginate(id, currentPage - 1)}
                         disabled={currentPage === 1}
                     />
@@ -72,6 +70,7 @@ const VideoList: FC = () => {
                     {[...Array(totalPages)].map((_, index) => (
                         <Pagination.Item
                             key={index}
+                            className="video-list__pagination-item"
                             onClick={() => paginate(id, index + 1)}
                             active={currentPage === index + 1}
                         >
@@ -81,6 +80,7 @@ const VideoList: FC = () => {
 
                     {/* Кнопка "Следующая страница" */}
                     <Pagination.Next
+                        className="video-list__pagination-item"
                         onClick={() => paginate(id, currentPage + 1)}
                         disabled={currentPage === totalPages}
                     />
@@ -90,4 +90,4 @@ const VideoList: FC = () => {
     );
 };
 
-export {VideoList};
+export { VideoList };

@@ -7,14 +7,11 @@ interface IVideoListItemProps {
 }
 
 const VideoListItem: FC<IVideoListItemProps> = ({ videoItem }) => {
-
-
-
     return (
         <div className="video-list-item">
-            <h3 className="video-title">{videoItem.title}</h3>
+            <h3 className="video-list-item__title">{videoItem.title}</h3>
             <video
-                className="video-preview-item"
+                className="video-list-item__preview"
                 controls
                 preload="auto" // Видео будет загружаться для захвата кадра
             >

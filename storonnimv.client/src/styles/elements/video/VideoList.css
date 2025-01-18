@@ -1,4 +1,8 @@
-﻿.video-list {
+﻿.video-list-container {
+    padding: 20px;
+}
+
+.video-list {
     display: flex;
     flex-wrap: wrap; /* Разрешаем элементам переноситься на новую строку */
     justify-content: center; /* Центрируем видео в контейнере */
@@ -7,20 +11,21 @@
     margin: 0 auto; /* Центрируем контейнер */
 }
 
-.video-item {
+.video-list__item {
     width: 48%; /* Каждое видео будет занимать 48% ширины контейнера (2 видео в ряду) */
     margin-bottom: 20px; /* Отступ снизу для разделения элементов */
 }
 
-.video-list-item {
-    width: 100%; /* Видео будет растягиваться на 100% доступной ширины внутри .video-item */
+.video-list__item-content {
+    width: 100%; /* Видео будет растягиваться на 100% доступной ширины внутри .video-list__item */
     margin-bottom: 20px;
 }
 
-.pagination {
+.video-list__pagination {
     display: flex;
     justify-content: center; /* Центрируем пагинацию */
     margin-top: 30px;
+    gap: 30px;
 }
 
 /* Стили для случая, когда только одно видео в ряду */
@@ -28,13 +33,13 @@
     justify-content: center; /* Центрируем одно видео в ряду */
 }
 
-.video-item:only-child {
+.video-list__item:only-child {
     width: 80%; /* Когда только одно видео, оно будет занимать 80% ширины контейнера */
 }
 
 /* Адаптивные стили для меньших экранов */
 @media (max-width: 768px) {
-    .video-item {
+    .video-list__item {
         width: 100%; /* На мобильных устройствах видео будет занимать всю ширину */
     }
 }

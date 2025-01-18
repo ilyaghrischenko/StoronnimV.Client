@@ -1,4 +1,4 @@
-﻿.sections-container {
+﻿.video-sections-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,7 +7,7 @@
     gap: 20px;
 }
 
-.top-section {
+.video-sections__top {
     width: 80%;
     height: auto;
     display: flex;
@@ -19,14 +19,14 @@
     overflow: hidden;
 }
 
-.bottom-section {
+.video-sections__bottom {
     display: flex;
     width: 80%;
     gap: 20px;
 }
 
-.bottom-left,
-.bottom-right {
+.video-sections__bottom-left,
+.video-sections__bottom-right {
     width: 50%;
     height: auto;
     display: flex;
@@ -38,8 +38,14 @@
     overflow: hidden;
 }
 
-.section-image {
+.video-sections__image {
     max-width: 100%;
     max-height: 100%;
     object-fit: cover;
+}
+
+.video-sections__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 10px;
 }

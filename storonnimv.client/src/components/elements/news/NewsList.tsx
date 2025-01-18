@@ -39,9 +39,9 @@ const NewsList: FC = () => {
     }
 
     return (
-        <Container className='news-list-container'>
+        <Container className='news-list'>
             <List
-                className="news-list-container__list"
+                className="news-list__items"
                 items={newsList}
                 renderItem={(item: INewsShortItem) => (
                     <ListItem item={item}
@@ -54,8 +54,8 @@ const NewsList: FC = () => {
             </List>
 
             {/* Элементы управления пагинацией */}
-            <Container className="news-list-container__pagination">
-                <Pagination>
+            <Container>
+                <Pagination className="news-list__pagination">
                     {/* Кнопка "Предыдущая страница" */}
                     <Pagination.Prev
                         onClick={() => paginate(currentPage - 1)}
