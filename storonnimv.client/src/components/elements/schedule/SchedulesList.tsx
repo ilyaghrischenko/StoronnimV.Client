@@ -7,8 +7,6 @@ import {IScheduleListItem} from "../../../models/schedule/IScheduleListItem";
 import {ListItem} from "../shared/GenericList/ListItem";
 import {GlobalContext} from "../../contexts/shared/GlobalContext";
 
-import '../../../styles/elements/schedule/ScheduleList.css';
-
 const SchedulesList: FC = () => {
     const scheduleContext = useContext(ScheduleContext);
     const globalContext = useContext(GlobalContext);

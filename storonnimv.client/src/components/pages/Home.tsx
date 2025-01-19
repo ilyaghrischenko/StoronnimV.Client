@@ -6,8 +6,6 @@ import {ScheduleHomeContainer} from "../elements/home/ScheduleHomeContainer";
 import {PromotionVideoHome} from "../elements/home/PromotionVideoHome";
 import {NewsSlider} from "../elements/home/NewsSlider.tsx";
 
-import '../../styles/pages/Home.css';
-
 const Home: FC = () => {
     return (
         <HomeContextProvider>

@@ -1,7 +1,6 @@
 ﻿import {FC, useContext, useEffect} from "react";
 import {ListGroup} from "react-bootstrap";
 
-import '../../../styles/elements/music/MusicPlatforms.css';
 import {MusicPlatformItem} from "./MusicPlatformItem";
 import {MusicContext} from "../../contexts/MusicContext";
 import {Loading} from "../shared/Loading";

@@ -2,8 +2,6 @@
 import {INewsShortItem} from "../../../models/news/INewsShortItem";
 import {Image, ListGroupItem} from "react-bootstrap";
 
-import '../../../styles/elements/news/NewsListItem.css';
-
 interface INewsListItemProps {
     newsItem: INewsShortItem;
 }

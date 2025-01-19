@@ -6,8 +6,6 @@ import {ListItem} from "../shared/GenericList/ListItem";
 import {NewsHomeListItem} from "./NewsHomeListItem";
 import {Loading} from "../shared/Loading";
 
-import '../../../styles/elements/home/NewsHomeList.css';
-
 interface NewsHomeListProps {
     className?: string;
 }

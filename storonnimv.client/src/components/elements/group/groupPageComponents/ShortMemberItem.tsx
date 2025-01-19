@@ -1,7 +1,6 @@
 ﻿import {Container, Image} from "react-bootstrap";
 import {IMember} from "../../../../models/group/IGroupInfo";
 import {FC} from "react";
-import "../../../../styles/elements/group/ShortMemberItem.css";
 
 interface IMemberItemProps {
     member: IMember;

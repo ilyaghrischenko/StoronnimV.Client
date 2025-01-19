@@ -6,7 +6,6 @@ import {Header} from "./components/elements/shared/Header";
 import {Page} from "./components/pages/shared/Page";
 import {Footer} from "./components/elements/shared/Footer";
 
-import './styles/shared/App.css';
 import {ModalWindow} from "./components/elements/shared/ModalWindow";
 
 function App() : JSX.Element {

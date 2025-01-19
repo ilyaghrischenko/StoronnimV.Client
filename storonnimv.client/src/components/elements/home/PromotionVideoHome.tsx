@@ -3,8 +3,6 @@ import {Container} from "react-bootstrap";
 import {HomeContext} from "../../contexts/HomeContext";
 import {Loading} from "../shared/Loading";
 
-import '../../../styles/elements/home/PromotionVideoHome.css';
-
 interface PromotionVideoHomeProps {
     className?: string;
 }

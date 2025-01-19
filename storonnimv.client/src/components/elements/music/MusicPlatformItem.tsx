@@ -2,8 +2,6 @@
     import {FC} from "react";
     import {IMusicPlatformItem} from "../../../models/music/IMusicPlatformItem";
 
-    import '../../../styles/elements/music/MusicPlatformItem.css';
-
     interface MusicPlatformItemProps {
         item: IMusicPlatformItem;
     }

@@ -2,8 +2,6 @@
 import {IHomeNewsItem} from "../../../models/home/IHomeNewsItem";
 import {Container, Image} from "react-bootstrap";
 
-import '../../../styles/elements/home/NewsHomeListItem.css';
-
 interface INewsHomeListItemProps {
     item: IHomeNewsItem;
 }

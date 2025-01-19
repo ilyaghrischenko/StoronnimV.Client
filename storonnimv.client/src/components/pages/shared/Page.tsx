@@ -9,8 +9,6 @@ import {Video} from "../Video";
 import {VideoSections} from "../../elements/video/VideoSections";
 import {VideoList} from "../../elements/video/VideoList";
 
-import '../../../styles/pages/shared/Page.css';
-
 const Page: FC = () => {
     return (
         <Routes>

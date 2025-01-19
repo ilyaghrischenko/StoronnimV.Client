@@ -3,8 +3,6 @@ import {HomeContext} from "../../contexts/HomeContext";
 import {Loading} from "../shared/Loading";
 import {Container, Image} from "react-bootstrap";
 
-import '../../../styles/elements/home/ScheduleHomeContainer.css';
-
 interface ScheduleHomeContainerProps {
     className?: string;
 }

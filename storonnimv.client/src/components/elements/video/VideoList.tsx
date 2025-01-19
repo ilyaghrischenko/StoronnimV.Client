@@ -9,8 +9,6 @@ import { useParams } from "react-router-dom";
 import { IVideoModel } from "../../../models/video/IVideoModel";
 import { VideoListItem } from "./VideoListItem";
 
-import "../../../styles/elements/video/VideoList.css";
-
 const VideoList: FC = () => {
     const { id } = useParams<{ id: string }>();
 

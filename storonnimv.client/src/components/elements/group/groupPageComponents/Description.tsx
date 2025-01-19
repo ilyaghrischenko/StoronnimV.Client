@@ -1,7 +1,6 @@
 ﻿import {FC} from "react";
 import {Image, Container} from "react-bootstrap";
 import {IGroupInfo} from "../../../../models/group/IGroupInfo";
-import "../../../../styles/elements/group/Description.css";
 
 interface IDescriptionProps {
     groupInfo: IGroupInfo;

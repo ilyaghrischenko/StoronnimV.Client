@@ -2,8 +2,6 @@
 import { Modal } from "react-bootstrap";
 import { GlobalContext } from "../../contexts/shared/GlobalContext";
 
-import "../../../styles/elements/shared/ModalWindow.css";
-
 const ModalWindow: FC = () => {
     const context = useContext(GlobalContext);
 

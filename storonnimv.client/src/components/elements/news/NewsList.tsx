@@ -4,7 +4,6 @@ import {Container, Pagination} from "react-bootstrap";
 import {NewsListItem} from "./NewsListItem";
 import {Loading} from "../shared/Loading";
 
-import "../../../styles/elements/news/NewsList.css";
 import {List} from "../shared/GenericList/List";
 import {ListItem} from "../shared/GenericList/ListItem";
 import {INewsShortItem} from "../../../models/news/INewsShortItem";

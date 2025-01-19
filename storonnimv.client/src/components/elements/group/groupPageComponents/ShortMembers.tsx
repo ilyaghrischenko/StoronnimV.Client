@@ -1,7 +1,6 @@
 ﻿import {IMember} from "../../../../models/group/IGroupInfo";
 import {FC, useContext} from "react";
 import {ShortMemberItem} from "./ShortMemberItem";
-import "../../../../styles/elements/group/GroupMembers.css";
 import {List} from "../../shared/GenericList/List";
 import {ListItem} from "../../shared/GenericList/ListItem";
 import {GlobalContext} from "../../../contexts/shared/GlobalContext";

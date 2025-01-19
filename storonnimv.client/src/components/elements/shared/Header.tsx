@@ -2,8 +2,6 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
-import "../../../styles/elements/shared/Header.css";
-
 const Header: FC = () => {
     return (
         <Container

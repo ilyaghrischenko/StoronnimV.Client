@@ -1,6 +1,5 @@
 ﻿import {FC} from "react";
 import {Link} from "react-router-dom";
-import "../../../styles/elements/video/VideoSections.css";
 
 interface VideoSectionsProps {
     topImage?: string; // Изображение для верхнего большого раздела

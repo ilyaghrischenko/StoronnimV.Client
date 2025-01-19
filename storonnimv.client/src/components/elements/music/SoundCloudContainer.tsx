@@ -3,8 +3,6 @@ import {MusicContext} from "../../contexts/MusicContext";
 import {Loading} from "../shared/Loading";
 import {Container} from "react-bootstrap";
 
-import '../../../styles/elements/music/SoundCloudContainer.css';
-
 const SoundCloudContainer: FC = () => {
     const musicContext = useContext(MusicContext);
 

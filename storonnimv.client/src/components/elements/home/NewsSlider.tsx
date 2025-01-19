@@ -4,8 +4,6 @@ import { HomeContext } from "../../contexts/HomeContext.tsx";
 import { NewsHomeListItem } from "./NewsHomeListItem.tsx";
 import { Button } from "react-bootstrap";
 
-import "../../../styles/elements/home/NewsSlider.css";
-
 interface INewsSliderProps {
     className?: string;
 }

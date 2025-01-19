@@ -1,6 +1,5 @@
 ﻿import { FC } from "react";
 import { IVideoModel } from "../../../models/video/IVideoModel";
-import "../../../styles/elements/video/VideoListItem.css";
 
 interface IVideoListItemProps {
     videoItem: IVideoModel;
