@@ -2,6 +2,8 @@
 import {IScheduleListItem} from "../../../models/schedule/IScheduleListItem";
 import {Image} from "react-bootstrap";
 
+import '../../../styles/elements/schedule/ScheduleListItem.css';
+
 interface ScheduleListItemProps {
     schedule: IScheduleListItem;
 }

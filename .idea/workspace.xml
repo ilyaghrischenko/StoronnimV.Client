@@ -4,11 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="changes class name to BEM methodology partly" />
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="changes class name to BEM methodology partly">
+      <change afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/schedule/ScheduleList.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/schedule/ScheduleListItem.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/ScheduleListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/ScheduleListItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/SchedulesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/SchedulesList.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -49,8 +61,9 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/change-class-names",
+    "git-widget-placeholder": "feature/home-news-slider",
     "last_opened_file_path": "D:/ForProgramming/Projects/MyProjects/React/StoronnimV.Client/storonnimv.client/src",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -84,6 +97,7 @@
       <workItem from="1737150662289" duration="5019000" />
       <workItem from="1737203540000" duration="1493000" />
       <workItem from="1737207716654" duration="2917000" />
+      <workItem from="1737238150017" duration="1136000" />
     </task>
     <task id="LOCAL-00001" summary="change port">
       <option name="closed" value="true" />
