@@ -1,0 +1,32 @@
+.header-container {
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1; /* Чтобы центрированный логотип не сжимался */
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: center; /* Размещаем блоки с левым и правым контентом */
+  align-items: center;
+  gap: 80px;
+  padding-top: 20px;
+  margin: 0 20px;
+
+  &__left-nav, &__right-nav {
+    display: flex;
+    gap: 80px;
+  }
+
+  &__link-item {
+    background-color: red;
+    font-size: 30px;
+  }
+}

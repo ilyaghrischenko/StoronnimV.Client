@@ -1,7 +1,8 @@
-﻿.music-platform-item {
-    background-size: cover;
-    background-position: center;
-
-    height: 90px;
-    width: 170px;
+.music-platform-item {
+  background-size: cover;
+  background-position: center;
+  height: 90px;
+  width: 170px;
 }
+
+/*# sourceMappingURL=MusicPlatformItem.css.map */

@@ -1,32 +1,33 @@
-﻿.header-container {
-    height: 250px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.navbar-container {
-    display: flex;
-    justify-content: center; /* Размещаем блоки с левым и правым контентом */
-    align-items: center;
-    gap: 80px;
-    padding-top: 20px;
-    margin: 0 20px;
-}
-
-.navbar-container__left-nav, .navbar-container__right-nav {
-    display: flex;
-    gap: 80px;
+@charset "UTF-8";
+.header-container {
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1; /* Чтобы центрированный логотип не сжимался */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1; /* Чтобы центрированный логотип не сжимался */
 }
 
-.navbar-container__link-item {
-    background-color: red;
-    font-size: 30px;
+.navbar-container {
+  display: flex;
+  justify-content: center; /* Размещаем блоки с левым и правым контентом */
+  align-items: center;
+  gap: 80px;
+  padding-top: 20px;
+  margin: 0 20px;
 }
+.navbar-container__left-nav, .navbar-container__right-nav {
+  display: flex;
+  gap: 80px;
+}
+.navbar-container__link-item {
+  background-color: red;
+  font-size: 30px;
+}
+
+/*# sourceMappingURL=Header.css.map */

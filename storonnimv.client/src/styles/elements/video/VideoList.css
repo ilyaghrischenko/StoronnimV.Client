@@ -1,45 +1,41 @@
-﻿.video-list-container {
-    padding: 20px;
+@charset "UTF-8";
+.video-list-container {
+  padding: 20px;
 }
 
 .video-list {
-    display: flex;
-    flex-wrap: wrap; /* Разрешаем элементам переноситься на новую строку */
-    justify-content: center; /* Центрируем видео в контейнере */
-    gap: 20px; /* Отступы между видео */
-    width: 80%; /* Ограничиваем ширину списка видео 80% */
-    margin: 0 auto; /* Центрируем контейнер */
+  display: flex;
+  flex-wrap: wrap; /* Разрешаем элементам переноситься на новую строку */
+  justify-content: center; /* Центрируем видео в контейнере */
+  gap: 20px; /* Отступы между видео */
+  width: 80%; /* Ограничиваем ширину списка видео 80% */
+  margin: 0 auto; /* Центрируем контейнер */
 }
-
 .video-list__item {
-    width: 48%; /* Каждое видео будет занимать 48% ширины контейнера (2 видео в ряду) */
-    margin-bottom: 20px; /* Отступ снизу для разделения элементов */
+  width: 48%; /* Каждое видео будет занимать 48% ширины контейнера (2 видео в ряду) */
+  margin-bottom: 20px; /* Отступ снизу для разделения элементов */
 }
-
 .video-list__item-content {
-    width: 100%; /* Видео будет растягиваться на 100% доступной ширины внутри .video-list__item */
-    margin-bottom: 20px;
+  width: 100%; /* Видео будет растягиваться на 100% доступной ширины внутри .video-list__item */
+  margin-bottom: 20px;
 }
-
-.video-list__pagination {
-    display: flex;
-    justify-content: center; /* Центрируем пагинацию */
-    margin-top: 30px;
-    gap: 30px;
-}
-
-/* Стили для случая, когда только одно видео в ряду */
-.video-list:only-child {
-    justify-content: center; /* Центрируем одно видео в ряду */
-}
-
 .video-list__item:only-child {
-    width: 80%; /* Когда только одно видео, оно будет занимать 80% ширины контейнера */
+  width: 80%;
+}
+.video-list__pagination {
+  display: flex;
+  justify-content: center; /* Центрируем пагинацию */
+  margin-top: 30px;
+  gap: 30px;
+}
+.video-list:only-child {
+  justify-content: center; /* Центрируем одно видео в ряду */
 }
 
-/* Адаптивные стили для меньших экранов */
 @media (max-width: 768px) {
-    .video-list__item {
-        width: 100%; /* На мобильных устройствах видео будет занимать всю ширину */
-    }
+  .video-list__item {
+    width: 100%; /* На мобильных устройствах видео будет занимать всю ширину */
+  }
 }
+
+/*# sourceMappingURL=VideoList.css.map */

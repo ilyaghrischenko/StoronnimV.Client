@@ -1,0 +1,43 @@
+.video-list-container {
+  padding: 20px;
+}
+
+.video-list {
+  display: flex;
+  flex-wrap: wrap; /* Разрешаем элементам переноситься на новую строку */
+  justify-content: center; /* Центрируем видео в контейнере */
+  gap: 20px; /* Отступы между видео */
+  width: 80%; /* Ограничиваем ширину списка видео 80% */
+  margin: 0 auto; /* Центрируем контейнер */
+
+  &__item {
+    width: 48%; /* Каждое видео будет занимать 48% ширины контейнера (2 видео в ряду) */
+    margin-bottom: 20px; /* Отступ снизу для разделения элементов */
+
+    &-content {
+      width: 100%; /* Видео будет растягиваться на 100% доступной ширины внутри .video-list__item */
+      margin-bottom: 20px;
+    }
+
+    &:only-child {
+      width: 80%;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center; /* Центрируем пагинацию */
+    margin-top: 30px;
+    gap: 30px;
+  }
+
+  &:only-child {
+    justify-content: center; /* Центрируем одно видео в ряду */
+  }
+}
+
+@media (max-width: 768px) {
+  .video-list__item {
+    width: 100%; /* На мобильных устройствах видео будет занимать всю ширину */
+  }
+}

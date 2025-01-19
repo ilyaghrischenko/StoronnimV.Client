@@ -1,0 +1,9 @@
+.schedule-list-item {
+  display: flex;
+  flex-direction: column;
+
+  &__photo {
+    width: 100%;
+    height: auto;
+  }
+}

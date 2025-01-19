@@ -1,0 +1,18 @@
+.video-list-item {
+  max-width: 100%;
+  margin: 10px 0;
+  position: relative;
+
+  &__preview {
+    width: 100%; /* Видео адаптируется к ширине контейнера */
+    height: auto; /* Высота сохраняет пропорции */
+    border-radius: 8px; /* Закругление углов */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px; /* Отступ снизу от названия */
+  }
+}

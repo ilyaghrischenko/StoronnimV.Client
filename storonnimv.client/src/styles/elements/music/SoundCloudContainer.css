@@ -1,9 +1,10 @@
-﻿.soundcloud-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.soundcloud-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.soundcloud-container__embed {
+  width: 80%;
 }
 
-.soundcloud-container__embed {
-    width: 80%;
-}
+/*# sourceMappingURL=SoundCloudContainer.css.map */

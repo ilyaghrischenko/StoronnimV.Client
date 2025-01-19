@@ -1,0 +1,21 @@
+.news-list {
+
+
+  &__items {
+    display: grid;
+    /* Сетка: 3 столбца по равной ширине */
+    grid-template-columns: repeat(3, 1fr);
+    /* 4 строки с автоматической высотой */
+    grid-template-rows: repeat(4, auto);
+    /* Разрыв между элементами */
+    gap: 3rem;
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 30px;
+  }
+}

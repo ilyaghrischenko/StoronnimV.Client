@@ -1,15 +1,15 @@
-﻿.news-home-list-item-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.news-home-list-item-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
 .news-home-list-item-container__image {
-    width: 70%;
-    height: auto;
+  width: 70%;
+  height: auto;
+}
+.news-home-list-item-container__title {
+  text-align: center;
 }
 
-.news-home-list-item-container__title {
-    text-align: center;
-}
+/*# sourceMappingURL=NewsHomeListItem.css.map */

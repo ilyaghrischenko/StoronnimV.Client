@@ -1,0 +1,9 @@
+.soundcloud-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__embed {
+    width: 80%;
+  }
+}
