@@ -2,8 +2,9 @@
 import {HomeContextProvider} from "../contexts/HomeContext";
 import {Container} from "react-bootstrap";
 import {ScheduleHomeContainer} from "../elements/home/ScheduleHomeContainer";
-import {NewsHomeList} from "../elements/home/NewsHomeList";
+// import {NewsHomeList} from "../elements/home/NewsHomeList";
 import {PromotionVideoHome} from "../elements/home/PromotionVideoHome";
+import {NewsSlider} from "../elements/home/NewsSlider.tsx";
 
 import '../../styles/pages/Home.css';
 
@@ -12,7 +13,8 @@ const Home: FC = () => {
         <HomeContextProvider>
             <Container className='home-page page'>
                 <ScheduleHomeContainer className='schedule-grid' />
-                <NewsHomeList className='news-grid' />
+                {/*<NewsHomeList className='news-grid' />*/}
+                <NewsSlider className='news-grid' />
                 <PromotionVideoHome className='video-grid' />
             </Container>
         </HomeContextProvider>

@@ -1,10 +1,12 @@
 ﻿.news-home-list-item-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .news-home-list-item-container__image {
-    width: 100%;
+    width: 70%;
     height: auto;
 }
 
