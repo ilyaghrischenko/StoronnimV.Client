@@ -5,9 +5,8 @@
   grid-template-rows: repeat(6, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
-  width: 100%; /* Полная ширина */
   /*padding: 20px; !* Отступы внутри *!*/
-  box-sizing: border-box; /* Учитываем отступы в размерах */
+  //box-sizing: border-box; /* Учитываем отступы в размерах */
 }
 
 /* Сетка: расписание */
