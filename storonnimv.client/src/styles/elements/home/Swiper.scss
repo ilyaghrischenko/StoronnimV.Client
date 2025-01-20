@@ -1,0 +1,17 @@
+.swiper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+  border-radius: 8px; /* Округление углов */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень */
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}

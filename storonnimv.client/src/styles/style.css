@@ -70,101 +70,6 @@
   text-align: center;
 }
 
-/* Основной контейнер слайдера */
-.slider-container {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /*padding: 0 10px;*/
-}
-
-/* Обёртка для слайдов */
-.slider-wrapper {
-  width: 100%;
-  display: flex;
-  overflow: hidden;
-  position: relative;
-}
-
-/* Контейнер для всех слайдов */
-.slider {
-  display: flex;
-  gap: 9px; /* Расстояние между слайдами */
-}
-
-/* Один элемент слайда */
-.news-slider-item {
-  flex: 0 0 33%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /*padding: 10px;*/
-  box-sizing: border-box;
-  text-align: center;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Кнопки слайдера */
-.slider-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  font-size: 20px;
-}
-
-/* Кнопка "Назад" */
-.prev-button {
-  left: 15px;
-}
-
-/* Кнопка "Вперёд" */
-.next-button {
-  right: 15px;
-}
-
-/* Анимация при наведении */
-.slider-button:hover {
-  background-color: #0056b3;
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-  .news-slider-item {
-    flex: 0 0 100%; /* Показываем по одному элементу */
-  }
-  .slider {
-    gap: 8px; /* Уменьшаем расстояние между слайдами */
-  }
-  .slider-button {
-    width: 36px;
-    height: 36px;
-    font-size: 16px;
-  }
-  .prev-button {
-    left: 10px;
-  }
-  .next-button {
-    right: 10px;
-  }
-}
 .promotion-video-home-container__video {
   width: 100%;
   height: auto;
@@ -188,6 +93,24 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+.swiper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+  border-radius: 8px; /* Округление углов */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень */
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .music-platform-item {
