@@ -40,8 +40,8 @@ const NewsContextProvider: FC<NewsContextProviderProps> = ({ children }) => {
             setCurrentPage(data.currentPage);
             setTotalPages(data.totalPages);
 
-            sessionStorage.setItem("currentPage", String(data.currentPage));
-            sessionStorage.setItem("totalPages", String(data.totalPages));
+            sessionStorage.setItem("newsCurrentPage", String(data.currentPage));
+            sessionStorage.setItem("newsTotalPages", String(data.totalPages));
         } catch (error) {
             console.error("Error while fetching news: ", error);
         }
@@ -49,7 +49,7 @@ const NewsContextProvider: FC<NewsContextProviderProps> = ({ children }) => {
 
     const paginate =
         async (pageNumber: number, pageSize: number = 9): Promise<void> => {
-        const savedTotalPagesString = sessionStorage.getItem("totalPages");
+        const savedTotalPagesString = sessionStorage.getItem("newsTotalPages");
         const savedTotalPages = savedTotalPagesString ? Number(savedTotalPagesString) : 0;
 
         if (savedTotalPages === 0) {

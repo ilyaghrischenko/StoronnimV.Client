@@ -45,8 +45,8 @@ const VideoContextProvider: React.FC<VideoContextProviderProps> = ({children}) =
                 setCurrentPage(data.currentPage);
                 setTotalPages(data.totalPages);
 
-                sessionStorage.setItem("currentPage", String(data.currentPage));
-                sessionStorage.setItem("totalPages", String(data.totalPages));
+                sessionStorage.setItem("videoCurrentPage", String(data.currentPage));
+                sessionStorage.setItem("videoTotalPages", String(data.totalPages));
             } catch (error) {
                 console.error("Error while fetching news: ", error);
             }
@@ -55,7 +55,7 @@ const VideoContextProvider: React.FC<VideoContextProviderProps> = ({children}) =
     const paginate =
         async (videoType: string, pageNumber: number = currentPage, pageSize: number = 5): Promise<void> => {
 
-            const savedTotalPagesString = sessionStorage.getItem("totalPages");
+            const savedTotalPagesString = sessionStorage.getItem("videoTotalPages");
             const savedTotalPages = savedTotalPagesString ? Number(savedTotalPagesString) : 0;
 
             if (savedTotalPages === 0) {

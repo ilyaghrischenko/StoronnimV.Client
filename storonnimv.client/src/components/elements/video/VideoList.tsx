@@ -28,7 +28,7 @@ const VideoList: FC = () => {
     const { videoList, currentPage, totalPages, paginate, loading } = videoContext;
 
     useEffect(() => {
-        const savedPage = sessionStorage.getItem("currentPage");
+        const savedPage = sessionStorage.getItem("videoCurrentPage");
         const page = savedPage ? Number(savedPage) : 1;
 
         paginate(id, page);

@@ -25,7 +25,7 @@ const NewsList: FC = () => {
     const {newsList, currentPage, totalPages, paginate, loading} = newsContext;
 
     useEffect(() => {
-        const savedPage = sessionStorage.getItem("currentPage");
+        const savedPage = sessionStorage.getItem("newsCurrentPage");
         const page = savedPage ? Number(savedPage) : 1;
 
         paginate(page);
