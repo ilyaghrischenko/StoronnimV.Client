@@ -34,6 +34,7 @@ const NewsSlider: FC<NewsComponentProps> = ({ className }) => {
                 navigation
                 autoplay={{ delay: 3000, disableOnInteraction: false }}
                 loop
+                speed={1800}
         >
             {homeNewsList.map((news, index) => (
                 <SwiperSlide key={index}>
