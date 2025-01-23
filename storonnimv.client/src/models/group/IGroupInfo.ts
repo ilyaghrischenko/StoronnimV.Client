@@ -1,4 +1,4 @@
-﻿export interface IMember {
+﻿export interface IMemberShort {
     id: number;
     photoUrl: string;
     fullName: string;
@@ -13,5 +13,5 @@ export interface IGroupInfo {
 
 export interface IGroupPageFullInfo {
     groupPage: IGroupInfo;
-    members: IMember[];
+    members: IMemberShort[];
 }
