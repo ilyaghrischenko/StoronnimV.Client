@@ -1,0 +1,52 @@
+import {createContext, FC, ReactNode, useContext} from "react";
+import {GlobalContext} from "./shared/GlobalContext.tsx";
+import {ILogInRequest} from "../../models/admin/ILogInRequest.ts";
+
+interface AdminContextType {
+    logIn: (logInRequest: ILogInRequest) => Promise<void>;
+    loading: boolean;
+}
+
+const AdminContext = createContext<AdminContextType | undefined>(undefined);
+
+interface AdminContextProviderProps {
+    children: ReactNode;
+}
+
+const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
+    const globalContext = useContext(GlobalContext);
+
+    if (!globalContext) {
+        throw new Error("GlobalContext must be used within a GlobalContextProvider");
+    }
+
+    const { sendRequest, loading } = globalContext;
+
+    const logIn = async (logInRequest: ILogInRequest) => {
+        try {
+            const data: string = await sendRequest(
+                'http://localhost:8080/api/account/login',
+                'POST',
+                JSON.stringify({login: logInRequest.login, password: logInRequest.password}),
+                { 'Content-Type': 'application/json' });
+
+            sessionStorage.setItem('token', data);
+        } catch (error) {
+            console.error(`error while logging in: ${error}`);
+            return;
+        }
+    };
+
+    const value: AdminContextType = {
+        logIn,
+        loading
+    };
+
+    return (
+        <AdminContext.Provider value={value}>
+            {children}
+        </AdminContext.Provider>
+    );
+};
+
+export { AdminContextProvider, AdminContext };

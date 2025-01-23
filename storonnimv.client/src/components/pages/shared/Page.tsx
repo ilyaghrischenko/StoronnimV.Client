@@ -8,6 +8,7 @@ import {Group} from "../Group";
 import {Video} from "../Video";
 import {VideoSections} from "../../elements/video/VideoSections";
 import {VideoList} from "../../elements/video/VideoList";
+import {AdminAuth} from "../AdminAuth";
 
 const Page: FC = () => {
     return (
@@ -23,6 +24,7 @@ const Page: FC = () => {
                 bottomRightImage={"https://klike.net/uploads/posts/2020-04/1587718623_10.jpg"}
             />} />}/>
             <Route path="/video/section/:id" element={<Video children={<VideoList/>} />}/>
+            <Route path="/admin" element={<AdminAuth />}/>
         </Routes>
     );
 };

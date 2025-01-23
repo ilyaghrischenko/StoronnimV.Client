@@ -1,4 +1,4 @@
-﻿import React, {createContext, useState, ReactNode, FC} from "react";
+﻿import {createContext, useState, ReactNode, FC} from "react";
 import axios from "axios";
 
 // Определяем интерфейс для значения контекста
@@ -33,7 +33,6 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
     const OnHideModal = () => {
         setShowModal(false);
     };
-
 
     // Асинхронная функция для отправки запросов
     async function sendRequest(
