@@ -31,6 +31,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
                 { 'Content-Type': 'application/json' });
 
             sessionStorage.setItem('token', data);
+            window.location.href = 'http://localhost:5173/admin/main';
         } catch (error) {
             console.error(`error while logging in: ${error}`);
             return;

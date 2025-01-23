@@ -1,16 +1,19 @@
-import {FC} from "react";
+import {FC, ReactNode} from "react";
 import {Container} from "react-bootstrap";
 import {AdminContextProvider} from "../contexts/AdminContext.tsx";
-import {AuthForm} from "../elements/admin/AuthForm.tsx";
 
-const AdminAuth: FC = () => {
+interface IAdminProps {
+    children: ReactNode;
+}
+
+const Admin: FC<IAdminProps> = ({children}) => {
     return (
         <AdminContextProvider>
             <Container>
-                <AuthForm />
+                {children}
             </Container>
         </AdminContextProvider>
     );
 };
 
-export {AdminAuth};
+export {Admin};

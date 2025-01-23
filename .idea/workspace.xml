@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="fixed session storage conflict if news and video sections">
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" afterDir="false" />
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="finish">
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/AdminContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/AdminContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/AdminAuth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Admin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/shared/Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/shared/Page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +19,9 @@
       <list>
         <option value="CSS File" />
         <option value="package.json" />
+        <option value="TypeScript File" />
         <option value="SCSS File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -35,12 +39,12 @@
     &quot;assignee&quot;: &quot;Dmytro-Butnyk&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/ilyaghrischenko/StoronnimV.Client.git&quot;,
-    &quot;accountId&quot;: &quot;f8f43f91-6ace-4e90-97df-a0c4ba8c89f6&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ilyaghrischenko/StoronnimV.Client.git",
+    "accountId": "f5f44a53-056a-48d4-a60b-fb6819021fde"
   }
-}</component>
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -60,7 +64,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "feature/admin-auth",
     "last_opened_file_path": "D:/ForProgramming/Projects/MyProjects/React/StoronnimV.Client/storonnimv.client/src",
     "list.type.of.created.stylesheet": "SCSS",
     "node.js.detected.package.eslint": "true",
@@ -69,7 +73,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "watcher.settings",
-    "ts.external.directory.path": "D:\\ForProgramming\\Projects\\MyProjects\\React\\StoronnimV.Client\\storonnimv.client\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "D:\\GitHub\\StoronnimV.Client\\storonnimv.client\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -99,6 +103,7 @@
       <workItem from="1737207716654" duration="2917000" />
       <workItem from="1737238150017" duration="1136000" />
       <workItem from="1737395253529" duration="4304000" />
+      <workItem from="1737643181211" duration="11843000" />
     </task>
     <task id="LOCAL-00001" summary="change port">
       <option name="closed" value="true" />
@@ -140,7 +145,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737311791052</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="finish">
+      <option name="closed" value="true" />
+      <created>1737655695264</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1737655695265</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,6 +167,7 @@
     <MESSAGE value="rewrite .css files to .scss, add style.scss" />
     <MESSAGE value="remove imports css files in components, add only 1 import to index.html" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="finish" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish" />
   </component>
 </project>
