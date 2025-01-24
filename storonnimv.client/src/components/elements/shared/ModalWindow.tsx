@@ -1,6 +1,5 @@
-﻿import { FC, useContext } from "react";
-import { Modal } from "react-bootstrap";
-import { GlobalContext } from "../../contexts/shared/GlobalContext";
+﻿import {FC, useContext, useEffect} from "react";
+import {GlobalContext} from "../../contexts/shared/GlobalContext";
 
 const ModalWindow: FC = () => {
     const context = useContext(GlobalContext);
@@ -9,31 +8,20 @@ const ModalWindow: FC = () => {
         throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const { showModal, OnHideModal, modalContent, modalTitle } = context;
+    const {showModal, OnHideModal, modalContent, modalTitle} = context;
+
+    useEffect(() => {
+        console.log("Modal content or title changed");
+    }, [modalContent, modalTitle]);
 
     return (
-        <Modal
-            show={showModal}
-            onHide={OnHideModal}
-            centered
-            dialogClassName="modal-window" // Кастомный класс
-        >
-            <Modal.Header>
-                {/* Заголовок по центру */}
-                {modalTitle && <Modal.Title className="modal-window__title">{modalTitle}</Modal.Title>}
-                {/* Кнопка закрытия с кастомным стилем */}
-                <button className="close" onClick={OnHideModal}>
-
-                </button>
-            </Modal.Header>
-
-            <Modal.Body>{modalContent}</Modal.Body>
-
-            <Modal.Footer>
-                {/* Здесь можно добавить кнопки для модального окна, если нужно */}
-            </Modal.Footer>
-        </Modal>
+        <div className={showModal ? "modal active" : "modal"} onClick={OnHideModal}>
+            <h1>{modalTitle}</h1>
+            <div className= {showModal ? "modal__content active" : "modal__content"} onClick={e => e.stopPropagation()}>
+                {modalContent}
+            </div>
+        </div>
     );
 };
 
-export { ModalWindow };
+export {ModalWindow};

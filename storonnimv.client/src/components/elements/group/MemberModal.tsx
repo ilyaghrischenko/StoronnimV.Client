@@ -18,7 +18,9 @@ const MemberModal: FC<MemberModalProps> = ({ memberId }) => {
 
     useEffect(() => {
         fetchMemberInfo(memberId);
-    }, []);
+    }, [memberId]);
+
+    // TODO: LOADING
 
     if (loading) {
         return (

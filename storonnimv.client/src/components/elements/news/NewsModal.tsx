@@ -18,7 +18,9 @@ const NewsModal: FC<NewsModalProps> = ({newsId}) => {
 
     useEffect(() => {
         fetchNewsFullItem(newsId);
-    }, []);
+    }, [newsId]);
+
+    // TODO: LOADING
 
     if (loading) {
         return <Loading/>;

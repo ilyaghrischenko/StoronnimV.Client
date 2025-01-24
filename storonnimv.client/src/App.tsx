@@ -9,12 +9,12 @@ import {ModalWindow} from "./components/elements/shared/ModalWindow";
 function App(): JSX.Element {
     return (
         <Container className='app-container' fluid>
+            <ModalWindow/>
             <Router>
                 <Header/>
                 <Page/>
                 <Footer/>
             </Router>
-            <ModalWindow/>
         </Container>
     );
 }

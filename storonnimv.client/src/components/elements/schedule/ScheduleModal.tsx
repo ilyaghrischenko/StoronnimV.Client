@@ -14,12 +14,13 @@ const ScheduleModal: FC<ScheduleModalProps> = ({ scheduleId }) => {
         throw new Error("ScheduleContext is not defined");
     }
 
-    const { fetchScheduleFullInfo, scheduleFullInfo, loading } = scheduleContext;
+    const { fetchScheduleFullInfo, scheduleFullInfo, loading} = scheduleContext;
 
     useEffect(() => {
         fetchScheduleFullInfo(scheduleId);
-    }, []);
+    }, [scheduleId]);
 
+    // TODO: LOADING
     if (loading) {
         return (
             <Loading />
