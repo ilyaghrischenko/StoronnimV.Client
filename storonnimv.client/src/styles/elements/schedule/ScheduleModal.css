@@ -1,0 +1,32 @@
+.schedule-modal__photo {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+.schedule-modal__info-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.schedule-modal__info-datetime {
+  font-size: 1.5rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+.schedule-modal__info-description {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+.schedule-modal__info-location {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.schedule-modal__info-status {
+  font-size: 1.3rem;
+  color: #ff5c5c;
+  margin-bottom: 10px;
+}
+
+/*# sourceMappingURL=ScheduleModal.css.map */

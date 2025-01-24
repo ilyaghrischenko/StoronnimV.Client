@@ -32,6 +32,7 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
         setShowModal(true);
     };
     const OnHideModal = () => {
+        setModalContent(null);
         setShowModal(false);
     };
 
@@ -50,7 +51,8 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
                 data: body,
             };
 
-            setLoading(true);
+            // TODO: СДЕЛАТЬ ЧТО-ТО С АНИМАЦИЕЙ ЗАГРУКИ
+            // setLoading(true);
             const response = await axios(config);
             setLoading(false);
             

@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="" />
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="edited animation speed of the slider on the main page">
+      <change afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/MemberModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/NewsModal.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/ScheduleModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storonnimv.client/src/models/group/IMemberInfo.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/group/MemberModal.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/GroupContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/GroupContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/groupPageComponents/ShortMemberItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/groupPageComponents/ShortMemberItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/groupPageComponents/ShortMembers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/groupPageComponents/ShortMembers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/models/group/IGroupInfo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/models/group/IGroupInfo.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,16 +27,16 @@
       <list>
         <option value="CSS File" />
         <option value="package.json" />
+        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
         <option value="SCSS File" />
-        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/admin-auth" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -38,7 +50,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/ilyaghrischenko/StoronnimV.Client.git&quot;,
-    &quot;accountId&quot;: &quot;f5f44a53-056a-48d4-a60b-fb6819021fde&quot;
+    &quot;accountId&quot;: &quot;f8f43f91-6ace-4e90-97df-a0c4ba8c89f6&quot;
   }
 }</component>
   <component name="ProblemsViewState">
@@ -56,23 +68,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "develop",
-    "last_opened_file_path": "D:/ForProgramming/Projects/MyProjects/React/StoronnimV.Client/storonnimv.client/src",
-    "list.type.of.created.stylesheet": "SCSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "watcher.settings",
-    "ts.external.directory.path": "D:\\GitHub\\StoronnimV.Client\\storonnimv.client\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/ForProgramming/Projects/MyProjects/React/StoronnimV.Client/storonnimv.client/src&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\ForProgramming\\Projects\\MyProjects\\React\\StoronnimV.Client\\storonnimv.client\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\ForProgramming\Projects\MyProjects\React\StoronnimV.Client\storonnimv.client\src" />
@@ -99,7 +111,9 @@
       <workItem from="1737207716654" duration="2917000" />
       <workItem from="1737238150017" duration="1136000" />
       <workItem from="1737395253529" duration="4304000" />
-      <workItem from="1737643181211" duration="11843000" />
+      <workItem from="1737460238978" duration="754000" />
+      <workItem from="1737649226547" duration="2557000" />
+      <workItem from="1737651813321" duration="4808000" />
     </task>
     <task id="LOCAL-00001" summary="change port">
       <option name="closed" value="true" />
@@ -141,23 +155,7 @@
       <option name="project" value="LOCAL" />
       <updated>1737311791052</updated>
     </task>
-    <task id="LOCAL-00006" summary="finish">
-      <option name="closed" value="true" />
-      <created>1737655695264</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1737655695265</updated>
-    </task>
-    <task id="LOCAL-00007" summary="add">
-      <option name="closed" value="true" />
-      <created>1737658732400</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1737658732400</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,8 +169,6 @@
     <MESSAGE value="rewrite .css files to .scss, add style.scss" />
     <MESSAGE value="remove imports css files in components, add only 1 import to index.html" />
     <MESSAGE value="fix" />
-    <MESSAGE value="finish" />
-    <MESSAGE value="add" />
-    <option name="LAST_COMMIT_MESSAGE" value="add" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix" />
   </component>
 </project>

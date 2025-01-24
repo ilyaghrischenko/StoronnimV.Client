@@ -18,12 +18,12 @@ function App(): JSX.Element {
 
     return (
         <Container className='app-container' fluid>
+            <ModalWindow/>
             <Router>
                 {!isAdminRoute() && <Header/>}
                 <Page/>
                 {!isAdminRoute() && <Footer/>}
             </Router>
-            <ModalWindow/>
         </Container>
     );
 }

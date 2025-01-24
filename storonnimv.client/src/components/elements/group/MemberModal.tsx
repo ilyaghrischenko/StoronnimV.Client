@@ -1,0 +1,61 @@
+import { FC, useContext, useEffect } from "react";
+import { GroupContext } from "../../contexts/GroupContext.tsx";
+import { Col, Container, Row, Image } from "react-bootstrap";
+import { Loading } from "../shared/Loading.tsx";
+
+interface MemberModalProps {
+    memberId: number;
+}
+
+const MemberModal: FC<MemberModalProps> = ({ memberId }) => {
+    const groupContext = useContext(GroupContext);
+
+    if (!groupContext) {
+        throw new Error("GroupContext must be used within a GroupContextProvider");
+    }
+
+    const { fetchMemberInfo, memberFullInfo, loading } = groupContext;
+
+    useEffect(() => {
+        fetchMemberInfo(memberId);
+    }, [memberId]);
+
+    // TODO: LOADING
+
+    if (loading) {
+        return (
+            <Loading />
+        );
+    } else {
+        console.dir(memberFullInfo);
+    }
+
+    return (
+        <Container className="member-modal">
+            <Row className="mb-3">
+                <Col xs={12} className="text-center">
+                    <Image className="member-modal__photo" src={memberFullInfo.member.photoUrl} />
+                </Col>
+            </Row>
+            <Row className="mb-3">
+                <Col xs={12} className="member-modal__info">
+                    <h1 className="member-modal__info-title">{memberFullInfo.member.fullName}</h1>
+                    <h2 className="member-modal__info-role">{memberFullInfo.member.role}</h2>
+                    <p className="member-modal__info-description">{memberFullInfo.member.description}</p>
+                </Col>
+            </Row>
+            <Row className="mt-3">
+                <Col xs={12} className="member-modal__social-networks">
+                    {memberFullInfo.socials.map((socialNetwork) => (
+                        <div key={socialNetwork.id} className="member-modal__social-networks__item">
+                            <p className="member-modal__social-networks__item-name">{socialNetwork.socialNetwork}</p>
+                            <a className="member-modal__social-networks__item-link" href={socialNetwork.url}>{socialNetwork.url}</a>
+                        </div>
+                    ))}
+                </Col>
+            </Row>
+        </Container>
+    );
+};
+
+export { MemberModal };

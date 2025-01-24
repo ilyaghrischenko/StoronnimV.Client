@@ -1,0 +1,40 @@
+.schedule-modal {
+  max-width: 100%;
+  padding: 20px;
+
+  &__photo {
+    max-width: 50%;
+    height: auto;
+    border-radius: 8px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  &__info {
+    text-align: center;
+    color: white;
+
+    &-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    &-datetime {
+      font-size: 1.5rem;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    &-description {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+
+    &-location {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+  }
+}

@@ -1,11 +1,12 @@
-﻿import {FC, useContext, useEffect} from "react";
-import {ScheduleListItem} from "./ScheduleListItem";
-import {ScheduleContext} from "../../contexts/ScheduleContext";
-import {Loading} from "../shared/Loading";
-import {List} from "../shared/GenericList/List";
-import {IScheduleListItem} from "../../../models/schedule/IScheduleListItem";
-import {ListItem} from "../shared/GenericList/ListItem";
-import {GlobalContext} from "../../contexts/shared/GlobalContext";
+﻿import { FC, useContext, useEffect } from "react";
+import { ScheduleListItem } from "./ScheduleListItem";
+import {ScheduleContext, ScheduleContextProvider} from "../../contexts/ScheduleContext";
+import { Loading } from "../shared/Loading";
+import { List } from "../shared/GenericList/List";
+import { IScheduleListItem } from "../../../models/schedule/IScheduleListItem";
+import { ListItem } from "../shared/GenericList/ListItem";
+import { GlobalContext } from "../../contexts/shared/GlobalContext";
+import {ScheduleModal} from "./ScheduleModal.tsx";
 
 const SchedulesList: FC = () => {
     const scheduleContext = useContext(ScheduleContext);
@@ -18,7 +19,7 @@ const SchedulesList: FC = () => {
         throw new Error("ScheduleContext must be used within a ScheduleContextProvider");
     }
 
-    const { fetchSchedules, schedules, loading} = scheduleContext;
+    const { fetchSchedules, schedules, loading } = scheduleContext;
     const { OnShowModal } = globalContext;
 
     useEffect(() => {
@@ -26,9 +27,7 @@ const SchedulesList: FC = () => {
     }, []);
 
     if (loading) {
-        return (
-            <Loading />
-        );
+        return <Loading />;
     }
 
     return (
@@ -36,15 +35,23 @@ const SchedulesList: FC = () => {
             className='schedules-list'
             items={schedules}
             renderItem={(schedule: IScheduleListItem) => (
-                <ListItem item={schedule}
-                          renderItem={(schedule: IScheduleListItem) =>
-                              <ScheduleListItem key={schedule.id} schedule={schedule}/>}
-                          onClick={() => OnShowModal(<ScheduleListItem key={schedule.id} schedule={schedule}/>)}
+                <ListItem
+                    className='schedules-list__item'
+                    item={schedule}
+                    renderItem={(schedule: IScheduleListItem) => (
+                        <ScheduleListItem key={schedule.id} schedule={schedule} />
+                    )}
+                    onClick={() =>
+                        OnShowModal(
+                            <ScheduleContextProvider>
+                                <ScheduleModal scheduleId={schedule.id} />
+                            </ScheduleContextProvider>
+                        )
+                    }
                 />
             )}
-
         />
     );
 };
 
-export {SchedulesList};
+export { SchedulesList };

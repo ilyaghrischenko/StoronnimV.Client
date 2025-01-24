@@ -1,11 +1,14 @@
 ﻿import React, {createContext, ReactNode, useContext, useState} from "react";
 import {IGroupPageFullInfo} from "../../models/group/IGroupInfo";
 import {GlobalContext} from "./shared/GlobalContext";
+import {IMemberFullInfo} from "../../models/group/IMemberInfo.ts";
 
 interface GroupContextType {
     fetchGroupInfo: () => Promise<void>;
     fullInfo: IGroupPageFullInfo;
     loading: boolean;
+    memberFullInfo: IMemberFullInfo;
+    fetchMemberInfo: (memberId: number) => Promise<void>;
 }
 
 const GroupContext = createContext<GroupContextType | undefined>(undefined);
@@ -50,7 +53,37 @@ const GroupContextProvider: React.FC<GroupContextProviderProps> = ({ children })
         }
     };
 
+    const [memberFullInfo, setMemberFullInfo] = useState<IMemberFullInfo>({
+        member: {
+            id: 0,
+            photoUrl: "",
+            fullName: "",
+            description: "",
+            role: "",
+        },
+            socials: []
+    });
+    const fetchMemberInfo = async (memberId: number ): Promise<void> => {
+        try {
+            const response = await sendRequest(`http://localhost:8080/api/group/member/${memberId}`);
+
+            const data: IMemberFullInfo = response.data;
+
+            if (!data) {
+                console.error("No data received from the API");
+                return;
+            }
+            console.dir(data);
+            setMemberFullInfo(data);
+        } catch (error) {
+            console.error("Error fetching news:", error);
+            return;
+        }
+    };
+
     const value: GroupContextType = {
+        memberFullInfo,
+        fetchMemberInfo,
         fetchGroupInfo,
         fullInfo,
         loading

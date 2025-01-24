@@ -1,0 +1,58 @@
+// Основной контейнер модального окна
+.member-modal {
+  max-width: 100%;
+  padding: 20px;
+
+  &__photo {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  &__info {
+    text-align: center;
+
+    &-title {
+      margin: 10px 0;
+      color: white;
+    }
+
+    &-role {
+      margin: 10px 0;
+      color: white;
+    }
+
+    &-description {
+      margin: 20px 0;
+      white-space: pre-wrap;
+      color: white;
+    }
+  }
+
+  &__social-networks {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    &__item {
+      margin: 0 15px;
+      text-align: center;
+
+      &-name {
+        margin: 5px 0;
+        font-weight: bold;
+        color: white;
+      }
+
+      &-link {
+        color: #007bff;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

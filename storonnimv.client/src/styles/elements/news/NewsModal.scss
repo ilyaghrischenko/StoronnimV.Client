@@ -1,0 +1,44 @@
+.news-modal {
+  max-width: 100%;
+  padding: 20px;
+
+  &__photo {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  &__video {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto 20px;
+    display: block;
+  }
+
+  &__info {
+    text-align: center;
+
+    &-title {
+      font-size: 2rem;
+      margin: 10px 0;
+      color: white;
+    }
+
+    &-description {
+      font-size: 1.2rem;
+      margin: 20px 0;
+      white-space: pre-wrap;
+      color: white;
+    }
+  }
+
+  &__details {
+    text-align: center;
+
+    &-date {
+      margin: 10px 0;
+      color: gray;
+    }
+  }
+}
