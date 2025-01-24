@@ -30,6 +30,11 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
                 JSON.stringify({login: logInRequest.login, password: logInRequest.password}),
                 { 'Content-Type': 'application/json' });
 
+            if (response.status === 401) {
+                alert(response.statusText + '!!! Не вірні дані');
+                return;
+            }
+
             const data: string = response.data;
 
             sessionStorage.setItem('token', data);
