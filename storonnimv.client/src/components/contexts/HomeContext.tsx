@@ -3,6 +3,7 @@ import {GlobalContext} from "./shared/GlobalContext";
 import {IHomeNewsItem} from "../../models/home/IHomeNewsItem";
 import {IVideoModel} from "../../models/video/IVideoModel";
 import {IScheduleHomeItem} from "../../models/home/IScheduleHomeItem";
+import {useNavigate} from "react-router-dom";
 
 // Тип контекста
 interface HomeContextType {
@@ -31,6 +32,8 @@ const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) =
     }
 
     const { sendRequest, loading } = globalContext;
+
+    const navigate = useNavigate();
 
     const [homeSchedule, setHomeSchedule] = useState<IScheduleHomeItem>({
         id: 1,
@@ -85,7 +88,7 @@ const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) =
     };
 
     const onClickHomeElementHandler = (section: string) => {
-        window.location.href = `http://localhost:5173/${section}`;
+        navigate(`/${section}`, {replace: true});
     };
 
     const value: HomeContextType = {

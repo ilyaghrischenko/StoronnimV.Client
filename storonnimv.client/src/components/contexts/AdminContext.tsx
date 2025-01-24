@@ -1,6 +1,7 @@
 import {createContext, FC, ReactNode, useContext} from "react";
 import {GlobalContext} from "./shared/GlobalContext.tsx";
 import {ILogInRequest} from "../../models/admin/ILogInRequest.ts";
+import {useNavigate} from "react-router-dom";
 
 interface AdminContextType {
     logIn: (logInRequest: ILogInRequest) => Promise<void>;
@@ -22,6 +23,8 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
 
     const { sendRequest, loading } = globalContext;
 
+    const navigate = useNavigate();
+
     const logIn = async (logInRequest: ILogInRequest) => {
         try {
             const response = await sendRequest(
@@ -38,7 +41,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
             const data: string = response.data;
 
             sessionStorage.setItem('token', data);
-            window.location.href = 'http://localhost:5173/admin/main';
+            navigate('/admin/main', {replace: true});
         } catch (error) {
             console.error(`error while logging in: ${error}`);
             return;

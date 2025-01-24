@@ -76,7 +76,7 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
         OnShowModal,
         OnHideModal,
         sendRequest,
-        loading
+        loading,
     };
 
     return (
