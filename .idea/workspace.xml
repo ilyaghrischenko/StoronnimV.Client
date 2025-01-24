@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="finish">
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/AdminContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/AdminContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/AdminAuth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Admin.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/shared/Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/shared/Page.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="feature/admin-auth" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -39,12 +35,12 @@
     &quot;assignee&quot;: &quot;Dmytro-Butnyk&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/ilyaghrischenko/StoronnimV.Client.git",
-    "accountId": "f5f44a53-056a-48d4-a60b-fb6819021fde"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ilyaghrischenko/StoronnimV.Client.git&quot;,
+    &quot;accountId&quot;: &quot;f5f44a53-056a-48d4-a60b-fb6819021fde&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -64,7 +60,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/admin-auth",
+    "git-widget-placeholder": "develop",
     "last_opened_file_path": "D:/ForProgramming/Projects/MyProjects/React/StoronnimV.Client/storonnimv.client/src",
     "list.type.of.created.stylesheet": "SCSS",
     "node.js.detected.package.eslint": "true",
@@ -153,7 +149,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737655695265</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add">
+      <option name="closed" value="true" />
+      <created>1737658732400</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1737658732400</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,6 +172,7 @@
     <MESSAGE value="remove imports css files in components, add only 1 import to index.html" />
     <MESSAGE value="fix" />
     <MESSAGE value="finish" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish" />
+    <MESSAGE value="add" />
+    <option name="LAST_COMMIT_MESSAGE" value="add" />
   </component>
 </project>

@@ -42,7 +42,10 @@ const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) =
 
     const fetchHomeSchedule = async () : Promise<void> => {
         try {
-            const data: IScheduleHomeItem = await sendRequest('http://localhost:8080/api/home/schedule');
+            const response = await sendRequest('http://localhost:8080/api/home/schedule');
+
+            const data: IScheduleHomeItem = response.data;
+
             setHomeSchedule(data);
         } catch (error) {
             console.error("Error while fetching schedule for home: ", error);
@@ -53,7 +56,10 @@ const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) =
 
     const fetchHomeNewsList = async () : Promise<void> => {
         try {
-            const data: IHomeNewsItem[] = await sendRequest('http://localhost:8080/api/home/news/6');
+            const response = await sendRequest('http://localhost:8080/api/home/news/6');
+
+            const data: IHomeNewsItem[] = response.data;
+
             setHomeNewsList(data);
         } catch (error) {
             console.error("Error while fetching news for home: ", error);
@@ -68,7 +74,10 @@ const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) =
 
     const fetchHomePromotionVideo = async () : Promise<void> => {
         try {
-            const data: IVideoModel = await sendRequest('http://localhost:8080/api/home/video');
+            const response = await sendRequest('http://localhost:8080/api/home/video');
+
+            const data: IVideoModel = response.data;
+
             setHomePromotionVideo(data);
         } catch (error) {
             console.error("Error while fetching video for home: ", error);

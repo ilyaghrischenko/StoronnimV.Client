@@ -52,7 +52,7 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
             setLoading(true);
             const response = await axios(config);
             setLoading(false);
-            return response.data;
+            return response;
         } catch (err: any) {
             console.error("HTTP Request failed: ", err.message);
             return undefined;

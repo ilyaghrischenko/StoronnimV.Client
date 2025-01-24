@@ -33,9 +33,12 @@ const NewsContextProvider: FC<NewsContextProviderProps> = ({ children }) => {
 
     const fetchNews = async (pageNumber: number = currentPage, pageSize: number = 9): Promise<void> => {
         try {
-            const data: IPaginationResponse<INewsShortItem> = await sendRequest(
+            const response = await sendRequest(
                 `http://localhost:8080/api/news/page/${pageNumber}?pageSize=${pageSize}`
             );
+
+            const data: IPaginationResponse<INewsShortItem> = response.data;
+
             setNewsList(data.items);
             setCurrentPage(data.currentPage);
             setTotalPages(data.totalPages);

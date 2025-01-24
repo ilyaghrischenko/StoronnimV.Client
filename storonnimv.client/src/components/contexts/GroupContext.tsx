@@ -34,7 +34,9 @@ const GroupContextProvider: React.FC<GroupContextProviderProps> = ({ children })
 
     const fetchGroupInfo = async (): Promise<void> => {
         try {
-            const data: IGroupPageFullInfo = await sendRequest("http://localhost:8080/api/group");
+            const response = await sendRequest("http://localhost:8080/api/group");
+
+            const data: IGroupPageFullInfo = response.data;
 
             if (!data) {
                 console.error("No data received from the API");

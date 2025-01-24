@@ -24,11 +24,13 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
 
     const logIn = async (logInRequest: ILogInRequest) => {
         try {
-            const data: string = await sendRequest(
+            const response = await sendRequest(
                 'http://localhost:8080/api/account/login',
                 'POST',
                 JSON.stringify({login: logInRequest.login, password: logInRequest.password}),
                 { 'Content-Type': 'application/json' });
+
+            const data: string = response.data;
 
             sessionStorage.setItem('token', data);
             window.location.href = 'http://localhost:5173/admin/main';
