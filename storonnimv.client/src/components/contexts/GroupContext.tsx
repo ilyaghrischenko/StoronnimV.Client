@@ -65,7 +65,9 @@ const GroupContextProvider: React.FC<GroupContextProviderProps> = ({ children })
     });
     const fetchMemberInfo = async (memberId: number ): Promise<void> => {
         try {
-            const data: IMemberFullInfo = await sendRequest(`http://localhost:8080/api/group/member/${memberId}`);
+            const response = await sendRequest(`http://localhost:8080/api/group/member/${memberId}`);
+
+            const data: IMemberFullInfo = response.data;
 
             if (!data) {
                 console.error("No data received from the API");

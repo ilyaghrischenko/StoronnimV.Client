@@ -1,7 +1,8 @@
-﻿import { INewsShortItem } from "../../models/news/INewsShortItem";
-import { createContext, FC, ReactNode, useContext, useState } from "react";
-import { GlobalContext } from "./shared/GlobalContext";
+﻿import {INewsShortItem} from "../../models/news/INewsShortItem";
+import {createContext, FC, ReactNode, useContext, useState} from "react";
+import {GlobalContext} from "./shared/GlobalContext";
 import {IPaginationResponse} from "../../models/shared/IPaginationResponse";
+import {INewsFullItem} from "../../models/news/INewsFullItem.ts";
 
 interface NewsContextType {
     newsList: INewsShortItem[];
@@ -10,6 +11,8 @@ interface NewsContextType {
     fetchNews: (pageNumber?: number, pageSize?: number) => Promise<void>;
     paginate: (pageNumber: number, pageSize?: number) => void;
     loading: boolean;
+    newsFullItem: INewsFullItem;
+    fetchNewsFullItem: (id: number) => Promise<void>;
 }
 
 const NewsContext = createContext<NewsContextType | undefined>(undefined);
@@ -18,18 +21,33 @@ interface NewsContextProviderProps {
     children: ReactNode;
 }
 
-const NewsContextProvider: FC<NewsContextProviderProps> = ({ children }) => {
+const NewsContextProvider: FC<NewsContextProviderProps> = ({children}) => {
     const globalContext = useContext(GlobalContext);
 
     if (!globalContext) {
         throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const { sendRequest, loading } = globalContext;
+    const {sendRequest, loading} = globalContext;
 
     const [newsList, setNewsList] = useState<INewsShortItem[]>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [totalPages, setTotalPages] = useState<number>(1);
+    const [newsFullItem, setNewsFullItem] = useState<INewsFullItem>({} as INewsFullItem);
+
+    const fetchNewsFullItem = async (id: number): Promise<void> => {
+        try {
+            const response = await sendRequest(
+                `http://localhost:8080/api/news/${id}`
+            );
+
+            const data: INewsFullItem = response.data;
+            setNewsFullItem(data);
+
+        } catch (error) {
+            console.error("Error fetching news full item ", error);
+        }
+    };
 
     const fetchNews = async (pageNumber: number = currentPage, pageSize: number = 9): Promise<void> => {
         try {
@@ -52,19 +70,21 @@ const NewsContextProvider: FC<NewsContextProviderProps> = ({ children }) => {
 
     const paginate =
         async (pageNumber: number, pageSize: number = 9): Promise<void> => {
-        const savedTotalPagesString = sessionStorage.getItem("newsTotalPages");
-        const savedTotalPages = savedTotalPagesString ? Number(savedTotalPagesString) : 0;
+            const savedTotalPagesString = sessionStorage.getItem("newsTotalPages");
+            const savedTotalPages = savedTotalPagesString ? Number(savedTotalPagesString) : 0;
 
-        if (savedTotalPages === 0) {
-            await fetchNews(pageNumber, pageSize);
-        }
+            if (savedTotalPages === 0) {
+                await fetchNews(pageNumber, pageSize);
+            }
 
-        if (pageNumber >= 1 && pageNumber <= savedTotalPages) {
-            await fetchNews(pageNumber, pageSize);
-        }
-    };
+            if (pageNumber >= 1 && pageNumber <= savedTotalPages) {
+                await fetchNews(pageNumber, pageSize);
+            }
+        };
 
     const value: NewsContextType = {
+        newsFullItem,
+        fetchNewsFullItem,
         newsList,
         currentPage,
         totalPages,
@@ -76,4 +96,4 @@ const NewsContextProvider: FC<NewsContextProviderProps> = ({ children }) => {
     return <NewsContext.Provider value={value}>{children}</NewsContext.Provider>;
 };
 
-export { NewsContext, NewsContextProvider };
+export {NewsContext, NewsContextProvider};

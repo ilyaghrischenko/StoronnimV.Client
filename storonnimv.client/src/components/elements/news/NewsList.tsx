@@ -1,5 +1,5 @@
 ﻿import {FC, useContext, useEffect} from "react";
-import {NewsContext} from "../../contexts/NewsContext";
+import {NewsContext, NewsContextProvider} from "../../contexts/NewsContext";
 import {Container, Pagination} from "react-bootstrap";
 import {NewsListItem} from "./NewsListItem";
 import {Loading} from "../shared/Loading";
@@ -8,6 +8,7 @@ import {List} from "../shared/GenericList/List";
 import {ListItem} from "../shared/GenericList/ListItem";
 import {INewsShortItem} from "../../../models/news/INewsShortItem";
 import {GlobalContext} from "../../contexts/shared/GlobalContext";
+import {NewsModal} from "./NewsModal.tsx";
 
 const NewsList: FC = () => {
     const newsContext = useContext(NewsContext);
@@ -46,7 +47,10 @@ const NewsList: FC = () => {
                     <ListItem item={item}
                               renderItem={(item: INewsShortItem) =>
                                   <NewsListItem key={item.id} newsItem={item}/>}
-                              onClick={() => OnShowModal(<NewsListItem key={item.id} newsItem={item}/>)}
+                              onClick={() => OnShowModal(
+                                  <NewsContextProvider>
+                                      <NewsModal newsId={item.id}/>
+                                  </NewsContextProvider>)}
                     />
                 )}
             >
