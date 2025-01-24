@@ -1,12 +1,15 @@
 ﻿import React, {createContext, ReactNode, useContext, useState} from "react";
 import {GlobalContext} from "./shared/GlobalContext";
 import {IScheduleListItem} from "../../models/schedule/IScheduleListItem";
+import {ISchedule} from "../../models/schedule/ISchedule.ts";
 
 // Тип контекста
 interface ScheduleContextType {
     schedules: IScheduleListItem[];
     loading: boolean;
     fetchSchedules: () => Promise<void>;
+    scheduleFullInfo: ISchedule;
+    fetchScheduleFullInfo: (scheduleId: number) => Promise<void>;
 }
 
 // Создаем контекст с типизацией
@@ -26,6 +29,20 @@ const ScheduleContextProvider: React.FC<ScheduleContextProviderProps> = ({ child
     const { sendRequest, loading } = globalContext;
 
     const [schedules, setSchedules] = useState<IScheduleListItem[]>([]);
+    const [scheduleFullInfo, setScheduleFullInfo] = useState<ISchedule>({} as ISchedule);
+
+    const fetchScheduleFullInfo = async (scheduleId: number): Promise<void> => {
+        try {
+            const response = await sendRequest(`http://localhost:8080/api/schedules/${scheduleId}`);
+
+            const data: ISchedule = response.data;
+
+            setScheduleFullInfo(data);
+        } catch (error) {
+            console.error("Error fetching schedule full info:", error);
+            return;
+        }
+    };
 
     const fetchSchedules = async (): Promise<void> => {
         try {
@@ -41,6 +58,8 @@ const ScheduleContextProvider: React.FC<ScheduleContextProviderProps> = ({ child
     };
 
     const value: ScheduleContextType = {
+        fetchScheduleFullInfo,
+        scheduleFullInfo,
         schedules,
         fetchSchedules,
         loading

@@ -1,11 +1,12 @@
 ﻿import { FC, useContext, useEffect } from "react";
 import { ScheduleListItem } from "./ScheduleListItem";
-import { ScheduleContext } from "../../contexts/ScheduleContext";
+import {ScheduleContext, ScheduleContextProvider} from "../../contexts/ScheduleContext";
 import { Loading } from "../shared/Loading";
 import { List } from "../shared/GenericList/List";
 import { IScheduleListItem } from "../../../models/schedule/IScheduleListItem";
 import { ListItem } from "../shared/GenericList/ListItem";
 import { GlobalContext } from "../../contexts/shared/GlobalContext";
+import {ScheduleModal} from "./ScheduleModal.tsx";
 
 const SchedulesList: FC = () => {
     const scheduleContext = useContext(ScheduleContext);
@@ -41,7 +42,11 @@ const SchedulesList: FC = () => {
                         <ScheduleListItem key={schedule.id} schedule={schedule} />
                     )}
                     onClick={() =>
-                        OnShowModal(<ScheduleListItem key={schedule.id} schedule={schedule} />)
+                        OnShowModal(
+                            <ScheduleContextProvider>
+                                <ScheduleModal scheduleId={schedule.id} />
+                            </ScheduleContextProvider>
+                        )
                     }
                 />
             )}

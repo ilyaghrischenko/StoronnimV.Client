@@ -311,6 +311,41 @@
   color: #007bff;
 }
 
+.schedule-modal {
+  max-width: 100%;
+  padding: 20px;
+}
+.schedule-modal__photo {
+  max-width: 50%;
+  height: auto;
+  border-radius: 8px;
+  margin: 0 auto;
+  display: block;
+}
+.schedule-modal__info {
+  text-align: center;
+  color: white;
+}
+.schedule-modal__info-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.schedule-modal__info-datetime {
+  font-size: 1.5rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+.schedule-modal__info-description {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+.schedule-modal__info-location {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
 .footer-container {
   display: flex;
   flex-direction: row;
