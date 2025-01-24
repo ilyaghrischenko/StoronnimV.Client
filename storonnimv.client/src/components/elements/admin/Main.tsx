@@ -1,8 +1,11 @@
 import {FC} from "react";
+import {Container} from "react-bootstrap";
 
 const Main: FC = () => {
     return (
-        <h1>hello tvar</h1>
+        <Container className='admin-main-container'>
+            <p>HELLO ADMIN</p>
+        </Container>
     );
 };
 

@@ -10,6 +10,7 @@ interface GlobalContextType {
     OnHideModal: () => void;
     modalContent: ReactNode;
     modalTitle: string;
+    isAdminRoute: () => boolean;
 }
 
 // Создаем контекст с типизацией
@@ -68,6 +69,10 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
 
     const [loading, setLoading] = useState<boolean>(false);
 
+    const isAdminRoute = (): boolean => {
+        return window.location.pathname.startsWith("/admin");
+    };
+
     // Значение контекста
     const value: GlobalContextType = {
         modalTitle,
@@ -77,6 +82,7 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
         OnHideModal,
         sendRequest,
         loading,
+        isAdminRoute,
     };
 
     return (
