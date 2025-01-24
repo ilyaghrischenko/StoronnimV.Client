@@ -1,0 +1,21 @@
+.admin-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-buttons-container {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.admin-table {
+  width: 95%;
+}
+
+td {
+  text-align: center;
+}
