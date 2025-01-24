@@ -38,9 +38,12 @@ const VideoContextProvider: React.FC<VideoContextProviderProps> = ({children}) =
         async (videoType: string, pageNumber: number, pageSize: number = 9): Promise<void> => {
 
             try {
-                const data: IPaginationResponse<IVideoModel> = await sendRequest(
+                const response = await sendRequest(
                     `http://localhost:8080/api/videos/page/${videoType}/${pageNumber}?pageSize=${pageSize}`
                 );
+
+                const data: IPaginationResponse<IVideoModel> = response.data;
+
                 setVideoList(data.items);
                 setCurrentPage(data.currentPage);
                 setTotalPages(data.totalPages);

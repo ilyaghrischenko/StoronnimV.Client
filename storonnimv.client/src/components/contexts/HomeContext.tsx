@@ -3,6 +3,7 @@ import {GlobalContext} from "./shared/GlobalContext";
 import {IHomeNewsItem} from "../../models/home/IHomeNewsItem";
 import {IVideoModel} from "../../models/video/IVideoModel";
 import {IScheduleHomeItem} from "../../models/home/IScheduleHomeItem";
+import {useNavigate} from "react-router-dom";
 
 // Тип контекста
 interface HomeContextType {
@@ -32,6 +33,8 @@ const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) =
 
     const { sendRequest, loading } = globalContext;
 
+    const navigate = useNavigate();
+
     const [homeSchedule, setHomeSchedule] = useState<IScheduleHomeItem>({
         id: 1,
         photo: '',
@@ -42,7 +45,10 @@ const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) =
 
     const fetchHomeSchedule = async () : Promise<void> => {
         try {
-            const data: IScheduleHomeItem = await sendRequest('http://localhost:8080/api/home/schedule');
+            const response = await sendRequest('http://localhost:8080/api/home/schedule');
+
+            const data: IScheduleHomeItem = response.data;
+
             setHomeSchedule(data);
         } catch (error) {
             console.error("Error while fetching schedule for home: ", error);
@@ -53,7 +59,10 @@ const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) =
 
     const fetchHomeNewsList = async () : Promise<void> => {
         try {
-            const data: IHomeNewsItem[] = await sendRequest('http://localhost:8080/api/home/news/6');
+            const response = await sendRequest('http://localhost:8080/api/home/news/6');
+
+            const data: IHomeNewsItem[] = response.data;
+
             setHomeNewsList(data);
         } catch (error) {
             console.error("Error while fetching news for home: ", error);
@@ -68,7 +77,10 @@ const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) =
 
     const fetchHomePromotionVideo = async () : Promise<void> => {
         try {
-            const data: IVideoModel = await sendRequest('http://localhost:8080/api/home/video');
+            const response = await sendRequest('http://localhost:8080/api/home/video');
+
+            const data: IVideoModel = response.data;
+
             setHomePromotionVideo(data);
         } catch (error) {
             console.error("Error while fetching video for home: ", error);
@@ -76,7 +88,7 @@ const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) =
     };
 
     const onClickHomeElementHandler = (section: string) => {
-        window.location.href = `http://localhost:5173/${section}`;
+        navigate(`/${section}`, {replace: true});
     };
 
     const value: HomeContextType = {

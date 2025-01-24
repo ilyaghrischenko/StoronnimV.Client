@@ -8,6 +8,10 @@ import {Group} from "../Group";
 import {Video} from "../Video";
 import {VideoSections} from "../../elements/video/VideoSections";
 import {VideoList} from "../../elements/video/VideoList";
+import {Admin} from "../Admin.tsx";
+import {AuthForm} from "../../elements/admin/AuthForm.tsx";
+import {Main} from "../../elements/admin/Main.tsx";
+import {ProtectedRoute} from "../../elements/admin/ProtectedRoute.tsx";
 
 const Page: FC = () => {
     return (
@@ -17,12 +21,21 @@ const Page: FC = () => {
             <Route path="/news" element={<News />}/>
             <Route path="/music" element={<Music />}/>
             <Route path="/group" element={<Group />}/>
+
             <Route path="/video/sections" element={<Video children={<VideoSections
                 topImage={"https://th.bing.com/th/id/OIP.sl5zuf2713AebuRLfZOJeAHaE6?rs=1&pid=ImgDetMain"}
                 bottomLeftImage={"https://th.bing.com/th/id/OIP.la8muzOTU5XTOEJVZsOSgAHaE5?rs=1&pid=ImgDetMain"}
                 bottomRightImage={"https://klike.net/uploads/posts/2020-04/1587718623_10.jpg"}
             />} />}/>
             <Route path="/video/section/:id" element={<Video children={<VideoList/>} />}/>
+
+            <Route path="/admin" element={<Admin children={<AuthForm />} />}/>
+            <Route path="/admin/main"
+                   element={
+            <ProtectedRoute>
+                <Admin children={<Main />} />
+            </ProtectedRoute>}
+            />
         </Routes>
     );
 };

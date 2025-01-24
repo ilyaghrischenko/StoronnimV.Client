@@ -29,7 +29,10 @@ const ScheduleContextProvider: React.FC<ScheduleContextProviderProps> = ({ child
 
     const fetchSchedules = async (): Promise<void> => {
         try {
-            const data: IScheduleListItem[] = await sendRequest("http://localhost:8080/api/schedules");
+            const response = await sendRequest("http://localhost:8080/api/schedules");
+
+            const data: IScheduleListItem[] = response.data;
+
             setSchedules(data);
         } catch (error) {
             console.error("Error fetching schedules:", error);

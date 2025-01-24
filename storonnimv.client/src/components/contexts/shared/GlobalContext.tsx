@@ -1,9 +1,9 @@
-﻿import React, {createContext, useState, ReactNode, FC} from "react";
-import axios from "axios";
+﻿import {createContext, useState, ReactNode, FC} from "react";
+import axios, {AxiosResponse} from "axios";
 
 // Определяем интерфейс для значения контекста
 interface GlobalContextType {
-    sendRequest: (apiUrl: string, method?: string, body?: any, headers?: Record<string, string>) => Promise<any | undefined>;
+    sendRequest: (apiUrl: string, method?: string, body?: any, headers?: Record<string, string>) => Promise<AxiosResponse>;
     loading: boolean;
     showModal: boolean;
     OnShowModal: (mContent: ReactNode, mTitle?: string) => void;
@@ -34,14 +34,13 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
         setShowModal(false);
     };
 
-
     // Асинхронная функция для отправки запросов
     async function sendRequest(
         apiUrl: string,
         method: string = "GET",
         body: any = null,
         headers: Record<string, string> = {}
-    ): Promise<any | undefined> {
+    ): Promise<AxiosResponse> {
         try {
             const config = {
                 method,
@@ -53,10 +52,17 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
             setLoading(true);
             const response = await axios(config);
             setLoading(false);
-            return response.data;
-        } catch (err: any) {
-            console.error("HTTP Request failed: ", err.message);
-            return undefined;
+            
+            return response;
+        } catch (error: any) {
+            setLoading(false);
+            if (error.response) {
+                // Если сервер вернул статус ошибки, но ответ доступен
+                return error.response;
+            } else {
+                // Если ошибка сети или другая проблема
+                throw new Error(error.message || "Network error");
+            }
         }
     }
 
@@ -70,7 +76,7 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
         OnShowModal,
         OnHideModal,
         sendRequest,
-        loading
+        loading,
     };
 
     return (

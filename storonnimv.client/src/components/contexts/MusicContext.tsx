@@ -31,8 +31,8 @@ const MusicContextProvider: React.FC<MusicContextProviderProps> = ({ children })
 
     const fetchEmbedData = async () : Promise<void> => {
         try {
-            const data = await sendRequest(`https://soundcloud.com/oembed?format=json&url=${encodeURIComponent('https://soundcloud.com/apostolkremenchug')}`)
-            setEmbedHtml(data.html);
+            const response = await sendRequest(`https://soundcloud.com/oembed?format=json&url=${encodeURIComponent('https://soundcloud.com/apostolkremenchug')}`)
+            setEmbedHtml(response.data.html);
         } catch (error) {
             console.error('Error fetching SoundCloud embed data', error);
         }
@@ -42,7 +42,10 @@ const MusicContextProvider: React.FC<MusicContextProviderProps> = ({ children })
 
     const fetchMusicPlatforms = async () : Promise<void> => {
         try {
-            const data: IMusicPlatformItem[] = await sendRequest('http://localhost:8080/api/music');
+            const response = await sendRequest('http://localhost:8080/api/music');
+
+            const data: IMusicPlatformItem[] = response.data;
+
             setMusicPlatforms(data);
         } catch (error) {
             console.error('Error fetching music platforms', error);
