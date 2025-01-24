@@ -1,4 +1,4 @@
-export interface IVideoAdminItem {
+export interface IAdminVideoItem {
     id: number;
     title: string;
     url: string;

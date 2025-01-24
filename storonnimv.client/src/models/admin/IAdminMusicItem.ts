@@ -1,4 +1,4 @@
-export interface IMusicPlatformAdminItem {
+export interface IAdminMusicItem {
     id: number;
     bgImageUrl: string;
     platformUrl: string;

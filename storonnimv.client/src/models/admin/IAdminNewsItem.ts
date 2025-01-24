@@ -1,4 +1,4 @@
-export interface INewsAdminItem {
+export interface IAdminNewsItem {
     id: number;
     photo?: string;
     video?: string;
