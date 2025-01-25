@@ -10,7 +10,6 @@ import {AxiosResponse} from "axios";
 import {IGroupInfo, IGroupPageFullInfo, IMember} from "../../../models/group/IGroupInfo.ts";
 import {AdminNewsList} from "./TableItems/AdminNewsList.tsx";
 import {AdminSchedulesList} from "./TableItems/AdminSchedulesList.tsx";
-import {AdminMemberListItem} from "./TableItems/AdminMemberListItem.tsx";
 import {AdminMusicList} from "./TableItems/AdminMusicList.tsx";
 import {AdminMembersList} from "./TableItems/AdminMembersList.tsx";
 import {AdminVideoList} from "./TableItems/AdminVideoList.tsx";
@@ -57,22 +56,22 @@ const AdminTable: FC = () => {
 
     const getCurrentList = (): ReactNode => {
         if (selectedCategory === 'News') {
-            return <AdminNewsList items={adminNewsList} />;
+            return adminNewsList.length > 0 ? <AdminNewsList items={adminNewsList} /> : <p>no data</p>;
         }
         else if (selectedCategory === 'Schedules') {
-            return <AdminSchedulesList items={adminSchedulesList} />;
+            return adminSchedulesList.length > 0 ? <AdminSchedulesList items={adminSchedulesList} /> : <p>no data</p>;
         }
         else if (selectedCategory === 'Music') {
-            return <AdminMusicList items={adminMusicList} />;
+            return selectedCategory.length > 0 ? <AdminMusicList items={adminMusicList} /> : <p>no data</p>;
         }
         else if (selectedCategory === 'Group info') {
-            return <AdminGroupInfo item={adminGroupInfo} />;
+            return adminGroupInfo ? <AdminGroupInfo item={adminGroupInfo} /> : <p>no data</p>;
         }
         else if (selectedCategory === 'Members') {
-            return <AdminMembersList items={adminMembersList} />;
+            return adminMembersList.length > 0 ? <AdminMembersList items={adminMembersList} /> : <p>no data</p>;
         }
         else if (selectedCategory === 'Videos') {
-            return <AdminVideoList items={adminVideosList} />;
+            return adminVideosList.length > 0 ? <AdminVideoList items={adminVideosList} /> : <p>no data</p>;
         }
     };
 
@@ -184,33 +183,7 @@ const AdminTable: FC = () => {
                 </thead>
 
                 <tbody>
-                    {getCurrentList()}
-                    {/*{loading ?*/}
-                    {/*    <tr>*/}
-                    {/*        <td><Loading /></td>*/}
-                    {/*    </tr>*/}
-                    {/*    : data.length > 0 ? (*/}
-                    {/*    data.map((item) => (*/}
-                    {/*        <tr key={item.id}>*/}
-                    {/*            <td>{item.id}</td>*/}
-                    {/*            <td>{item.title}</td>*/}
-                    {/*            <td>*/}
-                    {/*                <Button onClick={() => handleEdit(item.id)}>*/}
-                    {/*                    ✏️*/}
-                    {/*                </Button>*/}
-                    {/*                <Button onClick={() => handleDelete(item.id)}>*/}
-                    {/*                    🗑️*/}
-                    {/*                </Button>*/}
-                    {/*            </td>*/}
-                    {/*        </tr>*/}
-                    {/*    ))*/}
-                    {/*) : (*/}
-                    {/*    <tr>*/}
-                    {/*        <td>*/}
-                    {/*            Даних немає*/}
-                    {/*        </td>*/}
-                    {/*    </tr>*/}
-                    {/*    )}*/}
+                    {loading ? <Loading/> : getCurrentList()}
                 </tbody>
             </Table>
         </Container>
