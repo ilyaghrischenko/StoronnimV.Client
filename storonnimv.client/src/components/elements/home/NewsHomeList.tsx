@@ -4,7 +4,7 @@ import {HomeContext} from "../../contexts/HomeContext";
 import {IHomeNewsItem} from "../../../models/home/IHomeNewsItem";
 import {ListItem} from "../shared/GenericList/ListItem";
 import {NewsHomeListItem} from "./NewsHomeListItem";
-import {Loading} from "../shared/Loading";
+import {PageLoading} from "../shared/PageLoading";
 
 interface NewsHomeListProps {
     className?: string;
@@ -25,7 +25,7 @@ const NewsHomeList: FC<NewsHomeListProps> = ({className}) => {
 
     if (loading) {
         return (
-            <Loading />
+            <PageLoading />
         );
     }
 

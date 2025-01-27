@@ -1,6 +1,6 @@
 ﻿import {FC, useContext, useEffect} from "react";
 import {MusicContext} from "../../contexts/MusicContext";
-import {Loading} from "../shared/Loading";
+import {PageLoading} from "../shared/PageLoading";
 import {Container} from "react-bootstrap";
 
 const SoundCloudContainer: FC = () => {
@@ -18,7 +18,7 @@ const SoundCloudContainer: FC = () => {
 
     if (loading) {
         return (
-            <Loading />
+            <PageLoading elementsCount={1} columns={1} />
         );
     }
 

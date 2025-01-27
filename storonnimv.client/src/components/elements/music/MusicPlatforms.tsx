@@ -3,7 +3,7 @@ import {ListGroup} from "react-bootstrap";
 
 import {MusicPlatformItem} from "./MusicPlatformItem";
 import {MusicContext} from "../../contexts/MusicContext";
-import {Loading} from "../shared/Loading";
+import {PageLoading} from "../shared/PageLoading";
 
 const MusicPlatforms: FC = () => {
     const musicContext = useContext(MusicContext);
@@ -20,7 +20,7 @@ const MusicPlatforms: FC = () => {
 
     if (loading) {
         return (
-            <Loading />
+            <PageLoading elementsCount={3} columns={3} />
         );
     }
 

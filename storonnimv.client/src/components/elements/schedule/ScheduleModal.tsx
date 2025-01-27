@@ -1,7 +1,7 @@
 import { FC, useContext, useEffect } from "react";
 import { ScheduleContext } from "../../contexts/ScheduleContext.tsx";
 import { Col, Container, Row, Image } from "react-bootstrap";
-import { Loading } from "../shared/Loading.tsx";
+import {ModalLoading} from "../shared/ModalLoading.tsx";
 
 interface ScheduleModalProps {
     scheduleId: number;
@@ -23,7 +23,7 @@ const ScheduleModal: FC<ScheduleModalProps> = ({ scheduleId }) => {
     // TODO: LOADING
     if (loading) {
         return (
-            <Loading />
+            <ModalLoading />
         );
     }
 

@@ -1,7 +1,7 @@
 ﻿import {FC, useContext, useEffect} from "react";
 import {Container} from "react-bootstrap";
 import {HomeContext} from "../../contexts/HomeContext";
-import {Loading} from "../shared/Loading";
+import {PageLoading} from "../shared/PageLoading";
 
 interface PromotionVideoHomeProps {
     className?: string;
@@ -22,7 +22,7 @@ const PromotionVideoHome: FC<PromotionVideoHomeProps> = ({className}) => {
 
     if (loading) {
         return (
-            <Loading />
+            <PageLoading />
         );
     }
 

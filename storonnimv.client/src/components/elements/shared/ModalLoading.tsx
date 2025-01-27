@@ -1,7 +1,8 @@
-﻿import {FC} from "react";
-import {Container} from "react-bootstrap";
+import {Container} from 'react-bootstrap';
+import {FC} from "react";
 
-const Loading: FC = () => {
+
+const ModalLoading: FC = () => {
     return (
         <Container className='loading-container'>
             <Container className="loading-container__spinner"/>
@@ -9,4 +10,4 @@ const Loading: FC = () => {
     );
 };
 
-export { Loading };
+export { ModalLoading };

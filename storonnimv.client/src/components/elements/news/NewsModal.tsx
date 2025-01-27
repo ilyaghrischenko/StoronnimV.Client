@@ -1,7 +1,7 @@
 import {FC, useContext, useEffect} from "react";
 import {NewsContext} from "../../contexts/NewsContext.tsx";
 import {Col, Container, Row, Image} from "react-bootstrap";
-import {Loading} from "../shared/Loading.tsx";
+import {ModalLoading} from "../shared/ModalLoading.tsx";
 
 interface NewsModalProps {
     newsId: number;
@@ -23,7 +23,7 @@ const NewsModal: FC<NewsModalProps> = ({newsId}) => {
     // TODO: LOADING
 
     if (loading) {
-        return <Loading/>;
+        return <ModalLoading/>;
     }
 
     return (

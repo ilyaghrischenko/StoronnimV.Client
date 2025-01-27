@@ -1,6 +1,6 @@
 ﻿import {FC, useContext, useEffect} from "react";
 import {HomeContext} from "../../contexts/HomeContext";
-import {Loading} from "../shared/Loading";
+import {PageLoading} from "../shared/PageLoading";
 import {Container, Image} from "react-bootstrap";
 
 interface ScheduleHomeContainerProps {
@@ -22,7 +22,7 @@ const ScheduleHomeContainer: FC<ScheduleHomeContainerProps> = ({className}) => {
 
     if (loading) {
         return (
-            <Loading/>
+            <PageLoading/>
         );
     }
 

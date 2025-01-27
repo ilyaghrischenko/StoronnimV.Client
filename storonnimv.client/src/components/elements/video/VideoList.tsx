@@ -1,7 +1,7 @@
 ﻿import { FC, useContext, useEffect } from "react";
 import { Container, Pagination } from "react-bootstrap";
 import { GlobalContext } from "../../contexts/shared/GlobalContext";
-import { Loading } from "../shared/Loading";
+import { PageLoading } from "../shared/PageLoading";
 import { List } from "../shared/GenericList/List";
 import { ListItem } from "../shared/GenericList/ListItem";
 import { VideoContext } from "../../contexts/VideoContext";
@@ -35,7 +35,7 @@ const VideoList: FC = () => {
     }, []);
 
     if (loading) {
-        return <Loading />;
+        return <PageLoading elementsCount={4}  columns={2} />;
     }
 
     return (

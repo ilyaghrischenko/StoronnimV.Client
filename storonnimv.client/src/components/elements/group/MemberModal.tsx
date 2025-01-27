@@ -1,7 +1,7 @@
 import { FC, useContext, useEffect } from "react";
 import { GroupContext } from "../../contexts/GroupContext.tsx";
 import { Col, Container, Row, Image } from "react-bootstrap";
-import { Loading } from "../shared/Loading.tsx";
+import {ModalLoading} from "../shared/ModalLoading.tsx";
 
 interface MemberModalProps {
     memberId: number;
@@ -24,7 +24,7 @@ const MemberModal: FC<MemberModalProps> = ({ memberId }) => {
 
     if (loading) {
         return (
-            <Loading />
+            <ModalLoading />
         );
     } else {
         console.dir(memberFullInfo);

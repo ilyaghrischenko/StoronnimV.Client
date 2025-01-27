@@ -1,7 +1,7 @@
 ﻿import { FC, useContext, useEffect } from "react";
 import { ScheduleListItem } from "./ScheduleListItem";
 import {ScheduleContext, ScheduleContextProvider} from "../../contexts/ScheduleContext";
-import { Loading } from "../shared/Loading";
+import { PageLoading } from "../shared/PageLoading";
 import { List } from "../shared/GenericList/List";
 import { IScheduleListItem } from "../../../models/schedule/IScheduleListItem";
 import { ListItem } from "../shared/GenericList/ListItem";
@@ -27,7 +27,7 @@ const SchedulesList: FC = () => {
     }, []);
 
     if (loading) {
-        return <Loading />;
+        return <PageLoading elementsCount={4} columns={2} />;
     }
 
     return (

@@ -52,7 +52,7 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
             };
 
             // TODO: СДЕЛАТЬ ЧТО-ТО С АНИМАЦИЕЙ ЗАГРУКИ
-            // setLoading(true);
+            setLoading(true);
             const response = await axios(config);
             setLoading(false);
             

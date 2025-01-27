@@ -2,7 +2,7 @@
 import {NewsContext, NewsContextProvider} from "../../contexts/NewsContext";
 import {Container, Pagination} from "react-bootstrap";
 import {NewsListItem} from "./NewsListItem";
-import {Loading} from "../shared/Loading";
+import {PageLoading} from "../shared/PageLoading";
 
 import {List} from "../shared/GenericList/List";
 import {ListItem} from "../shared/GenericList/ListItem";
@@ -34,7 +34,7 @@ const NewsList: FC = () => {
 
     if (loading) {
         return (
-            <Loading/>
+            <PageLoading/>
         );
     }
 

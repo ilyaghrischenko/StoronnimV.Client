@@ -384,29 +384,29 @@
   font-size: 30px;
 }
 
-.loading-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.page-loading {
+  display: grid;
+  gap: 50px;
+  padding: 16px;
+  background-color: #f8f9fa;
 }
-.loading-container__spinner {
-  width: 50px;
-  height: 50px;
-  border: 4px solid #f3f3f3; /* Цвет ободка */
-  border-radius: 50%;
-  border-top: 4px solid #4caf50; /* Основной цвет */
-  animation: spin 1s linear infinite;
-  display: inline-block;
+.page-loading__placeholder {
+  aspect-ratio: 1/1;
+  width: 100%;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f8f8f8 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
 }
-
-@keyframes spin {
+@keyframes shimmer {
   0% {
-    transform: rotate(0deg);
+    background-position: 200% 0;
   }
   100% {
-    transform: rotate(360deg);
+    background-position: -200% 0;
   }
 }
+
 .modal {
   height: 100vh;
   width: 100vw;
@@ -444,6 +444,31 @@
   pointer-events: all;
 }
 
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.loading-container__spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3; /* Цвет ободка */
+  border-radius: 50%;
+  border-top: 4px solid gray; /* Основной цвет */
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .video-list-container {
   padding: 20px;
 }
