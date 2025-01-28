@@ -1,6 +1,6 @@
-import {IAdminNewsItem} from "../../../../models/admin/IAdminNewsItem.ts";
+import {IAdminNewsItem} from "../../../../../models/admin/IAdminNewsItem.ts";
 import {FC} from "react";
-import {AdminNewsListItem} from "./AdminNewsListItem.tsx";
+import {AdminNewsListItem} from "../ListItems/AdminNewsListItem.tsx";
 
 interface IAdminNewsListProps {
     items: IAdminNewsItem[];
@@ -9,7 +9,7 @@ interface IAdminNewsListProps {
 const AdminNewsList: FC<IAdminNewsListProps> = ({items}) => {
     return (
         items.map((item) =>
-            <AdminNewsListItem item={item} />
+            <AdminNewsListItem key={item.id} item={item} />
         )
     );
 };

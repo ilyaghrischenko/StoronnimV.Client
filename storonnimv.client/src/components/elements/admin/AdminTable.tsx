@@ -8,11 +8,11 @@ import {IAdminMusicItem} from "../../../models/admin/IAdminMusicItem.ts";
 import {IAdminVideoItem} from "../../../models/admin/IAdminVideoItem.ts";
 import {AxiosResponse} from "axios";
 import {IGroupInfo, IGroupPageFullInfo, IMember} from "../../../models/group/IGroupInfo.ts";
-import {AdminNewsList} from "./TableItems/AdminNewsList.tsx";
-import {AdminSchedulesList} from "./TableItems/AdminSchedulesList.tsx";
-import {AdminMusicList} from "./TableItems/AdminMusicList.tsx";
-import {AdminMembersList} from "./TableItems/AdminMembersList.tsx";
-import {AdminVideoList} from "./TableItems/AdminVideoList.tsx";
+import {AdminNewsList} from "./TableItems/List/AdminNewsList.tsx";
+import {AdminSchedulesList} from "./TableItems/List/AdminSchedulesList.tsx";
+import {AdminMusicList} from "./TableItems/List/AdminMusicList.tsx";
+import {AdminMembersList} from "./TableItems/List/AdminMembersList.tsx";
+import {AdminVideoList} from "./TableItems/List/AdminVideoList.tsx";
 import {AdminGroupInfo} from "./TableItems/AdminGroupInfo.tsx";
 
 const AdminTable: FC = () => {
@@ -43,8 +43,6 @@ const AdminTable: FC = () => {
         'id', 'title', 'url'
     ];
 
-    //TODO: DODELAT!!!!!!!
-
     const [adminNewsList, setAdminNewsList] = useState<IAdminNewsItem[]>([]);
     const [adminSchedulesList, setAdminSchedulesList] = useState<IAdminScheduleItem[]>([]);
     const [adminMusicList, setAdminMusicList] = useState<IAdminMusicItem[]>([]);
@@ -52,7 +50,7 @@ const AdminTable: FC = () => {
     const [adminMembersList, setAdminMembersList] = useState<IMember[]>([]);
     const [adminVideosList, setAdminVideosList] = useState<IAdminVideoItem[]>([]);
 
-    const [selectedCategory, setSelectedCategory] = useState<string>('Music');
+    const [selectedCategory, setSelectedCategory] = useState<string>('News');
 
     const getCurrentList = (): ReactNode => {
         if (selectedCategory === 'News') {
@@ -124,16 +122,6 @@ const AdminTable: FC = () => {
         setSelectedCategory(category);
     };
 
-    const handleDelete = (id: number): void => {
-        console.log(`Видаляємо запис з ID: ${id}`);
-        // setData(data.filter(item => item.id !== id));
-    };
-
-    const handleEdit = (id: number) => {
-        // Здесь можно открыть модальное окно для редактирования
-        console.log(`Изменяем запись с ID: ${id}`);
-    };
-
     return (
         <Container className='admin-container'>
             <Container className='admin-buttons-container'>
@@ -156,29 +144,31 @@ const AdminTable: FC = () => {
                 <thead>
                     <tr>
                         {selectedCategory === "News" &&
-                            adminNewsListProperties.map((item) => (
-                                <th>{item}</th>
+                            adminNewsListProperties.map((item, index) => (
+                                <th key={index}>{item}</th>
                             ))}
                         {selectedCategory === "Schedules" &&
-                            adminSchedulesListProperties.map((item) => (
-                                <th>{item}</th>
+                            adminSchedulesListProperties.map((item, index) => (
+                                <th key={index}>{item}</th>
                             ))}
                         {selectedCategory === "Music" &&
-                            adminMusicListProperties.map((item) => (
-                                <th>{item}</th>
+                            adminMusicListProperties.map((item, index) => (
+                                <th key={index}>{item}</th>
                             ))}
                         {selectedCategory === "Group info" &&
-                            adminGroupInfoProperties.map((item) => (
-                                <th>{item}</th>
+                            adminGroupInfoProperties.map((item, index) => (
+                                <th key={index}>{item}</th>
                             ))}
                         {selectedCategory === "Members" &&
-                            adminMembersListProperties.map((item) => (
-                                <th>{item}</th>
+                            adminMembersListProperties.map((item, index) => (
+                                <th key={index}>{item}</th>
                             ))}
                         {selectedCategory === "Videos" &&
-                            adminVideosListProperties.map((item) => (
-                                <th>{item}</th>
+                            adminVideosListProperties.map((item, index) => (
+                                <th key={index}>{item}</th>
                             ))}
+                        <th>EDIT</th>
+                        <th>DELETE</th>
                     </tr>
                 </thead>
 

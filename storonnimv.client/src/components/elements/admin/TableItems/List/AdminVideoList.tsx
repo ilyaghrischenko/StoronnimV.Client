@@ -1,6 +1,6 @@
-import {IAdminVideoItem} from "../../../../models/admin/IAdminVideoItem.ts";
+import {IAdminVideoItem} from "../../../../../models/admin/IAdminVideoItem.ts";
 import {FC} from "react";
-import {AdminVideoListItem} from "./AdminVideoListItem.tsx";
+import {AdminVideoListItem} from "../ListItems/AdminVideoListItem.tsx";
 
 interface AdminVideoListPropI {
     items: IAdminVideoItem[];
@@ -9,7 +9,7 @@ interface AdminVideoListPropI {
 const AdminVideoList: FC<AdminVideoListPropI> = ({items}) => {
     return (
         items.map((item) => (
-            <AdminVideoListItem item={item} />
+            <AdminVideoListItem key={item.id} item={item} />
         ))
     );
 };

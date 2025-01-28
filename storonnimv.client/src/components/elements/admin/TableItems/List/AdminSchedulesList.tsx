@@ -1,6 +1,6 @@
-import { IAdminScheduleItem } from "../../../../models/admin/IAdminScheduleItem";
+import { IAdminScheduleItem } from "../../../../../models/admin/IAdminScheduleItem.ts";
 import {FC} from "react";
-import {AdminScheduleListItem} from "./AdminScheduleListItem.tsx";
+import {AdminScheduleListItem} from "../ListItems/AdminScheduleListItem.tsx";
 
 interface IAdminSchedulesListProps {
     items: IAdminScheduleItem[];
@@ -9,7 +9,7 @@ interface IAdminSchedulesListProps {
 const AdminSchedulesList: FC<IAdminSchedulesListProps> = ({items}) => {
     return (
         items.map((item) => (
-            <AdminScheduleListItem item={item} />
+            <AdminScheduleListItem key={item.id} item={item} />
         ))
     );
 };

@@ -6,6 +6,8 @@ import {useNavigate} from "react-router-dom";
 interface AdminContextType {
     logIn: (logInRequest: ILogInRequest) => Promise<void>;
     loading: boolean;
+    handleEdit: (apiUrl: string) => void;
+    handleDelete: (apiUrl: string) => void;
 }
 
 const AdminContext = createContext<AdminContextType | undefined>(undefined);
@@ -48,9 +50,21 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
         }
     };
 
+    const handleDelete = (apiUrl: string): void => {
+        console.log(`Видаляємо запис on api: ${apiUrl}`);
+        // setData(data.filter(item => item.id !== id));
+    };
+
+    const handleEdit = (apiUrl: string) => {
+        // Здесь можно открыть модальное окно для редактирования
+        console.log(`Изменяем запись on api: ${apiUrl}`);
+    };
+
     const value: AdminContextType = {
         logIn,
-        loading
+        loading,
+        handleEdit,
+        handleDelete
     };
 
     return (

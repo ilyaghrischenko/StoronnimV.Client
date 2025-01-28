@@ -1,6 +1,6 @@
-import {IAdminMusicItem} from "../../../../models/admin/IAdminMusicItem.ts";
+import {IAdminMusicItem} from "../../../../../models/admin/IAdminMusicItem.ts";
 import {FC} from "react";
-import {AdminMusicListItem} from "./AdminMusicListItem.tsx";
+import {AdminMusicListItem} from "../ListItems/AdminMusicListItem.tsx";
 
 interface IAdminMusicListProps {
     items: IAdminMusicItem[];
@@ -9,7 +9,7 @@ interface IAdminMusicListProps {
 const AdminMusicList: FC<IAdminMusicListProps> = ({items}) => {
     return (
         items.map((item) => (
-            <AdminMusicListItem item={item} />
+            <AdminMusicListItem key={item.id} item={item} />
         ))
     );
 };
