@@ -1,5 +1,5 @@
 ﻿import {FC} from "react";
-import {Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import {Home} from "../Home";
 import {Schedule} from "../Schedule";
 import {News} from "../News";
@@ -12,6 +12,7 @@ import {Admin} from "../Admin.tsx";
 import {AuthForm} from "../../elements/admin/AuthForm.tsx";
 import {ProtectedRoute} from "../../elements/admin/ProtectedRoute.tsx";
 import {AdminTable} from "../../elements/admin/AdminTable.tsx";
+import {Error} from "../Error.tsx";
 
 const Page: FC = () => {
     return (
@@ -36,6 +37,9 @@ const Page: FC = () => {
                 <Admin children={<AdminTable />} />
             </ProtectedRoute>}
             />
+
+            <Route path="/error" element={<Error/>}/>
+            <Route path="*" element={<Navigate to="/error" />} />
         </Routes>
     );
 };

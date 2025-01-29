@@ -710,6 +710,22 @@ th, td {
   gap: 30px;
 }
 
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-info-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.error-info-container__status-code, .error-info-container__message {
+  font-size: 40px;
+}
+
 * {
   margin: 0;
   padding: 0;
