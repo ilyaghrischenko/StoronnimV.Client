@@ -10,8 +10,8 @@ import {VideoSections} from "../../elements/video/VideoSections";
 import {VideoList} from "../../elements/video/VideoList";
 import {Admin} from "../Admin.tsx";
 import {AuthForm} from "../../elements/admin/AuthForm.tsx";
-import {Main} from "../../elements/admin/Main.tsx";
 import {ProtectedRoute} from "../../elements/admin/ProtectedRoute.tsx";
+import {AdminTable} from "../../elements/admin/AdminTable.tsx";
 
 const Page: FC = () => {
     return (
@@ -33,7 +33,7 @@ const Page: FC = () => {
             <Route path="/admin/main"
                    element={
             <ProtectedRoute>
-                <Admin children={<Main />} />
+                <Admin children={<AdminTable />} />
             </ProtectedRoute>}
             />
         </Routes>
