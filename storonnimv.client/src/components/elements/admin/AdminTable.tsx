@@ -1,28 +1,16 @@
-import {FC, ReactNode, useContext, useEffect, useState} from "react";
+import {FC, useContext, useEffect} from "react";
 import {Button, Container, Table} from "react-bootstrap";
-import {GlobalContext} from "../../contexts/shared/GlobalContext.tsx";
 import {Loading} from "../shared/Loading.tsx";
-import {IAdminNewsItem} from "../../../models/admin/IAdminNewsItem.ts";
-import {IAdminScheduleItem} from "../../../models/admin/IAdminScheduleItem.ts";
-import {IAdminMusicItem} from "../../../models/admin/IAdminMusicItem.ts";
-import {IAdminVideoItem} from "../../../models/admin/IAdminVideoItem.ts";
-import {AxiosResponse} from "axios";
-import {IGroupInfo, IGroupPageFullInfo, IMember} from "../../../models/group/IGroupInfo.ts";
-import {AdminNewsList} from "./TableItems/List/AdminNewsList.tsx";
-import {AdminSchedulesList} from "./TableItems/List/AdminSchedulesList.tsx";
-import {AdminMusicList} from "./TableItems/List/AdminMusicList.tsx";
-import {AdminMembersList} from "./TableItems/List/AdminMembersList.tsx";
-import {AdminVideoList} from "./TableItems/List/AdminVideoList.tsx";
-import {AdminGroupInfo} from "./TableItems/AdminGroupInfo.tsx";
+import {AdminContext} from "../../contexts/AdminContext.tsx";
 
 const AdminTable: FC = () => {
-    const globalContext = useContext(GlobalContext);
+    const adminContext = useContext(AdminContext);
 
-    if (!globalContext) {
-        throw new Error("GlobalContext must be used within a GlobalContextProvider");
+    if (!adminContext) {
+        throw new Error("AdminContext must be used within a AdminContextProvider");
     }
 
-    const {sendRequest, loading} = globalContext;
+    const {fetchData, getCurrentList, handleCategoryChange, loading, selectedCategory} = adminContext;
 
     const adminNewsListProperties: string[] = [
         'id', 'photo?', 'video?', 'title', 'description', 'priority', 'date'
@@ -43,84 +31,9 @@ const AdminTable: FC = () => {
         'id', 'title', 'url'
     ];
 
-    const [adminNewsList, setAdminNewsList] = useState<IAdminNewsItem[]>([]);
-    const [adminSchedulesList, setAdminSchedulesList] = useState<IAdminScheduleItem[]>([]);
-    const [adminMusicList, setAdminMusicList] = useState<IAdminMusicItem[]>([]);
-    const [adminGroupInfo, setAdminGroupInfo] = useState<IGroupInfo>({} as IGroupInfo);
-    const [adminMembersList, setAdminMembersList] = useState<IMember[]>([]);
-    const [adminVideosList, setAdminVideosList] = useState<IAdminVideoItem[]>([]);
-
-    const [selectedCategory, setSelectedCategory] = useState<string>('News');
-
-    const getCurrentList = (): ReactNode => {
-        if (selectedCategory === 'News') {
-            return adminNewsList.length > 0 ? <AdminNewsList items={adminNewsList} /> : <p>no data</p>;
-        }
-        else if (selectedCategory === 'Schedules') {
-            return adminSchedulesList.length > 0 ? <AdminSchedulesList items={adminSchedulesList} /> : <p>no data</p>;
-        }
-        else if (selectedCategory === 'Music') {
-            return selectedCategory.length > 0 ? <AdminMusicList items={adminMusicList} /> : <p>no data</p>;
-        }
-        else if (selectedCategory === 'Group info') {
-            return adminGroupInfo ? <AdminGroupInfo item={adminGroupInfo} /> : <p>no data</p>;
-        }
-        else if (selectedCategory === 'Members') {
-            return adminMembersList.length > 0 ? <AdminMembersList items={adminMembersList} /> : <p>no data</p>;
-        }
-        else if (selectedCategory === 'Videos') {
-            return adminVideosList.length > 0 ? <AdminVideoList items={adminVideosList} /> : <p>no data</p>;
-        }
-    };
-
-    const fetchData = async (category: string) => {
-        try {
-            let response: AxiosResponse = {} as AxiosResponse;
-
-            if (category === 'News') {
-                response = await sendRequest(`http://localhost:8080/api/news`);
-                const data: IAdminNewsItem[] = response.data;
-                setAdminNewsList(data);
-            }
-            else if (category === 'Schedules') {
-                response = await sendRequest(`http://localhost:8080/api/schedules`);
-                const data: IAdminScheduleItem[] = response.data;
-                setAdminSchedulesList(data);
-            }
-            else if (category === 'Music') {
-                response = await sendRequest(`http://localhost:8080/api/music`);
-                const data: IAdminMusicItem[] = response.data;
-                setAdminMusicList(data);
-            }
-            else if (category === 'Group info') {
-                response = await sendRequest(`http://localhost:8080/api/group`);
-                const fullData: IGroupPageFullInfo = response.data;
-                const data: IGroupInfo = fullData.groupPage;
-                setAdminGroupInfo(data);
-            }
-            else if (category === 'Members') {
-                response = await sendRequest(`http://localhost:8080/api/group`);
-                const fullData: IGroupPageFullInfo = response.data;
-                const data: IMember[] = fullData.members;
-                setAdminMembersList(data);
-            }
-            else if (category === 'Videos') {
-                response = await sendRequest(`http://localhost:8080/api/videos`);
-                const data: IAdminVideoItem[] = response.data;
-                setAdminVideosList(data);
-            }
-        } catch (error) {
-            console.error('Error while fetching: ', error);
-        }
-    };
-
     useEffect(() => {
         fetchData(selectedCategory);
     }, [selectedCategory]);
-
-    const handleCategoryChange = (category: string) => {
-        setSelectedCategory(category);
-    };
 
     return (
         <Container className='admin-container'>

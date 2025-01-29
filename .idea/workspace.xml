@@ -4,26 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="porfavor">
-      <change afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/admin/TableItems/Items/shared.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/AdminTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/AdminTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/AdminGroupInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/AdminGroupInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/AdminMemberListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/ListItems/AdminMemberListItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/AdminMembersList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/List/AdminMembersList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/AdminMusicList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/List/AdminMusicList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/AdminMusicListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/ListItems/AdminMusicListItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/AdminNewsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/List/AdminNewsList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/AdminNewsListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/ListItems/AdminNewsListItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/AdminScheduleListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/ListItems/AdminScheduleListItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/AdminSchedulesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/List/AdminSchedulesList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/AdminVideoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/List/AdminVideoList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/AdminVideoListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/ListItems/AdminVideoListItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/admin/AdminTable.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/admin/AdminTable.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.scss" afterDir="false" />
-    </list>
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="add edit and delete buttons" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -126,6 +107,7 @@
       <workItem from="1737643181211" duration="11843000" />
       <workItem from="1737827277070" duration="4474000" />
       <workItem from="1737985652004" duration="2473000" />
+      <workItem from="1738088482820" duration="3173000" />
     </task>
     <task id="LOCAL-00001" summary="change port">
       <option name="closed" value="true" />
@@ -223,7 +205,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737827912155</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="add edit and delete buttons">
+      <option name="closed" value="true" />
+      <created>1738093845226</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1738093845227</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,6 +234,7 @@
     <MESSAGE value="change" />
     <MESSAGE value="add fetching data to table" />
     <MESSAGE value="porfavor" />
-    <option name="LAST_COMMIT_MESSAGE" value="porfavor" />
+    <MESSAGE value="add edit and delete buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="add edit and delete buttons" />
   </component>
 </project>
