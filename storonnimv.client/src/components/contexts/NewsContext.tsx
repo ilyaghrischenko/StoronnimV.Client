@@ -52,6 +52,7 @@ const NewsContextProvider: FC<NewsContextProviderProps> = ({ children }) => {
 
     const paginate =
         async (pageNumber: number, pageSize: number = 9): Promise<void> => {
+
         const savedTotalPagesString = sessionStorage.getItem("newsTotalPages");
         const savedTotalPages = savedTotalPagesString ? Number(savedTotalPagesString) : 0;
 

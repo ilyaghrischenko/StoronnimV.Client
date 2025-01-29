@@ -14,6 +14,7 @@ import {AdminGroupInfo} from "../elements/admin/TableItems/AdminGroupInfo.tsx";
 import {AdminMembersList} from "../elements/admin/TableItems/List/AdminMembersList.tsx";
 import {AdminVideoList} from "../elements/admin/TableItems/List/AdminVideoList.tsx";
 import {AxiosResponse} from "axios";
+import {IPaginationResponse} from "../../models/shared/IPaginationResponse.ts";
 
 interface AdminContextType {
     logIn: (logInRequest: ILogInRequest) => Promise<void>;
@@ -24,6 +25,9 @@ interface AdminContextType {
     fetchData: (category: string) => Promise<void>;
     handleCategoryChange: (category: string) => void;
     selectedCategory: string;
+    currentPage: number;
+    totalPages: number;
+    paginate: (category: string, page: number) => void;
 }
 
 const AdminContext = createContext<AdminContextType | undefined>(undefined);
@@ -42,6 +46,16 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
     const { sendRequest, loading } = globalContext;
 
     const navigate = useNavigate();
+
+    const getToken = (): string => {
+        const token: string | null = sessionStorage.getItem('token');
+
+        if (!token) {
+            navigate('/admin', {replace: true});
+        }
+
+        return token as string;
+    };
 
     const logIn = async (logInRequest: ILogInRequest) => {
         try {
@@ -65,6 +79,9 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
             return;
         }
     };
+
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [totalPages, setTotalPages] = useState<number>(1);
 
     const [adminNewsList, setAdminNewsList] = useState<IAdminNewsItem[]>([]);
     const [adminSchedulesList, setAdminSchedulesList] = useState<IAdminScheduleItem[]>([]);
@@ -96,14 +113,115 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
         }
     };
 
+    const fetchNews = async (pageNumber: number = currentPage, pageSize: number = 40): Promise<void> => {
+        try {
+            const token = getToken();
+
+            const response = await sendRequest(
+                `http://localhost:8080/api/admin/news/page/${pageNumber}?pageSize=${pageSize}`,
+                'GET',
+                null,
+                {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            );
+
+            const data: IPaginationResponse<IAdminNewsItem> = response.data;
+
+            setAdminNewsList(data.items);
+            setCurrentPage(data.currentPage);
+            setTotalPages(data.totalPages);
+
+            sessionStorage.setItem("adminNewsCurrentPage", String(data.currentPage));
+            sessionStorage.setItem("adminNewsTotalPages", String(data.totalPages));
+        } catch (error) {
+            console.error("Error while fetching news: ", error);
+        }
+    };
+
+    const fetchVideos = async (pageNumber: number = currentPage, pageSize: number = 40): Promise<void> => {
+        const token = getToken();
+
+        try {
+            const response = await sendRequest(
+                `http://localhost:8080/api/admin/videos/page/${pageNumber}?pageSize=${pageSize}`,
+                'GET',
+                null,
+                {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            );
+
+            const data: IPaginationResponse<IAdminVideoItem> = response.data;
+
+            setAdminVideosList(data.items);
+            setCurrentPage(data.currentPage);
+            setTotalPages(data.totalPages);
+
+            sessionStorage.setItem("adminVideosCurrentPage", String(data.currentPage));
+            sessionStorage.setItem("adminVideosTotalPages", String(data.totalPages));
+        } catch (error) {
+            console.error("Error while fetching news: ", error);
+        }
+    };
+
+    const paginate = async (category: string, page?: number) => {
+        if (category === 'News') {
+            if (!page) {
+                const savedPage = sessionStorage.getItem("adminNewsCurrentPage");
+                page = savedPage ? Number(savedPage) : 1;
+            }
+
+            await paginateNews(page);
+        }
+        else if (category === 'Videos') {
+            if (!page) {
+                const savedPage = sessionStorage.getItem("adminVideosCurrentPage");
+                page = savedPage ? Number(savedPage) : 1;
+            }
+
+            await paginateVideos(page);
+        }
+    };
+
+    const paginateNews =
+        async (pageNumber: number, pageSize: number = 20): Promise<void> => {
+
+            const savedTotalPagesString = sessionStorage.getItem("adminNewsTotalPages");
+            const savedTotalPages = savedTotalPagesString ? Number(savedTotalPagesString) : 0;
+
+            if (savedTotalPages === 0) {
+                await fetchNews(pageNumber, pageSize);
+            }
+
+            if (pageNumber >= 1 && pageNumber <= savedTotalPages) {
+                await fetchNews(pageNumber, pageSize);
+            }
+    }
+
+    const paginateVideos =
+        async (pageNumber: number, pageSize: number = 20): Promise<void> => {
+
+            const savedTotalPagesString = sessionStorage.getItem("adminVideosTotalPages");
+            const savedTotalPages = savedTotalPagesString ? Number(savedTotalPagesString) : 0;
+
+            if (savedTotalPages === 0) {
+                await fetchVideos(pageNumber, pageSize);
+            }
+
+            if (pageNumber >= 1 && pageNumber <= savedTotalPages) {
+                await fetchVideos(pageNumber, pageSize);
+            }
+    }
+
     const fetchData = async (category: string) => {
         try {
             let response: AxiosResponse = {} as AxiosResponse;
 
             if (category === 'News') {
-                response = await sendRequest(`http://localhost:8080/api/news`);
-                const data: IAdminNewsItem[] = response.data;
-                setAdminNewsList(data);
+                await paginate(category);
             }
             else if (category === 'Schedules') {
                 response = await sendRequest(`http://localhost:8080/api/schedules`);
@@ -128,9 +246,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
                 setAdminMembersList(data);
             }
             else if (category === 'Videos') {
-                response = await sendRequest(`http://localhost:8080/api/videos`);
-                const data: IAdminVideoItem[] = response.data;
-                setAdminVideosList(data);
+                await paginate(category);
             }
         } catch (error) {
             console.error('Error while fetching: ', error);
@@ -159,7 +275,10 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
         getCurrentList,
         fetchData,
         handleCategoryChange,
-        selectedCategory
+        selectedCategory,
+        currentPage,
+        totalPages,
+        paginate
     };
 
     return (

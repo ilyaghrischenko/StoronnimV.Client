@@ -1,5 +1,5 @@
 import {FC, useContext, useEffect} from "react";
-import {Button, Container, Table} from "react-bootstrap";
+import {Button, Container, Pagination, Table} from "react-bootstrap";
 import {Loading} from "../shared/Loading.tsx";
 import {AdminContext} from "../../contexts/AdminContext.tsx";
 
@@ -10,7 +10,8 @@ const AdminTable: FC = () => {
         throw new Error("AdminContext must be used within a AdminContextProvider");
     }
 
-    const {fetchData, getCurrentList, handleCategoryChange, loading, selectedCategory} = adminContext;
+    const {fetchData, getCurrentList, handleCategoryChange, loading,
+        selectedCategory, currentPage, totalPages, paginate} = adminContext;
 
     const adminNewsListProperties: string[] = [
         'id', 'photo?', 'video?', 'title', 'description', 'priority', 'date'
@@ -89,6 +90,34 @@ const AdminTable: FC = () => {
                     {loading ? <Loading/> : getCurrentList()}
                 </tbody>
             </Table>
+
+            {(selectedCategory === 'News' || selectedCategory === 'Videos') &&
+                <Container>
+                    <Pagination className="news-list__pagination">
+                        {/* Кнопка "Предыдущая страница" */}
+                        <Pagination.Prev
+                            onClick={() => paginate(selectedCategory, currentPage - 1)}
+                            disabled={currentPage === 1}
+                        />
+
+                        {/* Кнопки с номерами страниц */}
+                        {[...Array(totalPages)].map((_, index) => (
+                            <Pagination.Item
+                                key={index}
+                                onClick={() => paginate(selectedCategory, index + 1)}
+                                active={currentPage === index + 1}
+                            >
+                                {index + 1}
+                            </Pagination.Item>
+                        ))}
+
+                        {/* Кнопка "Следующая страница" */}
+                        <Pagination.Next
+                            onClick={() => paginate(selectedCategory, currentPage + 1)}
+                            disabled={currentPage === totalPages}
+                        />
+                    </Pagination>
+                </Container>}
         </Container>
     );
 };
