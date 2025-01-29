@@ -5,7 +5,7 @@ import {useNavigate} from "react-router-dom";
 import {IAdminNewsItem} from "../../models/admin/IAdminNewsItem.ts";
 import {IAdminScheduleItem} from "../../models/admin/IAdminScheduleItem.ts";
 import {IAdminMusicItem} from "../../models/admin/IAdminMusicItem.ts";
-import {IGroupInfo, IGroupPageFullInfo, IMember} from "../../models/group/IGroupInfo.ts";
+import {IGroupInfo, IGroupPageFullInfo, IMemberShort} from "../../models/group/IGroupInfo.ts";
 import {IAdminVideoItem} from "../../models/admin/IAdminVideoItem.ts";
 import {AdminNewsList} from "../elements/admin/TableItems/List/AdminNewsList.tsx";
 import {AdminSchedulesList} from "../elements/admin/TableItems/List/AdminSchedulesList.tsx";
@@ -87,7 +87,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
     const [adminSchedulesList, setAdminSchedulesList] = useState<IAdminScheduleItem[]>([]);
     const [adminMusicList, setAdminMusicList] = useState<IAdminMusicItem[]>([]);
     const [adminGroupInfo, setAdminGroupInfo] = useState<IGroupInfo>({} as IGroupInfo);
-    const [adminMembersList, setAdminMembersList] = useState<IMember[]>([]);
+    const [adminMembersList, setAdminMembersList] = useState<IMemberShort[]>([]);
     const [adminVideosList, setAdminVideosList] = useState<IAdminVideoItem[]>([]);
 
     const [selectedCategory, setSelectedCategory] = useState<string>('News');
@@ -187,7 +187,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
     };
 
     const paginateNews =
-        async (pageNumber: number, pageSize: number = 20): Promise<void> => {
+        async (pageNumber: number, pageSize: number = 25): Promise<void> => {
 
             const savedTotalPagesString = sessionStorage.getItem("adminNewsTotalPages");
             const savedTotalPages = savedTotalPagesString ? Number(savedTotalPagesString) : 0;
@@ -202,7 +202,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
     }
 
     const paginateVideos =
-        async (pageNumber: number, pageSize: number = 20): Promise<void> => {
+        async (pageNumber: number, pageSize: number = 25): Promise<void> => {
 
             const savedTotalPagesString = sessionStorage.getItem("adminVideosTotalPages");
             const savedTotalPages = savedTotalPagesString ? Number(savedTotalPagesString) : 0;
@@ -242,7 +242,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
             else if (category === 'Members') {
                 response = await sendRequest(`http://localhost:8080/api/group`);
                 const fullData: IGroupPageFullInfo = response.data;
-                const data: IMember[] = fullData.members;
+                const data: IMemberShort[] = fullData.members;
                 setAdminMembersList(data);
             }
             else if (category === 'Videos') {

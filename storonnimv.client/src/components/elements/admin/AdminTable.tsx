@@ -1,6 +1,6 @@
 import {FC, useContext, useEffect} from "react";
 import {Button, Container, Pagination, Table} from "react-bootstrap";
-import {Loading} from "../shared/Loading.tsx";
+import {ModalLoading} from "../shared/ModalLoading.tsx";
 import {AdminContext} from "../../contexts/AdminContext.tsx";
 
 const AdminTable: FC = () => {
@@ -87,7 +87,7 @@ const AdminTable: FC = () => {
                 </thead>
 
                 <tbody>
-                    {loading ? <Loading/> : getCurrentList()}
+                    {loading ? <ModalLoading/> : getCurrentList()}
                 </tbody>
             </Table>
 
