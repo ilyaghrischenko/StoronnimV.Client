@@ -2,6 +2,9 @@ import {FC, useContext, useEffect} from "react";
 import {Button, Container, Pagination, Table} from "react-bootstrap";
 import {ModalLoading} from "../shared/ModalLoading.tsx";
 import {AdminContext} from "../../contexts/AdminContext.tsx";
+import {SearchForm} from "./SearchForm.tsx";
+
+import { FaSquarePlus } from "react-icons/fa6";
 
 const AdminTable: FC = () => {
     const adminContext = useContext(AdminContext);
@@ -10,8 +13,12 @@ const AdminTable: FC = () => {
         throw new Error("AdminContext must be used within a AdminContextProvider");
     }
 
-    const {fetchData, getCurrentList, handleCategoryChange, loading,
-        selectedCategory, currentPage, totalPages, paginate} = adminContext;
+    const {
+        fetchData, getCurrentList,
+        handleCategoryChange, loading,
+        selectedCategory, currentPage,
+        totalPages, paginate
+    } = adminContext;
 
     const adminNewsListProperties: string[] = [
         'id', 'photo?', 'video?', 'title', 'description', 'priority', 'date'
@@ -38,6 +45,9 @@ const AdminTable: FC = () => {
 
     return (
         <Container className='admin-container'>
+            {(selectedCategory === 'News' || selectedCategory === 'Videos') &&
+            <SearchForm />}
+
             <Container className='admin-buttons-container'>
                 {["News", "Schedules", "Music", "Group info", "Members", "Videos"].map((category) => (
                     <Button
@@ -49,8 +59,12 @@ const AdminTable: FC = () => {
                 ))}
                 <Button
                     onClick={() => console.log("Добавить новую запись")}
+                    style={{
+                        border: "none",
+                        backgroundColor: "transparent"
+                    }}
                 >
-                    +
+                    <FaSquarePlus />
                 </Button>
             </Container>
 

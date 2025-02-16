@@ -1,10 +1,11 @@
-import {IMember} from "../../../../../models/group/IGroupInfo.ts";
+import {IMemberShort} from "../../../../../models/group/IGroupInfo.ts";
 import {FC, useContext} from "react";
 import {Button, Image} from "react-bootstrap";
 import {AdminContext} from "../../../../contexts/AdminContext.tsx";
+import {FaEdit, FaTrashAlt} from "react-icons/fa";
 
 interface IAdminMemberItemProps {
-    item: IMember;
+    item: IMemberShort;
 }
 
 const AdminMemberListItem: FC<IAdminMemberItemProps> = ({item}) => {
@@ -26,11 +27,11 @@ const AdminMemberListItem: FC<IAdminMemberItemProps> = ({item}) => {
             <td>{item.role}</td>
             <td>
                 //TODO:!!!!!
-                <Button onClick={() => handleEdit('TODO')}>edit</Button>
+                <Button onClick={() => handleEdit('TODO')}><FaEdit/></Button>
             </td>
             <td>
                 //TODO:!!!!!
-                <Button onClick={() => handleDelete('TODO')}>del</Button>
+                <Button onClick={() => handleDelete('TODO')}><FaTrashAlt/></Button>
             </td>
         </tr>
     );

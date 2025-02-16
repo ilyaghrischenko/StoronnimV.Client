@@ -596,6 +596,7 @@
   height: 100vh; /* Занимает всю высоту экрана */
   display: flex;
   flex-direction: column;
+  gap: 15px;
   align-items: center; /* Центрируем содержимое по горизонтали */
   padding: 20px;
   box-sizing: border-box;

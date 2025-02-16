@@ -28,6 +28,8 @@ interface AdminContextType {
     currentPage: number;
     totalPages: number;
     paginate: (category: string, page: number) => void;
+    fetchNewsItem: (title: string) => Promise<void>;
+    fetchVideoItem: (title: string) => Promise<void>;
 }
 
 const AdminContext = createContext<AdminContextType | undefined>(undefined);
@@ -43,7 +45,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
         throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const { sendRequest, loading } = globalContext;
+    const {sendRequest, loading} = globalContext;
 
     const navigate = useNavigate();
 
@@ -63,7 +65,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
                 'http://localhost:8080/api/account/login',
                 'POST',
                 JSON.stringify({login: logInRequest.login, password: logInRequest.password}),
-                { 'Content-Type': 'application/json' });
+                {'Content-Type': 'application/json'});
 
             if (response.status === 401) {
                 alert(response.statusText + '!!! Не вірні дані');
@@ -94,22 +96,17 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
 
     const getCurrentList = (): ReactNode => {
         if (selectedCategory === 'News') {
-            return adminNewsList.length > 0 ? <AdminNewsList items={adminNewsList} /> : <p>no data</p>;
-        }
-        else if (selectedCategory === 'Schedules') {
-            return adminSchedulesList.length > 0 ? <AdminSchedulesList items={adminSchedulesList} /> : <p>no data</p>;
-        }
-        else if (selectedCategory === 'Music') {
-            return selectedCategory.length > 0 ? <AdminMusicList items={adminMusicList} /> : <p>no data</p>;
-        }
-        else if (selectedCategory === 'Group info') {
-            return adminGroupInfo ? <AdminGroupInfo item={adminGroupInfo} /> : <p>no data</p>;
-        }
-        else if (selectedCategory === 'Members') {
-            return adminMembersList.length > 0 ? <AdminMembersList items={adminMembersList} /> : <p>no data</p>;
-        }
-        else if (selectedCategory === 'Videos') {
-            return adminVideosList.length > 0 ? <AdminVideoList items={adminVideosList} /> : <p>no data</p>;
+            return adminNewsList.length > 0 ? <AdminNewsList items={adminNewsList}/> : <p>no data</p>;
+        } else if (selectedCategory === 'Schedules') {
+            return adminSchedulesList.length > 0 ? <AdminSchedulesList items={adminSchedulesList}/> : <p>no data</p>;
+        } else if (selectedCategory === 'Music') {
+            return selectedCategory.length > 0 ? <AdminMusicList items={adminMusicList}/> : <p>no data</p>;
+        } else if (selectedCategory === 'Group info') {
+            return adminGroupInfo ? <AdminGroupInfo item={adminGroupInfo}/> : <p>no data</p>;
+        } else if (selectedCategory === 'Members') {
+            return adminMembersList.length > 0 ? <AdminMembersList items={adminMembersList}/> : <p>no data</p>;
+        } else if (selectedCategory === 'Videos') {
+            return adminVideosList.length > 0 ? <AdminVideoList items={adminVideosList}/> : <p>no data</p>;
         }
     };
 
@@ -175,8 +172,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
             }
 
             await paginateNews(page);
-        }
-        else if (category === 'Videos') {
+        } else if (category === 'Videos') {
             if (!page) {
                 const savedPage = sessionStorage.getItem("adminVideosCurrentPage");
                 page = savedPage ? Number(savedPage) : 1;
@@ -199,7 +195,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
             if (pageNumber >= 1 && pageNumber <= savedTotalPages) {
                 await fetchNews(pageNumber, pageSize);
             }
-    }
+        }
 
     const paginateVideos =
         async (pageNumber: number, pageSize: number = 25): Promise<void> => {
@@ -214,7 +210,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
             if (pageNumber >= 1 && pageNumber <= savedTotalPages) {
                 await fetchVideos(pageNumber, pageSize);
             }
-    }
+        }
 
     const fetchData = async (category: string) => {
         try {
@@ -222,30 +218,25 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
 
             if (category === 'News') {
                 await paginate(category);
-            }
-            else if (category === 'Schedules') {
+            } else if (category === 'Schedules') {
                 response = await sendRequest(`http://localhost:8080/api/schedules`);
                 const data: IAdminScheduleItem[] = response.data;
                 setAdminSchedulesList(data);
-            }
-            else if (category === 'Music') {
+            } else if (category === 'Music') {
                 response = await sendRequest(`http://localhost:8080/api/music`);
                 const data: IAdminMusicItem[] = response.data;
                 setAdminMusicList(data);
-            }
-            else if (category === 'Group info') {
+            } else if (category === 'Group info') {
                 response = await sendRequest(`http://localhost:8080/api/group`);
                 const fullData: IGroupPageFullInfo = response.data;
                 const data: IGroupInfo = fullData.groupPage;
                 setAdminGroupInfo(data);
-            }
-            else if (category === 'Members') {
+            } else if (category === 'Members') {
                 response = await sendRequest(`http://localhost:8080/api/group`);
                 const fullData: IGroupPageFullInfo = response.data;
                 const data: IMemberShort[] = fullData.members;
                 setAdminMembersList(data);
-            }
-            else if (category === 'Videos') {
+            } else if (category === 'Videos') {
                 await paginate(category);
             }
         } catch (error) {
@@ -267,6 +258,30 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
         console.log(`Изменяем запись on api: ${apiUrl}`);
     };
 
+    const [searchNewsItem, setSearchNewsItem] = useState<IAdminNewsItem>({} as IAdminNewsItem);
+    const [searchVideoItem, setSearchVideoItem] = useState<IAdminVideoItem>({} as IAdminVideoItem);
+
+    //TODO:!!!
+    const fetchNewsItem = async (title: string) => {
+        try {
+            const response = await sendRequest(`http://localhost:8080/api/admin/news/${title}`);
+            const data: IAdminNewsItem = response.data;
+            setSearchNewsItem(data);
+        } catch (error) {
+            console.error('Error while fetching news item: ', error);
+        }
+    };
+
+    const fetchVideoItem = async (title: string) => {
+        try {
+            const response = await sendRequest(`http://localhost:8080/api/admin/videos/${title}`);
+            const data: IAdminVideoItem = response.data;
+            setSearchVideoItem(data);
+        } catch (error) {
+            console.error('Error while fetching video item: ', error);
+        }
+    };
+
     const value: AdminContextType = {
         logIn,
         loading,
@@ -278,7 +293,9 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
         selectedCategory,
         currentPage,
         totalPages,
-        paginate
+        paginate,
+        fetchVideoItem,
+        fetchNewsItem
     };
 
     return (
@@ -288,4 +305,4 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
     );
 };
 
-export { AdminContextProvider, AdminContext };
+export {AdminContextProvider, AdminContext};

@@ -2,6 +2,7 @@ import {IAdminVideoItem} from "../../../../../models/admin/IAdminVideoItem.ts";
 import {FC, useContext} from "react";
 import {Button} from "react-bootstrap";
 import {AdminContext} from "../../../../contexts/AdminContext.tsx";
+import {FaEdit, FaTrashAlt} from "react-icons/fa";
 
 interface IAdminVideoListItemProps {
     item: IAdminVideoItem;
@@ -32,11 +33,11 @@ const AdminVideoListItem: FC<IAdminVideoListItemProps> = ({item}) => {
             </td>
             <td>
                 //TODO:!!!!!
-                <Button onClick={() => handleEdit('TODO')}>edit</Button>
+                <Button onClick={() => handleEdit('TODO')}><FaEdit/></Button>
             </td>
             <td>
                 //TODO:!!!!!
-                <Button onClick={() => handleDelete('TODO')}>del</Button>
+                <Button onClick={() => handleDelete('TODO')}><FaTrashAlt/></Button>
             </td>
         </tr>
     );

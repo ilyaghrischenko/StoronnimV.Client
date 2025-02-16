@@ -2,6 +2,7 @@ import {IAdminNewsItem} from "../../../../../models/admin/IAdminNewsItem.ts";
 import {FC, useContext} from "react";
 import {Button, Image} from "react-bootstrap";
 import {AdminContext} from "../../../../contexts/AdminContext.tsx";
+import {FaEdit, FaTrashAlt} from "react-icons/fa";
 
 interface IAdminNewsListItemProps {
     item: IAdminNewsItem;
@@ -39,11 +40,11 @@ const AdminNewsListItem: FC<IAdminNewsListItemProps> = ({item}) => {
             <td>{item.date}</td>
             <td>
                 //TODO:!!!!!
-                <Button onClick={() => handleEdit('TODO')}>edit</Button>
+                <Button onClick={() => handleEdit('TODO')}><FaEdit/></Button>
             </td>
             <td>
                 //TODO:!!!!!
-                <Button onClick={() => handleDelete('TODO')}>del</Button>
+                <Button onClick={() => handleDelete('TODO')}><FaTrashAlt/></Button>
             </td>
         </tr>
     );
