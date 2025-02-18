@@ -6,12 +6,13 @@ interface GlobalContextType {
     sendRequest: (apiUrl: string, method?: string, body?: any, headers?: Record<string, string>) => Promise<AxiosResponse>;
     loading: boolean;
     showModal: boolean;
-    OnShowModal: (mContent: ReactNode, mTitle?: string) => void;
+    OnShowModal: (mContent: ReactNode, mTitle?: string) => void; 
     OnHideModal: () => void;
     modalContent: ReactNode;
     modalTitle: string;
     isAdminRoute: () => boolean;
 }
+
 
 // Создаем контекст с типизацией
 const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
