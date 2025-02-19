@@ -1,0 +1,33 @@
+import React, { useContext } from "react";
+import { GlobalContext } from "../contexts/shared/GlobalContext.tsx";
+import { Button } from "react-bootstrap";
+import { NewsContentModal } from "../elements/button/NewsContentModal.tsx";
+
+const AddNewsButton: React.FC = () => {
+    const context = useContext(GlobalContext);
+
+    if (!context) {
+        return null;
+    }
+
+    const { OnShowModal } = context;
+
+    if (!sessionStorage.getItem("token")) {
+        return null;
+    }
+
+    const handleClick = () => {
+        OnShowModal(<NewsContentModal apiUrl="/api/news" modalTitle="Додати новину" />, "Додати новину");
+    };
+
+    return (
+        <Button onClick={handleClick} variant="primary">
+            Додати новину
+        </Button>
+    );
+};
+
+export { AddNewsButton };
+
+
+// TODO: Нужно прописать отправление данных на сервер чтобы они обробатывались и добавлялись на страницу

@@ -1,8 +1,8 @@
-﻿import {FC} from "react";
-import {NewsContextProvider} from "../contexts/NewsContext";
-import {Container} from "react-bootstrap";
-import {NewsList} from "../elements/news/NewsList";
-import {AddContentButton} from "../buttons/AddContentButton";
+﻿import { FC } from "react";
+import { NewsContextProvider } from "../contexts/NewsContext";
+import { Container } from "react-bootstrap";
+import { NewsList } from "../elements/news/NewsList";
+import { AddNewsButton } from "../buttons/AddNewsButton";
 
 const News: FC = () => {
     const token = sessionStorage.getItem("token");
@@ -10,17 +10,11 @@ const News: FC = () => {
     return (
         <NewsContextProvider>
             <Container className="news-page page">
-                {token && (
-                    <AddContentButton
-                        apiUrl="/api/news"
-                        modalTitle="Новость"
-                        buttonLabel="Добавить новость"
-                    />
-                )}
+                {token && <AddNewsButton />}
                 <NewsList />
             </Container>
         </NewsContextProvider>
     );
 };
 
-export {News};
+export { News };

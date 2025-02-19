@@ -1,9 +1,14 @@
-﻿import {createContext, useState, ReactNode, FC} from "react";
-import axios, {AxiosResponse} from "axios";
+﻿import { createContext, useState, ReactNode, FC } from "react";
+import axios, { AxiosResponse } from "axios";
 
 // Определяем интерфейс для значения контекста
 interface GlobalContextType {
-    sendRequest: (apiUrl: string, method?: string, body?: any, headers?: Record<string, string>) => Promise<AxiosResponse>;
+    sendRequest: (
+        apiUrl: string,
+        method?: string,
+        body?: any,
+        headers?: Record<string, string>
+    ) => Promise<AxiosResponse>;
     loading: boolean;
     showModal: boolean;
     OnShowModal: (mContent: ReactNode, mTitle?: string) => void; 
@@ -13,7 +18,6 @@ interface GlobalContextType {
     isAdminRoute: () => boolean;
 }
 
-
 // Создаем контекст с типизацией
 const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
 
@@ -21,8 +25,7 @@ interface GlobalContextProviderProps {
     children: ReactNode;
 }
 
-const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
-
+const GlobalContextProvider: FC<GlobalContextProviderProps> = ({ children }) => {
     const [showModal, setShowModal] = useState<boolean>(false);
     const [modalContent, setModalContent] = useState<ReactNode>(null);
     const [modalTitle, setModalTitle] = useState<string>("");
@@ -32,6 +35,7 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
         setModalContent(mContent);
         setShowModal(true);
     };
+
     const OnHideModal = () => {
         setModalContent(null);
         setShowModal(false);
@@ -52,11 +56,11 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
                 data: body,
             };
 
-            // TODO: СДЕЛАТЬ ЧТО-ТО С АНИМАЦИЕЙ ЗАГРУКИ
+            // TODO: СДЕЛАТЬ ЧТО-ТО С АНИМАЦИЕЙ ЗАГРУЗКИ
             setLoading(true);
             const response = await axios(config);
             setLoading(false);
-            
+
             return response;
         } catch (error: any) {
             setLoading(false);
@@ -95,4 +99,4 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
     );
 };
 
-export {GlobalContextProvider, GlobalContext};
+export { GlobalContextProvider, GlobalContext };

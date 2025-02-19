@@ -23,7 +23,7 @@ const NewsModal: FC<NewsModalProps> = ({newsId}) => {
         if (newsId) {
             fetchNewsFullItem(newsId); 
         }
-    }, [newsId, fetchNewsFullItem]);
+    }, [newsId]);
 
     // TODO: LOADING
 
