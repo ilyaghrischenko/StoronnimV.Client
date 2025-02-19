@@ -1,9 +1,10 @@
-﻿import {FC, useContext, useEffect} from "react";
-import {Container} from "react-bootstrap";
-import {Description} from "./groupPageComponents/Description";
-import {ShortMembers} from "./groupPageComponents/ShortMembers";
-import {GroupContext} from "../../contexts/GroupContext";
-import {PageLoading} from "../shared/PageLoading";
+﻿import { FC, useContext, useEffect } from "react";
+import { Container } from "react-bootstrap";
+import { Description } from "./groupPageComponents/Description";
+import { ShortMembers } from "./groupPageComponents/ShortMembers";
+import { GroupContext } from "../../contexts/GroupContext";
+import { PageLoading } from "../shared/PageLoading";
+import { GroupInfoEditButton } from "../../EditsButtons/GroupInfoEditButton"; 
 
 const GroupDescription: FC = () => {
     const groupContext = useContext(GroupContext);
@@ -26,10 +27,11 @@ const GroupDescription: FC = () => {
 
     return (
         <Container>
+            <GroupInfoEditButton groupInfo={fullInfo.groupPage} />
             <Description groupInfo={fullInfo.groupPage} />
             <ShortMembers members={fullInfo.members} />
         </Container>
     );
 };
 
-export {GroupDescription};
+export { GroupDescription };

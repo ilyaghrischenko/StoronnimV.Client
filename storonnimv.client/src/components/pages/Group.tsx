@@ -2,7 +2,7 @@
 import {GroupContextProvider} from "../contexts/GroupContext";
 import {Container} from "react-bootstrap";
 import {GroupDescription} from "../elements/group/GroupDescription";
-import { AddGroupButton } from "../buttons/AddGroupButton";
+import { AddGroupButton } from "../AddsButtons/AddGroupButton";
 
 
 const Group: FC = () => {

@@ -3,7 +3,7 @@ import { MusicContextProvider } from "../contexts/MusicContext";
 import { Container } from "react-bootstrap";
 import { SoundCloudContainer } from "../elements/music/SoundCloudContainer";
 import { MusicPlatforms } from "../elements/music/MusicPlatforms";
-import { AddMusicPlatformButton } from "../buttons/AddMusicPlatformButton";
+import { AddMusicPlatformButton } from "../AddsButtons/AddMusicPlatformButton";
 
 const Music: FC = () => {
     return (

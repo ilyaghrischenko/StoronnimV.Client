@@ -2,7 +2,7 @@
 import { ScheduleContextProvider } from "../contexts/ScheduleContext";
 import { Container } from "react-bootstrap";
 import { SchedulesList } from "../elements/schedule/SchedulesList";
-import {AddScheduleButton} from "../buttons/AddSheduleButton"
+import {AddScheduleButton} from "../AddsButtons/AddSheduleButton"
 
 const Schedule: FC = () => {
     const token = sessionStorage.getItem("token");

@@ -2,7 +2,7 @@
 import { NewsContextProvider } from "../contexts/NewsContext";
 import { Container } from "react-bootstrap";
 import { NewsList } from "../elements/news/NewsList";
-import { AddNewsButton } from "../buttons/AddNewsButton";
+import { AddNewsButton } from "../AddsButtons/AddNewsButton";
 
 const News: FC = () => {
     const token = sessionStorage.getItem("token");

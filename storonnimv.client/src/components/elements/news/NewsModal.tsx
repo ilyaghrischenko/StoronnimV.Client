@@ -1,14 +1,16 @@
-import {FC, useContext, useEffect} from "react";
-import {GlobalContext} from "../../contexts/shared/GlobalContext.tsx"; 
-import {NewsContext} from "../../contexts/NewsContext.tsx";
-import {Col, Container, Row, Image} from "react-bootstrap";
-import {ModalLoading} from "../shared/ModalLoading.tsx";
+// NewsModal.tsx
+import { FC, useContext, useEffect } from "react";
+import { GlobalContext } from "../../contexts/shared/GlobalContext.tsx"; 
+import { NewsContext } from "../../contexts/NewsContext.tsx";
+import { Col, Container, Row, Image } from "react-bootstrap";
+import { ModalLoading } from "../shared/ModalLoading.tsx";
+import { NewsEditButton } from "../../EditsButtons/NewsEditButton.tsx";
 
 interface NewsModalProps {
     newsId?: number;
 }
 
-const NewsModal: FC<NewsModalProps> = ({newsId}) => {
+const NewsModal: FC<NewsModalProps> = ({ newsId }) => {
     const newsContext = useContext(NewsContext);
     const globalContext = useContext(GlobalContext); 
 
@@ -16,8 +18,7 @@ const NewsModal: FC<NewsModalProps> = ({newsId}) => {
         throw new Error("Contexts are not defined");
     }
 
-    const {newsFullItem, fetchNewsFullItem, loading} = newsContext;
-    const {OnShowModal} = globalContext;
+    const { newsFullItem, fetchNewsFullItem, loading } = newsContext;
 
     useEffect(() => {
         if (newsId) {
@@ -26,14 +27,9 @@ const NewsModal: FC<NewsModalProps> = ({newsId}) => {
     }, [newsId]);
 
     // TODO: LOADING
-
     if (loading) {
-        return <ModalLoading/>;
+        return <ModalLoading />;
     }
-
-    const handleShowModal = () => {
-        OnShowModal(<NewsModal newsId={newsId} />); 
-    };
 
     return (
         <Container className="news-modal">
@@ -56,9 +52,10 @@ const NewsModal: FC<NewsModalProps> = ({newsId}) => {
                     <p className="news-modal__details-date">{newsFullItem?.date}</p>
                 </Col>
             </Row>
-            <button onClick={handleShowModal}>Show in Modal</button>
+
+            {newsFullItem && <NewsEditButton newsItem={newsFullItem} />}
         </Container>
     );
 };
 
-export {NewsModal};
+export { NewsModal };

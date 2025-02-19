@@ -1,7 +1,8 @@
 import { FC, useContext, useEffect } from "react";
 import { GroupContext } from "../../contexts/GroupContext.tsx";
-import { Col, Container, Row, Image } from "react-bootstrap";
-import {ModalLoading} from "../shared/ModalLoading.tsx";
+import { Col, Container, Row, Image} from "react-bootstrap";
+import { ModalLoading } from "../shared/ModalLoading.tsx";
+import { GroupMemberEditButton } from "../../EditsButtons/GroupMemberEditButton.tsx"; 
 
 interface MemberModalProps {
     memberId: number;
@@ -20,14 +21,8 @@ const MemberModal: FC<MemberModalProps> = ({ memberId }) => {
         fetchMemberInfo(memberId);
     }, [memberId]);
 
-    // TODO: LOADING
-
     if (loading) {
-        return (
-            <ModalLoading />
-        );
-    } else {
-        console.dir(memberFullInfo);
+        return <ModalLoading />;
     }
 
     return (
@@ -44,6 +39,13 @@ const MemberModal: FC<MemberModalProps> = ({ memberId }) => {
                     <p className="member-modal__info-description">{memberFullInfo.member.description}</p>
                 </Col>
             </Row>
+
+            <Row className="mb-3">
+                <Col xs={12}>
+                    <GroupMemberEditButton item={memberFullInfo} />
+                </Col>
+            </Row>
+
             <Row className="mt-3">
                 <Col xs={12} className="member-modal__social-networks">
                     {memberFullInfo.socials.map((socialNetwork) => (
