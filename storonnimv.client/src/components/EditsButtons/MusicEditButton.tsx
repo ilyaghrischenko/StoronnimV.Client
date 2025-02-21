@@ -1,84 +1,56 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Button } from "react-bootstrap";
 import { GlobalContext } from "../contexts/shared/GlobalContext"; 
-import { IVideoModel } from "../../models/video/IVideoModel";
+import { IMusicPlatformItem } from "../../models/music/IMusicPlatformItem";
 
-interface VideoEditButtonProps {
-    video: IVideoModel;
-    apiUrl: string;
+interface MusicEditButtonProps {
+    item: IMusicPlatformItem;
 }
 
-const VideoEditButton: React.FC<VideoEditButtonProps> = ({ video, apiUrl }) => {
+const MusicEditButton: React.FC<MusicEditButtonProps> = ({ item }) => {
     const { OnShowModal, OnHideModal } = useContext(GlobalContext)!;
-    const [editedVideo, setEditedVideo] = useState<IVideoModel>(video);
-    const [isAuthorized, setIsAuthorized] = useState(false);
-
-    useEffect(() => {
-        const token = sessionStorage.getItem("token");
-        if (token) {
-            setIsAuthorized(true);
-        } else {
-            setIsAuthorized(false);
-        }
-    }, []);
+    const [editedItem, setEditedItem] = useState<IMusicPlatformItem>(item);
 
     const handleSave = async () => {
         try {
-            console.log("Сохранено: ", editedVideo);
-
-            const response = await fetch(`${apiUrl}/${editedVideo.id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${sessionStorage.getItem("token")}`,
-                },
-                body: JSON.stringify(editedVideo),
-            });
-
-            if (!response.ok) {
-                throw new Error("Ошибка при сохранении видео");
-            }
-
+            console.log("Сохранено: ", editedItem);
             OnHideModal();
         } catch (error) {
-            console.error("Ошибка при сохранении видео:", error);
+            console.error("Помилка при збереженні платформи:", error);
         }
     };
 
     const handleShowModal = () => {
         OnShowModal(
             <div>
-                <label>Название видео:</label>
+                <label>Посилання на платформу:</label>
                 <input
                     type="text"
-                    name="title"
-                    value={editedVideo.title}
-                    onChange={(e) => setEditedVideo({ ...editedVideo, title: e.target.value })}
+                    name="platformUrl"
+                    value={editedItem.platformUrl}
+                    onChange={(e) => setEditedItem({ ...editedItem, platformUrl: e.target.value })}
                     className="form-control"
                 />
-                <label>Описание:</label>
-                <textarea
-                    name="description"
-                    value={editedVideo.description}
-                    onChange={(e) => setEditedVideo({ ...editedVideo, description: e.target.value })}
+                <label>Зображення фону:</label>
+                <input
+                    type="text"
+                    name="bgImageUrl"
+                    value={editedItem.bgImageUrl}
+                    onChange={(e) => setEditedItem({ ...editedItem, bgImageUrl: e.target.value })}
                     className="form-control"
                 />
-                <Button onClick={handleSave} className="mt-2">Сохранить</Button>
+                <Button onClick={handleSave} className="mt-2">Зберегти</Button>
             </div>,
-            "Редактирование видео"
+            "Редагування музичної платформи"
         );
     };
-
-    if (!isAuthorized) {
-        return null;
-    }
 
     return (
         <>
             <Button
                 className="btn btn-warning position-absolute top-0 end-0 m-2"
                 onClick={handleShowModal}
-                title="Редактировать видео"
+                title="Редагувати"
             >
                 ✏
             </Button>
@@ -86,4 +58,4 @@ const VideoEditButton: React.FC<VideoEditButtonProps> = ({ video, apiUrl }) => {
     );
 };
 
-export { VideoEditButton };
+export { MusicEditButton };
