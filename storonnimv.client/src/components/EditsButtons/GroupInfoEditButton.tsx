@@ -1,4 +1,4 @@
-import { FC, useContext, useState } from "react";
+import { FC, useContext, useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import { IGroupInfo } from "../../models/group/IGroupInfo";
 import { GlobalContext } from "../contexts/shared/GlobalContext";
@@ -10,6 +10,7 @@ interface GroupInfoEditButtonProps {
 const GroupInfoEditButton: FC<GroupInfoEditButtonProps> = ({ groupInfo }) => {
     const [newDescription, setNewDescription] = useState(groupInfo.description);
     const [newPhoto, setNewPhoto] = useState<File | null>(null);
+    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
     const globalContext = useContext(GlobalContext);
 
     if (!globalContext) {
@@ -17,6 +18,12 @@ const GroupInfoEditButton: FC<GroupInfoEditButtonProps> = ({ groupInfo }) => {
     }
 
     const { OnShowModal, OnHideModal } = globalContext;
+
+    useEffect(() => {
+        // Проверяем наличие токена в sessionStorage
+        const token = sessionStorage.getItem("token");
+        setIsAuthenticated(!!token); // Если токен есть, то установим состояние в true
+    }, []);
 
     const handleDescriptionChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setNewDescription(event.target.value);
@@ -75,9 +82,13 @@ const GroupInfoEditButton: FC<GroupInfoEditButtonProps> = ({ groupInfo }) => {
                     </Form.Group>
                 </Form>
                 <Button variant="primary" onClick={handleSave}>Зберегти</Button>
-            </div>,
+            </div>
         );
     };
+
+    if (!isAuthenticated) {
+        return null;
+    }
 
     return (
         <Button variant="primary" onClick={openEditModal}>

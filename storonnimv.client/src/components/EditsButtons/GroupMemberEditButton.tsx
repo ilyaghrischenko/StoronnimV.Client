@@ -8,15 +8,24 @@ interface GroupMemberEditButtonProps {
 }
 
 const GroupMemberEditButton: FC<GroupMemberEditButtonProps> = ({ item }) => {
-    const { OnShowModal, OnHideModal } = useContext(GlobalContext)!;
+    const { OnShowModal, OnHideModal, sendRequest } = useContext(GlobalContext)!;
     const [editedMember, setEditedMember] = useState<IMemberFullInfo>(item);
-
+    
     const handleSave = async () => {
         try {
-            console.log("Збережено: ", editedMember);
-            OnHideModal(); 
+            const apiUrl = "/api/group/member"; 
+            const response = await sendRequest(apiUrl, "PUT", editedMember);
+            
+            if (response.status === 200) {
+                console.log("Учасник успешно обновлен:", editedMember);
+                alert("Інформацію про учасника успішно оновлено!");
+                OnHideModal(); 
+            } else {
+                alert("Помилка при оновленні інформації учасника.");
+            }
         } catch (error) {
             console.error("Помилка при збереженні інформації про учасника групи:", error);
+            alert("Помилка при збереженні даних.");
         }
     };
 
@@ -55,7 +64,9 @@ const GroupMemberEditButton: FC<GroupMemberEditButtonProps> = ({ item }) => {
                     onChange={(e) => setEditedMember({ ...editedMember, member: { ...editedMember.member, role: e.target.value } })}
                     className="form-control"
                 />
+                <Button className="mt-3" onClick={handleSave}>Зберегти</Button>
             </div>,
+            "Редагувати учасника"
         );
     };
 
@@ -73,5 +84,3 @@ const GroupMemberEditButton: FC<GroupMemberEditButtonProps> = ({ item }) => {
 };
 
 export { GroupMemberEditButton };
-
-// TODO : решить проблему с вводом данных в поля ввода кнопок изминения(не работает)

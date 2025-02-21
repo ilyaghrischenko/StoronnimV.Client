@@ -1,57 +1,84 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { GlobalContext } from "../contexts/shared/GlobalContext"; 
-import { IMusicPlatformItem } from "../../models/music/IMusicPlatformItem";
+import { IVideoModel } from "../../models/video/IVideoModel";
 
-interface MusicEditButtonProps {
-    item: IMusicPlatformItem;
+interface VideoEditButtonProps {
+    video: IVideoModel;
+    apiUrl: string;
 }
 
-const MusicEditButton: React.FC<MusicEditButtonProps> = ({ item }) => {
+const VideoEditButton: React.FC<VideoEditButtonProps> = ({ video, apiUrl }) => {
     const { OnShowModal, OnHideModal } = useContext(GlobalContext)!;
-    const [editedItem, setEditedItem] = useState<IMusicPlatformItem>(item);
+    const [editedVideo, setEditedVideo] = useState<IVideoModel>(video);
+    const [isAuthorized, setIsAuthorized] = useState(false);
+
+    useEffect(() => {
+        const token = sessionStorage.getItem("token");
+        if (token) {
+            setIsAuthorized(true);
+        } else {
+            setIsAuthorized(false);
+        }
+    }, []);
 
     const handleSave = async () => {
         try {
-            console.log("Сохранено: ", editedItem);
-            OnHideModal();  // Закрытие модального окна после сохранения
+            console.log("Сохранено: ", editedVideo);
+
+            const response = await fetch(`${apiUrl}/${editedVideo.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${sessionStorage.getItem("token")}`,
+                },
+                body: JSON.stringify(editedVideo),
+            });
+
+            if (!response.ok) {
+                throw new Error("Ошибка при сохранении видео");
+            }
+
+            OnHideModal();
         } catch (error) {
-            console.error("Помилка при збереженні платформи:", error);
+            console.error("Ошибка при сохранении видео:", error);
         }
     };
 
     const handleShowModal = () => {
         OnShowModal(
             <div>
-                <label>Посилання на платформу:</label>
+                <label>Название видео:</label>
                 <input
                     type="text"
-                    name="platformUrl"
-                    value={editedItem.platformUrl}
-                    onChange={(e) => setEditedItem({ ...editedItem, platformUrl: e.target.value })}
+                    name="title"
+                    value={editedVideo.title}
+                    onChange={(e) => setEditedVideo({ ...editedVideo, title: e.target.value })}
                     className="form-control"
                 />
-                <label>Зображення фону:</label>
-                <input
-                    type="text"
-                    name="bgImageUrl"
-                    value={editedItem.bgImageUrl}
-                    onChange={(e) => setEditedItem({ ...editedItem, bgImageUrl: e.target.value })}
+                <label>Описание:</label>
+                <textarea
+                    name="description"
+                    value={editedVideo.description}
+                    onChange={(e) => setEditedVideo({ ...editedVideo, description: e.target.value })}
                     className="form-control"
                 />
-                {/* Кнопка для сохранения изменений */}
-                <Button onClick={handleSave} className="mt-2">Зберегти</Button>
+                <Button onClick={handleSave} className="mt-2">Сохранить</Button>
             </div>,
-            "Редагування музичної платформи"
+            "Редактирование видео"
         );
     };
+
+    if (!isAuthorized) {
+        return null;
+    }
 
     return (
         <>
             <Button
                 className="btn btn-warning position-absolute top-0 end-0 m-2"
                 onClick={handleShowModal}
-                title="Редагувати"
+                title="Редактировать видео"
             >
                 ✏
             </Button>
@@ -59,5 +86,4 @@ const MusicEditButton: React.FC<MusicEditButtonProps> = ({ item }) => {
     );
 };
 
-export { MusicEditButton };
-// TODO : решить проблему с вводом данных в поля ввода кнопок изминения(не работает)
+export { VideoEditButton };
