@@ -17,8 +17,8 @@ const AddNewsButton: React.FC = () => {
     }
 
     const handleClick = () => {
-        OnShowModal(<NewsContentModal apiUrl="/api/news" modalTitle="Додати новину" />, "Додати новину");
-    };
+        OnShowModal(<NewsContentModal apiUrl="/api/news" modalTitle="Додати новину" />);
+    };    
 
     return (
         <Button onClick={handleClick} variant="primary">

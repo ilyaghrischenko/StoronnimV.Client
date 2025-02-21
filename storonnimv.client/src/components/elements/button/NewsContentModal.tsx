@@ -1,4 +1,4 @@
-import { FC, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { GlobalContext } from "../../contexts/shared/GlobalContext.tsx";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { ModalLoading } from "../shared/ModalLoading.tsx";
@@ -10,13 +10,14 @@ interface NewsContentModalProps {
 
 export interface INewsShortItem {
     id: number;
-    photo: string;
+    photo?: string;
+    video?: string;
     title: string;
     priority: string;
     date: string;
 }
 
-const NewsContentModal: FC<NewsContentModalProps> = ({ apiUrl, modalTitle }) => {
+const NewsContentModal: React.FC<NewsContentModalProps> = ({ apiUrl, modalTitle }) => {
     const globalContext = useContext(GlobalContext);
 
     if (!globalContext) {
@@ -27,12 +28,13 @@ const NewsContentModal: FC<NewsContentModalProps> = ({ apiUrl, modalTitle }) => 
 
     const [title, setTitle] = useState<string>("");
     const [description, setDescription] = useState<string>("");
-    const [priority, setPriority] = useState<string>("");
+    const [priority, setPriority] = useState<string>("Secondary");
     const [date, setDate] = useState<string>("");
     const [photo, setPhoto] = useState<File | null>(null);
+    const [video, setVideo] = useState<File | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         if (name === "title") setTitle(value);
         else if (name === "description") setDescription(value);
@@ -40,12 +42,16 @@ const NewsContentModal: FC<NewsContentModalProps> = ({ apiUrl, modalTitle }) => 
         else if (name === "date") setDate(value);
     };
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileChange = (
+        e: React.ChangeEvent<HTMLInputElement>,
+        setFile: React.Dispatch<React.SetStateAction<File | null>>,
+        fileType: string
+    ) => {
         const file = e.target.files?.[0];
-        if (file && file.type.startsWith("image/")) {
-            setPhoto(file);
-        } else {
-            alert("Будь ласка, завантажте тільки зображення.");
+        if (file) {
+            if (fileType === "image" && file.type.startsWith("image/")) setFile(file);
+            else if (fileType === "video" && file.type.startsWith("video/")) setFile(file);
+            else alert(`Будь ласка, завантажте файл типу ${fileType}.`);
         }
     };
 
@@ -59,6 +65,7 @@ const NewsContentModal: FC<NewsContentModalProps> = ({ apiUrl, modalTitle }) => 
         formData.append("priority", priority);
         formData.append("date", date);
         if (photo) formData.append("photo", photo);
+        if (video) formData.append("video", video);
 
         try {
             const response = await sendRequest(apiUrl, "POST", formData);
@@ -89,6 +96,7 @@ const NewsContentModal: FC<NewsContentModalProps> = ({ apiUrl, modalTitle }) => 
                                 value={title}
                                 onChange={handleChange}
                                 placeholder={`Введіть заголовок ${modalTitle}`}
+                                required
                             />
                         </Form.Group>
 
@@ -101,18 +109,20 @@ const NewsContentModal: FC<NewsContentModalProps> = ({ apiUrl, modalTitle }) => 
                                 value={description}
                                 onChange={handleChange}
                                 placeholder={`Введіть опис ${modalTitle}`}
+                                required
                             />
                         </Form.Group>
 
                         <Form.Group controlId="formPriority" className="mt-3">
                             <Form.Label>Пріоритет {modalTitle}</Form.Label>
-                            <Form.Control
-                                type="text"
+                            <Form.Select
                                 name="priority"
                                 value={priority}
                                 onChange={handleChange}
-                                placeholder={`Введіть пріоритет ${modalTitle}`}
-                            />
+                            >
+                                <option value="Secondary">Secondary</option>
+                                <option value="Main">Main</option>
+                            </Form.Select>
                         </Form.Group>
 
                         <Form.Group controlId="formDate" className="mt-3">
@@ -122,31 +132,52 @@ const NewsContentModal: FC<NewsContentModalProps> = ({ apiUrl, modalTitle }) => 
                                 name="date"
                                 value={date}
                                 onChange={handleChange}
-                                placeholder={`Виберіть дату ${modalTitle}`}
+                                required
                             />
                         </Form.Group>
 
                         <Form.Group controlId="formPhoto" className="mt-3">
-                            <Form.Label>Фото {modalTitle}</Form.Label>
+                            <Form.Label>Фото (необов'язково)</Form.Label>
                             <div>
                                 <input
                                     type="file"
                                     accept="image/*"
                                     id="imageUpload"
                                     style={{ display: "none" }}
-                                    onChange={handleFileChange}
+                                    onChange={(e) => handleFileChange(e, setPhoto, "image")}
                                 />
                                 <Button
                                     variant="secondary"
                                     onClick={() => document.getElementById("imageUpload")?.click()}
                                 >
-                                    Виберіть файл зображення
+                                    Завантажити фото
                                 </Button>
+                                {photo && <span className="ms-2">{photo.name}</span>}
+                            </div>
+                        </Form.Group>
+
+                        <Form.Group controlId="formVideo" className="mt-3">
+                            <Form.Label>Відео (необов'язково)</Form.Label>
+                            <div>
+                                <input
+                                    type="file"
+                                    accept="video/*"
+                                    id="videoUpload"
+                                    style={{ display: "none" }}
+                                    onChange={(e) => handleFileChange(e, setVideo, "video")}
+                                />
+                                <Button
+                                    variant="secondary"
+                                    onClick={() => document.getElementById("videoUpload")?.click()}
+                                >
+                                    Завантажити відео
+                                </Button>
+                                {video && <span className="ms-2">{video.name}</span>}
                             </div>
                         </Form.Group>
 
                         <Button variant="primary" type="submit" className="mt-3 w-100">
-                             {modalTitle}
+                            {modalTitle}
                         </Button>
                     </Form>
                 </Col>

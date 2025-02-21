@@ -1,33 +1,33 @@
-import React, { useState, useContext } from "react";
-import { Button } from "react-bootstrap";
+import { useContext, FC } from "react";
 import { GlobalContext } from "../contexts/shared/GlobalContext";
-import { AddMemberModal } from "../elements/button/AddMemberModal ";
+import { Button } from "react-bootstrap";
+import { AddMemberModal } from "../elements/button/AddMemberModal";
 
 interface AddGroupButtonProps {
     buttonLabel: string;
 }
 
-const AddGroupButton: React.FC<AddGroupButtonProps> = ({ buttonLabel }) => {
+const AddGroupButton: FC<AddGroupButtonProps> = ({ buttonLabel }) => {
     const context = useContext(GlobalContext);
 
     if (!context) {
         return null;
     }
 
-    const { sendRequest } = context;
-    const [showModal, setShowModal] = useState(false);
+    const { OnShowModal } = context;
 
-    const handleShowModal = () => setShowModal(true);
-    const handleHideModal = () => setShowModal(false);
+    if (!sessionStorage.getItem("token")) {
+        return null;
+    }
+
+    const handleClick = () => {
+        OnShowModal(<AddMemberModal modalTitle="Додати учасника" />);
+    };
 
     return (
-        <>
-            <Button onClick={handleShowModal} variant="primary">
-                {buttonLabel}
-            </Button>
-
-            <AddMemberModal show={showModal} onHide={handleHideModal} sendRequest={sendRequest} />
-        </>
+        <Button onClick={handleClick} variant="primary">
+            {buttonLabel}
+        </Button>
     );
 };
 

@@ -30,7 +30,6 @@ const ScheduleContentModal: FC<ScheduleContentModalProps> = ({ apiUrl, modalTitl
     const [title, setTitle] = useState<string>("");
     const [description, setDescription] = useState<string>("");
     const [location, setLocation] = useState<string>("");
-    const [status, setStatus] = useState<string>("active");
     const [performanceDateTime, setPerformanceDateTime] = useState<string>("");
     const [photo, setPhoto] = useState<File | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
@@ -40,7 +39,6 @@ const ScheduleContentModal: FC<ScheduleContentModalProps> = ({ apiUrl, modalTitl
         if (name === "title") setTitle(value);
         else if (name === "description") setDescription(value);
         else if (name === "location") setLocation(value);
-        else if (name === "status") setStatus(value);
         else if (name === "performanceDateTime") setPerformanceDateTime(value);
     };
 
@@ -61,7 +59,7 @@ const ScheduleContentModal: FC<ScheduleContentModalProps> = ({ apiUrl, modalTitl
         formData.append("title", title);
         formData.append("description", description);
         formData.append("location", location);
-        formData.append("status", status);
+        formData.append("status", "active");  // Статус автоматически установлен как "active"
         formData.append("performanceDateTime", performanceDateTime);
         if (photo) formData.append("photo", photo);
 
@@ -130,19 +128,6 @@ const ScheduleContentModal: FC<ScheduleContentModalProps> = ({ apiUrl, modalTitl
                             />
                         </Form.Group>
 
-                        <Form.Group controlId="formStatus" className="mt-3">
-                            <Form.Label>Статус {modalTitle}</Form.Label>
-                            <Form.Control
-                                as="select"
-                                name="status"
-                                value={status}
-                                onChange={handleChange}
-                            >
-                                <option value="active">Активний</option>
-                                <option value="inactive">Неактивний</option>
-                            </Form.Control>
-                        </Form.Group>
-
                         <Form.Group controlId="formPhoto" className="mt-3">
                             <Form.Label>Фото {modalTitle}</Form.Label>
                             <Form.Control
@@ -154,7 +139,7 @@ const ScheduleContentModal: FC<ScheduleContentModalProps> = ({ apiUrl, modalTitl
                         </Form.Group>
 
                         <Button variant="primary" type="submit" className="mt-3 w-100">
-                            Додати {modalTitle}
+                            {modalTitle}
                         </Button>
                     </Form>
                 </Col>

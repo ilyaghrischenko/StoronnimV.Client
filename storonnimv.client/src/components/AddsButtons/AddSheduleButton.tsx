@@ -23,7 +23,7 @@ const AddScheduleButton: FC<AddScheduleButtonProps> = ({ apiUrl, modalTitle, but
     }
 
     const handleClick = () => {
-        OnShowModal(<ScheduleContentModal apiUrl={apiUrl} modalTitle={modalTitle} />, modalTitle);
+        OnShowModal(<ScheduleContentModal apiUrl={apiUrl} modalTitle={modalTitle} />);
     };
 
     return (

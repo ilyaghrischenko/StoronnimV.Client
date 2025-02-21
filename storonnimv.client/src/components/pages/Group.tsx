@@ -2,7 +2,6 @@
 import {GroupContextProvider} from "../contexts/GroupContext";
 import {Container} from "react-bootstrap";
 import {GroupDescription} from "../elements/group/GroupDescription";
-import { AddGroupButton } from "../AddsButtons/AddGroupButton";
 
 
 const Group: FC = () => {
@@ -11,8 +10,6 @@ const Group: FC = () => {
             <Container className='group-page page'>
                 <GroupDescription/>
             </Container>
-            <AddGroupButton buttonLabel="Додати нового учасника" />
-            {/* TODO : перенести кнопку над блоком/списком участников */}
         </GroupContextProvider>
     );
 };

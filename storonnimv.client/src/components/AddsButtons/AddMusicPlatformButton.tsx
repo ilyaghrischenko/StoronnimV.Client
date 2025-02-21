@@ -23,7 +23,7 @@ const AddMusicPlatformButton: React.FC<AddMusicPlatformButtonProps> = ({ apiUrl,
     }
 
     const handleClick = () => {
-        OnShowModal(<MusicPlatformModal apiUrl={apiUrl} modalTitle={modalTitle} />, modalTitle);
+        OnShowModal(<MusicPlatformModal apiUrl={apiUrl} modalTitle={modalTitle} />);
     };
 
     return (

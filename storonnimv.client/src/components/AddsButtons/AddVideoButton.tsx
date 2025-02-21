@@ -23,7 +23,14 @@ const AddVideoButton: React.FC<AddVideoButtonProps> = ({ apiUrl, modalTitle, but
     }
 
     const handleClick = () => {
-        OnShowModal(<VideoContentModal apiUrl={apiUrl} modalTitle={modalTitle} />, modalTitle);
+        OnShowModal(
+            <VideoContentModal 
+                apiUrl={apiUrl} 
+                modalTitle={modalTitle} 
+                buttonLabel={buttonLabel} 
+                section="video"
+            />
+        );
     };
 
     return (

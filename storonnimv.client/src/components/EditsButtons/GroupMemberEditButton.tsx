@@ -56,7 +56,6 @@ const GroupMemberEditButton: FC<GroupMemberEditButtonProps> = ({ item }) => {
                     className="form-control"
                 />
             </div>,
-            "Редагування інформації про учасника групи"
         );
     };
 
