@@ -2,6 +2,7 @@ import { FC, useState, useContext } from "react";
 import { Button } from "react-bootstrap";
 import { GlobalContext } from "../contexts/shared/GlobalContext"; 
 import { IMemberFullInfo } from "../../models/group/IMemberInfo";
+import { FaEdit } from "react-icons/fa";
 
 interface GroupMemberEditButtonProps {
     item: IMemberFullInfo;
@@ -65,8 +66,7 @@ const GroupMemberEditButton: FC<GroupMemberEditButtonProps> = ({ item }) => {
                     className="form-control"
                 />
                 <Button className="mt-3" onClick={handleSave}>Зберегти</Button>
-            </div>,
-            "Редагувати учасника"
+            </div>
         );
     };
 
@@ -77,7 +77,7 @@ const GroupMemberEditButton: FC<GroupMemberEditButtonProps> = ({ item }) => {
                 onClick={handleShowModal}
                 title="Редагувати інформацію"
             >
-                ✏
+                <FaEdit />
             </Button>
         </>
     );

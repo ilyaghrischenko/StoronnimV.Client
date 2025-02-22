@@ -1,37 +1,55 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { FC, useContext, useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
-import { GlobalContext } from "../contexts/shared/GlobalContext"; 
+import { GlobalContext } from "../contexts/shared/GlobalContext";
 import { IVideoModel } from "../../models/video/IVideoModel";
+import { FaEdit } from "react-icons/fa";
 
 interface VideoEditButtonProps {
     video: IVideoModel;
     apiUrl: string;
 }
 
-const VideoEditButton: React.FC<VideoEditButtonProps> = ({ video, apiUrl }) => {
-    const { OnShowModal, OnHideModal, sendRequest } = useContext(GlobalContext)!;
+const VideoEditButton: FC<VideoEditButtonProps> = ({ video, apiUrl }) => {
+    const globalContext = useContext(GlobalContext);
     const [editedVideo, setEditedVideo] = useState<IVideoModel>(video);
-    const [isAuthorized, setIsAuthorized] = useState(false);
+    const [newFile, setNewFile] = useState<File | null>(null);
+
+    if (!globalContext) return null;
+
+    const { OnShowModal, sendRequest, OnHideModal } = globalContext;
 
     useEffect(() => {
-        const token = sessionStorage.getItem("token");
-        if (token) {
-            setIsAuthorized(true);
-        } else {
-            setIsAuthorized(false);
-        }
-    }, []);
+        setEditedVideo(video);
+    }, [video]);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setEditedVideo({
+            ...editedVideo,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files ? e.target.files[0] : null;
+        if (file) setNewFile(file);
+    };
 
     const handleSave = async () => {
         try {
-            const response = await sendRequest(`${apiUrl}/${editedVideo.id}`, 'PUT', editedVideo, {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${sessionStorage.getItem("token")}`,
-            });
+            const formData = new FormData();
+            formData.append("title", editedVideo.title);
+            if (newFile) formData.append("videoFile", newFile);
+
+            const response = await sendRequest(
+                `${apiUrl}/${editedVideo.id}`,
+                "PUT",
+                formData,
+                { "Content-Type": "multipart/form-data" }
+            );
 
             if (response.status === 200) {
-                console.log("Збережено: ", editedVideo);
                 OnHideModal();
+                window.location.reload();
             } else {
                 throw new Error("Помилка при збереженні відео");
             }
@@ -40,58 +58,51 @@ const VideoEditButton: React.FC<VideoEditButtonProps> = ({ video, apiUrl }) => {
         }
     };
 
-    const handleShowModal = () => {
+    const openEditModal = () => {
         OnShowModal(
             <div>
+                <h5 className="mb-3">Редагувати відео</h5>
                 <label>Назва відео:</label>
                 <input
                     type="text"
                     name="title"
-                    value={editedVideo.title}
-                    onChange={(e) => setEditedVideo({ ...editedVideo, title: e.target.value })}
-                    className="form-control"
-                />
-                <label>Опис:</label>
-                <textarea
-                    name="description"
-                    value={editedVideo.description}
-                    onChange={(e) => setEditedVideo({ ...editedVideo, description: e.target.value })}
-                    className="form-control"
+                    value={editedVideo.title || ""}
+                    onChange={handleChange}
+                    className="form-control mb-2"
+                    placeholder="Введіть назву відео"
                 />
                 <label>Змінити файл відео:</label>
                 <input
                     type="file"
-                    onChange={(e) => {
-                        const file = e.target.files ? e.target.files[0] : null;
-                        if (file) {
-                            setEditedVideo({
-                                ...editedVideo,
-                                url: URL.createObjectURL(file),
-                            });
-                        }
-                    }}
-                    className="form-control"
+                    accept="video/*"
+                    onChange={handleFileChange}
+                    className="form-control mb-3"
                 />
-                <Button onClick={handleSave} className="mt-2">Зберегти</Button>
+                <div className="d-flex justify-content-end">
+                    <Button onClick={handleSave} variant="primary">
+                        Зберегти
+                    </Button>
+                </div>
             </div>
         );
     };
 
-    if (!isAuthorized) {
-        return null;
-    }
+    const isUserAuthenticated = sessionStorage.getItem("token") !== null;
+
+    if (!isUserAuthenticated) return null;
 
     return (
         <Button
             className="btn btn-warning position-absolute top-0 end-0 m-2"
-            onClick={handleShowModal}
-            title="Редагувати відео"
+            onClick={openEditModal}
         >
-            ✏
+            <FaEdit />
         </Button>
     );
 };
 
 export { VideoEditButton };
 
-// TODO : ДОПИСАТЬ ЭТУ КНОПКУ!!!!!
+
+// TODO : решить проблему с окном видео при его изменении
+

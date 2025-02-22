@@ -1,8 +1,9 @@
 import { FC, useContext, useEffect } from "react";
 import { GroupContext } from "../../contexts/GroupContext.tsx";
-import { Col, Container, Row, Image} from "react-bootstrap";
+import { Col, Container, Row, Image } from "react-bootstrap";
 import { ModalLoading } from "../shared/ModalLoading.tsx";
-import { GroupMemberEditButton } from "../../EditsButtons/GroupMemberEditButton.tsx"; 
+import { GroupMemberEditButton } from "../../EditsButtons/GroupMemberEditButton.tsx";
+import { GroupMemberDeleteButton } from "../../DeleteButtons/GroupMemberDeleteButton.tsx";
 
 interface MemberModalProps {
     memberId: number;
@@ -32,6 +33,7 @@ const MemberModal: FC<MemberModalProps> = ({ memberId }) => {
                     <Image className="member-modal__photo" src={memberFullInfo.member.photoUrl} />
                 </Col>
             </Row>
+
             <Row className="mb-3">
                 <Col xs={12} className="member-modal__info">
                     <h1 className="member-modal__info-title">{memberFullInfo.member.fullName}</h1>
@@ -40,9 +42,12 @@ const MemberModal: FC<MemberModalProps> = ({ memberId }) => {
                 </Col>
             </Row>
 
-            <Row className="mb-3">
-                <Col xs={12}>
+            <Row className="mb-3 d-flex justify-content-between">
+                <Col xs="auto">
                     <GroupMemberEditButton item={memberFullInfo} />
+                </Col>
+                <Col xs="auto">
+                    <GroupMemberDeleteButton item={memberFullInfo} />
                 </Col>
             </Row>
 
@@ -50,8 +55,17 @@ const MemberModal: FC<MemberModalProps> = ({ memberId }) => {
                 <Col xs={12} className="member-modal__social-networks">
                     {memberFullInfo.socials.map((socialNetwork) => (
                         <div key={socialNetwork.id} className="member-modal__social-networks__item">
-                            <p className="member-modal__social-networks__item-name">{socialNetwork.socialNetwork}</p>
-                            <a className="member-modal__social-networks__item-link" href={socialNetwork.url}>{socialNetwork.url}</a>
+                            <p className="member-modal__social-networks__item-name">
+                                {socialNetwork.socialNetwork}
+                            </p>
+                            <a
+                                className="member-modal__social-networks__item-link"
+                                href={socialNetwork.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                {socialNetwork.url}
+                            </a>
                         </div>
                     ))}
                 </Col>

@@ -1,7 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { GlobalContext } from "../contexts/shared/GlobalContext"; 
 import { IMusicPlatformItem } from "../../models/music/IMusicPlatformItem";
+import { FaEdit } from "react-icons/fa";
 
 interface MusicEditButtonProps {
     item: IMusicPlatformItem;
@@ -10,6 +11,16 @@ interface MusicEditButtonProps {
 const MusicEditButton: React.FC<MusicEditButtonProps> = ({ item }) => {
     const { OnShowModal, OnHideModal } = useContext(GlobalContext)!;
     const [editedItem, setEditedItem] = useState<IMusicPlatformItem>(item);
+    const [isAuthorized, setIsAuthorized] = useState(false);
+
+    useEffect(() => {
+        const token = sessionStorage.getItem("token");
+        if (token) {
+            setIsAuthorized(true);
+        } else {
+            setIsAuthorized(false);
+        }
+    }, []);
 
     const handleSave = async () => {
         try {
@@ -40,10 +51,13 @@ const MusicEditButton: React.FC<MusicEditButtonProps> = ({ item }) => {
                     className="form-control"
                 />
                 <Button onClick={handleSave} className="mt-2">Зберегти</Button>
-            </div>,
-            "Редагування музичної платформи"
+            </div>
         );
     };
+
+    if (!isAuthorized) {
+        return null;
+    }
 
     return (
         <>
@@ -52,7 +66,7 @@ const MusicEditButton: React.FC<MusicEditButtonProps> = ({ item }) => {
                 onClick={handleShowModal}
                 title="Редагувати"
             >
-                ✏
+               <FaEdit />
             </Button>
         </>
     );

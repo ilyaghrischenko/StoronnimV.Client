@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../contexts/shared/GlobalContext.tsx";
 import { Button } from "react-bootstrap";
 import { VideoContentModal } from "../elements/button/VideoContentModal.tsx";
+import { IoAddCircleSharp } from "react-icons/io5";
 
 interface AddVideoButtonProps {
     apiUrl: string;
@@ -35,7 +36,7 @@ const AddVideoButton: React.FC<AddVideoButtonProps> = ({ apiUrl, modalTitle, but
 
     return (
         <Button onClick={handleClick} variant="primary">
-            {buttonLabel}
+            <IoAddCircleSharp />
         </Button>
     );
 };

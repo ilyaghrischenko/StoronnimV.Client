@@ -2,6 +2,7 @@ import { useContext, FC } from "react";
 import { GlobalContext } from "../contexts/shared/GlobalContext.tsx";
 import { Button } from "react-bootstrap";
 import { ScheduleContentModal } from "../elements/button/ScheduleContentModal.tsx";
+import { IoAddCircleSharp } from "react-icons/io5";
 
 interface AddScheduleButtonProps {
     apiUrl: string;
@@ -28,7 +29,7 @@ const AddScheduleButton: FC<AddScheduleButtonProps> = ({ apiUrl, modalTitle, but
 
     return (
         <Button onClick={handleClick} variant="primary">
-            {buttonLabel}
+            <IoAddCircleSharp />
         </Button>
     );
 };

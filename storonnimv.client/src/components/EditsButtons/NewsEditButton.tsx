@@ -1,6 +1,7 @@
 import { FC, useContext, useState, useEffect } from "react";
 import { GlobalContext } from "../contexts/shared/GlobalContext";
 import { INewsFullItem } from "../../models/news/INewsFullItem";
+import { FaEdit } from "react-icons/fa";
 
 interface NewsEditButtonProps {
     newsItem: INewsFullItem;
@@ -109,8 +110,7 @@ const NewsEditButton: FC<NewsEditButtonProps> = ({ newsItem }) => {
                 <button className="btn btn-primary mt-3" onClick={handleSave}>
                     Зберегти
                 </button>
-            </div>,
-            "Редагування"
+            </div>
         );
     };
 
@@ -122,7 +122,7 @@ const NewsEditButton: FC<NewsEditButtonProps> = ({ newsItem }) => {
 
     return (
         <button className="btn btn-warning position-fixed bottom-0 right-0 m-3" onClick={openEditModal}>
-            ✏ Змінити 
+            <FaEdit />
         </button>
     );
 };

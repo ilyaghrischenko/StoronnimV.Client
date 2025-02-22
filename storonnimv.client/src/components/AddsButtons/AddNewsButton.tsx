@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../contexts/shared/GlobalContext.tsx";
 import { Button } from "react-bootstrap";
 import { NewsContentModal } from "../elements/button/NewsContentModal.tsx";
+import { IoAddCircleSharp } from "react-icons/io5";
 
 const AddNewsButton: React.FC = () => {
     const context = useContext(GlobalContext);
@@ -22,7 +23,7 @@ const AddNewsButton: React.FC = () => {
 
     return (
         <Button onClick={handleClick} variant="primary">
-            Додати новину
+            <IoAddCircleSharp />
         </Button>
     );
 };

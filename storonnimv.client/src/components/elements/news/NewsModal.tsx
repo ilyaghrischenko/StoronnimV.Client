@@ -5,6 +5,7 @@ import { NewsContext } from "../../contexts/NewsContext.tsx";
 import { Col, Container, Row, Image } from "react-bootstrap";
 import { ModalLoading } from "../shared/ModalLoading.tsx";
 import { NewsEditButton } from "../../EditsButtons/NewsEditButton.tsx";
+import { NewsDeleteButton } from "../../DeleteButtons/NewsDeleteButton.tsx";
 
 interface NewsModalProps {
     newsId?: number;
@@ -53,7 +54,14 @@ const NewsModal: FC<NewsModalProps> = ({ newsId }) => {
                 </Col>
             </Row>
 
-            {newsFullItem && <NewsEditButton newsItem={newsFullItem} />}
+            {newsFullItem && (
+            <div className="d-flex justify-content-end gap-2">
+                <NewsEditButton newsItem={newsFullItem} />
+                <NewsDeleteButton newsId={newsFullItem.id} apiUrl="/api/news" />
+            </div>
+        )}
+
+
         </Container>
     );
 };

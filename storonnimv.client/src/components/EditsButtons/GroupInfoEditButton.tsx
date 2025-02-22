@@ -1,5 +1,6 @@
 import { FC, useContext, useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
+import { FaEdit } from "react-icons/fa";
 import { IGroupInfo } from "../../models/group/IGroupInfo";
 import { GlobalContext } from "../contexts/shared/GlobalContext";
 
@@ -92,7 +93,7 @@ const GroupInfoEditButton: FC<GroupInfoEditButtonProps> = ({ groupInfo }) => {
 
     return (
         <Button variant="primary" onClick={openEditModal}>
-            Редагувати інформацію про групу
+            <FaEdit />
         </Button>
     );
 };

@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../contexts/shared/GlobalContext";
 import { Button } from "react-bootstrap";
 import { MusicPlatformModal } from "../elements/button/MusicPlatformModal";
+import { IoAddCircleSharp } from "react-icons/io5";
 
 interface AddMusicPlatformButtonProps {
     apiUrl: string;
@@ -9,7 +10,7 @@ interface AddMusicPlatformButtonProps {
     buttonLabel: string;
 }
 
-const AddMusicPlatformButton: React.FC<AddMusicPlatformButtonProps> = ({ apiUrl, modalTitle, buttonLabel }) => {
+const AddMusicPlatformButton: React.FC<AddMusicPlatformButtonProps> = ({ apiUrl, modalTitle }) => {
     const context = useContext(GlobalContext);
 
     if (!context) {
@@ -28,7 +29,7 @@ const AddMusicPlatformButton: React.FC<AddMusicPlatformButtonProps> = ({ apiUrl,
 
     return (
         <Button onClick={handleClick} variant="primary">
-            {buttonLabel}
+            <IoAddCircleSharp />
         </Button>
     );
 };
