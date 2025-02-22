@@ -10,7 +10,7 @@ interface AddScheduleButtonProps {
     buttonLabel: string;
 }
 
-const AddScheduleButton: FC<AddScheduleButtonProps> = ({ apiUrl, modalTitle, buttonLabel }) => {
+const AddScheduleButton: FC<AddScheduleButtonProps> = ({ apiUrl, modalTitle }) => {
     const context = useContext(GlobalContext);
 
     if (!context) {
