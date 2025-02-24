@@ -1,14 +1,16 @@
 import { useContext, FC } from "react";
-import { GlobalContext } from "../contexts/shared/GlobalContext";
+import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
 import { Button } from "react-bootstrap";
-import { AddMemberModal } from "../elements/button/AddMemberModal";
+import { ScheduleContentModal } from "../../button/ScheduleContentModal.tsx";
 import { IoAddCircleSharp } from "react-icons/io5";
 
-interface AddGroupButtonProps {
+interface AddScheduleButtonProps {
+    apiUrl: string;
+    modalTitle: string;
     buttonLabel: string;
 }
 
-const AddGroupButton: FC<AddGroupButtonProps> = ({ }) => {
+const AddScheduleButton: FC<AddScheduleButtonProps> = ({ apiUrl, modalTitle }) => {
     const context = useContext(GlobalContext);
 
     if (!context) {
@@ -22,7 +24,7 @@ const AddGroupButton: FC<AddGroupButtonProps> = ({ }) => {
     }
 
     const handleClick = () => {
-        OnShowModal(<AddMemberModal modalTitle="Додати учасника" />);
+        OnShowModal(<ScheduleContentModal apiUrl={apiUrl} modalTitle={modalTitle} />);
     };
 
     return (
@@ -32,4 +34,4 @@ const AddGroupButton: FC<AddGroupButtonProps> = ({ }) => {
     );
 };
 
-export { AddGroupButton };
+export { AddScheduleButton };

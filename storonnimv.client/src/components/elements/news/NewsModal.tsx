@@ -4,8 +4,8 @@ import { GlobalContext } from "../../contexts/shared/GlobalContext.tsx";
 import { NewsContext } from "../../contexts/NewsContext.tsx";
 import { Col, Container, Row, Image } from "react-bootstrap";
 import { ModalLoading } from "../shared/ModalLoading.tsx";
-import { NewsEditButton } from "../../EditsButtons/NewsEditButton.tsx";
-import { NewsDeleteButton } from "../../DeleteButtons/NewsDeleteButton.tsx";
+import { NewsEditButton } from "../admin/EditsButtons/NewsEditButton.tsx";
+import { NewsDeleteButton } from "../admin/DeleteButtons/NewsDeleteButton.tsx";
 
 interface NewsModalProps {
     newsId?: number;

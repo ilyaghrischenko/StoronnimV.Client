@@ -1,7 +1,7 @@
 import { FC, useContext } from "react";
 import { Button } from "react-bootstrap";
-import { GlobalContext } from "../contexts/shared/GlobalContext";
-import { IVideoModel } from "../../models/video/IVideoModel";
+import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
+import { IVideoModel } from "../../../../models/video/IVideoModel.ts";
 import { MdDeleteForever } from "react-icons/md";
 
 interface VideoDeleteButtonProps {

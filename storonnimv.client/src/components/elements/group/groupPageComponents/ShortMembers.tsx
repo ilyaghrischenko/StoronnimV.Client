@@ -6,7 +6,7 @@ import { ListItem } from "../../shared/GenericList/ListItem";
 import { GlobalContext } from "../../../contexts/shared/GlobalContext";
 import { MemberModal } from "../MemberModal.tsx";
 import { GroupContextProvider } from "../../../contexts/GroupContext.tsx";
-import { AddGroupButton } from "../../../AddsButtons/AddGroupButton.tsx";
+import { AddGroupButton } from "../../admin/AddsButtons/AddGroupButton.tsx";
 
 interface IShortMembersProps {
     members: IMemberShort[];

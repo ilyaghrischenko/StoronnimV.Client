@@ -2,8 +2,8 @@
 import { Button } from "react-bootstrap";
 import { IVideoModel } from "../../../models/video/IVideoModel";
 import { GlobalContext } from "../../contexts/shared/GlobalContext";
-import { VideoEditButton } from "../../EditsButtons/VideoEditButton";
-import { VideoDeleteButton } from "../../DeleteButtons/VideoDeleteButton";
+import { VideoEditButton } from "../admin/EditsButtons/VideoEditButton";
+import { VideoDeleteButton } from "../admin/DeleteButtons/VideoDeleteButton";
 
 interface IVideoListItemProps {
     videoItem: IVideoModel;

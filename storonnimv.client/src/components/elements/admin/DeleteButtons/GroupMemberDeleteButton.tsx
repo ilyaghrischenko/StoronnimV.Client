@@ -1,7 +1,7 @@
 import { FC, useContext } from "react";
 import { Button } from "react-bootstrap";
-import { GlobalContext } from "../contexts/shared/GlobalContext";
-import { IMemberFullInfo } from "../../models/group/IMemberInfo";
+import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
+import { IMemberFullInfo } from "../../../../models/group/IMemberInfo.ts";
 import { MdDeleteForever } from "react-icons/md";
 
 interface GroupMemberDeleteButtonProps {

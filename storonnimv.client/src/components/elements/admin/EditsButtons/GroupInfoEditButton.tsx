@@ -1,8 +1,8 @@
 import { FC, useContext, useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import { FaEdit } from "react-icons/fa";
-import { IGroupInfo } from "../../models/group/IGroupInfo";
-import { GlobalContext } from "../contexts/shared/GlobalContext";
+import { IGroupInfo } from "../../../../models/group/IGroupInfo.ts";
+import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
 
 interface GroupInfoEditButtonProps {
     groupInfo: IGroupInfo;

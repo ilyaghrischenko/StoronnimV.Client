@@ -2,8 +2,8 @@ import { FC, useContext, useEffect } from "react";
 import { GroupContext } from "../../contexts/GroupContext.tsx";
 import { Col, Container, Row, Image } from "react-bootstrap";
 import { ModalLoading } from "../shared/ModalLoading.tsx";
-import { GroupMemberEditButton } from "../../EditsButtons/GroupMemberEditButton.tsx";
-import { GroupMemberDeleteButton } from "../../DeleteButtons/GroupMemberDeleteButton.tsx";
+import { GroupMemberEditButton } from "../admin/EditsButtons/GroupMemberEditButton.tsx";
+import { GroupMemberDeleteButton } from "../admin/DeleteButtons/GroupMemberDeleteButton.tsx";
 
 interface MemberModalProps {
     memberId: number;

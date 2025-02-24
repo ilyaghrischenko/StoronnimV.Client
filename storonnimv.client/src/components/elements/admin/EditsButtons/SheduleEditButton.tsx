@@ -1,6 +1,6 @@
 import { useContext, FC, useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
-import { GlobalContext } from "../contexts/shared/GlobalContext.tsx";
+import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
 import { FaEdit } from "react-icons/fa";
 
 interface ScheduleEditButtonProps {

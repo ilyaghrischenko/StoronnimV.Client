@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Button } from "react-bootstrap";
-import { GlobalContext } from "../contexts/shared/GlobalContext";
-import { IMusicPlatformItem } from "../../models/music/IMusicPlatformItem";
+import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
+import { IMusicPlatformItem } from "../../../../models/music/IMusicPlatformItem.ts";
 import { MdDeleteForever } from "react-icons/md";
 
 interface MusicDeleteButtonProps {

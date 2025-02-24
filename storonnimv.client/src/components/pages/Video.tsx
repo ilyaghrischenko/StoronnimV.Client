@@ -1,7 +1,7 @@
 ﻿import { FC, ReactNode } from "react";
 import { Container } from "react-bootstrap";
 import { VideoContextProvider } from "../contexts/VideoContext";
-import { AddVideoButton } from "../AddsButtons/AddVideoButton";
+import { AddVideoButton } from "../elements/admin/AddsButtons/AddVideoButton";
 
 interface VideoProps {
     children: ReactNode;

@@ -1,6 +1,6 @@
 import { FC, useContext, useState, useEffect } from "react";
-import { GlobalContext } from "../contexts/shared/GlobalContext";
-import { INewsFullItem } from "../../models/news/INewsFullItem";
+import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
+import { INewsFullItem } from "../../../../models/news/INewsFullItem.ts";
 import { FaEdit } from "react-icons/fa";
 
 interface NewsEditButtonProps {
@@ -31,7 +31,7 @@ const NewsEditButton: FC<NewsEditButtonProps> = ({ newsItem }) => {
 
     const handleSave = async () => {
         try {
-            let formData = new FormData();
+            const formData = new FormData();
             if (newPhoto) {
                 formData.append("photo", newPhoto);
             }

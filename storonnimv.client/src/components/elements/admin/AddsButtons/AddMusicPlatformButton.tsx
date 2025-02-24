@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
-import { GlobalContext } from "../contexts/shared/GlobalContext.tsx";
+import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
 import { Button } from "react-bootstrap";
-import { VideoContentModal } from "../elements/button/VideoContentModal.tsx";
+import { MusicPlatformModal } from "../../button/MusicPlatformModal.tsx";
 import { IoAddCircleSharp } from "react-icons/io5";
 
-interface AddVideoButtonProps {
+interface AddMusicPlatformButtonProps {
     apiUrl: string;
     modalTitle: string;
     buttonLabel: string;
 }
 
-const AddVideoButton: React.FC<AddVideoButtonProps> = ({ apiUrl, modalTitle, buttonLabel }) => {
+const AddMusicPlatformButton: React.FC<AddMusicPlatformButtonProps> = ({ apiUrl, modalTitle }) => {
     const context = useContext(GlobalContext);
 
     if (!context) {
@@ -24,14 +24,7 @@ const AddVideoButton: React.FC<AddVideoButtonProps> = ({ apiUrl, modalTitle, but
     }
 
     const handleClick = () => {
-        OnShowModal(
-            <VideoContentModal 
-                apiUrl={apiUrl} 
-                modalTitle={modalTitle} 
-                buttonLabel={buttonLabel} 
-                section="video"
-            />
-        );
+        OnShowModal(<MusicPlatformModal apiUrl={apiUrl} modalTitle={modalTitle} />);
     };
 
     return (
@@ -41,4 +34,4 @@ const AddVideoButton: React.FC<AddVideoButtonProps> = ({ apiUrl, modalTitle, but
     );
 };
 
-export { AddVideoButton };
+export { AddMusicPlatformButton };

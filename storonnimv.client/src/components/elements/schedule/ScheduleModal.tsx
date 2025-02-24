@@ -2,8 +2,8 @@ import { FC, useContext, useEffect } from "react";
 import { ScheduleContext } from "../../contexts/ScheduleContext.tsx";
 import { Col, Container, Row, Image } from "react-bootstrap";
 import { ModalLoading } from "../shared/ModalLoading.tsx";
-import { ScheduleEditButton } from "../../EditsButtons/SheduleEditButton.tsx";
-import { ScheduleDeleteButton } from "../../DeleteButtons/ScheduleDeleteButton.tsx";  
+import { ScheduleEditButton } from "../admin/EditsButtons/SheduleEditButton.tsx";
+import { ScheduleDeleteButton } from "../admin/DeleteButtons/ScheduleDeleteButton.tsx";
 
 interface ScheduleModalProps {
     scheduleId: number;

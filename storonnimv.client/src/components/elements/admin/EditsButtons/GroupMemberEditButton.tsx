@@ -1,7 +1,7 @@
 import { FC, useState, useContext } from "react";
 import { Button } from "react-bootstrap";
-import { GlobalContext } from "../contexts/shared/GlobalContext"; 
-import { IMemberFullInfo } from "../../models/group/IMemberInfo";
+import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
+import { IMemberFullInfo } from "../../../../models/group/IMemberInfo.ts";
 import { FaEdit } from "react-icons/fa";
 
 interface GroupMemberEditButtonProps {

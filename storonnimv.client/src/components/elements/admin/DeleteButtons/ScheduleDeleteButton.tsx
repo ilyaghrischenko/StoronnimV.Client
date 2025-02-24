@@ -1,6 +1,6 @@
 import { useContext, FC, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
-import { GlobalContext } from "../contexts/shared/GlobalContext.tsx";
+import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
 import { MdDeleteForever } from "react-icons/md";
 
 interface ScheduleDeleteButtonProps {

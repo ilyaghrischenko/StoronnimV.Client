@@ -4,26 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="commit">
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="finish all fixes">
+      <change afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/BasicAdmins.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/AdminGroupInfo.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/List/AdminMembersList.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/List/AdminMusicList.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/List/AdminNewsList.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/List/AdminSchedulesList.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/List/AdminVideoList.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/ListItems/AdminMemberListItem.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/ListItems/AdminMusicListItem.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/ListItems/AdminNewsListItem.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/ListItems/AdminScheduleListItem.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/TableItems/ListItems/AdminVideoListItem.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/AddsButtons/AddGroupButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/AddsButtons/AddGroupButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/AddsButtons/AddMusicPlatformButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/AddsButtons/AddMusicPlatformButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/AddsButtons/AddNewsButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/AddsButtons/AddNewsButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/AddsButtons/AddSheduleButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/AddsButtons/AddSheduleButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/AddsButtons/AddVideoButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/AddsButtons/AddVideoButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/DeleteButtons/GroupMemberDeleteButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/DeleteButtons/GroupMemberDeleteButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/DeleteButtons/MusicDeleteButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/DeleteButtons/MusicDeleteButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/DeleteButtons/NewsDeleteButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/DeleteButtons/NewsDeleteButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/DeleteButtons/ScheduleDeleteButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/DeleteButtons/ScheduleDeleteButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/DeleteButtons/VideoDeleteButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/DeleteButtons/VideoDeleteButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/EditsButtons/GroupInfoEditButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/EditsButtons/GroupInfoEditButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/EditsButtons/GroupMemberEditButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/EditsButtons/GroupMemberEditButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/EditsButtons/MusicEditButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/EditsButtons/MusicEditButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/EditsButtons/NewsEditButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/EditsButtons/NewsEditButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/EditsButtons/SheduleEditButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/EditsButtons/SheduleEditButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/EditsButtons/VideoEditButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/EditsButtons/VideoEditButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/AdminContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/AdminContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/GroupDescription.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/GroupDescription.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/MemberModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/MemberModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/groupPageComponents/ShortMembers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/groupPageComponents/ShortMembers.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/music/MusicPlatformItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/music/MusicPlatformItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/NewsModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/NewsModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/ScheduleModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/ScheduleModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/VideoListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/VideoListItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Music.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Music.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/News.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/News.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Schedule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Schedule.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Video.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Video.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/shared/Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/shared/Page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/shared/ModalWindow.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/shared/ModalWindow.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/video/VideoListItem.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/video/VideoListItem.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css.map" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +111,7 @@
       <recent name="D:\ForProgramming\Projects\MyProjects\React\StoronnimV.Client\storonnimv.client\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GitHub\StoronnimV.Client\storonnimv.client\src\components\elements\admin" />
       <recent name="D:\GitHub\StoronnimV.Client\storonnimv.client\src\components\elements\admin\TableItems\ListItems" />
       <recent name="D:\GitHub\StoronnimV.Client\storonnimv.client\src\components\elements\admin\TableItems\List" />
     </key>
@@ -134,7 +147,7 @@
       <workItem from="1739290782298" duration="2465000" />
       <workItem from="1739460114754" duration="1991000" />
       <workItem from="1739706291324" duration="565000" />
-      <workItem from="1740414737933" duration="2638000" />
+      <workItem from="1740414737933" duration="4445000" />
     </task>
     <task id="LOCAL-00001" summary="change port">
       <option name="closed" value="true" />
@@ -256,7 +269,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738161647022</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="fixes">
+      <option name="closed" value="true" />
+      <created>1740417476338</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1740417476338</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,6 +311,8 @@
     <MESSAGE value="add edit and delete buttons" />
     <MESSAGE value="fix" />
     <MESSAGE value="add error page" />
-    <option name="LAST_COMMIT_MESSAGE" value="add error page" />
+    <MESSAGE value="fixes" />
+    <MESSAGE value="finish all fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish all fixes" />
   </component>
 </project>

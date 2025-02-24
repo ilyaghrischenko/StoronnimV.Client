@@ -1,6 +1,6 @@
 import { FC, useContext } from "react";
 import { Button } from "react-bootstrap";
-import { GlobalContext } from "../contexts/shared/GlobalContext";
+import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
 import { MdDeleteForever } from "react-icons/md";
 
 interface NewsDeleteButtonProps {

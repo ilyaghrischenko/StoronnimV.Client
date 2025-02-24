@@ -1,7 +1,7 @@
 ﻿import { FC } from "react";
 import { ListGroupItem } from "react-bootstrap";
-import { MusicEditButton } from "../../EditsButtons/MusicEditButton";
-import { MusicDeleteButton } from "../../DeleteButtons/MusicDeleteButton";
+import { MusicEditButton } from "../admin/EditsButtons/MusicEditButton";
+import { MusicDeleteButton } from "../admin/DeleteButtons/MusicDeleteButton";
 import { IMusicPlatformItem } from "../../../models/music/IMusicPlatformItem";
 
 interface MusicPlatformItemProps {

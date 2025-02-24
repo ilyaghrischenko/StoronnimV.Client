@@ -4,7 +4,7 @@ import { Description } from "./groupPageComponents/Description";
 import { ShortMembers } from "./groupPageComponents/ShortMembers";
 import { GroupContext } from "../../contexts/GroupContext";
 import { PageLoading } from "../shared/PageLoading";
-import { GroupInfoEditButton } from "../../EditsButtons/GroupInfoEditButton"; 
+import { GroupInfoEditButton } from "../admin/EditsButtons/GroupInfoEditButton";
 
 const GroupDescription: FC = () => {
     const groupContext = useContext(GroupContext);
