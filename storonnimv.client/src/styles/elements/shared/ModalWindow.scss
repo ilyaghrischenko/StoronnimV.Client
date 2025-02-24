@@ -12,6 +12,8 @@
   pointer-events: none;
   transition: 0.5s;
 
+  z-index: 100;
+
   &__content {
     overflow-y: auto;
     padding: 20px;

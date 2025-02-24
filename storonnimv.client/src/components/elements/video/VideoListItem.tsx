@@ -25,7 +25,7 @@ const VideoListItem: React.FC<IVideoListItemProps> = ({ videoItem }) => {
     };
 
     return (
-        <div className="video-list-item position-relative">
+        <div className="video-list-item">
             <h3 className="video-list-item__title">{videoItem.title}</h3>
             <video
                 className="video-list-item__preview"

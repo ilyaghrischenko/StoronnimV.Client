@@ -420,6 +420,7 @@
   opacity: 0;
   pointer-events: none;
   transition: 0.5s;
+  z-index: 100;
 }
 .modal__content {
   overflow-y: auto;
@@ -510,7 +511,6 @@
 .video-list-item {
   max-width: 100%;
   margin: 10px 0;
-  position: relative;
 }
 .video-list-item__preview {
   width: 100%; /* Видео адаптируется к ширине контейнера */

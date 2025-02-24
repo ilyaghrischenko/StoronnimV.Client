@@ -10,8 +10,6 @@ import {VideoSections} from "../../elements/video/VideoSections";
 import {VideoList} from "../../elements/video/VideoList";
 import {Admin} from "../Admin.tsx";
 import {AuthForm} from "../../elements/admin/AuthForm.tsx";
-import {ProtectedRoute} from "../../elements/admin/ProtectedRoute.tsx";
-import {AdminTable} from "../../elements/admin/AdminTable.tsx";
 import {Error} from "../Error.tsx";
 
 const Page: FC = () => {
@@ -31,12 +29,6 @@ const Page: FC = () => {
             <Route path="/video/section/:id" element={<Video children={<VideoList/>} />}/>
 
             <Route path="/admin" element={<Admin children={<AuthForm />} />}/>
-            <Route path="/admin/main"
-                   element={
-            <ProtectedRoute>
-                <Admin children={<AdminTable />} />
-            </ProtectedRoute>}
-            />
 
             <Route path="/error" element={<Error/>}/>
             <Route path="*" element={<Navigate to="/error" />} />

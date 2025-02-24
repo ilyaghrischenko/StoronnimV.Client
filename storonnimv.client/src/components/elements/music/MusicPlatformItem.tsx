@@ -20,10 +20,6 @@ const MusicPlatformItem: FC<MusicPlatformItemProps> = ({ item }) => {
         >
             <MusicEditButton item={item} />
             <MusicDeleteButton item={item} />
-
-            <div className="platform-details">
-                <h5>{item.platformUrl}</h5>
-            </div>
         </ListGroupItem>
     );
 };
