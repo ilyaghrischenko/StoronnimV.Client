@@ -1,18 +1,28 @@
-import {FC, ReactNode} from "react";
-import {Navigate} from "react-router-dom";
+import React, { ReactNode, useContext } from "react";
+import { GlobalContext } from "../../contexts/shared/GlobalContext";
+import { Navigate } from "react-router-dom";
 
-interface IProtectedRouteProps {
-    children: ReactNode;
+interface ProtectedRouteProps {
+    children: ReactNode;  
+    requiredRole: string; 
 }
 
-const ProtectedRoute: FC<IProtectedRouteProps> = ({children}) => {
-    const token = sessionStorage.getItem("token");
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, requiredRole }) => {
+    const globalContext = useContext(GlobalContext);
 
-    if (!token) {
-        return <Navigate to='/' replace />
+    if (!globalContext) {
+        throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    return children;
+    const { isAdminRoute } = globalContext;  
+    const token = sessionStorage.getItem("token");
+    const userRole = sessionStorage.getItem("role");
+
+    if (!token || !userRole || userRole !== requiredRole || !isAdminRoute()) {
+        //return <Navigate to="/403" replace />; Закоменчено для доступа к странице
+    }
+
+    return <>{children}</>;
 };
 
-export {ProtectedRoute};
+export { ProtectedRoute };
