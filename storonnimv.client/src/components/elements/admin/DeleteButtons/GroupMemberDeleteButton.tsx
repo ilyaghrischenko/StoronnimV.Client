@@ -10,6 +10,7 @@ interface GroupMemberDeleteButtonProps {
 
 const GroupMemberDeleteButton: FC<GroupMemberDeleteButtonProps> = ({ item }) => {
     const { OnShowModal, OnHideModal, sendRequest } = useContext(GlobalContext)!;
+    const token = sessionStorage.getItem('token');
 
     const handleDelete = async () => {
         try {
@@ -47,13 +48,15 @@ const GroupMemberDeleteButton: FC<GroupMemberDeleteButtonProps> = ({ item }) => 
 
     return (
         <>
-            <Button
-                className="btn btn-danger position-absolute top-0 end-0 m-5"
-                onClick={handleShowModal}
-                title="Видалити учасника"
-            >
-                <MdDeleteForever />
-            </Button>
+            {token && (
+                <Button
+                    className="btn btn-danger position-absolute top-0 end-0 m-5"
+                    onClick={handleShowModal}
+                    title="Видалити учасника"
+                >
+                    <MdDeleteForever />
+                </Button>
+            )}
         </>
     );
 };

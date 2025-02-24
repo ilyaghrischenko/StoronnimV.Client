@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
 import { IMusicPlatformItem } from "../../../../models/music/IMusicPlatformItem.ts";
 import { FaEdit } from "react-icons/fa";
@@ -12,6 +12,7 @@ const MusicEditButton: React.FC<MusicEditButtonProps> = ({ item }) => {
     const { OnShowModal, OnHideModal } = useContext(GlobalContext)!;
     const [editedItem, setEditedItem] = useState<IMusicPlatformItem>(item);
     const [isAuthorized, setIsAuthorized] = useState(false);
+    const [bgImage, setBgImage] = useState<File | null>(null);
 
     useEffect(() => {
         const token = sessionStorage.getItem("token");
@@ -24,7 +25,12 @@ const MusicEditButton: React.FC<MusicEditButtonProps> = ({ item }) => {
 
     const handleSave = async () => {
         try {
-            console.log("Сохранено: ", editedItem);
+            const formData = new FormData();
+            if (bgImage) {
+                formData.append("bgImage", bgImage);
+            }
+            formData.append("platformUrl", editedItem.platformUrl);
+            console.log("Отправка данных: ", formData);
             OnHideModal();
         } catch (error) {
             console.error("Помилка при збереженні платформи:", error);
@@ -34,23 +40,35 @@ const MusicEditButton: React.FC<MusicEditButtonProps> = ({ item }) => {
     const handleShowModal = () => {
         OnShowModal(
             <div>
-                <label>Посилання на платформу:</label>
-                <input
-                    type="text"
-                    name="platformUrl"
-                    value={editedItem.platformUrl}
-                    onChange={(e) => setEditedItem({ ...editedItem, platformUrl: e.target.value })}
-                    className="form-control"
-                />
-                <label>Зображення фону:</label>
-                <input
-                    type="text"
-                    name="bgImageUrl"
-                    value={editedItem.bgImageUrl}
-                    onChange={(e) => setEditedItem({ ...editedItem, bgImageUrl: e.target.value })}
-                    className="form-control"
-                />
-                <Button onClick={handleSave} className="mt-2">Зберегти</Button>
+                <Form>
+                    <div className="d-flex align-items-center mb-3">
+                        <Form.Label className="me-3" style={{ color: "white" }}>Зображення фону:</Form.Label>
+                        <Form.Control
+                            type="file"
+                            onChange={(e) => {
+                                const file = (e.target as HTMLInputElement).files?.[0] || null;
+                                setBgImage(file);
+                            }}
+                            accept="image/*"
+                            className="form-control"
+                            style={{ color: "white", backgroundColor: "#333" }}
+                        />
+                    </div>
+
+                    <div className="d-flex align-items-center mb-3">
+                        <Form.Label className="me-3" style={{ color: "white" }}>Посилання на платформу:</Form.Label>
+                        <Form.Control
+                            type="text"
+                            name="platformUrl"
+                            value={editedItem.platformUrl}
+                            onChange={(e) => setEditedItem({ ...editedItem, platformUrl: e.target.value })}
+                            className="form-control"
+                            style={{ color: "white", backgroundColor: "#333" }}
+                        />
+                    </div>
+
+                    <Button onClick={handleSave} className="mt-3">Зберегти</Button>
+                </Form>
             </div>
         );
     };
@@ -66,7 +84,7 @@ const MusicEditButton: React.FC<MusicEditButtonProps> = ({ item }) => {
                 onClick={handleShowModal}
                 title="Редагувати"
             >
-               <FaEdit />
+                <FaEdit />
             </Button>
         </>
     );

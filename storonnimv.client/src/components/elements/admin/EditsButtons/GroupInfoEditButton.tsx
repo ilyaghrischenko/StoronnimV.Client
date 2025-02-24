@@ -21,9 +21,8 @@ const GroupInfoEditButton: FC<GroupInfoEditButtonProps> = ({ groupInfo }) => {
     const { OnShowModal, OnHideModal } = globalContext;
 
     useEffect(() => {
-        // Проверяем наличие токена в sessionStorage
         const token = sessionStorage.getItem("token");
-        setIsAuthenticated(!!token); // Если токен есть, то установим состояние в true
+        setIsAuthenticated(!!token);
     }, []);
 
     const handleDescriptionChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -64,23 +63,25 @@ const GroupInfoEditButton: FC<GroupInfoEditButtonProps> = ({ groupInfo }) => {
             <div>
                 <h3>Редагування інформації про групу</h3>
                 <Form>
-                    <Form.Group controlId="groupDescription">
-                        <Form.Label>Опис групи</Form.Label>
+                    <div className="d-flex align-items-center mb-3">
+                        <Form.Label className="me-3" style={{ color: "white" }}>Опис групи:</Form.Label>
                         <Form.Control
                             as="textarea"
                             rows={3}
                             value={newDescription}
                             onChange={handleDescriptionChange}
                             placeholder="Введіть новий опис групи"
+                            style={{ color: "white", backgroundColor: "#333" }}
                         />
-                    </Form.Group>
-                    <Form.Group controlId="groupPhoto">
-                        <Form.Label>Фото</Form.Label>
+                    </div>
+                    <div className="d-flex align-items-center mb-3">
+                        <Form.Label className="me-3" style={{ color: "white" }}>Фото:</Form.Label>
                         <Form.Control
                             type="file"
                             onChange={handlePhotoChange}
+                            style={{ color: "white", backgroundColor: "#333" }}
                         />
-                    </Form.Group>
+                    </div>
                 </Form>
                 <Button variant="primary" onClick={handleSave}>Зберегти</Button>
             </div>

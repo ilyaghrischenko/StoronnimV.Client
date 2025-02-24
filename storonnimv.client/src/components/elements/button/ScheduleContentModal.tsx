@@ -85,18 +85,20 @@ const ScheduleContentModal: FC<ScheduleContentModalProps> = ({ apiUrl, modalTitl
                     <h2 className="text-center">{modalTitle}</h2>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="formTitle">
-                            <Form.Label>Заголовок {modalTitle}</Form.Label>
+                            <Form.Label className="me-3" style={{ color: "white" }}>Заголовок: </Form.Label>
                             <Form.Control
                                 type="text"
                                 name="title"
                                 value={title}
                                 onChange={handleChange}
                                 placeholder={`Введіть заголовок ${modalTitle}`}
+                                required
+                                style={{ color: "white", backgroundColor: "#333" }}
                             />
                         </Form.Group>
 
                         <Form.Group controlId="formDescription" className="mt-3">
-                            <Form.Label>Опис {modalTitle}</Form.Label>
+                            <Form.Label className="me-3" style={{ color: "white" }}>Опис: </Form.Label>
                             <Form.Control
                                 as="textarea"
                                 rows={3}
@@ -104,38 +106,55 @@ const ScheduleContentModal: FC<ScheduleContentModalProps> = ({ apiUrl, modalTitl
                                 value={description}
                                 onChange={handleChange}
                                 placeholder={`Введіть опис ${modalTitle}`}
+                                required
+                                style={{ color: "white", backgroundColor: "#333" }}
                             />
                         </Form.Group>
 
                         <Form.Group controlId="formLocation" className="mt-3">
-                            <Form.Label>Місце проведення {modalTitle}</Form.Label>
+                            <Form.Label className="me-3" style={{ color: "white" }}>Місце проведення: </Form.Label>
                             <Form.Control
                                 type="text"
                                 name="location"
                                 value={location}
                                 onChange={handleChange}
                                 placeholder={`Введіть місце проведення ${modalTitle}`}
+                                required
+                                style={{ color: "white", backgroundColor: "#333" }}
                             />
                         </Form.Group>
 
                         <Form.Group controlId="formPerformanceDateTime" className="mt-3">
-                            <Form.Label>Дата та час проведення {modalTitle}</Form.Label>
+                            <Form.Label className="me-3" style={{ color: "white" }}>Дата та час проведення: </Form.Label>
                             <Form.Control
                                 type="datetime-local"
                                 name="performanceDateTime"
                                 value={performanceDateTime}
                                 onChange={handleChange}
+                                required
+                                style={{ color: "white", backgroundColor: "#333" }}
                             />
                         </Form.Group>
 
                         <Form.Group controlId="formPhoto" className="mt-3">
-                            <Form.Label>Фото {modalTitle}</Form.Label>
-                            <Form.Control
-                                type="file"
-                                name="photo"
-                                onChange={handleFileChange}
-                                accept="image/*"
-                            />
+                            <Form.Label className="me-3" style={{ color: "white" }}>Фото: </Form.Label>
+                            <div>
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    id="imageUpload"
+                                    style={{ display: "none" }}
+                                    onChange={handleFileChange}
+                                />
+                                <Button
+                                    variant="secondary"
+                                    onClick={() => document.getElementById("imageUpload")?.click()}
+                                    className="me-2"
+                                >
+                                    Завантажити фото
+                                </Button>
+                                {photo && <span className="ms-2">{photo.name}</span>}
+                            </div>
                         </Form.Group>
 
                         <Button variant="primary" type="submit" className="mt-3 w-100">

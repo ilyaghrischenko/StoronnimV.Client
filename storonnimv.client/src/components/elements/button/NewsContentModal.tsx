@@ -89,7 +89,7 @@ const NewsContentModal: React.FC<NewsContentModalProps> = ({ apiUrl, modalTitle 
                     <h2 className="text-center">{modalTitle}</h2>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="formTitle">
-                            <Form.Label>Заголовок {modalTitle}</Form.Label>
+                            <Form.Label className="me-3" style={{ color: "white" }}>Заголовок: {modalTitle}</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="title"
@@ -97,11 +97,12 @@ const NewsContentModal: React.FC<NewsContentModalProps> = ({ apiUrl, modalTitle 
                                 onChange={handleChange}
                                 placeholder={`Введіть заголовок ${modalTitle}`}
                                 required
+                                style={{ color: "white", backgroundColor: "#333" }}
                             />
                         </Form.Group>
 
                         <Form.Group controlId="formDescription" className="mt-3">
-                            <Form.Label>Опис {modalTitle}</Form.Label>
+                            <Form.Label className="me-3" style={{ color: "white" }}>Опис: {modalTitle}</Form.Label>
                             <Form.Control
                                 as="textarea"
                                 rows={3}
@@ -110,15 +111,17 @@ const NewsContentModal: React.FC<NewsContentModalProps> = ({ apiUrl, modalTitle 
                                 onChange={handleChange}
                                 placeholder={`Введіть опис ${modalTitle}`}
                                 required
+                                style={{ color: "white", backgroundColor: "#333" }}
                             />
                         </Form.Group>
 
                         <Form.Group controlId="formPriority" className="mt-3">
-                            <Form.Label>Пріоритет {modalTitle}</Form.Label>
+                            <Form.Label className="me-3" style={{ color: "white" }}>Пріоритет: {modalTitle}</Form.Label>
                             <Form.Select
                                 name="priority"
                                 value={priority}
                                 onChange={handleChange}
+                                style={{ color: "white", backgroundColor: "#333" }}
                             >
                                 <option value="Secondary">Secondary</option>
                                 <option value="Main">Main</option>
@@ -126,18 +129,19 @@ const NewsContentModal: React.FC<NewsContentModalProps> = ({ apiUrl, modalTitle 
                         </Form.Group>
 
                         <Form.Group controlId="formDate" className="mt-3">
-                            <Form.Label>Дата {modalTitle}</Form.Label>
+                            <Form.Label className="me-3" style={{ color: "white" }}>Дата: {modalTitle}</Form.Label>
                             <Form.Control
                                 type="date"
                                 name="date"
                                 value={date}
                                 onChange={handleChange}
                                 required
+                                style={{ color: "white", backgroundColor: "#333" }}
                             />
                         </Form.Group>
 
                         <Form.Group controlId="formPhoto" className="mt-3">
-                            <Form.Label>Фото (необов'язково)</Form.Label>
+                            <Form.Label className="me-3" style={{ color: "white" }}>Фото: </Form.Label>
                             <div>
                                 <input
                                     type="file"
@@ -149,6 +153,7 @@ const NewsContentModal: React.FC<NewsContentModalProps> = ({ apiUrl, modalTitle 
                                 <Button
                                     variant="secondary"
                                     onClick={() => document.getElementById("imageUpload")?.click()}
+                                    className="me-2"
                                 >
                                     Завантажити фото
                                 </Button>
@@ -157,7 +162,7 @@ const NewsContentModal: React.FC<NewsContentModalProps> = ({ apiUrl, modalTitle 
                         </Form.Group>
 
                         <Form.Group controlId="formVideo" className="mt-3">
-                            <Form.Label>Відео (необов'язково)</Form.Label>
+                            <Form.Label className="me-3" style={{ color: "white" }}>Відео (необов'язково): </Form.Label>
                             <div>
                                 <input
                                     type="file"
@@ -169,6 +174,7 @@ const NewsContentModal: React.FC<NewsContentModalProps> = ({ apiUrl, modalTitle 
                                 <Button
                                     variant="secondary"
                                     onClick={() => document.getElementById("videoUpload")?.click()}
+                                    className="me-2"
                                 >
                                     Завантажити відео
                                 </Button>

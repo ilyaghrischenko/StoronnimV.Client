@@ -69,28 +69,31 @@ const VideoContentModal: FC<VideoContentModalProps> = ({ apiUrl, modalTitle, sec
     if (loading) return <ModalLoading />;
 
     return (
-        <Container className="content-modal">
+        <Container>
             <Row>
                 <Col xs={12}>
-                    <h2 className="text-center">{modalTitle}</h2>
+                    <h2 className="text-center" style={{ color: "white" }}>{modalTitle}</h2>
                     <Form onSubmit={handleSubmit}>
-                        <Form.Group controlId="formTitle">
-                            <Form.Label>Заголовок {modalTitle}</Form.Label>
+                        <Form.Group controlId="formTitle" className="mb-3">
+                            <Form.Label style={{ color: "white" }} className="me-3">Заголовок:</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="title"
                                 value={title}
                                 onChange={handleTitleChange}
                                 placeholder={`Введіть заголовок ${modalTitle}`}
+                                required
+                                style={{ color: "white", backgroundColor: "#333" }}
                             />
                         </Form.Group>
 
-                        <Form.Group controlId="formType" className="mt-3">
-                            <Form.Label>Тип відео</Form.Label>
+                        <Form.Group controlId="formType" className="mb-3">
+                            <Form.Label style={{ color: "white" }} className="me-3">Тип відео:</Form.Label>
                             <select 
                                 value={videoType} 
                                 onChange={handleTypeChange} 
                                 className="form-control"
+                                style={{ backgroundColor: "#333", color: "white" }}
                             >
                                 <option value="Performance">Performance</option>
                                 <option value="Backstage">Backstage</option>
@@ -98,17 +101,18 @@ const VideoContentModal: FC<VideoContentModalProps> = ({ apiUrl, modalTitle, sec
                             </select>
                         </Form.Group>
 
-                        <Form.Group controlId="formVideo" className="mt-3">
-                            <Form.Label>Завантажте відео</Form.Label>
+                        <Form.Group controlId="formVideo" className="mb-3">
+                            <Form.Label style={{ color: "white" }} className="me-3">Завантажте відео:</Form.Label>
                             <Form.Control
                                 type="file"
                                 accept="video/*"
                                 onChange={handleFileChange}
+                                style={{ color: "white", backgroundColor: "#333" }}
                             />
                         </Form.Group>
 
-                        <Button variant="primary" type="submit" className="mt-3 w-100">
-                            Додати {modalTitle}
+                        <Button variant="primary" type="submit" className="mt-3 w-100" disabled={loading}>
+                            {loading ? "Завантаження..." : `Додати ${modalTitle}`}
                         </Button>
                     </Form>
                 </Col>

@@ -60,52 +60,66 @@ const NewsEditButton: FC<NewsEditButtonProps> = ({ newsItem }) => {
             <div>
                 <h3>Редагування новини</h3>
 
-                <label>Заголовок:</label>
-                <input
-                    type="text"
-                    name="title"
-                    value={editedNews.title || ""}
-                    onChange={handleChange}
-                    className="form-control"
-                    placeholder="Введіть заголовок новини"
-                />
+                <div className="mb-3">
+                    <label className="me-3" style={{ color: "white" }}>Заголовок:</label>
+                    <input
+                        type="text"
+                        name="title"
+                        value={editedNews.title || ""}
+                        onChange={handleChange}
+                        className="form-control"
+                        placeholder="Введіть заголовок новини"
+                        style={{ color: "white", backgroundColor: "#333" }}
+                    />
+                </div>
 
-                <label>Опис:</label>
-                <textarea
-                    name="description"
-                    value={editedNews.description || ""}
-                    onChange={handleChange}
-                    className="form-control"
-                    placeholder="Напишіть опис новини"
-                />
+                <div className="mb-3">
+                    <label className="me-3" style={{ color: "white" }}>Опис:</label>
+                    <textarea
+                        name="description"
+                        value={editedNews.description || ""}
+                        onChange={handleChange}
+                        className="form-control"
+                        placeholder="Напишіть опис новини"
+                        style={{ color: "white", backgroundColor: "#333" }}
+                    />
+                </div>
 
-                <label>Пріоритет:</label>
-                <input
-                    type="text"
-                    name="priority"
-                    value={editedNews.priority || ""}
-                    onChange={handleChange}
-                    className="form-control"
-                    placeholder="Введіть пріоритет новини" 
-                />
+                <div className="mb-3">
+                    <label className="me-3" style={{ color: "white" }}>Пріоритет:</label>
+                    <input
+                        type="text"
+                        name="priority"
+                        value={editedNews.priority || ""}
+                        onChange={handleChange}
+                        className="form-control"
+                        placeholder="Введіть пріоритет новини" 
+                        style={{ color: "white", backgroundColor: "#333" }}
+                    />
+                </div>
 
-                <label>Дата:</label>
-                <input
-                    type="date"
-                    name="date"
-                    value={editedNews.date || ""}
-                    onChange={handleChange}
-                    className="form-control"
-                    placeholder="Виберіть дату новини" 
-                />
+                <div className="mb-3">
+                    <label className="me-3" style={{ color: "white" }}>Дата:</label>
+                    <input
+                        type="date"
+                        name="date"
+                        value={editedNews.date || ""}
+                        onChange={handleChange}
+                        className="form-control"
+                        placeholder="Виберіть дату новини" 
+                        style={{ color: "white", backgroundColor: "#333" }}
+                    />
+                </div>
 
-                <label className="mt-3">Завантажте нове фото новини:</label>
-                <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => setNewPhoto(e.target.files ? e.target.files[0] : null)}
-                    className="form-control"
-                />
+                <div className="mb-3">
+                    <label className="me-3" style={{ color: "white" }}>Завантажте нове фото новини:</label>
+                    <input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => setNewPhoto(e.target.files ? e.target.files[0] : null)}
+                        className="form-control"
+                    />
+                </div>
 
                 <button className="btn btn-primary mt-3" onClick={handleSave}>
                     Зберегти
@@ -128,4 +142,3 @@ const NewsEditButton: FC<NewsEditButtonProps> = ({ newsItem }) => {
 };
 
 export { NewsEditButton };
-// TODO : решить проблему с вводом данных в поля ввода кнопок изминения(не работает)

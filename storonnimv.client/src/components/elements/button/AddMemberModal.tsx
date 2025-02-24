@@ -14,12 +14,21 @@ const AddMemberModal: React.FC<AddMemberModalProps> = ({ modalTitle }) => {
     const [role, setRole] = useState<string>("");
     const [socialLinks, setSocialLinks] = useState<string[]>([]);
     const [newSocialLink, setNewSocialLink] = useState<string>("");
+    const [photo, setPhoto] = useState<File | null>(null);
+    const [photoName, setPhotoName] = useState<string>("Виберіть фото");
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         if (name === "fullName") setFullName(value);
         else if (name === "description") setDescription(value);
         else if (name === "role") setRole(value);
+    };
+
+    const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files && e.target.files[0]) {
+            setPhoto(e.target.files[0]);
+            setPhotoName(e.target.files[0].name);
+        }
     };
 
     const handleAddSocialLink = () => {
@@ -32,7 +41,17 @@ const AddMemberModal: React.FC<AddMemberModalProps> = ({ modalTitle }) => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await sendRequest("/api/members", "POST", { fullName, description, role, socialLinks });
+            const formData = new FormData();
+            formData.append("fullName", fullName);
+            formData.append("description", description);
+            formData.append("role", role);
+            socialLinks.forEach((link, index) => formData.append(`socialLinks[${index}]`, link));
+            if (photo) formData.append("photo", photo);
+
+            const response = await sendRequest("/api/members", "POST", formData, {
+                "Content-Type": "multipart/form-data",
+            });
+
             console.log(response);
             OnHideModal();
         } catch (error) {
@@ -46,8 +65,8 @@ const AddMemberModal: React.FC<AddMemberModalProps> = ({ modalTitle }) => {
                 <Col xs={12}>
                     <h2>{modalTitle}</h2>
                     <Form onSubmit={handleSubmit}>
-                        <Form.Group controlId="formFullName">
-                            <Form.Label>ПІБ</Form.Label>
+                        <Form.Group controlId="formFullName" className="mb-3">
+                            <Form.Label style={{ color: "white" }} className="me-3">ПІБ: </Form.Label>
                             <Form.Control
                                 type="text"
                                 name="fullName"
@@ -55,11 +74,12 @@ const AddMemberModal: React.FC<AddMemberModalProps> = ({ modalTitle }) => {
                                 onChange={handleChange}
                                 placeholder="Введіть повне ім'я"
                                 required
+                                style={{ color: "white", backgroundColor: "#333" }}
                             />
                         </Form.Group>
 
-                        <Form.Group controlId="formDescription" className="mt-3">
-                            <Form.Label>Опис</Form.Label>
+                        <Form.Group controlId="formDescription" className="mb-3">
+                            <Form.Label style={{ color: "white" }} className="me-3">Опис: </Form.Label>
                             <Form.Control
                                 as="textarea"
                                 rows={3}
@@ -68,11 +88,12 @@ const AddMemberModal: React.FC<AddMemberModalProps> = ({ modalTitle }) => {
                                 onChange={handleChange}
                                 placeholder="Введіть опис"
                                 required
+                                style={{ color: "white", backgroundColor: "#333" }}
                             />
                         </Form.Group>
 
-                        <Form.Group controlId="formRole" className="mt-3">
-                            <Form.Label>Роль</Form.Label>
+                        <Form.Group controlId="formRole" className="mb-3">
+                            <Form.Label style={{ color: "white" }} className="me-3">Роль: </Form.Label>
                             <Form.Control
                                 type="text"
                                 name="role"
@@ -80,17 +101,40 @@ const AddMemberModal: React.FC<AddMemberModalProps> = ({ modalTitle }) => {
                                 onChange={handleChange}
                                 placeholder="Введіть роль"
                                 required
+                                style={{ color: "white", backgroundColor: "#333" }}
                             />
                         </Form.Group>
 
-                        <Form.Group controlId="formSocialLinks" className="mt-3">
-                            <Form.Label>Посилання на соціальні мережі</Form.Label>
-                            <div>
-                                <input
+                        <Form.Group controlId="formPhoto" className="mb-3">
+                            <Form.Label style={{ color: "white" }} className="me-3">Фото учасника: </Form.Label>
+                            <div className="d-flex align-items-center">
+                                <Button
+                                    variant="secondary"
+                                    onClick={() => document.getElementById("photoUpload")?.click()}
+                                    className="me-2"
+                                >
+                                    Виберіть фото
+                                </Button>
+                                <span>{photoName}</span>
+                                <Form.Control
+                                    type="file"
+                                    id="photoUpload"
+                                    accept="image/*"
+                                    onChange={handlePhotoChange}
+                                    style={{ display: "none" }}
+                                />
+                            </div>
+                        </Form.Group>
+
+                        <Form.Group controlId="formSocialLinks" className="mb-3">
+                            <Form.Label style={{ color: "white" }} className="me-3">Посилання на соціальні мережі: </Form.Label>
+                            <div className="d-flex">
+                                <Form.Control
                                     type="text"
                                     value={newSocialLink}
                                     onChange={(e) => setNewSocialLink(e.target.value)}
                                     placeholder="Введіть посилання на соціальну мережу"
+                                    style={{ color: "white", backgroundColor: "#333" }}
                                 />
                                 <Button
                                     variant="secondary"
@@ -102,7 +146,7 @@ const AddMemberModal: React.FC<AddMemberModalProps> = ({ modalTitle }) => {
                             </div>
                             <ul>
                                 {socialLinks.map((link, index) => (
-                                    <li key={index}>{link}</li>
+                                    <li key={index} style={{ color: "white" }}>{link}</li>
                                 ))}
                             </ul>
                         </Form.Group>

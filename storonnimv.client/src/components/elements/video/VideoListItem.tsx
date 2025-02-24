@@ -4,13 +4,14 @@ import { IVideoModel } from "../../../models/video/IVideoModel";
 import { GlobalContext } from "../../contexts/shared/GlobalContext";
 import { VideoEditButton } from "../admin/EditsButtons/VideoEditButton";
 import { VideoDeleteButton } from "../admin/DeleteButtons/VideoDeleteButton";
+import { FaEdit } from "react-icons/fa";
 
 interface IVideoListItemProps {
     videoItem: IVideoModel;
 }
 
 const VideoListItem: React.FC<IVideoListItemProps> = ({ videoItem }) => {
-    const { OnShowModal } = useContext(GlobalContext)!;
+    const { OnShowModal, OnHideModal } = useContext(GlobalContext)!;
     const [isAuthorized, setIsAuthorized] = useState(false);
 
     useEffect(() => {
@@ -20,7 +21,11 @@ const VideoListItem: React.FC<IVideoListItemProps> = ({ videoItem }) => {
 
     const handleShowEditModal = () => {
         OnShowModal(
-            <VideoEditButton video={videoItem} apiUrl="your-api-url" />
+            <VideoEditButton
+                video={videoItem}
+                apiUrl="your-api-url"
+                onClose={OnHideModal}
+            />
         );
     };
 
@@ -42,7 +47,7 @@ const VideoListItem: React.FC<IVideoListItemProps> = ({ videoItem }) => {
                         onClick={handleShowEditModal}
                         title="Редагувати відео"
                     >
-                        ✏
+                       <FaEdit/> 
                     </Button>
                     <VideoDeleteButton
                         video={videoItem}

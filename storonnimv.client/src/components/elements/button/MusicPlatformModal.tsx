@@ -70,45 +70,47 @@ const MusicPlatformModal: React.FC<MusicPlatformModalProps> = ({ apiUrl, modalTi
     return (
         <Modal.Dialog>
             <Modal.Header closeButton>
-                <Modal.Title>{modalTitle}</Modal.Title>
+                <Modal.Title style={{ color: "white" }}>{modalTitle}</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
                 <Form>
-                    <Form.Group controlId="platformUrl">
-                        <Form.Label>URL платформи</Form.Label>
+                    <Form.Group controlId="platformUrl" className="mb-3">
+                        <Form.Label style={{ color: "white" }} className="me-3">URL платформи: </Form.Label>
                         <Form.Control
                             type="text"
                             name="platformUrl"
                             value={platform.platformUrl}
                             onChange={handleInputChange}
                             placeholder="Введіть URL платформи"
+                            style={{ color: "white", backgroundColor: "#333" }}
                         />
                     </Form.Group>
 
-                    <Form.Group controlId="bgImageUrl">
-                        <Form.Label>Виберіть файл зображення</Form.Label>
-                        <div>
-                            <input
+                    <Form.Group controlId="bgImageUrl" className="mb-3">
+                        <Form.Label style={{ color: "white" }} className="me-3">Виберіть файл зображення: </Form.Label>
+                        <div className="d-flex align-items-center">
+                            <Button
+                                variant="secondary"
+                                onClick={() => document.getElementById("imageUpload")?.click()}
+                                className="me-2"
+                            >
+                                Виберіть файл зображення
+                            </Button>
+                            <Form.Control
                                 type="file"
                                 accept="image/*"
                                 id="imageUpload"
                                 style={{ display: "none" }}
                                 onChange={handleImageChange}
                             />
-                            <Button
-                                variant="secondary"
-                                onClick={() => document.getElementById("imageUpload")?.click()}
-                            >
-                                Виберіть файл зображення
-                            </Button>
                         </div>
                     </Form.Group>
                 </Form>
             </Modal.Body>
 
             <Modal.Footer>
-                <Button variant="primary" onClick={handleSubmit}>
+                <Button variant="primary" onClick={handleSubmit} className="w-100">
                     Додати
                 </Button>
             </Modal.Footer>

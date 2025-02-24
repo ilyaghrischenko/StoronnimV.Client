@@ -89,18 +89,19 @@ const ScheduleEditButton: FC<ScheduleEditButtonProps> = ({ apiUrl, modalTitle, s
                 <Modal.Body>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="formTitle">
-                            <Form.Label>Заголовок {modalTitle}</Form.Label>
+                            <Form.Label className="form-label">Заголовок {modalTitle}</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="title"
                                 value={title}
                                 onChange={handleChange}
                                 placeholder={`Введіть заголовок ${modalTitle}`}
+                                className="form-control"
                             />
                         </Form.Group>
 
                         <Form.Group controlId="formDescription" className="mt-3">
-                            <Form.Label>Опис {modalTitle}</Form.Label>
+                            <Form.Label className="form-label">Опис {modalTitle}</Form.Label>
                             <Form.Control
                                 as="textarea"
                                 rows={3}
@@ -108,37 +109,41 @@ const ScheduleEditButton: FC<ScheduleEditButtonProps> = ({ apiUrl, modalTitle, s
                                 value={description}
                                 onChange={handleChange}
                                 placeholder={`Введіть опис ${modalTitle}`}
+                                className="form-control"
                             />
                         </Form.Group>
 
                         <Form.Group controlId="formLocation" className="mt-3">
-                            <Form.Label>Місце проведення {modalTitle}</Form.Label>
+                            <Form.Label className="form-label">Місце проведення {modalTitle}</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="location"
                                 value={location}
                                 onChange={handleChange}
                                 placeholder={`Введіть місце проведення ${modalTitle}`}
+                                className="form-control"
                             />
                         </Form.Group>
 
                         <Form.Group controlId="formPerformanceDateTime" className="mt-3">
-                            <Form.Label>Дата та час проведення {modalTitle}</Form.Label>
+                            <Form.Label className="form-label">Дата та час проведення {modalTitle}</Form.Label>
                             <Form.Control
                                 type="datetime-local"
                                 name="performanceDateTime"
                                 value={performanceDateTime}
                                 onChange={handleChange}
+                                className="form-control"
                             />
                         </Form.Group>
 
                         <Form.Group controlId="formPhoto" className="mt-3">
-                            <Form.Label>Фото {modalTitle}</Form.Label>
+                            <Form.Label className="form-label">Фото {modalTitle}</Form.Label>
                             <Form.Control
                                 type="file"
                                 name="photo"
                                 onChange={handleFileChange}
                                 accept="image/*"
+                                className="form-control"
                             />
                         </Form.Group>
 
