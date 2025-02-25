@@ -3,8 +3,8 @@ import { Button, Modal } from "react-bootstrap";
 import { GlobalContext } from "../../../contexts/shared/GlobalContext";
 
 interface DeleteAdminModalProps {
-    adminId: string;
-    onDelete: (id: string) => void;
+    adminId: number;
+    onDelete: (id: number) => void;
 }
 
 const DeleteAdminModal: React.FC<DeleteAdminModalProps> = ({ adminId, onDelete }) => {

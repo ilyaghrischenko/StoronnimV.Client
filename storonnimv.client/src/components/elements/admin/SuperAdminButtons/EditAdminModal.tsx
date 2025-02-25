@@ -3,7 +3,7 @@ import { Button, Modal, Form } from "react-bootstrap";
 import { GlobalContext } from "../../../contexts/shared/GlobalContext";
 
 interface EditAdminModalProps {
-    admin: { id: string; login: string };
+    admin: { id: number; login: string };
 }
 
 const EditAdminModal: React.FC<EditAdminModalProps> = ({ admin }) => {

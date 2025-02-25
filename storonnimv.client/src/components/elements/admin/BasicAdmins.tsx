@@ -6,13 +6,13 @@ import { EditAdminModal } from "../../elements/admin/SuperAdminButtons/EditAdmin
 import { DeleteAdminModal } from "../../elements/admin/SuperAdminButtons/DeleteAdminModal";
 
 interface Admin {
-    id: string;
+    id: number;
     login: string;
 }
 
 interface BasicAdminsProps {
     admins: Admin[];
-    onDelete: (adminId: string) => void;
+    onDelete: (id: number) => void;
     onEdit: (admin: Admin) => void;
 }
 
