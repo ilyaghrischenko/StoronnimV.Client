@@ -40,7 +40,10 @@ const Page: FC = () => {
             <Route path="/news" element={<News />} />
             <Route path="/music" element={<Music />} />
             <Route path="/group" element={<Group />} />
-            <Route path="/video/sections" element={<Video children={<VideoSections />} />} />
+            <Route path="/video/sections" element={<Video children={<VideoSections
+                topImage={"https://th.bing.com/th/id/OIP.sl5zuf2713AebuRLfZOJeAHaE6?rs=1&pid=ImgDetMain"}
+                bottomLeftImage={"https://th.bing.com/th/id/OIP.sl5zuf2713AebuRLfZOJeAHaE6?rs=1&pid=ImgDetMain"}
+                bottomRightImage={"https://th.bing.com/th/id/OIP.sl5zuf2713AebuRLfZOJeAHaE6?rs=1&pid=ImgDetMain"}/>} />} />
             <Route path="/video/section/:id" element={<Video children={<VideoList />} />} />
             <Route path="/admin" element={<Admin children={<AuthForm />} />} />
             
