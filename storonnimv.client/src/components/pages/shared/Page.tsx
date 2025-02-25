@@ -13,7 +13,6 @@ import { AuthForm } from "../../elements/admin/AuthForm.tsx";
 import { Error } from "../Error.tsx";
 import { ProtectedRoute } from "../../elements/admin/ProtectedRoute.tsx";
 import { BasicAdmins } from "../../elements/admin/BasicAdmins.tsx";
-import { ForbiddenPage } from "../../pages/ForbiddenPage.tsx";
 
 const sampleAdmins = [
     { id: 1, login: "admin1" },
@@ -59,7 +58,6 @@ const Page: FC = () => {
             />
 
             <Route path="/error" element={<Error />} />
-            <Route path="/403" element={<ForbiddenPage />} />
             <Route path="*" element={<Navigate to="/error" />} />
         </Routes>
     );
