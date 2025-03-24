@@ -1,19 +1,13 @@
-import { createContext, FC, ReactNode, useContext, useState } from "react";
+import { createContext, FC, ReactNode, useContext } from "react";
 import { GlobalContext } from "./shared/GlobalContext.tsx";
 import { ILogInRequest } from "../../models/admin/ILogInRequest.ts";
 import { useNavigate } from "react-router-dom";
-
-interface Admin {
-    id: string;
-    login: string;
-}
 
 interface AdminContextType {
     logIn: (logInRequest: ILogInRequest) => Promise<void>;
     loading: boolean;
     deleteAdmin: (adminId: string) => Promise<void>;
     editAdmin: (adminId: string, login: string, password: string) => Promise<void>;
-    currentUser: Admin | null;
 }
 
 const AdminContext = createContext<AdminContextType | undefined>(undefined);
@@ -32,8 +26,6 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({ children }) => {
     const { sendRequest, loading } = globalContext;
     const navigate = useNavigate();
 
-    const [currentUser, setCurrentUser] = useState<Admin | null>(null);
-
     const logIn = async (logInRequest: ILogInRequest) => {
         try {
             const response = await sendRequest(
@@ -47,24 +39,10 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({ children }) => {
                 return;
             }
 
-            const data: string = response.data;
-            sessionStorage.setItem('token', data);
             navigate('/', { replace: true });
 
-            const userRole = response.data.role; 
-            sessionStorage.setItem('role', userRole);
-
-            const userResponse = await sendRequest(
-                'http://localhost:8080/api/account/current', 
-                'GET',
-                null,
-                { 'Authorization': `Bearer ${data}` }
-            );
-            
-            if (userResponse.status === 200) {
-                setCurrentUser(userResponse.data);
-            }
-
+            const adminRole: string = response.data.role;
+            sessionStorage.setItem('role', adminRole);
         } catch (error) {
             console.error(`Error while logging in: ${error}`);
         }
@@ -107,7 +85,6 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({ children }) => {
         loading,
         deleteAdmin,
         editAdmin,
-        currentUser
     };
 
     return (

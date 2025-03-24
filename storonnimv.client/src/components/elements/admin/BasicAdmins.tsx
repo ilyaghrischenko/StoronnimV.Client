@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Button, Table } from "react-bootstrap";
 import { GlobalContext } from "../../contexts/shared/GlobalContext";
-import { AddAdminModal } from "../../elements/admin/SuperAdminButtons/AddAdminModal";
-import { EditAdminModal } from "../../elements/admin/SuperAdminButtons/EditAdminModal";
-import { DeleteAdminModal } from "../../elements/admin/SuperAdminButtons/DeleteAdminModal";
+import { AddAdminModal } from "./SuperAdminButtons/AddAdminModal.tsx";
+import { EditAdminModal } from "./SuperAdminButtons/EditAdminModal.tsx";
+import { DeleteAdminModal } from "./SuperAdminButtons/DeleteAdminModal.tsx";
 
 interface Admin {
     id: number;
