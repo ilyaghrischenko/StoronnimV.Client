@@ -19,10 +19,6 @@ const AddMusicPlatformButton: React.FC<AddMusicPlatformButtonProps> = ({ apiUrl,
 
     const { OnShowModal } = context;
 
-    if (!sessionStorage.getItem("token")) {
-        return null;
-    }
-
     const handleClick = () => {
         OnShowModal(<MusicPlatformModal apiUrl={apiUrl} modalTitle={modalTitle} />);
     };

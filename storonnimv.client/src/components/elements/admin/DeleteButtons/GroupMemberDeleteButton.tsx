@@ -1,16 +1,15 @@
-import { FC, useContext } from "react";
-import { Button } from "react-bootstrap";
-import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
-import { IMemberFullInfo } from "../../../../models/group/IMemberInfo.ts";
-import { MdDeleteForever } from "react-icons/md";
+import {FC, useContext} from "react";
+import {Button} from "react-bootstrap";
+import {GlobalContext} from "../../../contexts/shared/GlobalContext.tsx";
+import {IMemberFullInfo} from "../../../../models/group/IMemberInfo.ts";
+import {MdDeleteForever} from "react-icons/md";
 
 interface GroupMemberDeleteButtonProps {
     item: IMemberFullInfo;
 }
 
-const GroupMemberDeleteButton: FC<GroupMemberDeleteButtonProps> = ({ item }) => {
-    const { OnShowModal, OnHideModal, sendRequest } = useContext(GlobalContext)!;
-    const token = sessionStorage.getItem('token');
+const GroupMemberDeleteButton: FC<GroupMemberDeleteButtonProps> = ({item}) => {
+    const {OnShowModal, OnHideModal, sendRequest} = useContext(GlobalContext)!;
 
     const handleDelete = async () => {
         try {
@@ -33,7 +32,7 @@ const GroupMemberDeleteButton: FC<GroupMemberDeleteButtonProps> = ({ item }) => 
     const handleShowModal = () => {
         OnShowModal(
             <div>
-                <p style={{ color: "white" }}>
+                <p style={{color: "white"}}>
                     Ви впевнені, що хочете видалити цього учасника групи?
                 </p>
                 <Button variant="danger" onClick={handleDelete} className="me-2">
@@ -48,17 +47,15 @@ const GroupMemberDeleteButton: FC<GroupMemberDeleteButtonProps> = ({ item }) => 
 
     return (
         <>
-            {token && (
-                <Button
-                    className="btn btn-danger position-absolute top-0 end-0 m-5"
-                    onClick={handleShowModal}
-                    title="Видалити учасника"
-                >
-                    <MdDeleteForever />
-                </Button>
-            )}
+            <Button
+                className="btn btn-danger position-absolute top-0 end-0 m-5"
+                onClick={handleShowModal}
+                title="Видалити учасника"
+            >
+                <MdDeleteForever/>
+            </Button>
         </>
     );
 };
 
-export { GroupMemberDeleteButton };
+export {GroupMemberDeleteButton};

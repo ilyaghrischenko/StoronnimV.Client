@@ -13,10 +13,6 @@ const AddNewsButton: React.FC = () => {
 
     const { OnShowModal } = context;
 
-    if (!sessionStorage.getItem("token")) {
-        return null;
-    }
-
     const handleClick = () => {
         OnShowModal(<NewsContentModal apiUrl="/api/news" modalTitle="Додати новину" />);
     };    

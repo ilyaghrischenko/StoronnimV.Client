@@ -50,10 +50,6 @@ const VideoDeleteButton: FC<VideoDeleteButtonProps> = ({ video, apiUrl }) => {
         );
     };
 
-    const isUserAuthenticated = sessionStorage.getItem("token") !== null;
-
-    if (!isUserAuthenticated) return null;
-
     return (
         <Button
             className="btn btn-danger position-absolute top-0 end-0 m-5"

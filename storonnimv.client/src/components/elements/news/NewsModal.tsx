@@ -6,6 +6,7 @@ import { Col, Container, Row, Image } from "react-bootstrap";
 import { ModalLoading } from "../shared/ModalLoading.tsx";
 import { NewsEditButton } from "../admin/EditsButtons/NewsEditButton.tsx";
 import { NewsDeleteButton } from "../admin/DeleteButtons/NewsDeleteButton.tsx";
+import {AdminContext} from "../../contexts/AdminContext.tsx";
 
 interface NewsModalProps {
     newsId?: number;
@@ -20,6 +21,14 @@ const NewsModal: FC<NewsModalProps> = ({ newsId }) => {
     }
 
     const { newsFullItem, fetchNewsFullItem, loading } = newsContext;
+
+    const adminContext = useContext(AdminContext);
+
+    if (!adminContext) {
+        throw new Error("AdminContext must be used within a AdminContextProvider");
+    }
+
+    const { isAdmin } = adminContext;
 
     useEffect(() => {
         if (newsId) {
@@ -56,8 +65,8 @@ const NewsModal: FC<NewsModalProps> = ({ newsId }) => {
 
             {newsFullItem && (
             <div className="d-flex justify-content-end gap-2">
-                <NewsEditButton newsItem={newsFullItem} />
-                <NewsDeleteButton newsId={newsFullItem.id} apiUrl="/api/news" />
+                { isAdmin && <NewsEditButton newsItem={newsFullItem} />}
+                { isAdmin && <NewsDeleteButton newsId={newsFullItem.id} apiUrl="/api/news" />}
             </div>
         )}
 

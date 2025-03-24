@@ -1,4 +1,4 @@
-import { createContext, FC, ReactNode, useContext } from "react";
+import { createContext, FC, ReactNode, useContext, useState } from "react";
 import { GlobalContext } from "./shared/GlobalContext.tsx";
 import { ILogInRequest } from "../../models/admin/ILogInRequest.ts";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,8 @@ interface AdminContextType {
     loading: boolean;
     deleteAdmin: (adminId: string) => Promise<void>;
     editAdmin: (adminId: string, login: string, password: string) => Promise<void>;
+    isAdmin: boolean;
+    setIsAdmin: (isAdmin: boolean) => void;
 }
 
 const AdminContext = createContext<AdminContextType | undefined>(undefined);
@@ -26,6 +28,8 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({ children }) => {
     const { sendRequest, loading } = globalContext;
     const navigate = useNavigate();
 
+    const [isAdmin, setIsAdmin] = useState<boolean>(false);
+
     const logIn = async (logInRequest: ILogInRequest) => {
         try {
             const response = await sendRequest(
@@ -37,6 +41,10 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({ children }) => {
 
             if (response.status === 401) {
                 return;
+            }
+
+            if (response.status === 200) {
+                setIsAdmin(true);
             }
 
             navigate('/', { replace: true });
@@ -52,9 +60,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({ children }) => {
         try {
             const response = await sendRequest(
                 `http://localhost:8080/api/admins/${adminId}`,
-                'DELETE',
-                null,
-                { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` }
+                'DELETE'
             );
             if (response.status === 200) {
                 console.log('Admin deleted');
@@ -64,13 +70,13 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({ children }) => {
         }
     };
 
+    //TODO: edit login, edit pass 2 разных
     const editAdmin = async (adminId: string, login: string, password: string) => {
         try {
             const response = await sendRequest(
                 `http://localhost:8080/api/admins/${adminId}`,
                 'PUT',
-                JSON.stringify({ login, password }),
-                { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` }
+                JSON.stringify({ login, password })
             );
             if (response.status === 200) {
                 console.log('Admin edited');
@@ -85,6 +91,8 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({ children }) => {
         loading,
         deleteAdmin,
         editAdmin,
+        setIsAdmin,
+        isAdmin
     };
 
     return (

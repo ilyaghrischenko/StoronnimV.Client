@@ -1,10 +1,11 @@
-﻿import React, { useContext, useState, useEffect } from "react";
+﻿import React, { useContext } from "react";
 import { Button } from "react-bootstrap";
 import { IVideoModel } from "../../../models/video/IVideoModel";
 import { GlobalContext } from "../../contexts/shared/GlobalContext";
 import { VideoEditButton } from "../admin/EditsButtons/VideoEditButton";
 import { VideoDeleteButton } from "../admin/DeleteButtons/VideoDeleteButton";
 import { FaEdit } from "react-icons/fa";
+import {AdminContext} from "../../contexts/AdminContext.tsx";
 
 interface IVideoListItemProps {
     videoItem: IVideoModel;
@@ -12,12 +13,14 @@ interface IVideoListItemProps {
 
 const VideoListItem: React.FC<IVideoListItemProps> = ({ videoItem }) => {
     const { OnShowModal, OnHideModal } = useContext(GlobalContext)!;
-    const [isAuthorized, setIsAuthorized] = useState(false);
 
-    useEffect(() => {
-        const token = sessionStorage.getItem("token");
-        setIsAuthorized(!!token);
-    }, []);
+    const adminContext = useContext(AdminContext);
+
+    if (!adminContext) {
+        throw new Error("AdminContext must be used within a AdminContextProvider");
+    }
+
+    const { isAdmin } = adminContext;
 
     const handleShowEditModal = () => {
         OnShowModal(
@@ -40,7 +43,7 @@ const VideoListItem: React.FC<IVideoListItemProps> = ({ videoItem }) => {
                 <source src={videoItem.url} type="video/mp4" />
                 Ваш браузер не підтримує тег video.
             </video>
-            {isAuthorized && (
+            {isAdmin && (
                 <>
                     <Button
                         className="btn btn-warning position-absolute top-0 end-0 m-2"

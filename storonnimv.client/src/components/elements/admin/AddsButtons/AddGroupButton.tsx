@@ -13,10 +13,6 @@ const AddGroupButton: FC = () => {
 
     const { OnShowModal } = context;
 
-    if (!sessionStorage.getItem("token")) {
-        return null;
-    }
-
     const handleClick = () => {
         OnShowModal(<AddMemberModal modalTitle="Додати учасника" />);
     };

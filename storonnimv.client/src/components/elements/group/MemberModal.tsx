@@ -4,6 +4,7 @@ import { Col, Container, Row, Image } from "react-bootstrap";
 import { ModalLoading } from "../shared/ModalLoading.tsx";
 import { GroupMemberEditButton } from "../admin/EditsButtons/GroupMemberEditButton.tsx";
 import { GroupMemberDeleteButton } from "../admin/DeleteButtons/GroupMemberDeleteButton.tsx";
+import {AdminContext} from "../../contexts/AdminContext.tsx";
 
 interface MemberModalProps {
     memberId: number;
@@ -17,6 +18,14 @@ const MemberModal: FC<MemberModalProps> = ({ memberId }) => {
     }
 
     const { fetchMemberInfo, memberFullInfo, loading } = groupContext;
+
+    const adminContext = useContext(AdminContext);
+
+    if (!adminContext) {
+        throw new Error("AdminContext must be used within a AdminContextProvider");
+    }
+
+    const { isAdmin } = adminContext;
 
     useEffect(() => {
         fetchMemberInfo(memberId);
@@ -44,10 +53,10 @@ const MemberModal: FC<MemberModalProps> = ({ memberId }) => {
 
             <Row className="mb-3 d-flex justify-content-between">
                 <Col xs="auto">
-                    <GroupMemberEditButton item={memberFullInfo} />
+                    {isAdmin && <GroupMemberEditButton item={memberFullInfo} />}
                 </Col>
                 <Col xs="auto">
-                    <GroupMemberDeleteButton item={memberFullInfo} />
+                    {isAdmin && <GroupMemberDeleteButton item={memberFullInfo} />}
                 </Col>
             </Row>
 

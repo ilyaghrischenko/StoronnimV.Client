@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Form } from "react-bootstrap";
 import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
 import { IMusicPlatformItem } from "../../../../models/music/IMusicPlatformItem.ts";
@@ -11,17 +11,7 @@ interface MusicEditButtonProps {
 const MusicEditButton: React.FC<MusicEditButtonProps> = ({ item }) => {
     const { OnShowModal, OnHideModal } = useContext(GlobalContext)!;
     const [editedItem, setEditedItem] = useState<IMusicPlatformItem>(item);
-    const [isAuthorized, setIsAuthorized] = useState(false);
     const [bgImage, setBgImage] = useState<File | null>(null);
-
-    useEffect(() => {
-        const token = sessionStorage.getItem("token");
-        if (token) {
-            setIsAuthorized(true);
-        } else {
-            setIsAuthorized(false);
-        }
-    }, []);
 
     const handleSave = async () => {
         try {
@@ -72,10 +62,6 @@ const MusicEditButton: React.FC<MusicEditButtonProps> = ({ item }) => {
             </div>
         );
     };
-
-    if (!isAuthorized) {
-        return null;
-    }
 
     return (
         <>

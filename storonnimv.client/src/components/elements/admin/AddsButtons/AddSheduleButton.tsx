@@ -19,10 +19,6 @@ const AddScheduleButton: FC<AddScheduleButtonProps> = ({ apiUrl, modalTitle }) =
 
     const { OnShowModal } = context;
 
-    if (!sessionStorage.getItem("token")) {
-        return null;
-    }
-
     const handleClick = () => {
         OnShowModal(<ScheduleContentModal apiUrl={apiUrl} modalTitle={modalTitle} />);
     };

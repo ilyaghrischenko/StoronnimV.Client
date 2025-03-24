@@ -19,10 +19,6 @@ const AddVideoButton: React.FC<AddVideoButtonProps> = ({ apiUrl, modalTitle, but
 
     const { OnShowModal } = context;
 
-    if (!sessionStorage.getItem("token")) {
-        return null;
-    }
-
     const handleClick = () => {
         OnShowModal(
             <VideoContentModal 

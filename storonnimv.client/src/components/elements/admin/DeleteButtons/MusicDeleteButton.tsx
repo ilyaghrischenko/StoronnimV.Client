@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Button } from "react-bootstrap";
 import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
 import { IMusicPlatformItem } from "../../../../models/music/IMusicPlatformItem.ts";
@@ -10,16 +10,6 @@ interface MusicDeleteButtonProps {
 
 const MusicDeleteButton: React.FC<MusicDeleteButtonProps> = ({ item }) => {
     const { OnShowModal, OnHideModal } = useContext(GlobalContext)!;
-    const [isAuthorized, setIsAuthorized] = useState(false);
-
-    useEffect(() => {
-        const token = sessionStorage.getItem("token");
-        if (token) {
-            setIsAuthorized(true);
-        } else {
-            setIsAuthorized(false);
-        }
-    }, []);
 
     const handleDelete = async () => {
         try {
@@ -39,10 +29,6 @@ const MusicDeleteButton: React.FC<MusicDeleteButtonProps> = ({ item }) => {
             </div>
         );
     };
-
-    if (!isAuthorized) {
-        return null;
-    }
 
     return (
         <Button

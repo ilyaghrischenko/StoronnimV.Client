@@ -7,6 +7,7 @@ import { GlobalContext } from "../../../contexts/shared/GlobalContext";
 import { MemberModal } from "../MemberModal.tsx";
 import { GroupContextProvider } from "../../../contexts/GroupContext.tsx";
 import { AddGroupButton } from "../../admin/AddsButtons/AddGroupButton.tsx";
+import {AdminContext} from "../../../contexts/AdminContext.tsx";
 
 interface IShortMembersProps {
     members: IMemberShort[];
@@ -21,10 +22,18 @@ const ShortMembers: FC<IShortMembersProps> = ({ members }) => {
 
     const { OnShowModal } = context;
 
+    const adminContext = useContext(AdminContext);
+
+    if (!adminContext) {
+        throw new Error("AdminContext must be used within a AdminContextProvider");
+    }
+
+    const { isAdmin } = adminContext;
+
     return (
         <div>
             {/* Добавляем кнопку "Добавить нового участника" перед списком */}
-            <AddGroupButton buttonLabel="Додати нового учасника" />
+            {isAdmin && <AddGroupButton />}
             
             <List
                 className="short-members-list"

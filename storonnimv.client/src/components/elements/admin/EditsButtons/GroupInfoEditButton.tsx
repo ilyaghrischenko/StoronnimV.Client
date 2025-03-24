@@ -1,4 +1,4 @@
-import { FC, useContext, useState, useEffect } from "react";
+import { FC, useContext, useState, ChangeEvent} from "react";
 import { Button, Form } from "react-bootstrap";
 import { FaEdit } from "react-icons/fa";
 import { IGroupInfo } from "../../../../models/group/IGroupInfo.ts";
@@ -11,7 +11,6 @@ interface GroupInfoEditButtonProps {
 const GroupInfoEditButton: FC<GroupInfoEditButtonProps> = ({ groupInfo }) => {
     const [newDescription, setNewDescription] = useState(groupInfo.description);
     const [newPhoto, setNewPhoto] = useState<File | null>(null);
-    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
     const globalContext = useContext(GlobalContext);
 
     if (!globalContext) {
@@ -20,16 +19,11 @@ const GroupInfoEditButton: FC<GroupInfoEditButtonProps> = ({ groupInfo }) => {
 
     const { OnShowModal, OnHideModal } = globalContext;
 
-    useEffect(() => {
-        const token = sessionStorage.getItem("token");
-        setIsAuthenticated(!!token);
-    }, []);
-
-    const handleDescriptionChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const handleDescriptionChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
         setNewDescription(event.target.value);
     };
 
-    const handlePhotoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handlePhotoChange = (event: ChangeEvent<HTMLInputElement>) => {
         if (event.target.files) {
             setNewPhoto(event.target.files[0]);
         }
@@ -87,10 +81,6 @@ const GroupInfoEditButton: FC<GroupInfoEditButtonProps> = ({ groupInfo }) => {
             </div>
         );
     };
-
-    if (!isAuthenticated) {
-        return null;
-    }
 
     return (
         <Button variant="primary" onClick={openEditModal}>

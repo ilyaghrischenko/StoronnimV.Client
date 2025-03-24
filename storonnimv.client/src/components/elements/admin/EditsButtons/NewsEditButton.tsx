@@ -128,12 +128,6 @@ const NewsEditButton: FC<NewsEditButtonProps> = ({ newsItem }) => {
         );
     };
 
-    const isUserAuthenticated = sessionStorage.getItem("token") !== null;
-
-    if (!isUserAuthenticated) {
-        return null;
-    }
-
     return (
         <button className="btn btn-warning position-fixed bottom-0 right-0 m-3" onClick={openEditModal}>
             <FaEdit />
