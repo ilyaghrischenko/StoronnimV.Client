@@ -87,7 +87,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-WS-243.24978.60" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-WS-243.25659.40" />
       </set>
     </attachedChunks>
   </component>
@@ -118,6 +118,7 @@
       <workItem from="1740414737933" duration="4445000" />
       <workItem from="1740485231062" duration="264000" />
       <workItem from="1740499607547" duration="1379000" />
+      <workItem from="1740693250315" duration="331000" />
     </task>
     <task id="LOCAL-00001" summary="change port">
       <option name="closed" value="true" />
