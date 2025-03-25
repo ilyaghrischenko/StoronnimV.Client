@@ -38,6 +38,7 @@ const SchedulesList: FC = () => {
                 <ListItem
                     className='schedules-list__item'
                     item={schedule}
+                    key={schedule.id}
                     renderItem={(schedule: IScheduleListItem) => (
                         <ScheduleListItem key={schedule.id} schedule={schedule} />
                     )}

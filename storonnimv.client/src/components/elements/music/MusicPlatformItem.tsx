@@ -3,20 +3,20 @@ import { ListGroupItem } from "react-bootstrap";
 import { MusicEditButton } from "../admin/EditsButtons/MusicEditButton";
 import { MusicDeleteButton } from "../admin/DeleteButtons/MusicDeleteButton";
 import { IMusicPlatformItem } from "../../../models/music/IMusicPlatformItem";
-import {AdminContext} from "../../contexts/AdminContext.tsx";
+import {GlobalContext} from "../../contexts/shared/GlobalContext.tsx";
 
 interface MusicPlatformItemProps {
     item: IMusicPlatformItem;
 }
 
 const MusicPlatformItem: FC<MusicPlatformItemProps> = ({ item }) => {
-    const adminContext = useContext(AdminContext);
+    const globalContext = useContext(GlobalContext);
 
-    if (!adminContext) {
-        throw new Error("AdminContext must be used within a AdminContextProvider");
+    if (!globalContext) {
+        throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const { isAdmin } = adminContext;
+    const { isAdmin } = globalContext;
 
     return (
         <ListGroupItem

@@ -1,4 +1,4 @@
-import { createContext, FC, ReactNode, useContext, useState } from "react";
+import { createContext, FC, ReactNode, useContext } from "react";
 import { GlobalContext } from "./shared/GlobalContext.tsx";
 import { ILogInRequest } from "../../models/admin/ILogInRequest.ts";
 import { useNavigate } from "react-router-dom";
@@ -8,8 +8,6 @@ interface AdminContextType {
     loading: boolean;
     deleteAdmin: (adminId: string) => Promise<void>;
     editAdmin: (adminId: string, login: string, password: string) => Promise<void>;
-    isAdmin: boolean;
-    setIsAdmin: (isAdmin: boolean) => void;
 }
 
 const AdminContext = createContext<AdminContextType | undefined>(undefined);
@@ -25,10 +23,8 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({ children }) => {
         throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const { sendRequest, loading } = globalContext;
+    const { sendRequest, loading, setIsAdmin } = globalContext;
     const navigate = useNavigate();
-
-    const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
     const logIn = async (logInRequest: ILogInRequest) => {
         try {
@@ -91,8 +87,6 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({ children }) => {
         loading,
         deleteAdmin,
         editAdmin,
-        setIsAdmin,
-        isAdmin
     };
 
     return (

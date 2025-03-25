@@ -3,16 +3,16 @@ import { NewsContextProvider } from "../contexts/NewsContext";
 import { Container } from "react-bootstrap";
 import { NewsList } from "../elements/news/NewsList";
 import { AddNewsButton } from "../elements/admin/AddsButtons/AddNewsButton";
-import {AdminContext} from "../contexts/AdminContext.tsx";
+import {GlobalContext} from "../contexts/shared/GlobalContext.tsx";
 
 const News: FC = () => {
-    const adminContext = useContext(AdminContext);
+    const globalContext = useContext(GlobalContext);
 
-    if (!adminContext) {
-        throw new Error("AdminContext must be used within a AdminContextProvider");
+    if (!globalContext) {
+        throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const { isAdmin } = adminContext;
+    const { isAdmin } = globalContext;
 
     return (
         <NewsContextProvider>

@@ -16,6 +16,8 @@ interface GlobalContextType {
     modalContent: ReactNode;
     modalTitle: string;
     isAdminRoute: () => boolean;
+    isAdmin: boolean;
+    setIsAdmin: (isAdmin: boolean) => void;
 }
 
 // Создаем контекст с типизацией
@@ -29,6 +31,8 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({ children }) => 
     const [showModal, setShowModal] = useState<boolean>(false);
     const [modalContent, setModalContent] = useState<ReactNode>(null);
     const [modalTitle, setModalTitle] = useState<string>("");
+
+    const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
     const OnShowModal = (mContent: ReactNode, mTitle: string = "") => {
         setModalTitle(mTitle);
@@ -54,6 +58,7 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({ children }) => 
                 url: apiUrl,
                 headers,
                 data: body,
+                withCredentials: true
             };
 
             // TODO: СДЕЛАТЬ ЧТО-ТО С АНИМАЦИЕЙ ЗАГРУЗКИ
@@ -90,6 +95,8 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({ children }) => 
         sendRequest,
         loading,
         isAdminRoute,
+        isAdmin,
+        setIsAdmin
     };
 
     return (

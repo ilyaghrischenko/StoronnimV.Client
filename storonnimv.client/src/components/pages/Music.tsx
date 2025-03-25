@@ -4,16 +4,16 @@ import { Container } from "react-bootstrap";
 import { SoundCloudContainer } from "../elements/music/SoundCloudContainer";
 import { MusicPlatforms } from "../elements/music/MusicPlatforms";
 import { AddMusicPlatformButton } from "../elements/admin/AddsButtons/AddMusicPlatformButton";
-import {AdminContext} from "../contexts/AdminContext.tsx";
+import {GlobalContext} from "../contexts/shared/GlobalContext.tsx";
 
 const Music: FC = () => {
-    const adminContext = useContext(AdminContext);
+    const globalContext = useContext(GlobalContext);
 
-    if (!adminContext) {
-        throw new Error("AdminContext must be used within a AdminContextProvider");
+    if (!globalContext) {
+        throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const { isAdmin } = adminContext;
+    const { isAdmin } = globalContext;
 
     return (
         <MusicContextProvider>

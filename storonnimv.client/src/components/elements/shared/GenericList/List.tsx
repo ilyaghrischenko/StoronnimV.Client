@@ -1,9 +1,10 @@
 ﻿import {ListGroup} from "react-bootstrap";
+import {ReactNode} from "react";
 
 interface ListProps<T> {
     className?: string;
     items: T[];
-    renderItem  : (item: T) => React.ReactNode;
+    renderItem: (item: T) => ReactNode;
 }
 
 export function List<T>(props: ListProps<T>) {

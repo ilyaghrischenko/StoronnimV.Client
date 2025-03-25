@@ -4,7 +4,7 @@ import { Col, Container, Row, Image } from "react-bootstrap";
 import { ModalLoading } from "../shared/ModalLoading.tsx";
 import { GroupMemberEditButton } from "../admin/EditsButtons/GroupMemberEditButton.tsx";
 import { GroupMemberDeleteButton } from "../admin/DeleteButtons/GroupMemberDeleteButton.tsx";
-import {AdminContext} from "../../contexts/AdminContext.tsx";
+import {GlobalContext} from "../../contexts/shared/GlobalContext.tsx";
 
 interface MemberModalProps {
     memberId: number;
@@ -19,13 +19,13 @@ const MemberModal: FC<MemberModalProps> = ({ memberId }) => {
 
     const { fetchMemberInfo, memberFullInfo, loading } = groupContext;
 
-    const adminContext = useContext(AdminContext);
+    const globalContext = useContext(GlobalContext);
 
-    if (!adminContext) {
-        throw new Error("AdminContext must be used within a AdminContextProvider");
+    if (!globalContext) {
+        throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const { isAdmin } = adminContext;
+    const { isAdmin } = globalContext;
 
     useEffect(() => {
         fetchMemberInfo(memberId);

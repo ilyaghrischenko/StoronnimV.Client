@@ -3,16 +3,16 @@ import { ScheduleContextProvider } from "../contexts/ScheduleContext";
 import { Container } from "react-bootstrap";
 import { SchedulesList } from "../elements/schedule/SchedulesList";
 import {AddScheduleButton} from "../elements/admin/AddsButtons/AddSheduleButton"
-import {AdminContext} from "../contexts/AdminContext.tsx";
+import {GlobalContext} from "../contexts/shared/GlobalContext.tsx";
 
 const Schedule: FC = () => {
-    const adminContext = useContext(AdminContext);
+    const globalContext = useContext(GlobalContext);
 
-    if (!adminContext) {
-        throw new Error("AdminContext must be used within a AdminContextProvider");
+    if (!globalContext) {
+        throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const { isAdmin } = adminContext;
+    const { isAdmin } = globalContext;
 
     return (
         <ScheduleContextProvider>

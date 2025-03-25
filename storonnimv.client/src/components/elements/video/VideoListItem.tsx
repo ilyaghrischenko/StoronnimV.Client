@@ -5,22 +5,13 @@ import { GlobalContext } from "../../contexts/shared/GlobalContext";
 import { VideoEditButton } from "../admin/EditsButtons/VideoEditButton";
 import { VideoDeleteButton } from "../admin/DeleteButtons/VideoDeleteButton";
 import { FaEdit } from "react-icons/fa";
-import {AdminContext} from "../../contexts/AdminContext.tsx";
 
 interface IVideoListItemProps {
     videoItem: IVideoModel;
 }
 
 const VideoListItem: React.FC<IVideoListItemProps> = ({ videoItem }) => {
-    const { OnShowModal, OnHideModal } = useContext(GlobalContext)!;
-
-    const adminContext = useContext(AdminContext);
-
-    if (!adminContext) {
-        throw new Error("AdminContext must be used within a AdminContextProvider");
-    }
-
-    const { isAdmin } = adminContext;
+    const { OnShowModal, OnHideModal, isAdmin } = useContext(GlobalContext)!;
 
     const handleShowEditModal = () => {
         OnShowModal(
