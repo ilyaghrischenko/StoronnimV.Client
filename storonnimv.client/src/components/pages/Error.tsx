@@ -1,12 +1,17 @@
 import {FC} from "react";
 import {Container} from "react-bootstrap";
+import {useSearchParams} from "react-router-dom";
 
 const Error: FC = () => {
+    const [searchParams] = useSearchParams();
+    const statusCode = searchParams.get("statusCode") || "500";
+    const message = searchParams.get("message") || "Unexpected error";
+
     return (
         <Container className='error-container'>
             <Container className='error-info-container'>
-                <p className='error-info-container__status-code'>404:</p>
-                <p className='error-info-container__message'>Not Found</p>
+                <p className='error-info-container__status-code'>{statusCode}</p>
+                <p className='error-info-container__message'>{message}</p>
             </Container>
         </Container>
     );

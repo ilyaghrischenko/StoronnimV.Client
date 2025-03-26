@@ -722,6 +722,7 @@ th, td {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  gap: 20px;
 }
 .error-info-container__status-code, .error-info-container__message {
   font-size: 40px;

@@ -55,7 +55,7 @@ const Page: FC = () => {
             />
 
             <Route path="/error" element={<Error />} />
-            <Route path="*" element={<Navigate to="/error" />} />
+            <Route path="*" element={<Navigate to="/error?statusCode=404&message=Not%20Found" />} />
         </Routes>
     );
 };

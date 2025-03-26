@@ -1,5 +1,4 @@
-import React, { ReactNode, useContext } from "react";
-import { GlobalContext } from "../../contexts/shared/GlobalContext";
+import React, { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
 
 interface ProtectedRouteProps {
@@ -8,21 +7,14 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, requiredRole }) => {
-    const globalContext = useContext(GlobalContext);
-
-    if (!globalContext) {
-        throw new Error("GlobalContext must be used within a GlobalContextProvider");
-    }
-
-    const { isAdmin, isAdminRoute } = globalContext;
-
     const adminRole = sessionStorage.getItem("role");
+
     if (!adminRole) {
-        return;
+        return <Navigate to="/error?statusCode=401&message=Unauthorised" replace />
     }
 
-    if (!isAdmin || adminRole !== requiredRole || !isAdminRoute()) {
-        return <Navigate to="/403" replace />;
+    if (adminRole !== requiredRole) {
+        return <Navigate to="/error?statusCode=403&message=Forbidden" replace />;
     }
 
     return <>{children}</>;
