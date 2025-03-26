@@ -45,7 +45,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({ children }) => {
 
             navigate('/', { replace: true });
 
-            const adminRole: string = response.data.role;
+            const adminRole: string = response.data;
             sessionStorage.setItem('role', adminRole);
         } catch (error) {
             console.error(`Error while logging in: ${error}`);
