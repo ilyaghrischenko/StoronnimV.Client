@@ -1,5 +1,5 @@
 ﻿import { FC, useContext, useEffect } from "react";
-import { Container, Pagination } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { GlobalContext } from "../../contexts/shared/GlobalContext";
 import { PageLoading } from "../shared/PageLoading";
 import { List } from "../shared/GenericList/List";

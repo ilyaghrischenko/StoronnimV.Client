@@ -39,7 +39,8 @@ const ScheduleModal: FC<ScheduleModalProps> = ({ scheduleId }) => {
                     <h2 className="schedule-modal__info-datetime">{scheduleFullInfo.performanceDateTime}</h2>
                     <h3 className="schedule-modal__info-location">{scheduleFullInfo.location}</h3>
                     <p className="schedule-modal__info-description">{scheduleFullInfo.description}</p>
-            
+
+                    //TODO: если админ кнопки отображать
                     <ScheduleEditButton
                         apiUrl="/api/schedule" 
                         modalTitle="Редагувати розклад"

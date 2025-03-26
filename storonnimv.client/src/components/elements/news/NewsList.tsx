@@ -1,6 +1,6 @@
 ﻿import {FC, useContext, useEffect} from "react";
 import {NewsContext, NewsContextProvider} from "../../contexts/NewsContext";
-import {Container, Pagination} from "react-bootstrap";
+import {Container} from "react-bootstrap";
 import {NewsListItem} from "./NewsListItem";
 import {PageLoading} from "../shared/PageLoading";
 
@@ -9,6 +9,7 @@ import {ListItem} from "../shared/GenericList/ListItem";
 import {INewsShortItem} from "../../../models/news/INewsShortItem";
 import {GlobalContext} from "../../contexts/shared/GlobalContext";
 import {NewsModal} from "./NewsModal.tsx";
+import {PaginationSection} from "../shared/PaginationSection.tsx";
 
 const NewsList: FC = () => {
     const newsContext = useContext(NewsContext);
@@ -58,30 +59,11 @@ const NewsList: FC = () => {
 
             {/* Элементы управления пагинацией */}
             <Container>
-                <Pagination className="news-list__pagination">
-                    {/* Кнопка "Предыдущая страница" */}
-                    <Pagination.Prev
-                        onClick={() => paginate(currentPage - 1)}
-                        disabled={currentPage === 1}
-                    />
-
-                    {/* Кнопки с номерами страниц */}
-                    {[...Array(totalPages)].map((_, index) => (
-                        <Pagination.Item
-                            key={index}
-                            onClick={() => paginate(index + 1)}
-                            active={currentPage === index + 1}
-                        >
-                            {index + 1}
-                        </Pagination.Item>
-                    ))}
-
-                    {/* Кнопка "Следующая страница" */}
-                    <Pagination.Next
-                        onClick={() => paginate(currentPage + 1)}
-                        disabled={currentPage === totalPages}
-                    />
-                </Pagination>
+                <PaginationSection
+                    className={"news-list__pagination"}
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    paginate={paginate} />
             </Container>
         </Container>
     );

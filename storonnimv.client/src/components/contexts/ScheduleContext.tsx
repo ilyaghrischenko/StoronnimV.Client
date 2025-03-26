@@ -2,14 +2,18 @@
 import {GlobalContext} from "./shared/GlobalContext";
 import {IScheduleListItem} from "../../models/schedule/IScheduleListItem";
 import {ISchedule} from "../../models/schedule/ISchedule.ts";
+import {IPaginationResponse} from "../../models/shared/IPaginationResponse.ts";
 
 // Тип контекста
 interface ScheduleContextType {
     schedules: IScheduleListItem[];
     loading: boolean;
-    fetchSchedules: () => Promise<void>;
+    fetchSchedules: (pageNumber: number, pageSize: number) => Promise<void>;
     scheduleFullInfo: ISchedule;
     fetchScheduleFullInfo: (scheduleId: number) => Promise<void>;
+    currentPage: number;
+    totalPages: number;
+    paginate: (pageNumber: number, pageSize?: number) => void;
 }
 
 // Создаем контекст с типизацией
@@ -31,6 +35,24 @@ const ScheduleContextProvider: React.FC<ScheduleContextProviderProps> = ({ child
     const [schedules, setSchedules] = useState<IScheduleListItem[]>([]);
     const [scheduleFullInfo, setScheduleFullInfo] = useState<ISchedule>({} as ISchedule);
 
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [totalPages, setTotalPages] = useState<number>(1);
+
+    const paginate =
+        async (pageNumber: number, pageSize: number = 3): Promise<void> => {
+
+        const savedTotalPagesString = sessionStorage.getItem("schedulesTotalPages");
+        const savedTotalPages = savedTotalPagesString ? Number(savedTotalPagesString) : 0;
+
+        if (savedTotalPages === 0) {
+            await fetchSchedules(pageNumber, pageSize);
+        }
+
+        if (pageNumber >= 1 && pageNumber <= savedTotalPages) {
+            await fetchSchedules(pageNumber, pageSize);
+        }
+    }
+
     const fetchScheduleFullInfo = async (scheduleId: number): Promise<void> => {
         try {
             const response = await sendRequest(`http://localhost:8080/api/schedules/${scheduleId}`);
@@ -44,16 +66,24 @@ const ScheduleContextProvider: React.FC<ScheduleContextProviderProps> = ({ child
         }
     };
 
-    const fetchSchedules = async (): Promise<void> => {
+    const fetchSchedules =
+        async (pageNumber: number = currentPage, pageSize: number = 9): Promise<void> => {
+
         try {
-            const response = await sendRequest("http://localhost:8080/api/schedules");
+            const response = await sendRequest(
+                `http://localhost:8080/api/schedules/page/${pageNumber}?pageSize=${pageSize}`
+            );
 
-            const data: IScheduleListItem[] = response.data;
+            const data: IPaginationResponse<IScheduleListItem> = response.data;
 
-            setSchedules(data);
+            setSchedules(data.items);
+            setCurrentPage(data.currentPage);
+            setTotalPages(data.totalPages);
+
+            sessionStorage.setItem("schedulesCurrentPage", String(data.currentPage));
+            sessionStorage.setItem("schedulesTotalPages", String(data.totalPages));
         } catch (error) {
-            console.error("Error fetching schedules:", error);
-            return;
+            console.error("Error while fetching schedules: ", error);
         }
     };
 
@@ -62,7 +92,10 @@ const ScheduleContextProvider: React.FC<ScheduleContextProviderProps> = ({ child
         scheduleFullInfo,
         schedules,
         fetchSchedules,
-        loading
+        loading,
+        currentPage,
+        totalPages,
+        paginate
     };
 
     return (

@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="changed">
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="add useEffect to every page for fetching isAdmin">
+      <change afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/shared/PaginationSection.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/shared/GlobalContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/shared/GlobalContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Group.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Group.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Music.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Music.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/News.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/News.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Schedule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Schedule.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Video.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Video.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/ScheduleContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/ScheduleContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/NewsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/NewsList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/ScheduleModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/ScheduleModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/SchedulesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/SchedulesList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/VideoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/VideoList.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="refactor/token-logic-change" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -66,23 +65,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/ForProgramming/Projects/MyProjects/React/StoronnimV.Client/storonnimv.client/src&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\GitHub\\StoronnimV.Client\\storonnimv.client\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "refactor/pagination-in-other-component",
+    "last_opened_file_path": "D:/ForProgramming/Projects/MyProjects/React/StoronnimV.Client/storonnimv.client/src",
+    "list.type.of.created.stylesheet": "SCSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "D:\\GitHub\\StoronnimV.Client\\storonnimv.client\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\ForProgramming\Projects\MyProjects\React\StoronnimV.Client\storonnimv.client\src" />
@@ -131,7 +130,7 @@
       <workItem from="1742899534332" duration="1256000" />
       <workItem from="1742902238667" duration="1595000" />
       <workItem from="1742920278624" duration="605000" />
-      <workItem from="1742987058811" duration="1798000" />
+      <workItem from="1742987058811" duration="4809000" />
     </task>
     <task id="LOCAL-00001" summary="change port">
       <option name="closed" value="true" />
@@ -285,7 +284,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742903861079</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="add useEffect to every page for fetching isAdmin">
+      <option name="closed" value="true" />
+      <created>1742991584104</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1742991584105</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -324,6 +331,7 @@
     <MESSAGE value="fix video sections images" />
     <MESSAGE value="save before token logic change" />
     <MESSAGE value="changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed" />
+    <MESSAGE value="add useEffect to every page for fetching isAdmin" />
+    <option name="LAST_COMMIT_MESSAGE" value="add useEffect to every page for fetching isAdmin" />
   </component>
 </project>
