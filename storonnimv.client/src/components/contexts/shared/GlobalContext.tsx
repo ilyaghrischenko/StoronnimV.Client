@@ -18,6 +18,7 @@ interface GlobalContextType {
     isAdminRoute: () => boolean;
     isAdmin: boolean;
     setIsAdmin: (isAdmin: boolean) => void;
+    fetchIsAdmin: () => Promise<void>;
 }
 
 // Создаем контекст с типизацией
@@ -33,6 +34,21 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({ children }) => 
     const [modalTitle, setModalTitle] = useState<string>("");
 
     const [isAdmin, setIsAdmin] = useState<boolean>(false);
+
+    const fetchIsAdmin = async () => {
+        try {
+            const response = await sendRequest("http://localhost:8080/api/admin/isAdmin");
+
+            if (response.status === 200) {
+                setIsAdmin(true);
+            }
+            else {
+                setIsAdmin(false);
+            }
+        } catch (error) {
+            console.error('Error fetching SoundCloud embed data', error);
+        }
+    };
 
     const OnShowModal = (mContent: ReactNode, mTitle: string = "") => {
         setModalTitle(mTitle);
@@ -96,7 +112,8 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({ children }) => 
         loading,
         isAdminRoute,
         isAdmin,
-        setIsAdmin
+        setIsAdmin,
+        fetchIsAdmin
     };
 
     return (

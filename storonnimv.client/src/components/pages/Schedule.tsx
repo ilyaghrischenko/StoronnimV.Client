@@ -1,4 +1,4 @@
-﻿import {FC, useContext} from "react";
+﻿import {FC, useContext, useEffect} from "react";
 import { ScheduleContextProvider } from "../contexts/ScheduleContext";
 import { Container } from "react-bootstrap";
 import { SchedulesList } from "../elements/schedule/SchedulesList";
@@ -12,7 +12,11 @@ const Schedule: FC = () => {
         throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const { isAdmin } = globalContext;
+    const { fetchIsAdmin, isAdmin } = globalContext;
+
+    useEffect(() => {
+        fetchIsAdmin();
+    }, []);
 
     return (
         <ScheduleContextProvider>

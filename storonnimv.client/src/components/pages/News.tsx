@@ -1,4 +1,4 @@
-﻿import { FC, useContext } from "react";
+﻿import {FC, useContext, useEffect} from "react";
 import { NewsContextProvider } from "../contexts/NewsContext";
 import { Container } from "react-bootstrap";
 import { NewsList } from "../elements/news/NewsList";
@@ -12,7 +12,11 @@ const News: FC = () => {
         throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const { isAdmin } = globalContext;
+    const { fetchIsAdmin, isAdmin } = globalContext;
+
+    useEffect(() => {
+        fetchIsAdmin();
+    }, []);
 
     return (
         <NewsContextProvider>

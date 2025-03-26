@@ -1,4 +1,4 @@
-﻿import {FC, useContext} from "react";
+﻿import {FC, useContext, useEffect} from "react";
 import { MusicContextProvider } from "../contexts/MusicContext";
 import { Container } from "react-bootstrap";
 import { SoundCloudContainer } from "../elements/music/SoundCloudContainer";
@@ -13,7 +13,11 @@ const Music: FC = () => {
         throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const { isAdmin } = globalContext;
+    const { fetchIsAdmin, isAdmin } = globalContext;
+
+    useEffect(() => {
+        fetchIsAdmin();
+    }, []);
 
     return (
         <MusicContextProvider>

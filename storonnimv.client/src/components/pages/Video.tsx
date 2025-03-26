@@ -1,4 +1,4 @@
-﻿import {FC, ReactNode, useContext} from "react";
+﻿import {FC, ReactNode, useContext, useEffect} from "react";
 import { Container } from "react-bootstrap";
 import { VideoContextProvider } from "../contexts/VideoContext";
 import { AddVideoButton } from "../elements/admin/AddsButtons/AddVideoButton";
@@ -15,7 +15,11 @@ const Video: FC<VideoProps> = ({ children }) => {
         throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const { isAdmin } = globalContext;
+    const { fetchIsAdmin, isAdmin } = globalContext;
+
+    useEffect(() => {
+        fetchIsAdmin();
+    }, []);
 
     const isMainPage = window.location.pathname === "/video/sections";
 
