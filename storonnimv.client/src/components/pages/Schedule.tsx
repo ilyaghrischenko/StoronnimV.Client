@@ -23,7 +23,7 @@ const Schedule: FC = () => {
             <Container className="schedule-page page">
                 {isAdmin && (
                     <AddScheduleButton
-                        apiUrl="/api/schedules"
+                        apiUrl="https://localhost:44315/api/admin/schedules"
                         modalTitle="Додати розклад"
                         buttonLabel="Додати новий розклад"
                     />

@@ -59,7 +59,7 @@ const ScheduleContentModal: FC<ScheduleContentModalProps> = ({ apiUrl, modalTitl
         formData.append("title", title);
         formData.append("description", description);
         formData.append("location", location);
-        formData.append("status", "active");  // Статус автоматически установлен как "active"
+        formData.append("status", "Active");  // Статус автоматически установлен как "active"
         formData.append("performanceDateTime", performanceDateTime);
         if (photo) formData.append("photo", photo);
 
