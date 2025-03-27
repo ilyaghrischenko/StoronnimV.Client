@@ -29,7 +29,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({ children }) => {
     const logIn = async (logInRequest: ILogInRequest) => {
         try {
             const response = await sendRequest(
-                'http://localhost:8080/api/account/login',
+                'https://localhost:44315/api/account/login',
                 'POST',
                 JSON.stringify({ login: logInRequest.login, password: logInRequest.password }),
                 { 'Content-Type': 'application/json' }
@@ -55,7 +55,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({ children }) => {
     const deleteAdmin = async (adminId: string) => {
         try {
             const response = await sendRequest(
-                `http://localhost:8080/api/admins/${adminId}`,
+                `https://localhost:44315/api/admins/${adminId}`,
                 'DELETE'
             );
             if (response.status === 200) {
@@ -70,7 +70,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({ children }) => {
     const editAdmin = async (adminId: string, login: string, password: string) => {
         try {
             const response = await sendRequest(
-                `http://localhost:8080/api/admins/${adminId}`,
+                `https://localhost:44315/api/admins/${adminId}`,
                 'PUT',
                 JSON.stringify({ login, password })
             );

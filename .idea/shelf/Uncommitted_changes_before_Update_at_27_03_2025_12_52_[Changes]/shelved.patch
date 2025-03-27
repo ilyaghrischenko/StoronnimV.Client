@@ -1,0 +1,273 @@
+Index: storonnimv.client/src/components/pages/Video.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {FC, ReactNode, useContext} from \"react\";\r\nimport { Container } from \"react-bootstrap\";\r\nimport { VideoContextProvider } from \"../contexts/VideoContext\";\r\nimport { AddVideoButton } from \"../elements/admin/AddsButtons/AddVideoButton\";\r\nimport {GlobalContext} from \"../contexts/shared/GlobalContext.tsx\";\r\n\r\ninterface VideoProps {\r\n    children: ReactNode;\r\n}\r\n\r\nconst Video: FC<VideoProps> = ({ children }) => {\r\n    const globalContext = useContext(GlobalContext);\r\n\r\n    if (!globalContext) {\r\n        throw new Error(\"GlobalContext must be used within a GlobalContextProvider\");\r\n    }\r\n\r\n    const { isAdmin } = globalContext;\r\n\r\n    const isMainPage = window.location.pathname === \"/video/sections\";\r\n\r\n    return (\r\n        <VideoContextProvider>\r\n            <Container className='video-page page'>\r\n                {isAdmin && isMainPage && (\r\n                    <AddVideoButton\r\n                        apiUrl=\"/api/video\"\r\n                        modalTitle=\"Відео\"\r\n                        buttonLabel=\"Додати відео\"\r\n                    />\r\n                )}\r\n                {children}\r\n            </Container>\r\n        </VideoContextProvider>\r\n    );\r\n};\r\n\r\nexport { Video };\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/storonnimv.client/src/components/pages/Video.tsx b/storonnimv.client/src/components/pages/Video.tsx
+--- a/storonnimv.client/src/components/pages/Video.tsx	(revision c22a777106ba1301472584e07cf4733fba822531)
++++ b/storonnimv.client/src/components/pages/Video.tsx	(date 1742923325758)
+@@ -24,7 +24,7 @@
+             <Container className='video-page page'>
+                 {isAdmin && isMainPage && (
+                     <AddVideoButton
+-                        apiUrl="/api/video"
++                        apiUrl="http://localhost:8080/api/admin/videos"
+                         modalTitle="Відео"
+                         buttonLabel="Додати відео"
+                     />
+Index: storonnimv.client/src/components/elements/button/VideoContentModal.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { FC, useState, useContext } from \"react\";\r\nimport { GlobalContext } from \"../../contexts/shared/GlobalContext.tsx\";\r\nimport { Container, Row, Col, Form, Button } from \"react-bootstrap\";\r\nimport { ModalLoading } from \"../shared/ModalLoading.tsx\";\r\n\r\ninterface VideoContentModalProps {\r\n    apiUrl: string;\r\n    modalTitle: string;\r\n    buttonLabel: string;\r\n    section: string;\r\n}\r\n\r\nconst VideoContentModal: FC<VideoContentModalProps> = ({ apiUrl, modalTitle, section }) => {\r\n    const globalContext = useContext(GlobalContext);\r\n\r\n    if (!globalContext) {\r\n        throw new Error(\"GlobalContext is not defined\");\r\n    }\r\n\r\n    const { sendRequest } = globalContext;\r\n\r\n    const [title, setTitle] = useState<string>(\"\");\r\n    const [videoFile, setVideoFile] = useState<File | null>(null);\r\n    const [loading, setLoading] = useState<boolean>(false);\r\n    const [videoType, setVideoType] = useState<string>(\"Performance\");\r\n\r\n    const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {\r\n        setTitle(e.target.value);\r\n    };\r\n\r\n    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {\r\n        const file = e.target.files?.[0];\r\n        if (file) setVideoFile(file);\r\n    };\r\n\r\n    const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {\r\n        setVideoType(e.target.value);\r\n    };\r\n\r\n    const handleSubmit = async (e: React.FormEvent) => {\r\n        e.preventDefault();\r\n        if (!videoFile) {\r\n            alert(\"Будь ласка, завантажте відео\");\r\n            return;\r\n        }\r\n        setLoading(true);\r\n\r\n        const formData = new FormData();\r\n        formData.append(\"title\", title);\r\n        formData.append(\"video\", videoFile);\r\n        formData.append(\"section\", section);\r\n        formData.append(\"type\", videoType);\r\n\r\n        try {\r\n            const response = await sendRequest(apiUrl, \"POST\", formData, {\r\n                \"Content-Type\": \"multipart/form-data\",\r\n            });\r\n            if (response.status === 200) {\r\n                alert(`${modalTitle} успішно додано!`);\r\n                globalContext.OnHideModal();\r\n            }\r\n        } catch (error) {\r\n            alert(`Помилка при додаванні ${modalTitle.toLowerCase()}`);\r\n        } finally {\r\n            setLoading(false);\r\n        }\r\n    };\r\n\r\n    if (loading) return <ModalLoading />;\r\n\r\n    return (\r\n        <Container>\r\n            <Row>\r\n                <Col xs={12}>\r\n                    <h2 className=\"text-center\" style={{ color: \"white\" }}>{modalTitle}</h2>\r\n                    <Form onSubmit={handleSubmit}>\r\n                        <Form.Group controlId=\"formTitle\" className=\"mb-3\">\r\n                            <Form.Label style={{ color: \"white\" }} className=\"me-3\">Заголовок:</Form.Label>\r\n                            <Form.Control\r\n                                type=\"text\"\r\n                                name=\"title\"\r\n                                value={title}\r\n                                onChange={handleTitleChange}\r\n                                placeholder={`Введіть заголовок ${modalTitle}`}\r\n                                required\r\n                                style={{ color: \"white\", backgroundColor: \"#333\" }}\r\n                            />\r\n                        </Form.Group>\r\n\r\n                        <Form.Group controlId=\"formType\" className=\"mb-3\">\r\n                            <Form.Label style={{ color: \"white\" }} className=\"me-3\">Тип відео:</Form.Label>\r\n                            <select \r\n                                value={videoType} \r\n                                onChange={handleTypeChange} \r\n                                className=\"form-control\"\r\n                                style={{ backgroundColor: \"#333\", color: \"white\" }}\r\n                            >\r\n                                <option value=\"Performance\">Performance</option>\r\n                                <option value=\"Backstage\">Backstage</option>\r\n                                <option value=\"Repetition\">Repetition</option>\r\n                            </select>\r\n                        </Form.Group>\r\n\r\n                        <Form.Group controlId=\"formVideo\" className=\"mb-3\">\r\n                            <Form.Label style={{ color: \"white\" }} className=\"me-3\">Завантажте відео:</Form.Label>\r\n                            <Form.Control\r\n                                type=\"file\"\r\n                                accept=\"video/*\"\r\n                                onChange={handleFileChange}\r\n                                style={{ color: \"white\", backgroundColor: \"#333\" }}\r\n                            />\r\n                        </Form.Group>\r\n\r\n                        <Button variant=\"primary\" type=\"submit\" className=\"mt-3 w-100\" disabled={loading}>\r\n                            {loading ? \"Завантаження...\" : `Додати ${modalTitle}`}\r\n                        </Button>\r\n                    </Form>\r\n                </Col>\r\n            </Row>\r\n        </Container>\r\n    );\r\n};\r\n\r\nexport { VideoContentModal };\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/storonnimv.client/src/components/elements/button/VideoContentModal.tsx b/storonnimv.client/src/components/elements/button/VideoContentModal.tsx
+--- a/storonnimv.client/src/components/elements/button/VideoContentModal.tsx	(revision c22a777106ba1301472584e07cf4733fba822531)
++++ b/storonnimv.client/src/components/elements/button/VideoContentModal.tsx	(date 1742923808028)
+@@ -6,50 +6,33 @@
+ interface VideoContentModalProps {
+     apiUrl: string;
+     modalTitle: string;
+-    buttonLabel: string;
+-    section: string;
+ }
+ 
+-const VideoContentModal: FC<VideoContentModalProps> = ({ apiUrl, modalTitle, section }) => {
++const VideoContentModal: FC<VideoContentModalProps> = ({ apiUrl, modalTitle }) => {
+     const globalContext = useContext(GlobalContext);
++    if (!globalContext) throw new Error("GlobalContext is not defined");
+ 
+-    if (!globalContext) {
+-        throw new Error("GlobalContext is not defined");
+-    }
++    const { sendRequest, OnHideModal } = globalContext;
+ 
+-    const { sendRequest } = globalContext;
+-
+-    const [title, setTitle] = useState<string>("");
++    const [title, setTitle] = useState("");
+     const [videoFile, setVideoFile] = useState<File | null>(null);
+-    const [loading, setLoading] = useState<boolean>(false);
+-    const [videoType, setVideoType] = useState<string>("Performance");
+-
+-    const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+-        setTitle(e.target.value);
+-    };
++    const [loading, setLoading] = useState(false);
++    const [videoType, setVideoType] = useState("Performance");
+ 
+     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+         const file = e.target.files?.[0];
+         if (file) setVideoFile(file);
+     };
+ 
+-    const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+-        setVideoType(e.target.value);
+-    };
+-
+     const handleSubmit = async (e: React.FormEvent) => {
+         e.preventDefault();
+-        if (!videoFile) {
+-            alert("Будь ласка, завантажте відео");
+-            return;
+-        }
++        if (!videoFile) return alert("Будь ласка, завантажте відео");
++
+         setLoading(true);
+-
+         const formData = new FormData();
+-        formData.append("title", title);
+-        formData.append("video", videoFile);
+-        formData.append("section", section);
+-        formData.append("type", videoType);
++        formData.append("Url", videoFile);
++        formData.append("Title", title);
++        formData.append("Type", videoType);
+ 
+         try {
+             const response = await sendRequest(apiUrl, "POST", formData, {
+@@ -57,10 +40,11 @@
+             });
+             if (response.status === 200) {
+                 alert(`${modalTitle} успішно додано!`);
+-                globalContext.OnHideModal();
++                OnHideModal();
+             }
+         } catch (error) {
+             alert(`Помилка при додаванні ${modalTitle.toLowerCase()}`);
++            console.error(error);
+         } finally {
+             setLoading(false);
+         }
+@@ -69,49 +53,53 @@
+     if (loading) return <ModalLoading />;
+ 
+     return (
+-        <Container>
++        <Container style={{ backgroundColor: "#222", padding: "20px", borderRadius: "8px" }}>
+             <Row>
+                 <Col xs={12}>
+-                    <h2 className="text-center" style={{ color: "white" }}>{modalTitle}</h2>
++                    <h2 style={{ textAlign: "center", color: "white", marginBottom: "15px" }}>{modalTitle}</h2>
+                     <Form onSubmit={handleSubmit}>
+                         <Form.Group controlId="formTitle" className="mb-3">
+-                            <Form.Label style={{ color: "white" }} className="me-3">Заголовок:</Form.Label>
++                            <Form.Label style={{ color: "white" }}>Заголовок:</Form.Label>
+                             <Form.Control
+                                 type="text"
+-                                name="title"
+                                 value={title}
+-                                onChange={handleTitleChange}
++                                onChange={(e) => setTitle(e.target.value)}
+                                 placeholder={`Введіть заголовок ${modalTitle}`}
+                                 required
+-                                style={{ color: "white", backgroundColor: "#333" }}
++                                style={{ backgroundColor: "#333", color: "white" }}
+                             />
+                         </Form.Group>
+ 
+                         <Form.Group controlId="formType" className="mb-3">
+-                            <Form.Label style={{ color: "white" }} className="me-3">Тип відео:</Form.Label>
+-                            <select 
+-                                value={videoType} 
+-                                onChange={handleTypeChange} 
+-                                className="form-control"
++                            <Form.Label style={{ color: "white" }}>Тип відео:</Form.Label>
++                            <Form.Select
++                                value={videoType}
++                                onChange={(e) => setVideoType(e.target.value)}
+                                 style={{ backgroundColor: "#333", color: "white" }}
+                             >
+                                 <option value="Performance">Performance</option>
+                                 <option value="Backstage">Backstage</option>
+                                 <option value="Repetition">Repetition</option>
+-                            </select>
++                            </Form.Select>
+                         </Form.Group>
+ 
+                         <Form.Group controlId="formVideo" className="mb-3">
+-                            <Form.Label style={{ color: "white" }} className="me-3">Завантажте відео:</Form.Label>
++                            <Form.Label style={{ color: "white" }}>Завантажте відео:</Form.Label>
+                             <Form.Control
+                                 type="file"
+                                 accept="video/*"
+                                 onChange={handleFileChange}
+-                                style={{ color: "white", backgroundColor: "#333" }}
++                                style={{ backgroundColor: "#333", color: "white" }}
+                             />
+                         </Form.Group>
+ 
+-                        <Button variant="primary" type="submit" className="mt-3 w-100" disabled={loading}>
++                        <Button
++                            variant="primary"
++                            type="submit"
++                            className="w-100 mt-3"
++                            disabled={loading}
++                            style={{ marginTop: "10px" }}
++                        >
+                             {loading ? "Завантаження..." : `Додати ${modalTitle}`}
+                         </Button>
+                     </Form>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"c08e6ba7-7a14-4c18-8e1b-a45827e7dce3\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/storonnimv.client/src/components/contexts/AdminContext.tsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/storonnimv.client/src/components/contexts/AdminContext.tsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/storonnimv.client/src/components/contexts/shared/GlobalContext.tsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/storonnimv.client/src/components/contexts/shared/GlobalContext.tsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/ProtectedRoute.tsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/ProtectedRoute.tsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/storonnimv.client/src/components/elements/group/GroupDescription.tsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/storonnimv.client/src/components/elements/group/GroupDescription.tsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/storonnimv.client/src/components/elements/group/MemberModal.tsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/storonnimv.client/src/components/elements/group/MemberModal.tsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/storonnimv.client/src/components/elements/group/groupPageComponents/ShortMembers.tsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/storonnimv.client/src/components/elements/group/groupPageComponents/ShortMembers.tsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/storonnimv.client/src/components/elements/music/MusicPlatformItem.tsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/storonnimv.client/src/components/elements/music/MusicPlatformItem.tsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/storonnimv.client/src/components/elements/news/NewsModal.tsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/storonnimv.client/src/components/elements/news/NewsModal.tsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/SchedulesList.tsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/SchedulesList.tsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/storonnimv.client/src/components/elements/shared/GenericList/List.tsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/storonnimv.client/src/components/elements/shared/GenericList/List.tsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/storonnimv.client/src/components/elements/video/VideoListItem.tsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/storonnimv.client/src/components/elements/video/VideoListItem.tsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/storonnimv.client/src/components/pages/Music.tsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/storonnimv.client/src/components/pages/Music.tsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/storonnimv.client/src/components/pages/News.tsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/storonnimv.client/src/components/pages/News.tsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/storonnimv.client/src/components/pages/Schedule.tsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/storonnimv.client/src/components/pages/Schedule.tsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/storonnimv.client/src/components/pages/Video.tsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/storonnimv.client/src/components/pages/Video.tsx\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"CSS File\" />\r\n        <option value=\"package.json\" />\r\n        <option value=\"TypeScript File\" />\r\n        <option value=\"tsconfig.json\" />\r\n        <option value=\"SCSS File\" />\r\n        <option value=\"TypeScript JSX File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"refactor/token-logic-change\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;Dmytro-Butnyk&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/ilyaghrischenko/StoronnimV.Client.git&quot;,\r\n    &quot;accountId&quot;: &quot;f5f44a53-056a-48d4-a60b-fb6819021fde&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;customColor&quot;: &quot;&quot;,\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2rlume5EcS79d0nWE7OilNXjxbz\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;D:/ForProgramming/Projects/MyProjects/React/StoronnimV.Client/storonnimv.client/src&quot;,\r\n    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,\r\n    &quot;ts.external.directory.path&quot;: &quot;D:\\\\GitHub\\\\StoronnimV.Client\\\\storonnimv.client\\\\node_modules\\\\typescript\\\\lib&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\ForProgramming\\Projects\\MyProjects\\React\\StoronnimV.Client\\storonnimv.client\\src\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\GitHub\\StoronnimV.Client\\storonnimv.client\\src\\components\\elements\\admin\" />\r\n      <recent name=\"D:\\GitHub\\StoronnimV.Client\\storonnimv.client\\src\\components\\elements\\admin\\TableItems\\ListItems\" />\r\n      <recent name=\"D:\\GitHub\\StoronnimV.Client\\storonnimv.client\\src\\components\\elements\\admin\\TableItems\\List\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-WS-243.26053.12\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"c08e6ba7-7a14-4c18-8e1b-a45827e7dce3\" name=\"Changes\" comment=\"commit\" />\r\n      <created>1737146144113</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1737146144113</updated>\r\n      <workItem from=\"1737146146133\" duration=\"36000\" />\r\n      <workItem from=\"1737150662289\" duration=\"5019000\" />\r\n      <workItem from=\"1737203540000\" duration=\"1493000\" />\r\n      <workItem from=\"1737207716654\" duration=\"2917000\" />\r\n      <workItem from=\"1737238150017\" duration=\"1136000\" />\r\n      <workItem from=\"1737395253529\" duration=\"4304000\" />\r\n      <workItem from=\"1737643181211\" duration=\"11843000\" />\r\n      <workItem from=\"1737827277070\" duration=\"4474000\" />\r\n      <workItem from=\"1737985652004\" duration=\"2473000\" />\r\n      <workItem from=\"1738088482820\" duration=\"3173000\" />\r\n      <workItem from=\"1738505765420\" duration=\"1362000\" />\r\n      <workItem from=\"1738508729300\" duration=\"572000\" />\r\n      <workItem from=\"1738586998001\" duration=\"3038000\" />\r\n      <workItem from=\"1739290782298\" duration=\"2465000\" />\r\n      <workItem from=\"1739460114754\" duration=\"1991000\" />\r\n      <workItem from=\"1739706291324\" duration=\"565000\" />\r\n      <workItem from=\"1740414737933\" duration=\"4445000\" />\r\n      <workItem from=\"1740485231062\" duration=\"264000\" />\r\n      <workItem from=\"1740499607547\" duration=\"1379000\" />\r\n      <workItem from=\"1740693250315\" duration=\"331000\" />\r\n      <workItem from=\"1742899534332\" duration=\"1256000\" />\r\n      <workItem from=\"1742902238667\" duration=\"1303000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"change port\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1737205109283</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1737205109283</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"changes class name to BEM methodology partly\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1737210643583</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1737210643583</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"rewrite .css files to .scss, add style.scss\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1737310157941</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1737310157941</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"remove imports css files in components, add only 1 import to index.html\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1737311090308</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1737311090308</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"fix\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1737311791052</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1737311791052</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"finish\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1737655695264</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1737655695265</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"add\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1737658732400</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1737658732400</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"remove window.location.href, replace on navigate\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1737724965387</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1737724965387</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"add hiding header and footer on admin pages\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1737726208058</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1737726208058</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"change\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1737735468660</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1737735468660</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"add fetching data to table\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1737745161760</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1737745161760</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"porfavor\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1737827912155</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1737827912155</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"add edit and delete buttons\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1738093845226</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1738093845227</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"fix\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1738160077183</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1738160077183</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"add error page\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1738161647022</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1738161647022</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"fixes\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1740417476338</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1740417476338</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"fix video sections images\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1740500995098</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1740500995102</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00018\" summary=\"save before token logic change\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742828124626</created>\r\n      <option name=\"number\" value=\"00018\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00018\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742828124626</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"19\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"vite applied\" />\r\n    <MESSAGE value=\"change port\" />\r\n    <MESSAGE value=\"changes class name to BEM methodology partly\" />\r\n    <MESSAGE value=\"commit\" />\r\n    <MESSAGE value=\"rewrite .css files to .scss, add style.scss\" />\r\n    <MESSAGE value=\"remove imports css files in components, add only 1 import to index.html\" />\r\n    <MESSAGE value=\"finish\" />\r\n    <MESSAGE value=\"add\" />\r\n    <MESSAGE value=\"remove window.location.href, replace on navigate\" />\r\n    <MESSAGE value=\"add hiding header and footer on admin pages\" />\r\n    <MESSAGE value=\"change\" />\r\n    <MESSAGE value=\"add fetching data to table\" />\r\n    <MESSAGE value=\"porfavor\" />\r\n    <MESSAGE value=\"add edit and delete buttons\" />\r\n    <MESSAGE value=\"fix\" />\r\n    <MESSAGE value=\"add error page\" />\r\n    <MESSAGE value=\"fixes\" />\r\n    <MESSAGE value=\"finish all fixes\" />\r\n    <MESSAGE value=\"fix video sections images\" />\r\n    <MESSAGE value=\"save before token logic change\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"save before token logic change\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision c22a777106ba1301472584e07cf4733fba822531)
++++ b/.idea/workspace.xml	(date 1742922729466)
+@@ -6,20 +6,7 @@
+   <component name="ChangeListManager">
+     <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/AdminContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/AdminContext.tsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/shared/GlobalContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/shared/GlobalContext.tsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/ProtectedRoute.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/ProtectedRoute.tsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/GroupDescription.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/GroupDescription.tsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/MemberModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/MemberModal.tsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/groupPageComponents/ShortMembers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/groupPageComponents/ShortMembers.tsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/music/MusicPlatformItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/music/MusicPlatformItem.tsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/NewsModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/NewsModal.tsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/SchedulesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/SchedulesList.tsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/shared/GenericList/List.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/shared/GenericList/List.tsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/VideoListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/VideoListItem.tsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Music.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Music.tsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/News.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/News.tsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Schedule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Schedule.tsx" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/button/VideoContentModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/button/VideoContentModal.tsx" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Video.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Video.tsx" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -42,7 +29,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="refactor/token-logic-change" />
++        <entry key="$PROJECT_DIR$" value="develop" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -53,12 +40,12 @@
+     &quot;assignee&quot;: &quot;Dmytro-Butnyk&quot;
+   }
+ }</component>
+-  <component name="GithubPullRequestsUISettings">{
+-  &quot;selectedUrlAndAccountId&quot;: {
+-    &quot;url&quot;: &quot;https://github.com/ilyaghrischenko/StoronnimV.Client.git&quot;,
+-    &quot;accountId&quot;: &quot;f5f44a53-056a-48d4-a60b-fb6819021fde&quot;
+-  }
+-}</component>
++  <component name="GithubPullRequestsUISettings"><![CDATA[{
++  "selectedUrlAndAccountId": {
++    "url": "https://github.com/ilyaghrischenko/StoronnimV.Client.git",
++    "accountId": "f8f43f91-6ace-4e90-97df-a0c4ba8c89f6"
++  }
++}]]></component>
+   <component name="ProblemsViewState">
+     <option name="selectedTabId" value="CurrentFile" />
+   </component>
+@@ -74,23 +61,23 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;D:/ForProgramming/Projects/MyProjects/React/StoronnimV.Client/storonnimv.client/src&quot;,
+-    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+-    &quot;ts.external.directory.path&quot;: &quot;D:\\GitHub\\StoronnimV.Client\\storonnimv.client\\node_modules\\typescript\\lib&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "RunOnceActivity.git.unshallow": "true",
++    "git-widget-placeholder": "feature/make-forms-for-adding-updating-deleting-video",
++    "last_opened_file_path": "D:/ForProgramming/Projects/MyProjects/React/StoronnimV.Client/storonnimv.client/src",
++    "list.type.of.created.stylesheet": "SCSS",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "settings.editor.selected.configurable": "preferences.pluginManager",
++    "ts.external.directory.path": "D:\\ForProgramming\\Projects\\MyProjects\\React\\StoronnimV.Client\\storonnimv.client\\node_modules\\typescript\\lib",
++    "vue.rearranger.settings.migration": "true"
+   }
+-}</component>
++}]]></component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="D:\ForProgramming\Projects\MyProjects\React\StoronnimV.Client\storonnimv.client\src" />

@@ -45,7 +45,7 @@ const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) =
 
     const fetchHomeSchedule = async () : Promise<void> => {
         try {
-            const response = await sendRequest('http://localhost:8080/api/home/schedule');
+            const response = await sendRequest('https://localhost:44315/api/home/schedule');
 
             const data: IScheduleHomeItem = response.data;
 
@@ -59,7 +59,7 @@ const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) =
 
     const fetchHomeNewsList = async () : Promise<void> => {
         try {
-            const response = await sendRequest('http://localhost:8080/api/home/news/6');
+            const response = await sendRequest('https://localhost:44315/api/home/news/6');
 
             const data: IHomeNewsItem[] = response.data;
 
@@ -77,7 +77,7 @@ const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) =
 
     const fetchHomePromotionVideo = async () : Promise<void> => {
         try {
-            const response = await sendRequest('http://localhost:8080/api/home/video');
+            const response = await sendRequest('https://localhost:44315/api/home/video');
 
             const data: IVideoModel = response.data;
 

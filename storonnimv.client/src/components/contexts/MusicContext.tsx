@@ -42,7 +42,7 @@ const MusicContextProvider: React.FC<MusicContextProviderProps> = ({ children })
 
     const fetchMusicPlatforms = async () : Promise<void> => {
         try {
-            const response = await sendRequest('http://localhost:8080/api/music');
+            const response = await sendRequest('https://localhost:44315/api/music');
 
             const data: IMusicPlatformItem[] = response.data;
 

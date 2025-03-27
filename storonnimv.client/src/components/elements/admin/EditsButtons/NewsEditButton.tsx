@@ -42,7 +42,7 @@ const NewsEditButton: FC<NewsEditButtonProps> = ({ newsItem }) => {
             formData.append("date", editedNews.date);
 
             await sendRequest(
-                `http://localhost:8080/api/news/${newsItem.id}`,
+                `https://localhost:44315/api/news/${newsItem.id}`,
                 "PUT",
                 formData,
                 { "Content-Type": "multipart/form-data" }

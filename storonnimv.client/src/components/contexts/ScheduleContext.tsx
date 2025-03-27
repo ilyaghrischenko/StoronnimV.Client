@@ -55,7 +55,7 @@ const ScheduleContextProvider: React.FC<ScheduleContextProviderProps> = ({ child
 
     const fetchScheduleFullInfo = async (scheduleId: number): Promise<void> => {
         try {
-            const response = await sendRequest(`http://localhost:8080/api/schedules/${scheduleId}`);
+            const response = await sendRequest(`https://localhost:44315/api/schedules/${scheduleId}`);
 
             const data: ISchedule = response.data;
 
@@ -71,7 +71,7 @@ const ScheduleContextProvider: React.FC<ScheduleContextProviderProps> = ({ child
 
         try {
             const response = await sendRequest(
-                `http://localhost:8080/api/schedules/page/${pageNumber}?pageSize=${pageSize}`
+                `https://localhost:44315/api/schedules/page/${pageNumber}?pageSize=${pageSize}`
             );
 
             const data: IPaginationResponse<IScheduleListItem> = response.data;

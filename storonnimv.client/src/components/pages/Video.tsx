@@ -28,7 +28,7 @@ const Video: FC<VideoProps> = ({ children }) => {
             <Container className='video-page page'>
                 {isAdmin && isMainPage && (
                     <AddVideoButton
-                        apiUrl="/api/video"
+                        apiUrl="https://localhost:44315/api/admin/videos"
                         modalTitle="Відео"
                         buttonLabel="Додати відео"
                     />

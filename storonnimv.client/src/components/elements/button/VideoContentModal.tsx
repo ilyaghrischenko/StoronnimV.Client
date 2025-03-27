@@ -6,61 +6,43 @@ import { ModalLoading } from "../shared/ModalLoading.tsx";
 interface VideoContentModalProps {
     apiUrl: string;
     modalTitle: string;
-    buttonLabel: string;
-    section: string;
 }
 
-const VideoContentModal: FC<VideoContentModalProps> = ({ apiUrl, modalTitle, section }) => {
+const VideoContentModal: FC<VideoContentModalProps> = ({ apiUrl, modalTitle }) => {
     const globalContext = useContext(GlobalContext);
+    if (!globalContext) throw new Error("GlobalContext is not defined");
 
-    if (!globalContext) {
-        throw new Error("GlobalContext is not defined");
-    }
+    const { sendRequest, OnHideModal } = globalContext;
 
-    const { sendRequest } = globalContext;
-
-    const [title, setTitle] = useState<string>("");
+    const [title, setTitle] = useState("");
     const [videoFile, setVideoFile] = useState<File | null>(null);
-    const [loading, setLoading] = useState<boolean>(false);
-    const [videoType, setVideoType] = useState<string>("Performance");
-
-    const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setTitle(e.target.value);
-    };
+    const [loading, setLoading] = useState(false);
+    const [videoType, setVideoType] = useState("Performance");
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) setVideoFile(file);
     };
 
-    const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setVideoType(e.target.value);
-    };
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!videoFile) {
-            alert("Будь ласка, завантажте відео");
-            return;
-        }
-        setLoading(true);
+        if (!videoFile) return alert("Будь ласка, завантажте відео");
 
+        setLoading(true);
         const formData = new FormData();
-        formData.append("title", title);
-        formData.append("video", videoFile);
-        formData.append("section", section);
-        formData.append("type", videoType);
+        formData.append("Url", videoFile);
+        formData.append("Title", title);
+        formData.append("Type", videoType);
 
         try {
-            const response = await sendRequest(apiUrl, "POST", formData, {
-                "Content-Type": "multipart/form-data",
-            });
+            const response = await sendRequest(apiUrl, "POST", formData);
             if (response.status === 200) {
                 alert(`${modalTitle} успішно додано!`);
-                globalContext.OnHideModal();
+                OnHideModal();
             }
         } catch (error) {
             alert(`Помилка при додаванні ${modalTitle.toLowerCase()}`);
+            console.error(error);
         } finally {
             setLoading(false);
         }
@@ -69,49 +51,53 @@ const VideoContentModal: FC<VideoContentModalProps> = ({ apiUrl, modalTitle, sec
     if (loading) return <ModalLoading />;
 
     return (
-        <Container>
+        <Container style={{ backgroundColor: "#222", padding: "20px", borderRadius: "8px" }}>
             <Row>
                 <Col xs={12}>
-                    <h2 className="text-center" style={{ color: "white" }}>{modalTitle}</h2>
+                    <h2 style={{ textAlign: "center", color: "white", marginBottom: "15px" }}>{modalTitle}</h2>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="formTitle" className="mb-3">
-                            <Form.Label style={{ color: "white" }} className="me-3">Заголовок:</Form.Label>
+                            <Form.Label style={{ color: "white" }}>Заголовок:</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="title"
                                 value={title}
-                                onChange={handleTitleChange}
+                                onChange={(e) => setTitle(e.target.value)}
                                 placeholder={`Введіть заголовок ${modalTitle}`}
                                 required
-                                style={{ color: "white", backgroundColor: "#333" }}
+                                style={{ backgroundColor: "#333", color: "white" }}
                             />
                         </Form.Group>
 
                         <Form.Group controlId="formType" className="mb-3">
-                            <Form.Label style={{ color: "white" }} className="me-3">Тип відео:</Form.Label>
-                            <select 
-                                value={videoType} 
-                                onChange={handleTypeChange} 
-                                className="form-control"
+                            <Form.Label style={{ color: "white" }}>Тип відео:</Form.Label>
+                            <Form.Select
+                                value={videoType}
+                                onChange={(e) => setVideoType(e.target.value)}
                                 style={{ backgroundColor: "#333", color: "white" }}
                             >
                                 <option value="Performance">Performance</option>
                                 <option value="Backstage">Backstage</option>
                                 <option value="Repetition">Repetition</option>
-                            </select>
+                            </Form.Select>
                         </Form.Group>
 
                         <Form.Group controlId="formVideo" className="mb-3">
-                            <Form.Label style={{ color: "white" }} className="me-3">Завантажте відео:</Form.Label>
+                            <Form.Label style={{ color: "white" }}>Завантажте відео:</Form.Label>
                             <Form.Control
                                 type="file"
                                 accept="video/*"
                                 onChange={handleFileChange}
-                                style={{ color: "white", backgroundColor: "#333" }}
+                                style={{ backgroundColor: "#333", color: "white" }}
                             />
                         </Form.Group>
 
-                        <Button variant="primary" type="submit" className="mt-3 w-100" disabled={loading}>
+                        <Button
+                            variant="primary"
+                            type="submit"
+                            className="w-100 mt-3"
+                            disabled={loading}
+                            style={{ marginTop: "10px" }}
+                        >
                             {loading ? "Завантаження..." : `Додати ${modalTitle}`}
                         </Button>
                     </Form>

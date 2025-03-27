@@ -37,7 +37,7 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({ children }) => 
 
     const fetchIsAdmin = async () => {
         try {
-            const response = await sendRequest("http://localhost:8080/api/admin/isAdmin");
+            const response = await sendRequest("https://localhost:44315/api/admin/isAdmin");
 
             if (response.status === 200) {
                 setIsAdmin(true);

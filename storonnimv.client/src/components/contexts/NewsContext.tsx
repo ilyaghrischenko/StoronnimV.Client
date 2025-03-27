@@ -38,7 +38,7 @@ const NewsContextProvider: FC<NewsContextProviderProps> = ({ children }) => {
     const fetchNewsFullItem = async (id: number): Promise<void> => {
         try {
             const response = await sendRequest(
-                `http://localhost:8080/api/news/${id}`
+                `https://localhost:44315/api/news/${id}`
             );
 
             const data: INewsFullItem = response.data;
@@ -52,7 +52,7 @@ const NewsContextProvider: FC<NewsContextProviderProps> = ({ children }) => {
     const fetchNews = async (pageNumber: number = currentPage, pageSize: number = 9): Promise<void> => {
         try {
             const response = await sendRequest(
-                `http://localhost:8080/api/news/page/${pageNumber}?pageSize=${pageSize}`
+                `https://localhost:44315/api/news/page/${pageNumber}?pageSize=${pageSize}`
             );
 
             const data: IPaginationResponse<INewsShortItem> = response.data;

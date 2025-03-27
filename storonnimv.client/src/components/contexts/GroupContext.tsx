@@ -37,7 +37,7 @@ const GroupContextProvider: React.FC<GroupContextProviderProps> = ({ children })
 
     const fetchGroupInfo = async (): Promise<void> => {
         try {
-            const response = await sendRequest("http://localhost:8080/api/group");
+            const response = await sendRequest("https://localhost:44315/api/group");
 
             const data: IGroupPageFullInfo = response.data;
 
@@ -65,7 +65,7 @@ const GroupContextProvider: React.FC<GroupContextProviderProps> = ({ children })
     });
     const fetchMemberInfo = async (memberId: number ): Promise<void> => {
         try {
-            const response = await sendRequest(`http://localhost:8080/api/group/member/${memberId}`);
+            const response = await sendRequest(`https://localhost:44315/api/group/member/${memberId}`);
 
             const data: IMemberFullInfo = response.data;
 
