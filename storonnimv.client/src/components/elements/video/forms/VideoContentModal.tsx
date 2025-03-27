@@ -2,7 +2,6 @@ import { FC, useState, useContext } from "react";
 import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { ModalLoading } from "../../shared/ModalLoading.tsx";
-import "./VideoContentModal.scss";
 
 interface VideoContentModalProps {
     apiUrl: string;
