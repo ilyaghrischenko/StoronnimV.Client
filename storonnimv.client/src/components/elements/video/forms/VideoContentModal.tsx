@@ -1,7 +1,8 @@
 import { FC, useState, useContext } from "react";
-import { GlobalContext } from "../../contexts/shared/GlobalContext.tsx";
+import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { ModalLoading } from "../shared/ModalLoading.tsx";
+import { ModalLoading } from "../../shared/ModalLoading.tsx";
+import "./VideoContentModal.scss";
 
 interface VideoContentModalProps {
     apiUrl: string;
@@ -21,16 +22,18 @@ const VideoContentModal: FC<VideoContentModalProps> = ({ apiUrl, modalTitle }) =
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
-        if (file) setVideoFile(file);
+        setVideoFile(file || null);
     };
+
+    const isFormValid = title.trim() !== "" && videoFile !== null;
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!videoFile) return alert("Будь ласка, завантажте відео");
+        if (!isFormValid) return;
 
         setLoading(true);
         const formData = new FormData();
-        formData.append("Url", videoFile);
+        formData.append("Url", videoFile!);
         formData.append("Title", title);
         formData.append("Type", videoType);
 
@@ -51,29 +54,29 @@ const VideoContentModal: FC<VideoContentModalProps> = ({ apiUrl, modalTitle }) =
     if (loading) return <ModalLoading />;
 
     return (
-        <Container style={{ backgroundColor: "#222", padding: "20px", borderRadius: "8px" }}>
+        <Container className="video-modal">
             <Row>
                 <Col xs={12}>
-                    <h2 style={{ textAlign: "center", color: "white", marginBottom: "15px" }}>{modalTitle}</h2>
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group controlId="formTitle" className="mb-3">
-                            <Form.Label style={{ color: "white" }}>Заголовок:</Form.Label>
+                    <h2 className="video-modal__title">{modalTitle}</h2>
+                    <Form onSubmit={handleSubmit} className="video-modal__form">
+                        <Form.Group controlId="formTitle" className="video-modal__group">
+                            <Form.Label className="video-modal__label">Заголовок:</Form.Label>
                             <Form.Control
                                 type="text"
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
                                 placeholder={`Введіть заголовок ${modalTitle}`}
                                 required
-                                style={{ backgroundColor: "#333", color: "white" }}
+                                className="video-modal__input"
                             />
                         </Form.Group>
 
-                        <Form.Group controlId="formType" className="mb-3">
-                            <Form.Label style={{ color: "white" }}>Тип відео:</Form.Label>
+                        <Form.Group controlId="formType" className="video-modal__group">
+                            <Form.Label className="video-modal__label">Тип відео:</Form.Label>
                             <Form.Select
                                 value={videoType}
                                 onChange={(e) => setVideoType(e.target.value)}
-                                style={{ backgroundColor: "#333", color: "white" }}
+                                className="video-modal__select"
                             >
                                 <option value="Performance">Performance</option>
                                 <option value="Backstage">Backstage</option>
@@ -81,22 +84,21 @@ const VideoContentModal: FC<VideoContentModalProps> = ({ apiUrl, modalTitle }) =
                             </Form.Select>
                         </Form.Group>
 
-                        <Form.Group controlId="formVideo" className="mb-3">
-                            <Form.Label style={{ color: "white" }}>Завантажте відео:</Form.Label>
+                        <Form.Group controlId="formVideo" className="video-modal__group">
+                            <Form.Label className="video-modal__label">Завантажте відео:</Form.Label>
                             <Form.Control
                                 type="file"
                                 accept="video/*"
                                 onChange={handleFileChange}
-                                style={{ backgroundColor: "#333", color: "white" }}
+                                className="video-modal__input"
                             />
                         </Form.Group>
 
                         <Button
                             variant="primary"
                             type="submit"
-                            className="w-100 mt-3"
-                            disabled={loading}
-                            style={{ marginTop: "10px" }}
+                            className="video-modal__button"
+                            disabled={!isFormValid || loading}
                         >
                             {loading ? "Завантаження..." : `Додати ${modalTitle}`}
                         </Button>

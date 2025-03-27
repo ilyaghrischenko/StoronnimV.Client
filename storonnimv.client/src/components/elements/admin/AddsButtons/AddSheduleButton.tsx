@@ -1,7 +1,7 @@
 import { useContext, FC } from "react";
 import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
 import { Button } from "react-bootstrap";
-import { ScheduleContentModal } from "../../button/ScheduleContentModal.tsx";
+import { ScheduleContentModal } from "../../schedule/forms/ScheduleContentModal.tsx";
 import { IoAddCircleSharp } from "react-icons/io5";
 
 interface AddScheduleButtonProps {

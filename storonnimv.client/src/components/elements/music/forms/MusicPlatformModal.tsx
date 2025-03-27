@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import { IMusicPlatformItem } from "../../../models/music/IMusicPlatformItem";
-import { GlobalContext } from "../../contexts/shared/GlobalContext";
+import { IMusicPlatformItem } from "../../../../models/music/IMusicPlatformItem.ts";
+import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
 
 interface MusicPlatformModalProps {
     apiUrl: string;

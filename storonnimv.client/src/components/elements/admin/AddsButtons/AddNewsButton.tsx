@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
 import { Button } from "react-bootstrap";
-import { NewsContentModal } from "../../button/NewsContentModal.tsx";
+import { NewsContentModal } from "../../news/forms/NewsContentModal.tsx";
 import { IoAddCircleSharp } from "react-icons/io5";
 
 const AddNewsButton: React.FC = () => {

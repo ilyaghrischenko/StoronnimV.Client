@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
 import { Button } from "react-bootstrap";
-import { MusicPlatformModal } from "../../button/MusicPlatformModal.tsx";
+import { MusicPlatformModal } from "../../music/forms/MusicPlatformModal.tsx";
 import { IoAddCircleSharp } from "react-icons/io5";
 
 interface AddMusicPlatformButtonProps {

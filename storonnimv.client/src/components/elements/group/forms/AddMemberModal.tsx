@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { GlobalContext } from "../../contexts/shared/GlobalContext.tsx";
+import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
 
 interface AddMemberModalProps {
     modalTitle: string;

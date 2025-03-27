@@ -4,20 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="add query params for Error.tsx">
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="video addition edited">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/AdminContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/AdminContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/GroupContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/GroupContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/HomeContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/HomeContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/MusicContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/MusicContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/NewsContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/NewsContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/ScheduleContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/ScheduleContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/VideoContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/VideoContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/shared/GlobalContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/shared/GlobalContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/EditsButtons/NewsEditButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/EditsButtons/NewsEditButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/button/VideoContentModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/button/VideoContentModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Video.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Video.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/AddsButtons/AddGroupButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/AddsButtons/AddGroupButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/AddsButtons/AddMusicPlatformButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/AddsButtons/AddMusicPlatformButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/AddsButtons/AddNewsButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/AddsButtons/AddNewsButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/AddsButtons/AddSheduleButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/AddsButtons/AddSheduleButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/AddsButtons/AddVideoButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/AddsButtons/AddVideoButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/button/AddMemberModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/AddMemberModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/button/MusicPlatformModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/music/forms/MusicPlatformModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/button/NewsContentModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/forms/NewsContentModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/button/ScheduleContentModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/forms/ScheduleContentModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/button/VideoContentModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/forms/VideoContentModal.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -314,7 +312,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742996230826</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="video addition edited">
+      <option name="closed" value="true" />
+      <created>1743078765441</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1743078765441</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -356,6 +362,7 @@
     <MESSAGE value="add useEffect to every page for fetching isAdmin" />
     <MESSAGE value="fixed" />
     <MESSAGE value="add query params for Error.tsx" />
-    <option name="LAST_COMMIT_MESSAGE" value="add query params for Error.tsx" />
+    <MESSAGE value="video addition edited" />
+    <option name="LAST_COMMIT_MESSAGE" value="video addition edited" />
   </component>
 </project>

@@ -1,24 +1,23 @@
-import React, { FC, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
+import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { ModalLoading } from "../shared/ModalLoading.tsx";
-import { GlobalContext } from "../../contexts/shared/GlobalContext.tsx";
+import { ModalLoading } from "../../shared/ModalLoading.tsx";
 
-interface ScheduleContentModalProps {
+interface NewsContentModalProps {
     apiUrl: string;
     modalTitle: string;
 }
 
-export interface ISchedule {
+export interface INewsShortItem {
     id: number;
-    photo: string;
+    photo?: string;
+    video?: string;
     title: string;
-    performanceDateTime: string;
-    description: string;
-    location: string;
-    status: string;
+    priority: string;
+    date: string;
 }
 
-const ScheduleContentModal: FC<ScheduleContentModalProps> = ({ apiUrl, modalTitle }) => {
+const NewsContentModal: React.FC<NewsContentModalProps> = ({ apiUrl, modalTitle }) => {
     const globalContext = useContext(GlobalContext);
 
     if (!globalContext) {
@@ -29,25 +28,30 @@ const ScheduleContentModal: FC<ScheduleContentModalProps> = ({ apiUrl, modalTitl
 
     const [title, setTitle] = useState<string>("");
     const [description, setDescription] = useState<string>("");
-    const [location, setLocation] = useState<string>("");
-    const [performanceDateTime, setPerformanceDateTime] = useState<string>("");
+    const [priority, setPriority] = useState<string>("Secondary");
+    const [date, setDate] = useState<string>("");
     const [photo, setPhoto] = useState<File | null>(null);
+    const [video, setVideo] = useState<File | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         if (name === "title") setTitle(value);
         else if (name === "description") setDescription(value);
-        else if (name === "location") setLocation(value);
-        else if (name === "performanceDateTime") setPerformanceDateTime(value);
+        else if (name === "priority") setPriority(value);
+        else if (name === "date") setDate(value);
     };
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileChange = (
+        e: React.ChangeEvent<HTMLInputElement>,
+        setFile: React.Dispatch<React.SetStateAction<File | null>>,
+        fileType: string
+    ) => {
         const file = e.target.files?.[0];
-        if (file && file.type.startsWith("image/")) {
-            setPhoto(file);
-        } else {
-            alert("Будь ласка, завантажте тільки зображення.");
+        if (file) {
+            if (fileType === "image" && file.type.startsWith("image/")) setFile(file);
+            else if (fileType === "video" && file.type.startsWith("video/")) setFile(file);
+            else alert(`Будь ласка, завантажте файл типу ${fileType}.`);
         }
     };
 
@@ -58,10 +62,10 @@ const ScheduleContentModal: FC<ScheduleContentModalProps> = ({ apiUrl, modalTitl
         const formData = new FormData();
         formData.append("title", title);
         formData.append("description", description);
-        formData.append("location", location);
-        formData.append("status", "active");  // Статус автоматически установлен как "active"
-        formData.append("performanceDateTime", performanceDateTime);
+        formData.append("priority", priority);
+        formData.append("date", date);
         if (photo) formData.append("photo", photo);
+        if (video) formData.append("video", video);
 
         try {
             const response = await sendRequest(apiUrl, "POST", formData);
@@ -85,7 +89,7 @@ const ScheduleContentModal: FC<ScheduleContentModalProps> = ({ apiUrl, modalTitl
                     <h2 className="text-center">{modalTitle}</h2>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="formTitle">
-                            <Form.Label className="me-3" style={{ color: "white" }}>Заголовок: </Form.Label>
+                            <Form.Label className="me-3" style={{ color: "white" }}>Заголовок: {modalTitle}</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="title"
@@ -98,7 +102,7 @@ const ScheduleContentModal: FC<ScheduleContentModalProps> = ({ apiUrl, modalTitl
                         </Form.Group>
 
                         <Form.Group controlId="formDescription" className="mt-3">
-                            <Form.Label className="me-3" style={{ color: "white" }}>Опис: </Form.Label>
+                            <Form.Label className="me-3" style={{ color: "white" }}>Опис: {modalTitle}</Form.Label>
                             <Form.Control
                                 as="textarea"
                                 rows={3}
@@ -111,25 +115,25 @@ const ScheduleContentModal: FC<ScheduleContentModalProps> = ({ apiUrl, modalTitl
                             />
                         </Form.Group>
 
-                        <Form.Group controlId="formLocation" className="mt-3">
-                            <Form.Label className="me-3" style={{ color: "white" }}>Місце проведення: </Form.Label>
-                            <Form.Control
-                                type="text"
-                                name="location"
-                                value={location}
+                        <Form.Group controlId="formPriority" className="mt-3">
+                            <Form.Label className="me-3" style={{ color: "white" }}>Пріоритет: {modalTitle}</Form.Label>
+                            <Form.Select
+                                name="priority"
+                                value={priority}
                                 onChange={handleChange}
-                                placeholder={`Введіть місце проведення ${modalTitle}`}
-                                required
                                 style={{ color: "white", backgroundColor: "#333" }}
-                            />
+                            >
+                                <option value="Secondary">Secondary</option>
+                                <option value="Main">Main</option>
+                            </Form.Select>
                         </Form.Group>
 
-                        <Form.Group controlId="formPerformanceDateTime" className="mt-3">
-                            <Form.Label className="me-3" style={{ color: "white" }}>Дата та час проведення: </Form.Label>
+                        <Form.Group controlId="formDate" className="mt-3">
+                            <Form.Label className="me-3" style={{ color: "white" }}>Дата: {modalTitle}</Form.Label>
                             <Form.Control
-                                type="datetime-local"
-                                name="performanceDateTime"
-                                value={performanceDateTime}
+                                type="date"
+                                name="date"
+                                value={date}
                                 onChange={handleChange}
                                 required
                                 style={{ color: "white", backgroundColor: "#333" }}
@@ -144,7 +148,7 @@ const ScheduleContentModal: FC<ScheduleContentModalProps> = ({ apiUrl, modalTitl
                                     accept="image/*"
                                     id="imageUpload"
                                     style={{ display: "none" }}
-                                    onChange={handleFileChange}
+                                    onChange={(e) => handleFileChange(e, setPhoto, "image")}
                                 />
                                 <Button
                                     variant="secondary"
@@ -154,6 +158,27 @@ const ScheduleContentModal: FC<ScheduleContentModalProps> = ({ apiUrl, modalTitl
                                     Завантажити фото
                                 </Button>
                                 {photo && <span className="ms-2">{photo.name}</span>}
+                            </div>
+                        </Form.Group>
+
+                        <Form.Group controlId="formVideo" className="mt-3">
+                            <Form.Label className="me-3" style={{ color: "white" }}>Відео (необов'язково): </Form.Label>
+                            <div>
+                                <input
+                                    type="file"
+                                    accept="video/*"
+                                    id="videoUpload"
+                                    style={{ display: "none" }}
+                                    onChange={(e) => handleFileChange(e, setVideo, "video")}
+                                />
+                                <Button
+                                    variant="secondary"
+                                    onClick={() => document.getElementById("videoUpload")?.click()}
+                                    className="me-2"
+                                >
+                                    Завантажити відео
+                                </Button>
+                                {video && <span className="ms-2">{video.name}</span>}
                             </div>
                         </Form.Group>
 
@@ -167,4 +192,4 @@ const ScheduleContentModal: FC<ScheduleContentModalProps> = ({ apiUrl, modalTitl
     );
 };
 
-export { ScheduleContentModal };
+export { NewsContentModal };

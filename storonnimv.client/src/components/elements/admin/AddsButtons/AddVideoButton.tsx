@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
 import { Button } from "react-bootstrap";
-import { VideoContentModal } from "../../button/VideoContentModal.tsx";
+import { VideoContentModal } from "../../video/forms/VideoContentModal.tsx";
 import { IoAddCircleSharp } from "react-icons/io5";
 
 interface AddVideoButtonProps {
