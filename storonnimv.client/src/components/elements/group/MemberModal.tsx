@@ -39,15 +39,15 @@ const MemberModal: FC<MemberModalProps> = ({ memberId }) => {
         <Container className="member-modal">
             <Row className="mb-3">
                 <Col xs={12} className="text-center">
-                    <Image className="member-modal__photo" src={memberFullInfo.member.photoUrl} />
+                    <Image className="member-modal__photo" src={memberFullInfo.photoUrl} />
                 </Col>
             </Row>
 
             <Row className="mb-3">
                 <Col xs={12} className="member-modal__info">
-                    <h1 className="member-modal__info-title">{memberFullInfo.member.fullName}</h1>
-                    <h2 className="member-modal__info-role">{memberFullInfo.member.role}</h2>
-                    <p className="member-modal__info-description">{memberFullInfo.member.description}</p>
+                    <h1 className="member-modal__info-title">{memberFullInfo.fullName}</h1>
+                    <h2 className="member-modal__info-role">{memberFullInfo.role}</h2>
+                    <p className="member-modal__info-description">{memberFullInfo.description}</p>
                 </Col>
             </Row>
 

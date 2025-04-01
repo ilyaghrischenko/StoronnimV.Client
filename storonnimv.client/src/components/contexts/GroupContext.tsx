@@ -17,14 +17,14 @@ interface GroupContextProviderProps {
     children: ReactNode;
 }
 
-const GroupContextProvider: React.FC<GroupContextProviderProps> = ({ children }) => {
+const GroupContextProvider: React.FC<GroupContextProviderProps> = ({children}) => {
     const globalContext = useContext(GlobalContext);
 
     if (!globalContext) {
         throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const { sendRequest, loading } = globalContext;
+    const {sendRequest, loading} = globalContext;
 
     const [fullInfo, setFullInfo] = useState<IGroupPageFullInfo>({
         groupPage: {
@@ -54,16 +54,14 @@ const GroupContextProvider: React.FC<GroupContextProviderProps> = ({ children })
     };
 
     const [memberFullInfo, setMemberFullInfo] = useState<IMemberFullInfo>({
-        member: {
-            id: 0,
-            photoUrl: "",
-            fullName: "",
-            description: "",
-            role: "",
-        },
-            socials: []
+        id: 0,
+        photoUrl: "",
+        fullName: "",
+        description: "",
+        role: "",
+        socials: []
     });
-    const fetchMemberInfo = async (memberId: number ): Promise<void> => {
+    const fetchMemberInfo = async (memberId: number): Promise<void> => {
         try {
             const response = await sendRequest(`https://localhost:44315/api/group/member/${memberId}`);
 
@@ -73,7 +71,6 @@ const GroupContextProvider: React.FC<GroupContextProviderProps> = ({ children })
                 console.error("No data received from the API");
                 return;
             }
-            console.dir(data);
             setMemberFullInfo(data);
         } catch (error) {
             console.error("Error fetching news:", error);
@@ -92,4 +89,4 @@ const GroupContextProvider: React.FC<GroupContextProviderProps> = ({ children })
     return <GroupContext.Provider value={value}>{children}</GroupContext.Provider>;
 };
 
-export { GroupContext, GroupContextProvider };
+export {GroupContext, GroupContextProvider};

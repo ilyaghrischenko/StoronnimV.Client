@@ -17,7 +17,7 @@ const VideoListItem: React.FC<IVideoListItemProps> = ({ videoItem }) => {
         OnShowModal(
             <VideoEditButton
                 video={videoItem}
-                apiUrl="your-api-url"
+                apiUrl="https://localhost:44315/api/admin/videos"
                 onClose={OnHideModal}
             />
         );
@@ -45,7 +45,7 @@ const VideoListItem: React.FC<IVideoListItemProps> = ({ videoItem }) => {
                     </Button>
                     <VideoDeleteButton
                         video={videoItem}
-                        apiUrl="your-api-url"
+                        apiUrl="https://localhost:44315/api/admin/videos"
                     />
                 </>
             )}

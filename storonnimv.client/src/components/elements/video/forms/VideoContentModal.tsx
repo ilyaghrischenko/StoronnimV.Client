@@ -1,19 +1,18 @@
-import { FC, useState, useContext } from "react";
-import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { ModalLoading } from "../../shared/ModalLoading.tsx";
-import "./VideoContentModal.scss";
+import {FC, useState, useContext} from "react";
+import {GlobalContext} from "../../../contexts/shared/GlobalContext.tsx";
+import {Container, Row, Col, Form, Button} from "react-bootstrap";
+import {ModalLoading} from "../../shared/ModalLoading.tsx";
 
 interface VideoContentModalProps {
     apiUrl: string;
     modalTitle: string;
 }
 
-const VideoContentModal: FC<VideoContentModalProps> = ({ apiUrl, modalTitle }) => {
+const VideoContentModal: FC<VideoContentModalProps> = ({apiUrl}) => {
     const globalContext = useContext(GlobalContext);
     if (!globalContext) throw new Error("GlobalContext is not defined");
 
-    const { sendRequest, OnHideModal } = globalContext;
+    const {sendRequest, OnHideModal} = globalContext;
 
     const [title, setTitle] = useState("");
     const [videoFile, setVideoFile] = useState<File | null>(null);
@@ -40,43 +39,43 @@ const VideoContentModal: FC<VideoContentModalProps> = ({ apiUrl, modalTitle }) =
         try {
             const response = await sendRequest(apiUrl, "POST", formData);
             if (response.status === 200) {
-                alert(`${modalTitle} успішно додано!`);
+                alert(`Відео успішно додано!`);
                 OnHideModal();
             }
         } catch (error) {
-            alert(`Помилка при додаванні ${modalTitle.toLowerCase()}`);
+            alert(`Помилка при додаванні відео`);
             console.error(error);
         } finally {
             setLoading(false);
         }
     };
 
-    if (loading) return <ModalLoading />;
+    if (loading) return <ModalLoading/>;
 
     return (
-        <Container className="video-modal">
+        <Container className="form-modal">
             <Row>
                 <Col xs={12}>
-                    <h2 className="video-modal__title">{modalTitle}</h2>
-                    <Form onSubmit={handleSubmit} className="video-modal__form">
-                        <Form.Group controlId="formTitle" className="video-modal__group">
-                            <Form.Label className="video-modal__label">Заголовок:</Form.Label>
+                    <h2 className="form-modal__title">Додати відео</h2>
+                    <Form onSubmit={handleSubmit} className="form-modal__form">
+                        <Form.Group controlId="formTitle" className="form-modal__group">
+                            <Form.Label className="form-modal__label">Заголовок:</Form.Label>
                             <Form.Control
                                 type="text"
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
-                                placeholder={`Введіть заголовок ${modalTitle}`}
+                                placeholder={`Введіть заголовок відео`}
                                 required
-                                className="video-modal__input"
+                                className="form-modal__input"
                             />
                         </Form.Group>
 
-                        <Form.Group controlId="formType" className="video-modal__group">
-                            <Form.Label className="video-modal__label">Тип відео:</Form.Label>
+                        <Form.Group controlId="formType" className="form-modal__group">
+                            <Form.Label className="form-modal__label">Тип відео:</Form.Label>
                             <Form.Select
                                 value={videoType}
                                 onChange={(e) => setVideoType(e.target.value)}
-                                className="video-modal__select"
+                                className="form-modal__select"
                             >
                                 <option value="Performance">Performance</option>
                                 <option value="Backstage">Backstage</option>
@@ -84,23 +83,30 @@ const VideoContentModal: FC<VideoContentModalProps> = ({ apiUrl, modalTitle }) =
                             </Form.Select>
                         </Form.Group>
 
-                        <Form.Group controlId="formVideo" className="video-modal__group">
-                            <Form.Label className="video-modal__label">Завантажте відео:</Form.Label>
+                        <Form.Group controlId="formVideo" className="form-modal__group">
+                            <Form.Label className="form-modal__label">Завантажте відео:</Form.Label>
                             <Form.Control
                                 type="file"
                                 accept="video/*"
                                 onChange={handleFileChange}
-                                className="video-modal__input"
+                                className="form-modal__input"
                             />
                         </Form.Group>
 
                         <Button
                             variant="primary"
                             type="submit"
-                            className="video-modal__button"
+                            className="form-modal__button form-modal__button--confirm"
                             disabled={!isFormValid || loading}
                         >
-                            {loading ? "Завантаження..." : `Додати ${modalTitle}`}
+                            {loading ? "Завантаження..." : `Додати відео`}
+                        </Button>
+                        <Button
+                            variant="primary"
+                            className="form-modal__button form-modal__button--cancel"
+                            onClick={OnHideModal}
+                        >
+                            Скасувати
                         </Button>
                     </Form>
                 </Col>
@@ -109,4 +115,4 @@ const VideoContentModal: FC<VideoContentModalProps> = ({ apiUrl, modalTitle }) =
     );
 };
 
-export { VideoContentModal };
+export {VideoContentModal};

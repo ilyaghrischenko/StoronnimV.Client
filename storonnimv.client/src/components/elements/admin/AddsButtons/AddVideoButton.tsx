@@ -10,7 +10,7 @@ interface AddVideoButtonProps {
     buttonLabel: string;
 }
 
-const AddVideoButton: React.FC<AddVideoButtonProps> = ({ apiUrl, modalTitle, buttonLabel }) => {
+const AddVideoButton: React.FC<AddVideoButtonProps> = ({ apiUrl, modalTitle}) => {
     const context = useContext(GlobalContext);
 
     if (!context) {
@@ -24,8 +24,6 @@ const AddVideoButton: React.FC<AddVideoButtonProps> = ({ apiUrl, modalTitle, but
             <VideoContentModal 
                 apiUrl={apiUrl} 
                 modalTitle={modalTitle} 
-                buttonLabel={buttonLabel} 
-                section="video"
             />
         );
     };

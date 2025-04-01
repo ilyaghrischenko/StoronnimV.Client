@@ -14,6 +14,10 @@ export interface ISocialNetwork {
 }
 
 export interface IMemberFullInfo {
-    member: IMember;
+    id: number;
+    photoUrl: string;
+    fullName: string;
+    description: string;
+    role: string;
     socials: ISocialNetwork[];
 }

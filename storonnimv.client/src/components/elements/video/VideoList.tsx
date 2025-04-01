@@ -5,17 +5,31 @@ import { PageLoading } from "../shared/PageLoading";
 import { List } from "../shared/GenericList/List";
 import { ListItem } from "../shared/GenericList/ListItem";
 import { VideoContext } from "../../contexts/VideoContext";
-import { useParams } from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 import { IVideoModel } from "../../../models/video/IVideoModel";
 import { VideoListItem } from "./VideoListItem";
 
 const VideoList: FC = () => {
-    const { id } = useParams<{ id: string }>();
+
+    const videoCategories = [
+        "Performance",
+        "Backstage",
+        "Repetition"
+    ]
+
+    const [searchParams] = useSearchParams();
+    const videoType = searchParams.get("videoType") || "Performance";
+
+    const navigate = useNavigate();
+
+    if(!videoCategories.includes(videoType)) {
+        navigate(`/error?statusCode=404&message=Video%20type%20not%20found`);
+    }
 
     const videoContext = useContext(VideoContext);
     const globalContext = useContext(GlobalContext);
 
-    if (!id) {
+    if (!videoType) {
         throw new Error("Video id must be provided");
     }
     if (!globalContext) {
@@ -31,7 +45,7 @@ const VideoList: FC = () => {
         const savedPage = sessionStorage.getItem("videoCurrentPage");
         const page = savedPage ? Number(savedPage) : 1;
 
-        paginate(id, page);
+        paginate(videoType, page);
     }, []);
 
     if (loading) {
@@ -60,7 +74,7 @@ const VideoList: FC = () => {
                     {/* Кнопка "Предыдущая страница" */}
                     <Pagination.Prev
                         className="video-list__pagination-item"
-                        onClick={() => paginate(id, currentPage - 1)}
+                        onClick={() => paginate(videoType, currentPage - 1)}
                         disabled={currentPage === 1}
                     />
 
@@ -69,7 +83,7 @@ const VideoList: FC = () => {
                         <Pagination.Item
                             key={index}
                             className="video-list__pagination-item"
-                            onClick={() => paginate(id, index + 1)}
+                            onClick={() => paginate(videoType, index + 1)}
                             active={currentPage === index + 1}
                         >
                             {index + 1}
@@ -79,7 +93,7 @@ const VideoList: FC = () => {
                     {/* Кнопка "Следующая страница" */}
                     <Pagination.Next
                         className="video-list__pagination-item"
-                        onClick={() => paginate(id, currentPage + 1)}
+                        onClick={() => paginate(videoType, currentPage + 1)}
                         disabled={currentPage === totalPages}
                     />
                 </Pagination>
