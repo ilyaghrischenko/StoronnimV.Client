@@ -1,24 +1,31 @@
-import { FC, useState } from "react";
+import {FC, useContext, useEffect} from "react";
 import { Admin } from "../../pages/Admin.tsx";
-import { BasicAdmins } from "../admin/BasicAdmins.tsx";
-
-const sampleAdmins = [
-    { id: 1, login: "admin1" },
-    { id: 2, login: "admin2" },
-];
+import { BasicAdmins } from "./BasicAdmins.tsx";
+import {AdminContext} from "../../contexts/AdminContext.tsx";
 
 const AdminContainer: FC = () => {
-    const [admins, setAdmins] = useState(sampleAdmins);
+    const adminContext = useContext(AdminContext);
 
-    const handleDelete = (adminId: number) => {
-        setAdmins((prevAdmins) => prevAdmins.filter((admin) => admin.id !== adminId));
-    };
+    if (!adminContext) {
+        throw new Error("AdminContext must be used within a AdminContextProvider");
+    }
 
-    const handleEdit = (admin: { id: number; login: string }) => {
-        console.log("Edit admin", admin);
-    };
+    const {basicAdmins, fetchBasicAdmins, addAdmin, deleteAdmin, editAdminLogin, editAdminPassword} = adminContext;
 
-    return <Admin children={<BasicAdmins admins={admins} onDelete={handleDelete} onEdit={handleEdit} />} />;
+    useEffect(() => {
+        fetchBasicAdmins();
+    }, []);
+
+    return (
+        <Admin>
+            <BasicAdmins
+                admins={basicAdmins}
+                onAdding={addAdmin}
+                onDelete={deleteAdmin}
+                onLoginEdit={editAdminLogin}
+                onPasswordEdit={editAdminPassword} />
+        </Admin>
+    );
 };
 
 export { AdminContainer };

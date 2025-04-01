@@ -49,7 +49,9 @@ const Page: FC = () => {
                 path="/admin/basic-admins"
                 element={
                     <ProtectedRoute requiredRole="SuperAdmin">
-                        <AdminContainer />
+                        <Admin>
+                            <AdminContainer />
+                        </Admin>
                     </ProtectedRoute>
                 }
             />

@@ -4,32 +4,34 @@ import { GlobalContext } from "../../contexts/shared/GlobalContext";
 import { AddAdminModal } from "./SuperAdminButtons/AddAdminModal.tsx";
 import { EditAdminModal } from "./SuperAdminButtons/EditAdminModal.tsx";
 import { DeleteAdminModal } from "./SuperAdminButtons/DeleteAdminModal.tsx";
-
-interface Admin {
-    id: number;
-    login: string;
-}
+import {IBasicAdmin} from "../../../models/admin/IBasicAdmin.ts";
 
 interface BasicAdminsProps {
-    admins: Admin[];
-    onDelete: (id: number) => void;
-    onEdit: (admin: Admin) => void;
+    admins: IBasicAdmin[];
+    onAdding: (login: string, password: string) => Promise<void>;
+    onDelete: (adminId: number) => Promise<void>;
+    onLoginEdit: (adminId: number, newLogin: string) => Promise<void>;
+    onPasswordEdit: (adminId: number, oldPassword: string, newPassword: string) => Promise<void>;
 }
 
-const BasicAdmins: React.FC<BasicAdminsProps> = ({ admins, onDelete }) => {
+const BasicAdmins: React.FC<BasicAdminsProps> = ({ admins, onAdding, onDelete, onLoginEdit, onPasswordEdit }) => {
     const { OnShowModal } = useContext(GlobalContext)!;
 
-    const handleEdit = (admin: Admin) => {
-        OnShowModal(<EditAdminModal admin={admin} />);
+    const handleAdd = () => {
+        OnShowModal(<AddAdminModal onAdding={onAdding} />);
     };
 
-    const handleDelete = (admin: Admin) => {
-        OnShowModal(<DeleteAdminModal adminId={admin.id} onDelete={onDelete} />);
+    const handleEdit = (admin: IBasicAdmin) => {
+        OnShowModal(<EditAdminModal admin={admin} onLoginEdit={onLoginEdit} onPasswordEdit={onPasswordEdit} />);
+    };
+
+    const handleDelete = (admin: IBasicAdmin) => {
+        OnShowModal(<DeleteAdminModal adminId={admin.id} onDelete={() => onDelete(admin.id)} />);
     };
 
     return (
         <div>
-            <Button variant="primary" onClick={() => OnShowModal(<AddAdminModal />)}>
+            <Button variant="primary" onClick={handleAdd}>
                 Додати Адміна
             </Button>
             <h2 className="mt-3">Список Адмінів</h2>
@@ -49,7 +51,7 @@ const BasicAdmins: React.FC<BasicAdminsProps> = ({ admins, onDelete }) => {
                             <td>
                                 <Button variant="warning" onClick={() => handleEdit(admin)}>
                                     Змінити
-                                </Button>{" "}
+                                </Button>
                                 <Button
                                     variant="danger"
                                     onClick={() => handleDelete(admin)}

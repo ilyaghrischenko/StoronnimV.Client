@@ -14,15 +14,16 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, requiredRole 
         throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const { fetchIsAdmin, isAdmin } = globalContext;
+    const { fetchIsAdmin } = globalContext;
 
     useEffect(() => {
         fetchIsAdmin();
     }, []);
 
-    if (!isAdmin) {
-        return <Navigate to="/error?statusCode=401&message=Unauthorised" replace />;
-    }
+    //TODO: решить
+    // if (!isAdmin) {
+    //     return <Navigate to="/error?statusCode=401&message=Unauthorised" replace />;
+    // }
 
     const adminRole = sessionStorage.getItem("role");
 

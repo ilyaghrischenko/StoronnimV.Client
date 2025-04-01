@@ -4,32 +4,18 @@ import { GlobalContext } from "../../../contexts/shared/GlobalContext";
 
 interface DeleteAdminModalProps {
     adminId: number;
-    onDelete: (id: number) => void;
+    onDelete: (id: number) => Promise<void>;
 }
 
 const DeleteAdminModal: React.FC<DeleteAdminModalProps> = ({ adminId, onDelete }) => {
-    const { OnHideModal, sendRequest } = useContext(GlobalContext)!;
+    const { OnHideModal } = useContext(GlobalContext)!;
     const [loading, setLoading] = useState<boolean>(false);
 
     const handleDeleteAdmin = async () => {
         setLoading(true);
-        try {
-            const response = await sendRequest(
-                `/api/admin/delete/${adminId}`,
-                "DELETE"
-            );
-
-            if (response.status === 200) {
-                onDelete(adminId);
-                OnHideModal();
-            } else {
-                console.error("Error deleting admin:", response.status, response.data);
-            }
-        } catch (error: any) {
-            console.error("Error:", error.message);
-        } finally {
-            setLoading(false);
-        }
+        await onDelete(adminId);
+        setLoading(false);
+        OnHideModal();
     };
 
     return (

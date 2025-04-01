@@ -2,33 +2,20 @@ import React, { useContext, useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
 import { GlobalContext } from "../../../contexts/shared/GlobalContext";
 
-const AddAdminModal: React.FC = () => {
-    const { OnHideModal, sendRequest } = useContext(GlobalContext)!;
+interface IAddAdminModalProps {
+    onAdding: (login: string, password: string) => Promise<void>;
+}
+
+const AddAdminModal: React.FC<IAddAdminModalProps> = ({ onAdding }) => {
+    const { OnHideModal } = useContext(GlobalContext)!;
     const [login, setLogin] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
 
     const handleAddAdmin = async () => {
         setLoading(true);
-        try {
-            const response = await sendRequest(
-                "/api/admin/add",
-                "POST", 
-                { login, password }, 
-                { "Content-Type": "application/json" }
-            );
-
-            if (response.status === 200) {
-                console.log("Admin added successfully:", response.data);
-                OnHideModal(); 
-            } else {
-                console.error("Error adding admin:", response.status, response.data);
-            }
-        } catch (error: any) {
-            console.error("Error:", error.message);
-        } finally {
-            setLoading(false);
-        }
+        onAdding(login, password);
+        setLoading(false);
     };
 
     return (

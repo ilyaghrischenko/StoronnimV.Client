@@ -4,65 +4,32 @@ import { GlobalContext } from "../../../contexts/shared/GlobalContext";
 
 interface EditAdminModalProps {
     admin: { id: number; login: string };
+    onLoginEdit: (adminId: number, newLogin: string) => Promise<void>;
+    onPasswordEdit: (adminId: number, oldPassword: string, newPassword: string) => Promise<void>;
 }
 
-const EditAdminModal: React.FC<EditAdminModalProps> = ({ admin }) => {
-    const { OnHideModal, sendRequest } = useContext(GlobalContext)!;
+const EditAdminModal: React.FC<EditAdminModalProps> = ({ admin, onLoginEdit, onPasswordEdit }) => {
+    const { OnHideModal } = useContext(GlobalContext)!;
     const [login, setLogin] = useState<string>(admin.login);
     const [password, setPassword] = useState<string>("");
     const [newPassword, setNewPassword] = useState<string>("");
     const [confirmPassword, setConfirmPassword] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
 
-    const handleEditLogin = async () => {
+    const handleLoginEdit = async (newLogin: string) => {
         setLoading(true);
-        try {
-            const response = await sendRequest(
-                `/api/admin/edit/${admin.id}`,
-                "PUT",
-                { login },
-                { "Content-Type": "application/json" }
-            );
+        await onLoginEdit(admin.id, newLogin)
+        setLoading(false);
 
-            if (response.status === 200) {
-                console.log("Login changed successfully:", response.data);
-                OnHideModal(); 
-            } else {
-                console.error("Error changing login:", response.status, response.data);
-            }
-        } catch (error: any) {
-            console.error("Error:", error.message);
-        } finally {
-            setLoading(false);
-        }
+        OnHideModal();
     };
 
-    const handleChangePassword = async () => {
+    const handlePasswordEdit = async (oldPassword: string, newPassword: string) => {
         setLoading(true);
-        try {
-            if (newPassword !== confirmPassword) {
-                alert("Пароли не совпадают!");
-                return;
-            }
+        await onPasswordEdit(admin.id, oldPassword, newPassword);
+        setLoading(false);
 
-            const response = await sendRequest(
-                `/api/admin/change-password/${admin.id}`,
-                "PUT",
-                { oldPassword: password, newPassword },
-                { "Content-Type": "application/json" }
-            );
-
-            if (response.status === 200) {
-                console.log("Password changed successfully:", response.data);
-                OnHideModal();
-            } else {
-                console.error("Error changing password:", response.status, response.data);
-            }
-        } catch (error: any) {
-            console.error("Error:", error.message);
-        } finally {
-            setLoading(false);
-        }
+        OnHideModal();
     };
 
     return (
@@ -82,7 +49,7 @@ const EditAdminModal: React.FC<EditAdminModalProps> = ({ admin }) => {
                             style={{ color: "white", backgroundColor: "#333" }}
                         />
                     </Form.Group>
-                    <Button variant="primary" onClick={handleEditLogin} disabled={loading} className="mb-3">
+                    <Button variant="primary" onClick={() => handleLoginEdit(login)} disabled={loading} className="mb-3">
                         {loading ? "Завантаження..." : "Змінити логін"}
                     </Button>
 
@@ -117,7 +84,7 @@ const EditAdminModal: React.FC<EditAdminModalProps> = ({ admin }) => {
                             placeholder="Підтвердження пароля"
                         />
                     </Form.Group>
-                    <Button variant="primary" onClick={handleChangePassword} disabled={loading}>
+                    <Button variant="primary" onClick={() => handlePasswordEdit(newPassword, confirmPassword)} disabled={loading}>
                         {loading ? "Завантаження..." : "Змінити пароль"}
                     </Button>
                 </Form>
