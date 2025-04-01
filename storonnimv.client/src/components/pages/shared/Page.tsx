@@ -42,7 +42,7 @@ const Page: FC = () => {
                     />
                 }
             />
-            <Route path="/video/section/:id" element={<Video children={<VideoList />} />} />
+            <Route path="/video/section" element={<Video children={<VideoList />} />} />
             <Route path="/admin" element={<Admin children={<AuthForm />} />} />
 
             <Route

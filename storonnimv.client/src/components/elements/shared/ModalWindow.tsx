@@ -11,7 +11,6 @@ const ModalWindow: FC = () => {
     const {showModal, OnHideModal, modalContent, modalTitle} = context;
 
     useEffect(() => {
-        console.log("Modal content or title changed");
     }, [modalContent, modalTitle]);
 
     return (

@@ -1,5 +1,6 @@
-﻿import { FC } from "react";
-import { Link } from "react-router-dom";
+﻿import {FC} from "react";
+import {Link, useNavigate} from "react-router-dom";
+import {Button} from "react-bootstrap";
 
 interface VideoSectionsProps {
     topImage?: string; // Изображение для верхнего большого раздела
@@ -7,41 +8,47 @@ interface VideoSectionsProps {
     bottomRightImage?: string; // Изображение для нижнего правого раздела
 }
 
-const VideoSections: FC<VideoSectionsProps> = ({ topImage, bottomLeftImage, bottomRightImage }) => {
+const VideoSections: FC<VideoSectionsProps> = ({topImage, bottomLeftImage, bottomRightImage}) => {
 
     const videoCategories = [
-        { id: "Performance" },
-        { id: "Backstage" },
-        { id: "Repetition" },
+        "Performance",
+        "Backstage",
+        "Repetition"
     ];
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate(`/video/section?videoType=${videoCategories[0]}`, { replace: true });
+    };
 
     return (
         <div className="video-sections-container page">
-            <Link className="video-sections__top" to={`/video/section/${videoCategories[0].id}`}>
+            <Button variant="primary"
+                    type="submit"
+                    className="form-modal__button" onClick={handleClick}>
                 <div className="video-sections__top">
                     {topImage ? (
-                        <img src={topImage} alt="Top Section" className="video-sections__image" />
+                        <img src={topImage} alt="Top Section" className="video-sections__image"/>
                     ) : (
                         <p>Top Section (Add an image)</p>
                     )}
                     <h1 className="video-sections__title">Performances</h1>
                 </div>
-            </Link>
+            </Button>
             <div className="video-sections__bottom">
-                <Link className="video-sections__bottom-left" to={`/video/section/${videoCategories[1].id}`}>
+                <Link className="video-sections__bottom-left" to={`/video/section?videoType=${videoCategories[1]}`}>
                     <div>
                         {bottomLeftImage ? (
-                            <img src={bottomLeftImage} alt="Bottom Left Section" className="video-sections__image" />
+                            <img src={bottomLeftImage} alt="Bottom Left Section" className="video-sections__image"/>
                         ) : (
                             <p>Bottom Left Section (Add an image)</p>
                         )}
                         <h1 className="video-sections__title">Backstage</h1>
                     </div>
                 </Link>
-                <Link className="video-sections__bottom-right" to={`/video/section/${videoCategories[2].id}`}>
+                <Link className="video-sections__bottom-right" to={`/video/section?videoType=${videoCategories[2]}`}>
                     <div>
                         {bottomRightImage ? (
-                            <img src={bottomRightImage} alt="Bottom Right Section" className="video-sections__image" />
+                            <img src={bottomRightImage} alt="Bottom Right Section" className="video-sections__image"/>
                         ) : (
                             <p>Bottom Right Section (Add an image)</p>
                         )}
@@ -53,4 +60,4 @@ const VideoSections: FC<VideoSectionsProps> = ({ topImage, bottomLeftImage, bott
     );
 };
 
-export { VideoSections };
+export {VideoSections};

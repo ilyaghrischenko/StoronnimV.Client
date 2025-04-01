@@ -1,5 +1,5 @@
 import { FC, useContext } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
 import { IVideoModel } from "../../../../models/video/IVideoModel.ts";
 import { MdDeleteForever } from "react-icons/md";
@@ -20,7 +20,7 @@ const VideoDeleteButton: FC<VideoDeleteButtonProps> = ({ video, apiUrl }) => {
         try {
             const response = await sendRequest(`${apiUrl}/${video.id}`, "DELETE");
 
-            if (response.status === 200) {
+            if (response.status === 204) {
                 console.log("Відео успішно видалено:", video);
                 alert("Відео успішно видалено!");
                 OnHideModal();
@@ -36,17 +36,27 @@ const VideoDeleteButton: FC<VideoDeleteButtonProps> = ({ video, apiUrl }) => {
 
     const handleShowModal = () => {
         OnShowModal(
-            <div>
-                <p style={{ color: "white" }}>
+            <Container className="form-modal">
+                <h2 className="form-modal__title">
                     Ви впевнені, що хочете видалити це відео?
-                </p>
-                <Button variant="danger" onClick={handleDelete} className="me-2">
-                    Так, видалити
-                </Button>
-                <Button variant="secondary" onClick={OnHideModal}>
-                    Скасувати
-                </Button>
-            </div>
+                </h2>
+                <Container className="form-modal__form">
+                    <Button
+                        variant="danger"
+                        onClick={handleDelete}
+                        className="form-modal__button form-modal__button--confirm"
+                    >
+                        Так, видалити
+                    </Button>
+                    <Button
+                        variant="secondary"
+                        onClick={OnHideModal}
+                        className="form-modal__button form-modal__button--cancel"
+                    >
+                        Скасувати
+                    </Button>
+                </Container>
+            </Container>
         );
     };
 

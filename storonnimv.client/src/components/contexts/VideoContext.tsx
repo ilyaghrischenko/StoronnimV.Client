@@ -15,7 +15,7 @@ interface VideoContextType {
 }
 
 // Создаем контекст с типизацией
-const VideoContext = createContext<VideoContextType | undefined>(undefined);
+const   VideoContext = createContext<VideoContextType | undefined>(undefined);
 
 interface VideoContextProviderProps {
     children: ReactNode;
@@ -36,13 +36,20 @@ const VideoContextProvider: React.FC<VideoContextProviderProps> = ({children}) =
 
     const fetchVideos =
         async (videoType: string, pageNumber: number, pageSize: number = 9): Promise<void> => {
-
             try {
                 const response = await sendRequest(
                     `https://localhost:44315/api/videos/page/${videoType}/${pageNumber}?pageSize=${pageSize}`
                 );
 
                 const data: IPaginationResponse<IVideoModel> = response.data;
+
+                // Проверяем, если данные пустые
+                if (!data.items || data.items.length === 0) {
+                    console.warn(`No videos found for category: ${videoType}`);
+                    setVideoList([]);  // Обнуляем список
+                    sessionStorage.setItem("videoTotalPages", "0"); // Сбрасываем totalPages
+                    return;
+                }
 
                 setVideoList(data.items);
                 setCurrentPage(data.currentPage);
@@ -51,24 +58,29 @@ const VideoContextProvider: React.FC<VideoContextProviderProps> = ({children}) =
                 sessionStorage.setItem("videoCurrentPage", String(data.currentPage));
                 sessionStorage.setItem("videoTotalPages", String(data.totalPages));
             } catch (error) {
-                console.error("Error while fetching news: ", error);
+                console.error("Error while fetching videos: ", error);
+                setVideoList([]); // Обнуляем список в случае ошибки
+                sessionStorage.setItem("videoTotalPages", "0"); // Сбрасываем totalPages
             }
         };
+
 
     const paginate =
         async (videoType: string, pageNumber: number = currentPage, pageSize: number = 5): Promise<void> => {
 
-            const savedTotalPagesString = sessionStorage.getItem("videoTotalPages");
-            const savedTotalPages = savedTotalPagesString ? Number(savedTotalPagesString) : 0;
+            const savedTotalPages = Number(sessionStorage.getItem("videoTotalPages")) || 0;
 
-            if (savedTotalPages === 0) {
+            // Если videoList пуст, сбрасываем сохранённые totalPages и загружаем видео заново
+            if (savedTotalPages === 0 || videoList.length === 0) {
                 await fetchVideos(videoType, pageNumber, pageSize);
+                return;
             }
 
             if (pageNumber >= 1 && pageNumber <= savedTotalPages) {
                 await fetchVideos(videoType, pageNumber, pageSize);
             }
         };
+
 
     const value: VideoContextType = {
         videoList,
