@@ -13,10 +13,12 @@ const GroupMemberDeleteButton: FC<GroupMemberDeleteButtonProps> = ({item}) => {
 
     const handleDelete = async () => {
         try {
-            const apiUrl = `/api/group/member/${item.member.id}`;
-            const response = await sendRequest(apiUrl, "DELETE");
+            const response = await sendRequest(
+                `https://localhost:44315/api/admin/group/members/${item.id}`,
+                "DELETE"
+            );
 
-            if (response.status === 200) {
+            if (response.status === 204) {
                 console.log("Учасника успішно видалено:", item);
                 alert("Учасника групи успішно видалено!");
                 OnHideModal();
