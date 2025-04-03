@@ -5,7 +5,6 @@ import {ModalLoading} from "../../shared/ModalLoading.tsx";
 
 interface VideoContentModalProps {
     apiUrl: string;
-    modalTitle: string;
 }
 
 const VideoContentModal: FC<VideoContentModalProps> = ({apiUrl}) => {

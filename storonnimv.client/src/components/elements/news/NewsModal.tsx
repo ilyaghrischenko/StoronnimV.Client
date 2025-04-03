@@ -59,7 +59,7 @@ const NewsModal: FC<NewsModalProps> = ({ newsId }) => {
             {newsFullItem && (
             <div className="d-flex justify-content-end gap-2">
                 { isAdmin && <NewsEditButton newsItem={newsFullItem} />}
-                { isAdmin && <NewsDeleteButton newsId={newsFullItem.id} apiUrl="/api/news" />}
+                { isAdmin && <NewsDeleteButton newsId={newsFullItem.id} apiUrl="https://localhost:44315/api/admin/news" />}
             </div>
         )}
 

@@ -14,7 +14,7 @@ const AddNewsButton: React.FC = () => {
     const { OnShowModal } = context;
 
     const handleClick = () => {
-        OnShowModal(<NewsContentModal apiUrl="/api/news" modalTitle="Додати новину" />);
+        OnShowModal(<NewsContentModal apiUrl="https://localhost:44315/api/admin/news"/>);
     };    
 
     return (

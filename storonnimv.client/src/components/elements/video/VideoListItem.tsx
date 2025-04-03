@@ -36,6 +36,7 @@ const VideoListItem: React.FC<IVideoListItemProps> = ({ videoItem }) => {
             </video>
             {isAdmin && (
                 <>
+                    <h3>Video id: {videoItem.id}</h3>
                     <Button
                         className="btn btn-warning position-absolute top-0 end-0 m-2"
                         onClick={handleShowEditModal}

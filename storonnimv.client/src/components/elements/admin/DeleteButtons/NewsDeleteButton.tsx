@@ -1,5 +1,5 @@
 import { FC, useContext } from "react";
-import { Button } from "react-bootstrap";
+import {Button, Container} from "react-bootstrap";
 import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
 import { MdDeleteForever } from "react-icons/md";
 
@@ -18,11 +18,11 @@ const NewsDeleteButton: FC<NewsDeleteButtonProps> = ({ newsId, apiUrl }) => {
     const handleDelete = async () => {
         try {
             const response = await sendRequest(`${apiUrl}/${newsId}`, "DELETE");
-            if (response.status === 200) {
+            if (response.status === 204) {
                 OnHideModal();
                 window.location.reload();
             } else {
-                throw new Error("Помилка при видаленні новини");
+                alert("Error while deleting news");
             }
         } catch (error) {
             console.error("Помилка при видаленні новини:", error);
@@ -31,17 +31,17 @@ const NewsDeleteButton: FC<NewsDeleteButtonProps> = ({ newsId, apiUrl }) => {
 
     const confirmDelete = () => {
         OnShowModal(
-            <div>
-                <p style={{ color: "white" }}>Ви впевнені, що хочете видалити цю новину?</p>
-                <div className="d-flex justify-content-end">
-                    <Button variant="secondary" className="me-2" onClick={OnHideModal}>
+            <Container className="form-modal">
+                <h2 className="form-modal__title">Ви впевнені, що хочете видалити цю новину?</h2>
+                <Container className="form-modal__form">
+                    <Button className="form-modal__button form-modal__button--cancel" onClick={OnHideModal}>
                         Скасувати
                     </Button>
-                    <Button variant="danger" onClick={handleDelete}>
+                    <Button className="form-modal__button form-modal__button--confirm" onClick={handleDelete}>
                         Видалити
                     </Button>
-                </div>
-            </div>,
+                </Container>
+            </Container>,
         );
     };
 
