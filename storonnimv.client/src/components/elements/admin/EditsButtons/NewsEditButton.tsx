@@ -1,138 +1,23 @@
-import { FC, useContext, useState, useEffect } from "react";
-import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
-import { INewsFullItem } from "../../../../models/news/INewsFullItem.ts";
-import { FaEdit } from "react-icons/fa";
+import {FC, useContext} from "react";
+import {GlobalContext} from "../../../contexts/shared/GlobalContext.tsx";
+import {INewsFullItem} from "../../../../models/news/INewsFullItem.ts";
+import {FaEdit} from "react-icons/fa";
+import {EditNewsItemModalContent} from "../../news/forms/EditNewsItemModalContent.tsx";
 
 interface NewsEditButtonProps {
     newsItem: INewsFullItem;
 }
 
-const NewsEditButton: FC<NewsEditButtonProps> = ({ newsItem }) => {
-    const globalContext = useContext(GlobalContext);
-    const [editedNews, setEditedNews] = useState<INewsFullItem>(newsItem);
-    const [newPhoto, setNewPhoto] = useState<File | null>(null);
+const NewsEditButton: FC<NewsEditButtonProps> = ({newsItem}) => {
 
-    if (!globalContext) {
-        return null;
-    }
-
-    const { OnShowModal, sendRequest, OnHideModal } = globalContext;
-
-    useEffect(() => {
-        setEditedNews(newsItem);
-    }, [newsItem]);
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setEditedNews({
-            ...editedNews,
-            [e.target.name]: e.target.value, 
-        });
-    };
-
-    const handleSave = async () => {
-        try {
-            const formData = new FormData();
-            if (newPhoto) {
-                formData.append("photo", newPhoto);
-            }
-
-            formData.append("title", editedNews.title);
-            formData.append("description", editedNews.description);
-            formData.append("priority", editedNews.priority);
-            formData.append("date", editedNews.date);
-
-            await sendRequest(
-                `https://localhost:44315/api/news/${newsItem.id}`,
-                "PUT",
-                formData,
-                { "Content-Type": "multipart/form-data" }
-            );
-
-            OnHideModal();
-            window.location.reload();
-        } catch (error) {
-            console.error("Помилка під час оновлення новини:", error);
-        }
-    };
-
-    const openEditModal = () => {
-        OnShowModal(
-            <div>
-                <h3>Редагування новини</h3>
-
-                <div className="mb-3">
-                    <label className="me-3" style={{ color: "white" }}>Заголовок:</label>
-                    <input
-                        type="text"
-                        name="title"
-                        value={editedNews.title || ""}
-                        onChange={handleChange}
-                        className="form-control"
-                        placeholder="Введіть заголовок новини"
-                        style={{ color: "white", backgroundColor: "#333" }}
-                    />
-                </div>
-
-                <div className="mb-3">
-                    <label className="me-3" style={{ color: "white" }}>Опис:</label>
-                    <textarea
-                        name="description"
-                        value={editedNews.description || ""}
-                        onChange={handleChange}
-                        className="form-control"
-                        placeholder="Напишіть опис новини"
-                        style={{ color: "white", backgroundColor: "#333" }}
-                    />
-                </div>
-
-                <div className="mb-3">
-                    <label className="me-3" style={{ color: "white" }}>Пріоритет:</label>
-                    <input
-                        type="text"
-                        name="priority"
-                        value={editedNews.priority || ""}
-                        onChange={handleChange}
-                        className="form-control"
-                        placeholder="Введіть пріоритет новини" 
-                        style={{ color: "white", backgroundColor: "#333" }}
-                    />
-                </div>
-
-                <div className="mb-3">
-                    <label className="me-3" style={{ color: "white" }}>Дата:</label>
-                    <input
-                        type="date"
-                        name="date"
-                        value={editedNews.date || ""}
-                        onChange={handleChange}
-                        className="form-control"
-                        placeholder="Виберіть дату новини" 
-                        style={{ color: "white", backgroundColor: "#333" }}
-                    />
-                </div>
-
-                <div className="mb-3">
-                    <label className="me-3" style={{ color: "white" }}>Завантажте нове фото новини:</label>
-                    <input
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => setNewPhoto(e.target.files ? e.target.files[0] : null)}
-                        className="form-control"
-                    />
-                </div>
-
-                <button className="btn btn-primary mt-3" onClick={handleSave}>
-                    Зберегти
-                </button>
-            </div>
-        );
-    };
+    const {OnShowModal} = useContext(GlobalContext)!;
 
     return (
-        <button className="btn btn-warning position-fixed bottom-0 right-0 m-3" onClick={openEditModal}>
-            <FaEdit />
+        <button className="btn btn-warning position-fixed bottom-0 right-0 m-3"
+                onClick={() => OnShowModal(<EditNewsItemModalContent newsItem={newsItem}/>)}>
+            <FaEdit/>
         </button>
     );
 };
 
-export { NewsEditButton };
+export {NewsEditButton};
