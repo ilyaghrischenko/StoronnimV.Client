@@ -1,37 +1,33 @@
-import React, {FC, useState, useContext} from "react";
-import {Button, Form} from "react-bootstrap";
-import {GlobalContext} from "../../../contexts/shared/GlobalContext.tsx";
-import {IMemberFullInfo} from "../../../../models/group/IMemberInfo.ts";
-import {FaEdit} from "react-icons/fa";
+import { FC, useRef, useContext } from "react";
+import { Button, Form } from "react-bootstrap";
+import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
+import { IMemberFullInfo } from "../../../../models/group/IMemberInfo.ts";
+import { FaEdit } from "react-icons/fa";
 
 interface GroupMemberEditButtonProps {
     item: IMemberFullInfo;
 }
 
-const GroupMemberEditButton: FC<GroupMemberEditButtonProps> = ({item}) => {
-    const {OnShowModal, OnHideModal, sendRequest} = useContext(GlobalContext)!;
-    const [editedMember, setEditedMember] = useState<IMemberFullInfo>(item);
-    const [photo, setPhoto] = useState<File | null>(null);
+const GroupMemberEditButton: FC<GroupMemberEditButtonProps> = ({ item }) => {
+    const { OnShowModal, OnHideModal, sendRequest } = useContext(GlobalContext)!;
 
-    const handlePhotoChange = (
-        e: React.ChangeEvent<HTMLInputElement>,
-        setPhoto: React.Dispatch<React.SetStateAction<File | null>>
-    ) => {
-        const file = e.target.files ? e.target.files![0] : null;
-        setPhoto(file);
-    };
+    // Создаем refs для каждого поля
+    const fullNameRef = useRef<HTMLInputElement>(null);
+    const descriptionRef = useRef<HTMLInputElement>(null);
+    const roleRef = useRef<HTMLInputElement>(null);
+    const photoRef = useRef<HTMLInputElement>(null);
 
     const handlePhotoEdit = async () => {
         try {
-            if (!photo) {
-                alert('Спочатку оберіть фото');
+            const file = photoRef.current?.files ? photoRef.current.files[0] : null;
+            if (!file) {
+                alert("Спочатку оберіть фото");
                 return;
             }
 
             const formData = new FormData();
-            formData.append("id", editedMember.id.toString());
-            console.dir(photo);
-            formData.append("photo", photo);
+            formData.append("id", item.id.toString());
+            formData.append("photo", file);
 
             const response = await sendRequest(
                 "https://localhost:44315/api/admin/group-page/members/photo",
@@ -40,11 +36,10 @@ const GroupMemberEditButton: FC<GroupMemberEditButtonProps> = ({item}) => {
             );
 
             if (response.status === 204) {
-                alert('Дані успішно змінено');
+                alert("Дані успішно змінено");
                 OnHideModal();
-            }
-            else {
-                alert('Сталася помилка при зміні');
+            } else {
+                alert("Сталася помилка при зміні");
             }
         } catch (error) {
             alert("Помилка при збереженні даних.");
@@ -54,10 +49,10 @@ const GroupMemberEditButton: FC<GroupMemberEditButtonProps> = ({item}) => {
     const handleEdit = async () => {
         try {
             const formData = new FormData();
-            formData.append("id", editedMember.id.toString());
-            formData.append("fullName", editedMember.fullName);
-            formData.append("description", editedMember.description);
-            formData.append("role", editedMember.role);
+            formData.append("id", item.id.toString());
+            formData.append("fullName", fullNameRef.current?.value || "");
+            formData.append("description", descriptionRef.current?.value || "");
+            formData.append("role", roleRef.current?.value || "");
 
             const response = await sendRequest(
                 "https://localhost:44315/api/admin/group-pages/members",
@@ -82,64 +77,62 @@ const GroupMemberEditButton: FC<GroupMemberEditButtonProps> = ({item}) => {
             <div>
                 <Form>
                     <div className="d-flex align-items-center mb-3">
-                        <Form.Label className="me-3" style={{color: "white"}}>Фото учасника:</Form.Label>
+                        <Form.Label className="me-3" style={{ color: "white" }}>
+                            Фото учасника:
+                        </Form.Label>
                         <input
+                            ref={photoRef}
                             type="file"
-                            onChange={(e) => handlePhotoChange(e, setPhoto)}
                             accept="image/*"
                             className="form-control"
-                            style={{color: "white", backgroundColor: "#333"}}
+                            style={{ color: "white", backgroundColor: "#333" }}
                         />
                     </div>
-
-                    <Button className="mt-3" onClick={handlePhotoEdit}>Змінити фото</Button>
+                    <Button className="mt-3" onClick={handlePhotoEdit}>
+                        Змінити фото
+                    </Button>
                 </Form>
-
                 <Form>
                     <div className="d-flex align-items-center mb-3">
-                        <Form.Label className="me-3" style={{color: "white"}}>Повне ім’я:</Form.Label>
+                        <Form.Label className="me-3" style={{ color: "white" }}>
+                            Повне ім’я:
+                        </Form.Label>
                         <Form.Control
+                            ref={fullNameRef}
                             type="text"
-                            name="fullName"
-                            value={editedMember.fullName}
-                            onChange={(e) => setEditedMember({
-                                ...editedMember,
-                                fullName: e.target.value
-                            })}
+                            defaultValue={item.fullName}
                             className="form-control"
-                            style={{color: "white", backgroundColor: "#333"}}
+                            style={{ color: "white", backgroundColor: "#333" }}
                         />
                     </div>
                     <div className="d-flex align-items-center mb-3">
-                        <Form.Label className="me-3" style={{color: "white"}}>Опис:</Form.Label>
+                        <Form.Label className="me-3" style={{ color: "white" }}>
+                            Опис:
+                        </Form.Label>
                         <Form.Control
+                            ref={descriptionRef}
                             type="text"
-                            name="description"
-                            value={editedMember.description}
-                            onChange={(e) => setEditedMember({
-                                ...editedMember,
-                                description: e.target.value
-                            })}
+                            defaultValue={item.description}
                             className="form-control"
-                            style={{color: "white", backgroundColor: "#333"}}
+                            style={{ color: "white", backgroundColor: "#333" }}
                         />
                     </div>
                     <div className="d-flex align-items-center mb-3">
-                        <Form.Label className="me-3" style={{color: "white"}}>Роль:</Form.Label>
+                        <Form.Label className="me-3" style={{ color: "white" }}>
+                            Роль:
+                        </Form.Label>
                         <Form.Control
+                            ref={roleRef}
                             type="text"
-                            name="role"
-                            value={editedMember.role}
-                            onChange={(e) => setEditedMember({
-                                ...editedMember,
-                                role: e.target.value
-                            })}
+                            defaultValue={item.role}
                             className="form-control"
-                            style={{color: "white", backgroundColor: "#333"}}
+                            style={{ color: "white", backgroundColor: "#333" }}
                         />
                     </div>
                 </Form>
-                <Button className="mt-3" onClick={handleEdit}>Змінити</Button>
+                <Button className="mt-3" onClick={handleEdit}>
+                    Змінити
+                </Button>
             </div>
         );
     };
@@ -151,10 +144,10 @@ const GroupMemberEditButton: FC<GroupMemberEditButtonProps> = ({item}) => {
                 onClick={handleShowModal}
                 title="Редагувати інформацію"
             >
-                <FaEdit/>
+                <FaEdit />
             </Button>
         </>
     );
 };
 
-export {GroupMemberEditButton};
+export { GroupMemberEditButton };
