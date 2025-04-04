@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useRef, useContext } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
 
@@ -9,50 +9,47 @@ interface AddMemberModalProps {
 const AddMemberModal: React.FC<AddMemberModalProps> = ({ modalTitle }) => {
     const { sendRequest, OnHideModal, loading } = useContext(GlobalContext)!;
 
-    const [fullName, setFullName] = useState<string>("");
-    const [description, setDescription] = useState<string>("");
-    const [role, setRole] = useState<string>("");
-    const [socialLinks, setSocialLinks] = useState<string[]>([]);
-    const [newSocialLink, setNewSocialLink] = useState<string>("");
-    const [photo, setPhoto] = useState<File | null>(null);
-    const [photoName, setPhotoName] = useState<string>("Виберіть фото");
+    // Создаём рефы для всех полей ввода
+    const fullNameRef = useRef<HTMLInputElement>(null);
+    const descriptionRef = useRef<HTMLTextAreaElement>(null);
+    const roleRef = useRef<HTMLInputElement>(null);
+    const photoRef = useRef<HTMLInputElement>(null);
+    const newSocialLinkRef = useRef<HTMLInputElement>(null);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        if (name === "fullName") setFullName(value);
-        else if (name === "description") setDescription(value);
-        else if (name === "role") setRole(value);
-    };
-
-    const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files && e.target.files[0]) {
-            setPhoto(e.target.files[0]);
-            setPhotoName(e.target.files[0].name);
-        }
-    };
+    const socialLinks = useRef<string[]>([]); // Для хранения ссылок на соцсети
 
     const handleAddSocialLink = () => {
-        if (newSocialLink) {
-            setSocialLinks([...socialLinks, newSocialLink]);
-            setNewSocialLink("");
+        const newLink = newSocialLinkRef.current?.value;
+        if (newLink) {
+            socialLinks.current = [...socialLinks.current, newLink];
+            if (newSocialLinkRef.current) newSocialLinkRef.current.value = ""; // Сброс поля ввода
         }
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        //TODO: через юз реф
         try {
             const formData = new FormData();
-            formData.append("fullName", fullName);
-            formData.append("description", description);
-            formData.append("role", role);
-            socialLinks.forEach((link, index) => formData.append(`socialLinks[${index}]`, link));
-            if (photo) formData.append("photo", photo);
+            formData.append("fullName", fullNameRef.current?.value || "");
+            formData.append("description", descriptionRef.current?.value || "");
+            formData.append("role", roleRef.current?.value || "");
+            socialLinks.current.forEach((link, index) =>
+                formData.append(`socialLinks[${index}]`, link)
+            );
+            const photoFile = photoRef.current?.files ? photoRef.current.files[0] : null;
+            if (photoFile) formData.append("photo", photoFile);
 
-            const response = await sendRequest("/api/members", "POST", formData, {
-                "Content-Type": "multipart/form-data",
-            });
+            const response = await sendRequest(
+                "https://localhost:44315/api/admin/group/members",
+                "POST",
+                formData
+            );
 
-            console.log(response);
+            if (response.status === 201) {
+                alert("ДОДАНО");
+            }
+
             OnHideModal();
         } catch (error) {
             console.error(error);
@@ -68,10 +65,8 @@ const AddMemberModal: React.FC<AddMemberModalProps> = ({ modalTitle }) => {
                         <Form.Group controlId="formFullName" className="mb-3">
                             <Form.Label style={{ color: "white" }} className="me-3">ПІБ: </Form.Label>
                             <Form.Control
+                                ref={fullNameRef}
                                 type="text"
-                                name="fullName"
-                                value={fullName}
-                                onChange={handleChange}
                                 placeholder="Введіть повне ім'я"
                                 required
                                 style={{ color: "white", backgroundColor: "#333" }}
@@ -81,11 +76,9 @@ const AddMemberModal: React.FC<AddMemberModalProps> = ({ modalTitle }) => {
                         <Form.Group controlId="formDescription" className="mb-3">
                             <Form.Label style={{ color: "white" }} className="me-3">Опис: </Form.Label>
                             <Form.Control
+                                ref={descriptionRef}
                                 as="textarea"
                                 rows={3}
-                                name="description"
-                                value={description}
-                                onChange={handleChange}
                                 placeholder="Введіть опис"
                                 required
                                 style={{ color: "white", backgroundColor: "#333" }}
@@ -95,10 +88,8 @@ const AddMemberModal: React.FC<AddMemberModalProps> = ({ modalTitle }) => {
                         <Form.Group controlId="formRole" className="mb-3">
                             <Form.Label style={{ color: "white" }} className="me-3">Роль: </Form.Label>
                             <Form.Control
+                                ref={roleRef}
                                 type="text"
-                                name="role"
-                                value={role}
-                                onChange={handleChange}
                                 placeholder="Введіть роль"
                                 required
                                 style={{ color: "white", backgroundColor: "#333" }}
@@ -110,17 +101,16 @@ const AddMemberModal: React.FC<AddMemberModalProps> = ({ modalTitle }) => {
                             <div className="d-flex align-items-center">
                                 <Button
                                     variant="secondary"
-                                    onClick={() => document.getElementById("photoUpload")?.click()}
+                                    onClick={() => photoRef.current?.click()}
                                     className="me-2"
                                 >
                                     Виберіть фото
                                 </Button>
-                                <span>{photoName}</span>
+                                <span>{photoRef.current?.files?.[0]?.name || "Виберіть фото"}</span>
                                 <Form.Control
+                                    ref={photoRef}
                                     type="file"
-                                    id="photoUpload"
                                     accept="image/*"
-                                    onChange={handlePhotoChange}
                                     style={{ display: "none" }}
                                 />
                             </div>
@@ -130,9 +120,8 @@ const AddMemberModal: React.FC<AddMemberModalProps> = ({ modalTitle }) => {
                             <Form.Label style={{ color: "white" }} className="me-3">Посилання на соціальні мережі: </Form.Label>
                             <div className="d-flex">
                                 <Form.Control
+                                    ref={newSocialLinkRef}
                                     type="text"
-                                    value={newSocialLink}
-                                    onChange={(e) => setNewSocialLink(e.target.value)}
                                     placeholder="Введіть посилання на соціальну мережу"
                                     style={{ color: "white", backgroundColor: "#333" }}
                                 />
@@ -145,7 +134,7 @@ const AddMemberModal: React.FC<AddMemberModalProps> = ({ modalTitle }) => {
                                 </Button>
                             </div>
                             <ul>
-                                {socialLinks.map((link, index) => (
+                                {socialLinks.current.map((link, index) => (
                                     <li key={index} style={{ color: "white" }}>{link}</li>
                                 ))}
                             </ul>
