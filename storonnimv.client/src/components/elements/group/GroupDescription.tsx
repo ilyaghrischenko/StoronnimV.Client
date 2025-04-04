@@ -36,7 +36,7 @@ const GroupDescription: FC = () => {
 
     return (
         <Container>
-            {isAdmin && <GroupInfoEditButton groupInfo={fullInfo.groupPage} />}
+            {isAdmin && <GroupInfoEditButton />}
             <Description groupInfo={fullInfo.groupPage} />
             <ShortMembers members={fullInfo.members} />
         </Container>
