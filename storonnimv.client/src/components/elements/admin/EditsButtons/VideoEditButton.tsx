@@ -12,8 +12,6 @@ interface VideoEditButtonProps {
 const VideoEditButton: FC<VideoEditButtonProps> = ({video, apiUrl, onClose}) => {
     const globalContext = useContext(GlobalContext);
     const [editedVideo, setEditedVideo] = useState<IVideoModel>(video);
-    const [videoType, setVideoType] = useState(video.type);
-
 
     if (!globalContext) return null;
     const {sendRequest} = globalContext;
@@ -22,7 +20,7 @@ const VideoEditButton: FC<VideoEditButtonProps> = ({video, apiUrl, onClose}) => 
         setEditedVideo(video);
     }, [video]);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setEditedVideo({
             ...editedVideo,
             [e.target.name]: e.target.value,
@@ -35,7 +33,7 @@ const VideoEditButton: FC<VideoEditButtonProps> = ({video, apiUrl, onClose}) => 
             const formData = new FormData();
             formData.append("id", editedVideo.id.toString());
             formData.append("title", editedVideo.title);
-            formData.append("type", videoType);
+            formData.append("type", editedVideo.type);
 
             const response = await sendRequest(
                 `${apiUrl}`,
@@ -74,8 +72,9 @@ const VideoEditButton: FC<VideoEditButtonProps> = ({video, apiUrl, onClose}) => 
                 <Form.Group className="form-modal__group">
                     <Form.Label className="form-modal__label">Змінити тип відео:</Form.Label>
                     <Form.Select
-                        value={videoType}
-                        onChange={(e) => setVideoType(e.target.value)}
+                        name="type"
+                        value={editedVideo.type || ""}
+                        onChange={handleChange}
                         className="form-modal__select"
                     >
                         <option value="Performance">Performance</option>
