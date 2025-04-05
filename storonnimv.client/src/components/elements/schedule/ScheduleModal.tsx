@@ -22,6 +22,8 @@ const ScheduleModal: FC<ScheduleModalProps> = ({ scheduleId }) => {
         return <ModalLoading />;
     }
 
+    console.log(scheduleFullInfo.performanceDateTime);
+
     return (
         <Container className="schedule-modal">
             <Row className="mb-3">

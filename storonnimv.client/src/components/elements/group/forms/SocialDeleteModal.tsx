@@ -1,36 +1,35 @@
 import {FC, useContext} from "react";
-import {Button} from "react-bootstrap";
 import {GlobalContext} from "../../../contexts/shared/GlobalContext.tsx";
+import {Button} from "react-bootstrap";
 
-interface IScheduleDeleteModalProps {
+interface ISocialDeleteModalProps {
     itemId: number;
 }
 
-const ScheduleDeleteModal: FC<IScheduleDeleteModalProps> = ({itemId}) => {
+const SocialDeleteModal: FC<ISocialDeleteModalProps> = ({ itemId }) => {
     const {OnHideModal, sendRequest} = useContext(GlobalContext)!;
 
     const handleDelete = async () => {
         try {
             const response = await sendRequest(
-                `https://localhost:44315/api/admin/schedules/${itemId}`,
+                `https://localhost:44315/api/admin/socials/${itemId}`,
                 'DELETE'
             );
 
             if (response.status === 204) {
-                alert('афішу успішно видалено!');
+                alert('Соціальну мережу успішно видалено');
                 OnHideModal();
             } else {
-                alert('афішу не видалено');
-                OnHideModal();
+                alert('Соціальну мережу не видалено');
             }
         } catch (error) {
-            alert("Помилка при видаленні афіші");
+            alert('Помилка при видаленні соціальної мережі');
         }
     };
 
     return (
         <>
-            <p>Ви дійсно хочете видалити афішу?</p>
+            <p>Ви дійсно хочете видалити соціальну мережу?</p>
             <div className="d-flex justify-content-between">
                 <Button variant="secondary" onClick={OnHideModal}>
                     Скасувати
@@ -43,4 +42,4 @@ const ScheduleDeleteModal: FC<IScheduleDeleteModalProps> = ({itemId}) => {
     );
 };
 
-export {ScheduleDeleteModal};
+export { SocialDeleteModal };

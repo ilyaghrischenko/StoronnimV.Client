@@ -1,10 +1,16 @@
 import { FC, useContext, useEffect } from "react";
 import { GroupContext } from "../../contexts/GroupContext.tsx";
-import { Col, Container, Row, Image } from "react-bootstrap";
+import {Col, Container, Row, Image, Button} from "react-bootstrap";
 import { ModalLoading } from "../shared/ModalLoading.tsx";
 import { GroupMemberEditButton } from "../admin/EditsButtons/GroupMemberEditButton.tsx";
 import { GroupMemberDeleteButton } from "../admin/DeleteButtons/GroupMemberDeleteButton.tsx";
 import {GlobalContext} from "../../contexts/shared/GlobalContext.tsx";
+import {FaEdit} from "react-icons/fa";
+import {MdDeleteForever} from "react-icons/md";
+import {SocialEditModal} from "./forms/SocialEditModal.tsx";
+import {SocialDeleteModal} from "./forms/SocialDeleteModal.tsx";
+import {IoAddCircleSharp} from "react-icons/io5";
+import {SocialAddModal} from "./forms/SocialAddModal.tsx";
 
 interface MemberModalProps {
     memberId: number;
@@ -25,7 +31,7 @@ const MemberModal: FC<MemberModalProps> = ({ memberId }) => {
         throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const { isAdmin } = globalContext;
+    const { isAdmin, OnShowModal } = globalContext;
 
     useEffect(() => {
         fetchMemberInfo(memberId);
@@ -62,6 +68,14 @@ const MemberModal: FC<MemberModalProps> = ({ memberId }) => {
 
             <Row className="mt-3">
                 <Col xs={12} className="member-modal__social-networks">
+                    {isAdmin &&
+                    <Button
+                        variant="primary"
+                        onClick={() => OnShowModal(<SocialAddModal memberId={memberId} />)}
+                    >
+                        <IoAddCircleSharp />
+                    </Button>}
+
                     {memberFullInfo.socials.map((socialNetwork) => (
                         <div key={socialNetwork.id} className="member-modal__social-networks__item">
                             <p className="member-modal__social-networks__item-name">
@@ -75,6 +89,22 @@ const MemberModal: FC<MemberModalProps> = ({ memberId }) => {
                             >
                                 {socialNetwork.url}
                             </a>
+
+                            {isAdmin &&
+                            <Button
+                                variant="primary"
+                                onClick={() => OnShowModal(<SocialEditModal item={socialNetwork} />)}
+                            >
+                                <FaEdit />
+                            </Button>}
+
+                            {isAdmin &&
+                            <Button
+                                variant="primary"
+                                onClick={() => OnShowModal(<SocialDeleteModal itemId={socialNetwork.id} />)}
+                            >
+                                <MdDeleteForever/>
+                            </Button>}
                         </div>
                     ))}
                 </Col>

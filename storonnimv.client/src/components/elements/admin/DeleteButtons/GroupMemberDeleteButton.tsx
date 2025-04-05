@@ -48,15 +48,13 @@ const GroupMemberDeleteButton: FC<GroupMemberDeleteButtonProps> = ({item}) => {
     };
 
     return (
-        <>
-            <Button
-                className="btn btn-danger position-absolute top-0 end-0 m-5"
-                onClick={handleShowModal}
-                title="Видалити учасника"
-            >
-                <MdDeleteForever/>
-            </Button>
-        </>
+        <Button
+            className="btn btn-danger position-absolute top-0 end-0 m-5"
+            onClick={handleShowModal}
+            title="Видалити учасника"
+        >
+            <MdDeleteForever/>
+        </Button>
     );
 };
 
