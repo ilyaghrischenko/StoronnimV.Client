@@ -4,19 +4,15 @@ import { Col, Container, Row, Image } from "react-bootstrap";
 import { ModalLoading } from "../shared/ModalLoading.tsx";
 import { ScheduleEditButton } from "../admin/EditsButtons/SheduleEditButton.tsx";
 import { ScheduleDeleteButton } from "../admin/DeleteButtons/ScheduleDeleteButton.tsx";
+import {GlobalContext} from "../../contexts/shared/GlobalContext.tsx";
 
 interface ScheduleModalProps {
     scheduleId: number;
 }
 
 const ScheduleModal: FC<ScheduleModalProps> = ({ scheduleId }) => {
-    const scheduleContext = useContext(ScheduleContext);
-
-    if (!scheduleContext) {
-        throw new Error("ScheduleContext is not defined");
-    }
-
-    const { fetchScheduleFullInfo, scheduleFullInfo, loading } = scheduleContext;
+    const { isAdmin } = useContext(GlobalContext)!;
+    const { fetchScheduleFullInfo, scheduleFullInfo, loading } = useContext(ScheduleContext)!;
 
     useEffect(() => {
         fetchScheduleFullInfo(scheduleId);
@@ -40,18 +36,13 @@ const ScheduleModal: FC<ScheduleModalProps> = ({ scheduleId }) => {
                     <h3 className="schedule-modal__info-location">{scheduleFullInfo.location}</h3>
                     <p className="schedule-modal__info-description">{scheduleFullInfo.description}</p>
 
-                    //TODO: если админ кнопки отображать
-                    <ScheduleEditButton
-                        apiUrl="/api/schedule" 
-                        modalTitle="Редагувати розклад"
-                        scheduleData={scheduleFullInfo} 
-                    />
-                    
-                    <ScheduleDeleteButton
-                        apiUrl="/api/schedule"
-                        modalTitle="Афішу"
-                        scheduleData={scheduleFullInfo}
-                    />
+                    {isAdmin && <ScheduleEditButton
+                        item={scheduleFullInfo}
+                    />}
+
+                    {isAdmin && <ScheduleDeleteButton
+                        item={scheduleFullInfo}
+                    />}
                 </Col>
             </Row>
         </Container>

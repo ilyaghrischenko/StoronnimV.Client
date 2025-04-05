@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="" />
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="link edit group modal to server">
+      <change afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/forms/ScheduleEditModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/DeleteButtons/ScheduleDeleteButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/DeleteButtons/ScheduleDeleteButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/EditsButtons/SheduleEditButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/EditsButtons/SheduleEditButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/ScheduleModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/ScheduleModal.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,15 +22,15 @@
         <option value="package.json" />
         <option value="TypeScript File" />
         <option value="tsconfig.json" />
-        <option value="TypeScript JSX File" />
         <option value="SCSS File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/group-page-with-server" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -61,7 +66,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "feature/schedule-page-with-server",
     "last_opened_file_path": "D:/ForProgramming/Projects/MyProjects/React/StoronnimV.Client/storonnimv.client/src",
     "list.type.of.created.stylesheet": "SCSS",
     "node.js.detected.package.eslint": "true",
@@ -134,6 +139,7 @@
       <workItem from="1743523074578" duration="87000" />
       <workItem from="1743536437099" duration="1200000" />
       <workItem from="1743685300176" duration="6414000" />
+      <workItem from="1743769140399" duration="8892000" />
     </task>
     <task id="LOCAL-00001" summary="change port">
       <option name="closed" value="true" />
@@ -335,7 +341,39 @@
       <option name="project" value="LOCAL" />
       <updated>1743690881207</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="change git ignore">
+      <option name="closed" value="true" />
+      <created>1743769235291</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1743769235292</updated>
+    </task>
+    <task id="LOCAL-00027" summary="link adding member modal to server">
+      <option name="closed" value="true" />
+      <created>1743770955267</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1743770955267</updated>
+    </task>
+    <task id="LOCAL-00028" summary="link edit member modal to server">
+      <option name="closed" value="true" />
+      <created>1743773188315</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1743773188315</updated>
+    </task>
+    <task id="LOCAL-00029" summary="link edit group modal to server">
+      <option name="closed" value="true" />
+      <created>1743774247371</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1743774247371</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,10 +391,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="change port" />
-    <MESSAGE value="changes class name to BEM methodology partly" />
-    <MESSAGE value="rewrite .css files to .scss, add style.scss" />
-    <MESSAGE value="remove imports css files in components, add only 1 import to index.html" />
     <MESSAGE value="finish" />
     <MESSAGE value="add" />
     <MESSAGE value="remove window.location.href, replace on navigate" />
@@ -378,6 +412,10 @@
     <MESSAGE value="video addition edited" />
     <MESSAGE value="commit" />
     <MESSAGE value="save" />
-    <option name="LAST_COMMIT_MESSAGE" value="save" />
+    <MESSAGE value="change git ignore" />
+    <MESSAGE value="link adding member modal to server" />
+    <MESSAGE value="link edit member modal to server" />
+    <MESSAGE value="link edit group modal to server" />
+    <option name="LAST_COMMIT_MESSAGE" value="link edit group modal to server" />
   </component>
 </project>
