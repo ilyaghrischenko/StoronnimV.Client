@@ -18,11 +18,20 @@ const MusicPlatformItem: FC<MusicPlatformItemProps> = ({ item }) => {
 
     const { isAdmin } = globalContext;
 
+    const formatUrl = (url: string): string => {
+        // Проверка: начинается ли с чего-то вроде "scheme:"
+        return /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url)
+            ? url
+            : `https://${url}`;
+    };
+
+
+
     return (
         <ListGroupItem
             className='music-platform-item position-relative'
             as='a'
-            href={item.platformUrl}
+            href={formatUrl(item.platformUrl)}
             target='_blank'
             rel='noopener noreferrer'
             style={{ backgroundImage: `url(${item.bgImageUrl})` }}

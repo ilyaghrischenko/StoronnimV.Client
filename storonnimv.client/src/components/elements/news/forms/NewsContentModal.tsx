@@ -102,7 +102,7 @@ const NewsContentModal: React.FC<NewsContentModalProps> = ({apiUrl}) => {
 
                 <Form.Group className="form-modal__group">
                     <Form.Label className="form-modal__label">Фото (необов'язково):</Form.Label>
-                    <Form.Control type="file" accept="image/*" id="imageUpload" className="d-none"
+                    <Form.Control type="file" accept="image/*" id="imageUpload" className="form-modal__input"
                                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleFileChange(e, setPhoto, "image/")}/>
                 </Form.Group>
 
