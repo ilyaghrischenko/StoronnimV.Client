@@ -3,3 +3,10 @@
   width: 80%;
   height: auto;
 }
+
+.page-wrapper {
+  display: flex;
+  justify-content: center; /* по горизонтали */
+  align-items: center;     /* по вертикали */
+  height: 100%;
+}

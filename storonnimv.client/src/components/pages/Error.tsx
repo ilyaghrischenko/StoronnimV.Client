@@ -8,12 +8,14 @@ const Error: FC = () => {
     const message = searchParams.get("message") || "Unexpected error";
 
     return (
-        <Container className='error-container'>
-            <Container className='error-info-container'>
-                <p className='error-info-container__status-code'>{statusCode}</p>
-                <p className='error-info-container__message'>{message}</p>
+        <div className='page-wrapper'>
+            <Container className='error-container'>
+                <Container className='error-info-container'>
+                    <p className='error-info-container__status-code'>{statusCode}</p>
+                    <p className='error-info-container__message'>{message}</p>
+                </Container>
             </Container>
-        </Container>
+        </div>
     );
 };
 

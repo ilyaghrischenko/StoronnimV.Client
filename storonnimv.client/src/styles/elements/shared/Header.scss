@@ -10,7 +10,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-grow: 1; /* Чтобы центрированный логотип не сжимался */
 }
 
 .navbar-container {
@@ -18,14 +17,12 @@
   flex-direction: column;
   justify-content: center; /* Размещаем блоки с левым и правым контентом */
   align-items: center;
-  gap: 80px;
-  padding-top: 20px;
-  margin: 0 20px;
+  gap: 50px;
 
-  &__left-nav, &__right-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 80px;
+  &__logo {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
   }
 
   &__link-item {

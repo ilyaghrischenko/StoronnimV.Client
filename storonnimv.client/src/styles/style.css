@@ -16,12 +16,12 @@ html, body {
 }
 .app-container__main {
   flex: 1;
-  padding: 20px;
   background-color: #f9f9f9;
 }
 .app-container__right {
-  width: 250px;
+  width: 15%;
   background-color: #ddd;
+  min-height: 100vh;
 }
 
 .description-container {
@@ -390,7 +390,6 @@ html, body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-grow: 1; /* Чтобы центрированный логотип не сжимался */
 }
 
 .navbar-container {
@@ -398,14 +397,12 @@ html, body {
   flex-direction: column;
   justify-content: center; /* Размещаем блоки с левым и правым контентом */
   align-items: center;
-  gap: 80px;
-  padding-top: 20px;
-  margin: 0 20px;
+  gap: 50px;
 }
-.navbar-container__left-nav, .navbar-container__right-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 80px;
+.navbar-container__logo {
+  width: 120px;
+  height: auto;
+  object-fit: contain;
 }
 .navbar-container__link-item {
   background-color: red;
@@ -684,6 +681,13 @@ th, td {
   height: auto;
 }
 
+.page-wrapper {
+  display: flex;
+  justify-content: center; /* по горизонтали */
+  align-items: center; /* по вертикали */
+  height: 100%;
+}
+
 /* Основной контейнер */
 .home-page {
   display: grid;
@@ -691,7 +695,6 @@ th, td {
   grid-template-rows: repeat(6, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
-  /*padding: 20px; !* Отступы внутри *!*/
 }
 
 /* Сетка: расписание */

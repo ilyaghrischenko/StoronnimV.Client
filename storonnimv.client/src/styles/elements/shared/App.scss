@@ -28,12 +28,12 @@ html, body {
 
   &__main {
     flex: 1;
-    padding: 20px;
     background-color: #f9f9f9;
   }
 
   &__right {
-    width: 250px;
+    width: 15%;
     background-color: #ddd;
+    min-height: 100vh;
   }
 }
