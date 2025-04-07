@@ -3,7 +3,6 @@ import {Container, Nav, Navbar} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
 
 import logo from '../../../assets/logo.svg';
-import {Footer} from "./Footer.tsx";
 
 const Header: FC = () => {
     return (
@@ -32,8 +31,6 @@ const Header: FC = () => {
                     <Nav.Link as={NavLink} to="/video/sections" className="navbar-container__link-item">
                         Відео
                     </Nav.Link>
-
-                    <Footer/>
                 </Container>
             </Navbar>
         </Container>

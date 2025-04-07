@@ -1,10 +1,9 @@
 import {JSX, useContext} from 'react';
 import {BrowserRouter as Router} from "react-router-dom";
-import {Header} from "./components/elements/shared/Header";
 import {Page} from "./components/pages/shared/Page";
-// import {Footer} from "./components/elements/shared/Footer";
 import {ModalWindow} from "./components/elements/shared/ModalWindow";
 import {GlobalContext} from "./components/contexts/shared/GlobalContext.tsx";
+import {HeaderWithFooter} from "./components/elements/shared/HeaderWithFooter.tsx";
 
 function App(): JSX.Element {
     const globalContext = useContext(GlobalContext);
@@ -28,7 +27,7 @@ function App(): JSX.Element {
 
                     {!isAdminRoute() && (
                         <div className="app-container__right">
-                            <Header/>
+                            <HeaderWithFooter />
                         </div>
                     )}
                 </Router>
