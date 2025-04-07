@@ -6,7 +6,9 @@ import { ListItem } from "../../shared/GenericList/ListItem";
 import { GlobalContext } from "../../../contexts/shared/GlobalContext";
 import { MemberModal } from "../MemberModal.tsx";
 import { GroupContextProvider } from "../../../contexts/GroupContext.tsx";
-import { AddGroupButton } from "../../admin/AddsButtons/AddGroupButton.tsx";
+import {AddMemberModal} from "../forms/AddMemberModal.tsx";
+import {Button} from "react-bootstrap";
+import {FaPlus} from "react-icons/fa";
 
 interface IShortMembersProps {
     members: IMemberShort[];
@@ -23,8 +25,10 @@ const ShortMembers: FC<IShortMembersProps> = ({ members }) => {
 
     return (
         <div>
-            {/* Добавляем кнопку "Добавить нового участника" перед списком */}
-            {isAdmin && <AddGroupButton />}
+            {isAdmin && <Button onClick={() => OnShowModal(<AddMemberModal />)}>
+                <FaPlus/>
+            </Button>
+            }
             
             <List
                 className="short-members-list"

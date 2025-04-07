@@ -3,11 +3,7 @@ import {GlobalContext} from "../../../contexts/shared/GlobalContext.tsx";
 import {Container, Row, Col, Form, Button} from "react-bootstrap";
 import {ModalLoading} from "../../shared/ModalLoading.tsx";
 
-interface VideoContentModalProps {
-    apiUrl: string;
-}
-
-const VideoContentModal: FC<VideoContentModalProps> = ({apiUrl}) => {
+const AddVideoModalContent: FC = () => {
     const globalContext = useContext(GlobalContext);
     if (!globalContext) throw new Error("GlobalContext is not defined");
 
@@ -17,6 +13,8 @@ const VideoContentModal: FC<VideoContentModalProps> = ({apiUrl}) => {
     const [videoFile, setVideoFile] = useState<File | null>(null);
     const [loading, setLoading] = useState(false);
     const [videoType, setVideoType] = useState("Performance");
+
+    const route = "https://localhost:44315/";
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
@@ -36,7 +34,10 @@ const VideoContentModal: FC<VideoContentModalProps> = ({apiUrl}) => {
         formData.append("Type", videoType);
 
         try {
-            const response = await sendRequest(apiUrl, "POST", formData);
+            const response = await sendRequest(
+                `${route}api/admin/videos`,
+                "POST",
+                formData);
             if (response.status === 200) {
                 alert(`Відео успішно додано!`);
                 OnHideModal();
@@ -114,4 +115,4 @@ const VideoContentModal: FC<VideoContentModalProps> = ({apiUrl}) => {
     );
 };
 
-export {VideoContentModal};
+export {AddVideoModalContent};

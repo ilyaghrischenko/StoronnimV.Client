@@ -1,9 +1,11 @@
 ﻿import {FC, useContext, useEffect} from "react";
 import {NewsContextProvider} from "../contexts/NewsContext";
-import {Container} from "react-bootstrap";
+import {Button, Container} from "react-bootstrap";
 import {NewsList} from "../elements/news/NewsList";
-import {AddNewsButton} from "../elements/admin/AddsButtons/AddNewsButton";
 import {GlobalContext} from "../contexts/shared/GlobalContext.tsx";
+import {AddNewsItemModalContent} from "../elements/news/forms/AddNewsItemModalContent.tsx";
+import { FaPlus } from "react-icons/fa";
+
 
 const News: FC = () => {
     const globalContext = useContext(GlobalContext);
@@ -12,7 +14,7 @@ const News: FC = () => {
         throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const {fetchIsAdmin, isAdmin} = globalContext;
+    const {fetchIsAdmin, isAdmin, OnShowModal} = globalContext;
 
     useEffect(() => {
         fetchIsAdmin();
@@ -22,7 +24,9 @@ const News: FC = () => {
         <NewsContextProvider>
             <div className='page-wrapper'>
                 <Container className="news-page page">
-                    {isAdmin && <AddNewsButton/>}
+                    {isAdmin && <Button onClick={() => OnShowModal(<AddNewsItemModalContent/>)}>
+                        <FaPlus/>
+                    </Button>}
                     <NewsList/>
                 </Container>
             </div>

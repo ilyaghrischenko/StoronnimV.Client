@@ -1,13 +1,9 @@
-import React, {useContext, useState} from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
+import React, {useContext, useState, FC} from "react";
+import {Container, Form, Button} from "react-bootstrap";
+import {GlobalContext} from "../../../contexts/shared/GlobalContext.tsx";
 
-interface AddMemberModalProps {
-    modalTitle: string;
-}
-
-const AddMemberModal: React.FC<AddMemberModalProps> = ({ modalTitle }) => {
-    const { sendRequest, OnHideModal, loading } = useContext(GlobalContext)!;
+const AddMemberModal: FC = () => {
+    const {sendRequest, OnHideModal, loading} = useContext(GlobalContext)!;
 
     const [fullName, setFullName] = useState<string>("");
     const [description, setDescription] = useState<string>("");
@@ -48,98 +44,64 @@ const AddMemberModal: React.FC<AddMemberModalProps> = ({ modalTitle }) => {
     };
 
     return (
-        <Container>
-            <Row>
-                <Col xs={12}>
-                    <h2>{modalTitle}</h2>
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group controlId="formFullName" className="mb-3">
-                            <Form.Label style={{ color: "white" }} className="me-3">ПІБ: </Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Введіть повне ім'я"
-                                required
-                                onChange={e => setFullName(e.target.value)}
-                                style={{ color: "white", backgroundColor: "#333" }}
-                            />
-                        </Form.Group>
+        <Container className="form-modal">
+            <h2 className="form-modal__title">Додати учасника групи</h2>
+            <Form className="form-modal__form" onSubmit={handleSubmit}>
+                <Form.Group controlId="formFullName" className="form-modal__group">
+                    <Form.Label className="form-modal__label">ПІБ: </Form.Label>
+                    <Form.Control
+                        className="form-modal__input"
+                        type="text"
+                        placeholder="Введіть повне ім'я"
+                        required
+                        onChange={e => setFullName(e.target.value)}
+                    />
+                </Form.Group>
 
-                        <Form.Group controlId="formDescription" className="mb-3">
-                            <Form.Label style={{ color: "white" }} className="me-3">Опис: </Form.Label>
-                            <Form.Control
-                                as="textarea"
-                                rows={3}
-                                placeholder="Введіть опис"
-                                required
-                                onChange={e => setDescription(e.target.value)}
-                                style={{ color: "white", backgroundColor: "#333" }}
-                            />
-                        </Form.Group>
+                <Form.Group className="form-modal__group">
+                    <Form.Label className="form-modal__label">Опис: </Form.Label>
+                    <Form.Control
+                        className="form-modal__input"
+                        as="textarea"
+                        rows={3}
+                        placeholder="Введіть опис"
+                        required
+                        onChange={e => setDescription(e.target.value)}
+                    />
+                </Form.Group>
 
-                        <Form.Group controlId="formRole" className="mb-3">
-                            <Form.Label style={{ color: "white" }} className="me-3">Роль: </Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Введіть роль"
-                                required
-                                onChange={e => setRole(e.target.value)}
-                                style={{ color: "white", backgroundColor: "#333" }}
-                            />
-                        </Form.Group>
+                <Form.Group className="form-modal__group">
+                    <Form.Label className="form-modal__label">Роль: </Form.Label>
+                    <Form.Control
+                        className="form-modal__input"
+                        type="text"
+                        placeholder="Введіть роль"
+                        required
+                        onChange={e => setRole(e.target.value)}
+                    />
+                </Form.Group>
 
-                        <Form.Group controlId="formPhoto" className="mb-3">
-                            <Form.Label style={{ color: "white" }} className="me-3">Фото учасника: </Form.Label>
-                            <div className="d-flex align-items-center">
-                                {/*<Button*/}
-                                {/*    variant="secondary"*/}
-                                {/*    onClick={() => photoRef.current?.click()}*/}
-                                {/*    className="me-2"*/}
-                                {/*>*/}
-                                {/*    Виберіть фото*/}
-                                {/*</Button>*/}
-                                {/*<span>{photoRef.current?.files?.[0]?.name || "Виберіть фото"}</span>*/}
-                                <Form.Control
-                                    type="file"
-                                    accept="image/*"
-                                    required
-                                    onChange={handlePhotoUpload}
-                                    style={{color: "white"}}
-                                />
-                            </div>
-                        </Form.Group>
+                <Form.Group className="form-modal__group">
+                    <Form.Label className="form-modal__label">Фото учасника: </Form.Label>
+                    <Form.Control
+                        className="form-modal__input"
+                        type="file"
+                        accept="image/*"
+                        required
+                        onChange={handlePhotoUpload}
+                    />
+                </Form.Group>
 
-                        {/*<Form.Group controlId="formSocialLinks" className="mb-3">*/}
-                        {/*    <Form.Label style={{ color: "white" }} className="me-3">Посилання на соціальні мережі: </Form.Label>*/}
-                        {/*    <div className="d-flex">*/}
-                        {/*        <Form.Control*/}
-                        {/*            ref={newSocialLinkRef}*/}
-                        {/*            type="text"*/}
-                        {/*            placeholder="Введіть посилання на соціальну мережу"*/}
-                        {/*            style={{ color: "white", backgroundColor: "#333" }}*/}
-                        {/*        />*/}
-                        {/*        <Button*/}
-                        {/*            variant="secondary"*/}
-                        {/*            onClick={handleAddSocialLink}*/}
-                        {/*            className="ms-2"*/}
-                        {/*        >*/}
-                        {/*            Додати посилання*/}
-                        {/*        </Button>*/}
-                        {/*    </div>*/}
-                        {/*    <ul>*/}
-                        {/*        {socialLinks.current.map((link, index) => (*/}
-                        {/*            <li key={index} style={{ color: "white" }}>{link}</li>*/}
-                        {/*        ))}*/}
-                        {/*    </ul>*/}
-                        {/*</Form.Group>*/}
-
-                        <Button variant="primary" type="submit" className="mt-3 w-100" disabled={loading}>
-                            {loading ? "Завантаження..." : modalTitle}
-                        </Button>
-                    </Form>
-                </Col>
-            </Row>
+                <Button
+                    className="form-modal__button form-modal__button--confirm"
+                    disabled={loading}
+                    type="submit"
+                >
+                    {loading ? "Завантаження..." : "Додати"}
+                </Button>
+            </Form>
         </Container>
     );
 };
 
-export { AddMemberModal };
+export {AddMemberModal};

@@ -3,11 +3,7 @@ import {GlobalContext} from "../../../contexts/shared/GlobalContext.tsx";
 import {Form, Button, Container} from "react-bootstrap";
 import {ModalLoading} from "../../shared/ModalLoading.tsx";
 
-interface NewsContentModalProps {
-    apiUrl: string;
-}
-
-const NewsContentModal: React.FC<NewsContentModalProps> = ({apiUrl}) => {
+const AddNewsItemModalContent: React.FC = () => {
     const globalContext = useContext(GlobalContext);
     if (!globalContext) {
         throw new Error("GlobalContext is not defined");
@@ -24,6 +20,8 @@ const NewsContentModal: React.FC<NewsContentModalProps> = ({apiUrl}) => {
     const [photo, setPhoto] = useState<File | null>(null);
     const [video, setVideo] = useState<string>("");
     const [loading, setLoading] = useState(false);
+
+    const route = "https://localhost:44315/";
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setFormData({...formData, [e.target.name]: e.target.value});
@@ -52,7 +50,7 @@ const NewsContentModal: React.FC<NewsContentModalProps> = ({apiUrl}) => {
         if (video !== "" && /^\d+$/.test(video)) data.append("videoId", video);
 
         try {
-            const response = await sendRequest(apiUrl, "POST", data);
+            const response = await sendRequest(`${route}api/admin/news`, "POST", data);
             if (response.status === 201) {
                 OnHideModal();
             } else {
@@ -119,4 +117,4 @@ const NewsContentModal: React.FC<NewsContentModalProps> = ({apiUrl}) => {
     );
 };
 
-export {NewsContentModal};
+export {AddNewsItemModalContent};
