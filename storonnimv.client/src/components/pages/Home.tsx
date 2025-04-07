@@ -14,7 +14,7 @@ const Home: FC = () => {
         throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const { fetchIsAdmin } = globalContext;
+    const {fetchIsAdmin} = globalContext;
 
     useEffect(() => {
         fetchIsAdmin();
@@ -22,12 +22,13 @@ const Home: FC = () => {
 
     return (
         <HomeContextProvider>
-            <Container className='home-page page'>
-                <ScheduleHomeContainer className='schedule-grid' />
-                {/*<NewsHomeList className='news-grid' />*/}
-                <NewsSlider className='news-grid' />
-                <PromotionVideoHome className='video-grid' />
-            </Container>
+            <div className='page-wrapper'>
+                <Container className='home-page page'>
+                    <ScheduleHomeContainer className='schedule-grid'/>
+                    <NewsSlider className='news-grid'/>
+                    <PromotionVideoHome className='video-grid'/>
+                </Container>
+            </div>
         </HomeContextProvider>
     );
 };

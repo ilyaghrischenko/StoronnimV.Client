@@ -12,13 +12,6 @@ const PaginationSection: FC<IPaginationSectionProps> = ({className, currentPage,
     return (
         <Container>
             <Pagination className={className}>
-                {/* Кнопка "Предыдущая страница" */}
-                <Pagination.Prev
-                    onClick={() => paginate(currentPage - 1)}
-                    disabled={currentPage === 1}
-                />
-
-                {/* Кнопки с номерами страниц */}
                 {[...Array(totalPages)].map((_, index) => (
                     <Pagination.Item
                         key={index}
@@ -28,12 +21,6 @@ const PaginationSection: FC<IPaginationSectionProps> = ({className, currentPage,
                         {index + 1}
                     </Pagination.Item>
                 ))}
-
-                {/* Кнопка "Следующая страница" */}
-                <Pagination.Next
-                    onClick={() => paginate(currentPage + 1)}
-                    disabled={currentPage === totalPages}
-                />
             </Pagination>
         </Container>
     );

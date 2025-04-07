@@ -1,42 +1,40 @@
-﻿import { FC } from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+﻿import {FC} from "react";
+import {Container, Nav, Navbar} from "react-bootstrap";
+import {NavLink} from "react-router-dom";
+
+import logo from '../../../assets/logo.svg';
 
 const Header: FC = () => {
     return (
         <Container
             className="header-container"
         >
-            <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
+            <Navbar bg="dark" variant="dark" expand="lg">
                 <Container className="navbar-container">
-                    <Nav className="navbar-container__left-nav">
-                        <Nav.Link as={NavLink} to="/schedule" className="navbar-container__link-item">
-                            Афіша
-                        </Nav.Link>
-                        <Nav.Link as={NavLink} to="/news" className="navbar-container__link-item">
-                            Новини
-                        </Nav.Link>
-                    </Nav>
-
                     <Navbar.Brand as={NavLink} to="/">
-                        Стороннім В
+                        <img src={logo} alt='Logo' className='navbar-container__logo' />
                     </Navbar.Brand>
 
-                    <Nav className="navbar-container__right-nav">
-                        <Nav.Link as={NavLink} to="/music" className="navbar-container__link-item">
-                            Музика
-                        </Nav.Link>
-                        <Nav.Link as={NavLink} to="/group" className="navbar-container__link-item">
-                            Група
-                        </Nav.Link>
-                        <Nav.Link as={NavLink} to="/video/sections" className="navbar-container__link-item">
-                            Відео
-                        </Nav.Link>
-                    </Nav>
+                    <Nav.Link as={NavLink} to="/schedule" className="navbar-container__link-item">
+                        Афіша
+                    </Nav.Link>
+                    <Nav.Link as={NavLink} to="/news" className="navbar-container__link-item">
+                        Новини
+                    </Nav.Link>
+
+                    <Nav.Link as={NavLink} to="/music" className="navbar-container__link-item">
+                        Музика
+                    </Nav.Link>
+                    <Nav.Link as={NavLink} to="/group" className="navbar-container__link-item">
+                        Група
+                    </Nav.Link>
+                    <Nav.Link as={NavLink} to="/video/sections" className="navbar-container__link-item">
+                        Відео
+                    </Nav.Link>
                 </Container>
             </Navbar>
         </Container>
     );
 };
 
-export { Header };
+export {Header};

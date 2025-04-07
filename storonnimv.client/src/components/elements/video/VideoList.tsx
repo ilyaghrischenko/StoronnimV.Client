@@ -71,14 +71,6 @@ const VideoList: FC = () => {
             {/* Элементы управления пагинацией */}
             <Container>
                 <Pagination className="video-list__pagination">
-                    {/* Кнопка "Предыдущая страница" */}
-                    <Pagination.Prev
-                        className="video-list__pagination-item"
-                        onClick={() => paginate(videoType, currentPage - 1)}
-                        disabled={currentPage === 1}
-                    />
-
-                    {/* Кнопки с номерами страниц */}
                     {[...Array(totalPages)].map((_, index) => (
                         <Pagination.Item
                             key={index}
@@ -89,13 +81,6 @@ const VideoList: FC = () => {
                             {index + 1}
                         </Pagination.Item>
                     ))}
-
-                    {/* Кнопка "Следующая страница" */}
-                    <Pagination.Next
-                        className="video-list__pagination-item"
-                        onClick={() => paginate(videoType, currentPage + 1)}
-                        disabled={currentPage === totalPages}
-                    />
                 </Pagination>
             </Container>
         </Container>

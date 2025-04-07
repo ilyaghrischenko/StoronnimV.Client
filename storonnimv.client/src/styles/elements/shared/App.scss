@@ -1,24 +1,16 @@
-html, body {
-  height: 100%;
-  margin: 0;
-}
+@import "../../shared/colors";
 
-//.app-container {
-//  display: flex;
-//  flex-direction: row;
-//  min-height: 100vh;
-//
-//  &__main {
-//    display: flex;
-//    flex-direction: column;
-//    flex: 1;
-//  }
-//}
+html, body {
+  background-color: $bg-color;
+}
 
 .app-container {
   display: flex;
   flex-direction: row;
   min-height: 100vh;
+  background-color: transparent;
+  font-size: $font-size;
+  color: $text-color;
 
   &__left {
     display: flex;
@@ -28,12 +20,12 @@ html, body {
 
   &__main {
     flex: 1;
-    padding: 20px;
-    background-color: #f9f9f9;
   }
 
   &__right {
-    width: 250px;
-    background-color: #ddd;
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    min-height: 100vh;
   }
 }

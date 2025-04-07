@@ -12,7 +12,7 @@ const Group: FC = () => {
         throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const { fetchIsAdmin } = globalContext;
+    const {fetchIsAdmin} = globalContext;
 
     useEffect(() => {
         fetchIsAdmin();
@@ -20,9 +20,11 @@ const Group: FC = () => {
 
     return (
         <GroupContextProvider>
-            <Container className='group-page page'>
-                <GroupDescription/>
-            </Container>
+            <div className='page-wrapper'>
+                <Container className='group-page page'>
+                    <GroupDescription/>
+                </Container>
+            </div>
         </GroupContextProvider>
     );
 };

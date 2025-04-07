@@ -2,4 +2,12 @@
   margin: 5px auto;
   width: 80%;
   height: auto;
+  background-color: transparent;
+}
+
+.page-wrapper {
+  display: flex;
+  justify-content: center; /* по горизонтали */
+  align-items: center;     /* по вертикали */
+  height: 100%;
 }
