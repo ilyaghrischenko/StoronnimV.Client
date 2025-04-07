@@ -1,0 +1,39 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+//.app-container {
+//  display: flex;
+//  flex-direction: row;
+//  min-height: 100vh;
+//
+//  &__main {
+//    display: flex;
+//    flex-direction: column;
+//    flex: 1;
+//  }
+//}
+
+.app-container {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  &__main {
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+
+  &__right {
+    width: 250px;
+    background-color: #ddd;
+  }
+}

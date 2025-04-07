@@ -1,5 +1,5 @@
 import {JSX, useContext} from 'react';
-import {Container} from "react-bootstrap";
+// import {Container} from "react-bootstrap";
 import {BrowserRouter as Router} from "react-router-dom";
 import {Header} from "./components/elements/shared/Header";
 import {Page} from "./components/pages/shared/Page";
@@ -17,15 +17,24 @@ function App(): JSX.Element {
     const {isAdminRoute} = globalContext;
 
     return (
-        <Container className='app-container' fluid>
-            <ModalWindow/>
+        <div className="app-container">
             <Router>
-                {!isAdminRoute() && <Header/>}
-                <Page/>
-                {!isAdminRoute() && <Footer/>}
+                <ModalWindow/>
+                <div className="app-container__left">
+                    <div className="app-container__main">
+                        <Page/>
+                    </div>
+                    {!isAdminRoute() && <Footer/>}
+                </div>
+                {!isAdminRoute() && (
+                    <div className="app-container__right">
+                        <Header/>
+                    </div>
+                )}
             </Router>
-        </Container>
+        </div>
     );
+
 }
 
 export default App;
