@@ -1,46 +1,47 @@
 // NewsModal.tsx
-import { FC, useContext, useEffect } from "react";
-import { GlobalContext } from "../../contexts/shared/GlobalContext.tsx"; 
-import { NewsContext } from "../../contexts/NewsContext.tsx";
-import { Col, Container, Row, Image } from "react-bootstrap";
-import { ModalLoading } from "../shared/ModalLoading.tsx";
-import { NewsEditButton } from "../admin/EditsButtons/NewsEditButton.tsx";
-import { NewsDeleteButton } from "../admin/DeleteButtons/NewsDeleteButton.tsx";
+import {FC, useContext, useEffect} from "react";
+import {GlobalContext} from "../../contexts/shared/GlobalContext.tsx";
+import {NewsContext} from "../../contexts/NewsContext.tsx";
+import {Col, Container, Row, Image, Button} from "react-bootstrap";
+import {ModalLoading} from "../shared/ModalLoading.tsx";
+import {NewsDeleteButton} from "../admin/DeleteButtons/NewsDeleteButton.tsx";
+import {EditNewsItemModalContent} from "./forms/EditNewsItemModalContent.tsx";
+import {FaEdit} from "react-icons/fa";
 
 interface NewsModalProps {
     newsId?: number;
 }
 
-const NewsModal: FC<NewsModalProps> = ({ newsId }) => {
+const NewsModal: FC<NewsModalProps> = ({newsId}) => {
     const newsContext = useContext(NewsContext);
-    const globalContext = useContext(GlobalContext); 
+    const globalContext = useContext(GlobalContext);
 
     if (!newsContext || !globalContext) {
         throw new Error("Context are not defined");
     }
 
-    const { newsFullItem, fetchNewsFullItem, loading } = newsContext;
+    const {newsFullItem, fetchNewsFullItem, loading} = newsContext;
 
-    const { isAdmin } = globalContext;
+    const {isAdmin, OnShowModal} = globalContext;
 
     useEffect(() => {
         if (newsId) {
-            fetchNewsFullItem(newsId); 
+            fetchNewsFullItem(newsId);
         }
     }, [newsId]);
 
     // TODO: LOADING
     if (loading) {
-        return <ModalLoading />;
+        return <ModalLoading/>;
     }
 
     return (
         <Container className="news-modal">
             <Row className="mb-3">
                 <Col xs={12} className="text-center">
-                    {newsFullItem?.photo && <Image className="news-modal__photo" src={newsFullItem.photo} />}
+                    {newsFullItem?.photo && <Image className="news-modal__photo" src={newsFullItem.photo}/>}
                     {newsFullItem?.video && (
-                        <video className="news-modal__video" src={newsFullItem.video} controls />
+                        <video className="news-modal__video" src={newsFullItem.video} controls/>
                     )}
                 </Col>
             </Row>
@@ -56,16 +57,21 @@ const NewsModal: FC<NewsModalProps> = ({ newsId }) => {
                 </Col>
             </Row>
 
-            {newsFullItem && (
-            <div className="d-flex justify-content-end gap-2">
-                { isAdmin && <NewsEditButton newsItem={newsFullItem} />}
-                { isAdmin && <NewsDeleteButton newsId={newsFullItem.id} apiUrl="https://localhost:44315/api/admin/news" />}
-            </div>
-        )}
+            {newsFullItem && isAdmin && (
+                <Container className="d-flex justify-content-end gap-2">
+                    <Button
+                        className="btn btn-warning position-fixed bottom-0 right-0 m-3"
+                        onClick={() => OnShowModal(<EditNewsItemModalContent newsItem={newsFullItem}/>)}
+                    >
+                        <FaEdit/>
+                    </Button>
+                    <NewsDeleteButton newsId={newsFullItem.id} apiUrl="https://localhost:44315/api/admin/news"/>
+                </Container>
+            )}
 
 
         </Container>
     );
 };
 
-export { NewsModal };
+export {NewsModal};

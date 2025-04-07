@@ -1,10 +1,11 @@
 ﻿import {FC, useContext, useEffect} from "react";
 import {MusicContextProvider} from "../contexts/MusicContext";
-import {Container} from "react-bootstrap";
+import {Button, Container} from "react-bootstrap";
 import {SoundCloudContainer} from "../elements/music/SoundCloudContainer";
 import {MusicPlatforms} from "../elements/music/MusicPlatforms";
-import {AddMusicPlatformButton} from "../elements/admin/AddsButtons/AddMusicPlatformButton";
 import {GlobalContext} from "../contexts/shared/GlobalContext.tsx";
+import {AddMusicPlatformModalContent} from "../elements/music/forms/AddMusicPlatformModalContent.tsx";
+import {FaPlusCircle} from "react-icons/fa";
 
 const Music: FC = () => {
     const globalContext = useContext(GlobalContext);
@@ -13,7 +14,7 @@ const Music: FC = () => {
         throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const {fetchIsAdmin, isAdmin} = globalContext;
+    const {fetchIsAdmin, isAdmin, OnShowModal} = globalContext;
 
     useEffect(() => {
         fetchIsAdmin();
@@ -23,11 +24,12 @@ const Music: FC = () => {
         <MusicContextProvider>
             <div className='page-wrapper'>
                 <Container className="music-page page">
-                    {isAdmin && <AddMusicPlatformButton
-                        apiUrl="/api/music/platform"
-                        modalTitle="Додати музичну платформу"
-                        buttonLabel="Додати платформу"
-                    />}
+                    {isAdmin && <Button
+                        onClick={() => OnShowModal(<AddMusicPlatformModalContent/>)}
+                    >
+                        <FaPlusCircle className="me-2" />
+                        Додати музичну платформу
+                    </Button>}
                     <MusicPlatforms/>
                     <SoundCloudContainer/>
                 </Container>
@@ -36,4 +38,4 @@ const Music: FC = () => {
     );
 };
 
-export {Music};
+export { Music };

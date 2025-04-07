@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../../../contexts/shared/GlobalContext.tsx";
 import { Button } from "react-bootstrap";
-import { MusicPlatformModal } from "../../music/forms/MusicPlatformModal.tsx";
+import { AddMusicPlatformModalContent } from "../../music/forms/AddMusicPlatformModalContent.tsx";
 import { IoAddCircleSharp } from "react-icons/io5";
 
 interface AddMusicPlatformButtonProps {
@@ -20,7 +20,7 @@ const AddMusicPlatformButton: React.FC<AddMusicPlatformButtonProps> = ({ apiUrl,
     const { OnShowModal } = context;
 
     const handleClick = () => {
-        OnShowModal(<MusicPlatformModal apiUrl={apiUrl} modalTitle={modalTitle} />);
+        OnShowModal(<AddMusicPlatformModalContent apiUrl={apiUrl} modalTitle={modalTitle} />);
     };
 
     return (
