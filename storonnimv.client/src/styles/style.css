@@ -1,13 +1,15 @@
 @charset "UTF-8";
 html, body {
-  height: 100%;
-  margin: 0;
+  background-color: #080705;
 }
 
 .app-container {
   display: flex;
   flex-direction: row;
   min-height: 100vh;
+  background-color: transparent;
+  font-size: 14px;
+  color: #FCCD2F;
 }
 .app-container__left {
   display: flex;
@@ -16,11 +18,11 @@ html, body {
 }
 .app-container__main {
   flex: 1;
-  background-color: #f9f9f9;
 }
 .app-container__right {
+  display: flex;
+  flex-direction: column;
   width: 15%;
-  background-color: #ddd;
   min-height: 100vh;
 }
 
@@ -413,12 +415,12 @@ html, body {
   display: grid;
   gap: 50px;
   padding: 16px;
-  background-color: #f8f9fa;
+  background-color: transparent;
 }
 .page-loading__placeholder {
   aspect-ratio: 1/1;
   width: 100%;
-  background: linear-gradient(90deg, #e0e0e0 25%, #f8f8f8 50%, #e0e0e0 75%);
+  background: linear-gradient(90deg, rgba(139, 42, 42, 0.497) 0%, rgba(133, 42, 42, 0.497) 20%, rgba(194, 26, 26, 0.497) 50%, rgba(133, 42, 42, 0.497) 83.5%, rgba(139, 42, 42, 0.497) 100%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
   border-radius: 8px;
@@ -679,6 +681,7 @@ th, td {
   margin: 5px auto;
   width: 80%;
   height: auto;
+  background-color: transparent;
 }
 
 .page-wrapper {
@@ -695,12 +698,13 @@ th, td {
   grid-template-rows: repeat(6, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
+  background-color: transparent;
 }
 
 /* Сетка: расписание */
 .news-grid {
   grid-area: 1/1/3/6;
-  background-color: #f8f9fa; /* Светлый фон */
+  background: linear-gradient(90deg, rgba(139, 42, 42, 0.497) 0%, rgba(133, 42, 42, 0.497) 20%, rgba(194, 26, 26, 0.497) 50%, rgba(133, 42, 42, 0.497) 83.5%, rgba(139, 42, 42, 0.497) 100%);
   border-radius: 8px; /* Скругленные углы */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень */
   padding: 16px;
@@ -709,7 +713,7 @@ th, td {
 /* Сетка: видео */
 .video-grid {
   grid-area: 3/1/7/4;
-  background-color: #e9ecef; /* Серый фон */
+  background: linear-gradient(90deg, rgba(139, 42, 42, 0.497) 0%, rgba(133, 42, 42, 0.497) 20%, rgba(194, 26, 26, 0.497) 50%, rgba(133, 42, 42, 0.497) 83.5%, rgba(139, 42, 42, 0.497) 100%);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 16px;
@@ -718,7 +722,7 @@ th, td {
 /* Сетка: новости */
 .schedule-grid {
   grid-area: 3/4/7/6;
-  background-color: #ffffff; /* Белый фон */
+  background: linear-gradient(90deg, rgba(139, 42, 42, 0.497) 0%, rgba(133, 42, 42, 0.497) 20%, rgba(194, 26, 26, 0.497) 50%, rgba(133, 42, 42, 0.497) 83.5%, rgba(139, 42, 42, 0.497) 100%);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 16px;

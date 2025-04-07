@@ -9,7 +9,7 @@ const Error: FC = () => {
 
     return (
         <div className='page-wrapper'>
-            <Container className='error-container'>
+            <Container className='error-container page'>
                 <Container className='error-info-container'>
                     <p className='error-info-container__status-code'>{statusCode}</p>
                     <p className='error-info-container__message'>{message}</p>

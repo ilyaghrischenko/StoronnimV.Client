@@ -30,7 +30,7 @@ const NewsList: FC = () => {
         const savedPage = sessionStorage.getItem("newsCurrentPage");
         const page = savedPage ? Number(savedPage) : 1;
 
-        paginate(page);
+        paginate(page, 3);
     }, []);
 
     if (loading) {

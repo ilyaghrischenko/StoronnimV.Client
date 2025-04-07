@@ -2,7 +2,8 @@
 import {Container, Nav, Navbar} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
 
-import logo from '../../../images/logo.svg';
+import logo from '../../../assets/logo.svg';
+import {Footer} from "./Footer.tsx";
 
 const Header: FC = () => {
     return (
@@ -13,7 +14,6 @@ const Header: FC = () => {
                 <Container className="navbar-container">
                     <Navbar.Brand as={NavLink} to="/">
                         <img src={logo} alt='Logo' className='navbar-container__logo' />
-                        {/*Стороннім В*/}
                     </Navbar.Brand>
 
                     <Nav.Link as={NavLink} to="/schedule" className="navbar-container__link-item">
@@ -32,6 +32,8 @@ const Header: FC = () => {
                     <Nav.Link as={NavLink} to="/video/sections" className="navbar-container__link-item">
                         Відео
                     </Nav.Link>
+
+                    <Footer/>
                 </Container>
             </Navbar>
         </Container>

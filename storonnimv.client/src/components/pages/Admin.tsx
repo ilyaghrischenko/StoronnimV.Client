@@ -10,7 +10,7 @@ const Admin: FC<IAdminProps> = ({children}) => {
     return (
         <AdminContextProvider>
             <div className='page-wrapper'>
-                <Container>
+                <Container className='page'>
                     {children}
                 </Container>
             </div>
