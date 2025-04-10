@@ -29,7 +29,6 @@
 }
 .frame__content-navbar {
   overflow: auto;
-  min-width: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
