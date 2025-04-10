@@ -1,0 +1,30 @@
+@charset "UTF-8";
+.pagination {
+  font-family: "Arial", sans-serif; /* Изменяем шрифт */
+  font-size: 16px; /* Устанавливаем размер шрифта */
+}
+.pagination .page-item {
+  margin: 0 5px; /* Добавляем отступы между элементами пагинации */
+}
+.pagination .page-link {
+  padding: 8px 12px; /* Изменяем отступы внутри кнопок */
+  border-radius: 4px; /* Скругляем углы */
+  transition: background-color 0.3s ease; /* Плавный переход фона при ховере */
+}
+.pagination .page-link:hover {
+  background-color: #f0f0f0; /* Цвет фона при наведении */
+}
+.pagination .page-item.active .page-link {
+  background-color: #007bff; /* Цвет фона для активной страницы */
+  color: white; /* Цвет текста для активной страницы */
+}
+.pagination .page-item.disabled .page-link {
+  background-color: #e9ecef; /* Цвет фона для отключенной кнопки */
+  color: #6c757d; /* Цвет текста для отключенной кнопки */
+}
+.pagination .page-link svg {
+  width: 12px; /* Размеры ваших стрелок */
+  height: 12px;
+}
+
+/*# sourceMappingURL=PaginationSection.css.map */

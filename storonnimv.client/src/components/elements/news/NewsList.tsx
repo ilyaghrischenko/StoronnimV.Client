@@ -1,6 +1,6 @@
 ﻿import {FC, useContext, useEffect} from "react";
 import {NewsContext, NewsContextProvider} from "../../contexts/NewsContext";
-import {Container} from "react-bootstrap";
+import {Button, Container} from "react-bootstrap";
 import {NewsListItem} from "./NewsListItem";
 import {PageLoading} from "../shared/PageLoading";
 
@@ -10,6 +10,8 @@ import {INewsShortItem} from "../../../models/news/INewsShortItem";
 import {GlobalContext} from "../../contexts/shared/GlobalContext";
 import {NewsModal} from "./NewsModal.tsx";
 import {PaginationSection} from "../shared/PaginationSection.tsx";
+import {AddNewsItemModalContent} from "./forms/AddNewsItemModalContent.tsx";
+import {FaPlus} from "react-icons/fa";
 
 const NewsList: FC = () => {
     const newsContext = useContext(NewsContext);
@@ -22,7 +24,7 @@ const NewsList: FC = () => {
         throw new Error("NewsContext must be used within a NewsContextProvider");
     }
 
-    const {OnShowModal} = globalContext;
+    const {OnShowModal, isAdmin} = globalContext;
 
     const {newsList, currentPage, totalPages, paginate, loading} = newsContext;
 
@@ -41,6 +43,9 @@ const NewsList: FC = () => {
 
     return (
         <Container className='news-list'>
+            {isAdmin && <Button onClick={() => OnShowModal(<AddNewsItemModalContent/>)}>
+                <FaPlus/>
+            </Button>}
             <List
                 className="news-list__items"
                 items={newsList}
@@ -57,14 +62,10 @@ const NewsList: FC = () => {
             >
             </List>
 
-            {/* Элементы управления пагинацией */}
-            <Container>
-                <PaginationSection
-                    className={"news-list__pagination"}
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    paginate={paginate} />
-            </Container>
+            <PaginationSection
+                currentPage={currentPage}
+                totalPages={totalPages}
+                paginate={paginate}/>
         </Container>
     );
 };

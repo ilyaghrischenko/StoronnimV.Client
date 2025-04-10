@@ -52,6 +52,7 @@ const AddNewsItemModalContent: React.FC = () => {
         try {
             const response = await sendRequest(`${route}api/admin/news`, "POST", data);
             if (response.status === 201) {
+                window.location.reload();
                 OnHideModal();
             } else {
                 alert("Помилка при додаванні новини" + response.status);
