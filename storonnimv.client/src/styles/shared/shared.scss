@@ -1,0 +1,30 @@
+@import "./colors";
+
+* {
+  //TODO: шрифт
+  //font-family: 'Leelawadee UI', sans-serif;
+}
+
+.main-text {
+  color: $main-text-color;
+}
+
+.secondary-text {
+  color: $secondary-text-color;
+}
+
+.basic-button, .confirm-button {
+  background-color: $button-color;
+
+  &:hover {
+    background-color: $button-hover-color;
+  }
+}
+
+.cancel-button {
+  background-color: $cancel-button-color;
+
+  &:hover {
+    background-color: $cancel-button-hover-color;
+  }
+}

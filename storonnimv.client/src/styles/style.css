@@ -47,6 +47,28 @@ html, body {
   border: none;
 }
 
+.main-text {
+  color: #FCCD2F;
+}
+
+.secondary-text {
+  color: white;
+}
+
+.basic-button, .confirm-button {
+  background-color: rgba(252, 205, 47, 0.8509803922);
+}
+.basic-button:hover, .confirm-button:hover {
+  background-color: rgba(193, 157, 36, 0.8470588235);
+}
+
+.cancel-button {
+  background-color: red;
+}
+.cancel-button:hover {
+  background-color: darkred;
+}
+
 .description-container {
   border: 2px solid #ccc; /* Рамка толщиной 2px с цветом #ccc */
   border-radius: 8px; /* Скругление углов (по желанию) */
@@ -197,6 +219,7 @@ html, body {
   align-items: center;
   width: 100%;
   height: 100%;
+  background: linear-gradient(90deg, rgba(139, 42, 42, 0.497) 0%, rgba(133, 42, 42, 0.497) 20%, rgba(194, 26, 26, 0.497) 50%, rgba(133, 42, 42, 0.497) 83.5%, rgba(139, 42, 42, 0.497) 100%);
 }
 
 .swiper-slide {
@@ -435,16 +458,26 @@ html, body {
   flex-direction: column;
   justify-content: center; /* Размещаем блоки с левым и правым контентом */
   align-items: center;
-  gap: 50px;
+  gap: 40px;
+}
+.navbar-container__brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .navbar-container__logo {
-  width: 120px;
+  width: 100vw;
+  max-width: 85%;
   height: auto;
   object-fit: contain;
 }
 .navbar-container__link-item {
-  background-color: red;
-  font-size: 30px;
+  width: 70%;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 25px;
+  text-decoration: none;
+  color: black;
 }
 
 .page-loading {
@@ -779,7 +812,6 @@ th, td {
 /* Сетка: расписание */
 .news-grid {
   grid-area: 1/1/3/6;
-  background: linear-gradient(90deg, rgba(139, 42, 42, 0.497) 0%, rgba(133, 42, 42, 0.497) 20%, rgba(194, 26, 26, 0.497) 50%, rgba(133, 42, 42, 0.497) 83.5%, rgba(139, 42, 42, 0.497) 100%);
   border-radius: 8px; /* Скругленные углы */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень */
   padding: 16px;
@@ -788,7 +820,6 @@ th, td {
 /* Сетка: видео */
 .video-grid {
   grid-area: 3/1/7/4;
-  background: linear-gradient(90deg, rgba(139, 42, 42, 0.497) 0%, rgba(133, 42, 42, 0.497) 20%, rgba(194, 26, 26, 0.497) 50%, rgba(133, 42, 42, 0.497) 83.5%, rgba(139, 42, 42, 0.497) 100%);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 16px;
@@ -797,7 +828,6 @@ th, td {
 /* Сетка: новости */
 .schedule-grid {
   grid-area: 3/4/7/6;
-  background: linear-gradient(90deg, rgba(139, 42, 42, 0.497) 0%, rgba(133, 42, 42, 0.497) 20%, rgba(194, 26, 26, 0.497) 50%, rgba(133, 42, 42, 0.497) 83.5%, rgba(139, 42, 42, 0.497) 100%);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 16px;

@@ -37,18 +37,27 @@
   flex-direction: column;
   justify-content: center; /* Размещаем блоки с левым и правым контентом */
   align-items: center;
-  gap: 50px;
+  gap: 40px;
+
+  &__brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   &__logo {
-    width: 120px;
+    width: 100vw;
+    max-width: 85%;
     height: auto;
     object-fit: contain;
   }
 
   &__link-item {
-    background-color: red;
-    font-size: 30px;
+    width: 70%;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 25px;
+    text-decoration: none;
+    color: black;
   }
-
-
 }
