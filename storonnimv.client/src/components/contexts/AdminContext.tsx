@@ -1,7 +1,7 @@
 import {createContext, FC, ReactNode, useContext, useState} from "react";
-import { GlobalContext } from "./shared/GlobalContext.tsx";
-import { ILogInRequest } from "../../models/admin/ILogInRequest.ts";
-import { useNavigate } from "react-router-dom";
+import {GlobalContext} from "./shared/GlobalContext.tsx";
+import {ILogInRequest} from "../../models/admin/ILogInRequest.ts";
+import {useNavigate} from "react-router-dom";
 import {IBasicAdmin} from "../../models/admin/IBasicAdmin.ts";
 
 interface AdminContextType {
@@ -21,14 +21,14 @@ interface AdminContextProviderProps {
     children: ReactNode;
 }
 
-const AdminContextProvider: FC<AdminContextProviderProps> = ({ children }) => {
+const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
     const globalContext = useContext(GlobalContext);
 
     if (!globalContext) {
         throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const { sendRequest, loading, setIsAdmin } = globalContext;
+    const {sendRequest, loading, setIsAdmin, setValidationErrors} = globalContext;
     const navigate = useNavigate();
 
     const logIn = async (logInRequest: ILogInRequest) => {
@@ -36,8 +36,8 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({ children }) => {
             const response = await sendRequest(
                 'https://localhost:44315/api/account/login',
                 'POST',
-                JSON.stringify({ login: logInRequest.login, password: logInRequest.password }),
-                { 'Content-Type': 'application/json' }
+                JSON.stringify({login: logInRequest.login, password: logInRequest.password}),
+                {'Content-Type': 'application/json'}
             );
 
             if (response.status === 401) {
@@ -48,7 +48,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({ children }) => {
                 setIsAdmin(true);
             }
 
-            navigate('/', { replace: true });
+            navigate('/', {replace: true});
 
             const adminRole: string = response.data;
             sessionStorage.setItem('role', adminRole);
@@ -77,8 +77,8 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({ children }) => {
             const response = await sendRequest(
                 "https://localhost:44315/api/super-admin/basic-admins",
                 "POST",
-                JSON.stringify({ login, password }),
-                { "Content-Type": "application/json" }
+                JSON.stringify({login, password}),
+                {"Content-Type": "application/json"}
             );
 
             if (response.status === 200) {
@@ -86,6 +86,8 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({ children }) => {
                 setBasicAdmins((prevAdmins) => [...prevAdmins, addedAdmin]);
 
                 alert('АДМІНА ДОДАНО');
+            } else if (response.status === 400) {
+                setValidationErrors(response.data.errors);
             }
         } catch (error) {
             console.error(`Error while adding basic admin: ${error}`);
@@ -112,24 +114,22 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({ children }) => {
             const response = await sendRequest(
                 `https://localhost:44315/api/super-admin/basic-admins/${adminId}/login`,
                 'PATCH',
-                JSON.stringify({ newLogin }),
-                { 'Content-Type': 'application/json' }
+                JSON.stringify({newLogin}),
+                {'Content-Type': 'application/json'}
             );
-
-            if (response.status !== 200) {
-                alert(response.statusText);
-            }
 
             if (response.status === 200) {
                 const updatedAdmin: IBasicAdmin = response.data;
 
                 setBasicAdmins((prevAdmins) =>
                     prevAdmins.map((admin) =>
-                        admin.id === adminId ? { ...admin, login: updatedAdmin.login } : admin
+                        admin.id === adminId ? {...admin, login: updatedAdmin.login} : admin
                     )
                 );
 
                 alert('ДАНІ АДМІНА ЗМІНЕНІ');
+            } else if (response.status === 400) {
+                setValidationErrors(response.data.errors);
             }
         } catch (error) {
             console.error(`Error while editing admin login: ${error}`);
@@ -145,12 +145,12 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({ children }) => {
             const response = await sendRequest(
                 `https://localhost:44315/api/super-admin/basic-admins/${adminId}/password`,
                 'PATCH',
-                JSON.stringify({ oldPassword, newPassword }),
-                { 'Content-Type': 'application/json' }
+                JSON.stringify({oldPassword, newPassword}),
+                {'Content-Type': 'application/json'}
             );
 
-            if (response.status !== 200) {
-                alert(response.statusText);
+            if (response.status === 400) {
+                setValidationErrors(response.data.errors);
             }
         } catch (error) {
             console.error(`Error while editing admin password: ${error}`);
@@ -165,7 +165,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({ children }) => {
         fetchBasicAdmins,
         addAdmin,
         editAdminLogin,
-        editAdminPassword
+        editAdminPassword,
     };
 
     return (
@@ -175,4 +175,4 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({ children }) => {
     );
 };
 
-export { AdminContextProvider, AdminContext };
+export {AdminContextProvider, AdminContext};

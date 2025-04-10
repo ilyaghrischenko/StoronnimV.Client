@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
 import { GlobalContext } from "../../../contexts/shared/GlobalContext";
+import {ValidationErrors} from "../ValidationErrors.tsx";
 
 interface IAddAdminModalProps {
     onAdding: (login: string, password: string) => Promise<void>;
 }
 
 const AddAdminModal: React.FC<IAddAdminModalProps> = ({ onAdding }) => {
-    const { OnHideModal } = useContext(GlobalContext)!;
+    const { OnHideModal, validationErrors } = useContext(GlobalContext)!;
     const [login, setLogin] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
@@ -48,6 +49,9 @@ const AddAdminModal: React.FC<IAddAdminModalProps> = ({ onAdding }) => {
                             style={{ color: "white", backgroundColor: "#333" }}
                         />
                     </Form.Group>
+
+                    {validationErrors && Object.keys(validationErrors).length > 0 &&
+                        <ValidationErrors errors={validationErrors} />}
                 </Form>
             </Modal.Body>
             <Modal.Footer>

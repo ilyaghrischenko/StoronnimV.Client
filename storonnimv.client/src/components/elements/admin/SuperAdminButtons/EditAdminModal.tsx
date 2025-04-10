@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
 import { GlobalContext } from "../../../contexts/shared/GlobalContext";
+import {ValidationErrors} from "../ValidationErrors.tsx";
 
 interface EditAdminModalProps {
     admin: { id: number; login: string };
@@ -9,7 +10,7 @@ interface EditAdminModalProps {
 }
 
 const EditAdminModal: React.FC<EditAdminModalProps> = ({ admin, onLoginEdit, onPasswordEdit }) => {
-    const { OnHideModal } = useContext(GlobalContext)!;
+    const { OnHideModal, validationErrors } = useContext(GlobalContext)!;
     const [login, setLogin] = useState<string>(admin.login);
     const [password, setPassword] = useState<string>("");
     const [newPassword, setNewPassword] = useState<string>("");
@@ -20,16 +21,12 @@ const EditAdminModal: React.FC<EditAdminModalProps> = ({ admin, onLoginEdit, onP
         setLoading(true);
         await onLoginEdit(admin.id, newLogin)
         setLoading(false);
-
-        OnHideModal();
     };
 
     const handlePasswordEdit = async (oldPassword: string, newPassword: string) => {
         setLoading(true);
         await onPasswordEdit(admin.id, oldPassword, newPassword);
         setLoading(false);
-
-        OnHideModal();
     };
 
     return (
@@ -87,6 +84,9 @@ const EditAdminModal: React.FC<EditAdminModalProps> = ({ admin, onLoginEdit, onP
                     <Button variant="primary" onClick={() => handlePasswordEdit(newPassword, confirmPassword)} disabled={loading}>
                         {loading ? "Завантаження..." : "Змінити пароль"}
                     </Button>
+
+                    {validationErrors && Object.keys(validationErrors).length > 0 &&
+                        <ValidationErrors errors={validationErrors} />}
                 </Form>
             </Modal.Body>
             <Modal.Footer>
