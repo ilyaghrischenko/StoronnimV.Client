@@ -31,6 +31,20 @@ html, body {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  overflow-y: auto;
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+}
+.header-with-footer-container::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.header-with-footer-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.header-with-footer-container::-webkit-scrollbar-thumb {
+  background: transparent;
+  border: none;
 }
 
 .description-container {
@@ -388,10 +402,25 @@ html, body {
 }
 
 .header-container {
-  height: 250px;
+  height: 100%;
+  width: 100%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  overflow-y: auto;
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+}
+.header-container::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.header-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.header-container::-webkit-scrollbar-thumb {
+  background: transparent;
+  border: none;
 }
 
 .header {
@@ -510,6 +539,42 @@ html, body {
     transform: rotate(360deg);
   }
 }
+.frame {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: black;
+}
+.frame__svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.frame__content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 86% 14%;
+  width: 100%;
+  height: 100%;
+}
+.frame__content-main {
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.frame__content-navbar {
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .video-list-container {
   padding: 20px;
 }
@@ -700,12 +765,15 @@ th, td {
 
 /* Основной контейнер */
 .home-page {
+  width: 100%;
+  height: 100%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(6, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
   background-color: transparent;
+  overflow: hidden;
 }
 
 /* Сетка: расписание */
@@ -857,12 +925,31 @@ th, td {
   padding: 0;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
   overflow-x: hidden;
+}
+
+.inFrame__content {
+  margin-left: 8px;
+  height: 92%;
+  width: 99%;
+  background-color: transparent;
+  border: 1px solid red;
+  color: aliceblue;
+}
+.inFrame__navbar {
+  margin-left: 3px;
+  margin-right: 5px;
+  height: 92%;
+  width: 90%;
+  background-color: transparent;
+  border: 1px solid red;
+  color: aliceblue;
 }
 
 /*# sourceMappingURL=style.css.map */

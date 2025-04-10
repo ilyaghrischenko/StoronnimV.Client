@@ -22,13 +22,11 @@ const Home: FC = () => {
 
     return (
         <HomeContextProvider>
-            <div className='page-wrapper'>
                 <Container className='home-page page'>
                     <ScheduleHomeContainer className='schedule-grid'/>
                     <NewsSlider className='news-grid'/>
                     <PromotionVideoHome className='video-grid'/>
                 </Container>
-            </div>
         </HomeContextProvider>
     );
 };

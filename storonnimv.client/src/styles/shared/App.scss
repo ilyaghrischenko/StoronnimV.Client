@@ -3,10 +3,32 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
   overflow-x: hidden;
+}
+
+.inFrame {
+  &__content {
+    margin-left: 8px;
+    height: 92%;
+    width: 99%;
+    background-color: transparent;
+    border: 1px solid red;
+    color: aliceblue;
+  }
+
+  &__navbar {
+    margin-left: 3px;
+    margin-right: 5px;
+    height: 92%;
+    width: 90%;
+    background-color: transparent;
+    border: 1px solid red;
+    color: aliceblue;
+  }
 }

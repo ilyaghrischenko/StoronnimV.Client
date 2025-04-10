@@ -4,22 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="refactored edit and delete form">
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="refactored addition">
+      <change afterPath="$PROJECT_DIR$/storonnimv.client/src/assets/frame.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/shared/FrameLayout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/shared/FrameLayout.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_04_2025_14_54_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_04_2025_14_54__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_04_2025_14_57_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_04_2025_14_57__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/AddsButtons/AddGroupButton.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/AddsButtons/AddMusicPlatformButton.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/AddsButtons/AddNewsButton.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/AddsButtons/AddSheduleButton.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/AddsButtons/AddVideoButton.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/AddMemberModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/AddMemberModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/groupPageComponents/ShortMembers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/groupPageComponents/ShortMembers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/forms/NewsContentModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/forms/AddNewsItemModalContent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/forms/ScheduleContentModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/forms/AddScheduleModalContent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/forms/VideoContentModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/forms/AddVideoModalContent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/News.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/News.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Schedule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Schedule.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Video.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Video.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/assets/border.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/shared/Header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/shared/Header.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/shared/HeaderWithFooter.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/shared/HeaderWithFooter.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/pages/Home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/pages/Home.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/shared/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/shared/App.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/vite-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/vite-env.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/vite.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +40,8 @@
         <option value="package.json" />
         <option value="TypeScript File" />
         <option value="tsconfig.json" />
-        <option value="SCSS File" />
         <option value="TypeScript JSX File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -77,8 +84,8 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "refactor/forms-and-buttons-for-forms",
-    "last_opened_file_path": "D:/ForProgramming/Projects/MyProjects/React/StoronnimV.Client/storonnimv.client/src",
+    "git-widget-placeholder": "feature/frame-designing",
+    "last_opened_file_path": "D:/ForProgramming/Projects/MyProjects/React/StoronnimV.Client/storonnimv.client/src/assets",
     "list.type.of.created.stylesheet": "SCSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -92,6 +99,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ForProgramming\Projects\MyProjects\React\StoronnimV.Client\storonnimv.client\src\assets" />
       <recent name="D:\ForProgramming\Projects\MyProjects\React\StoronnimV.Client\storonnimv.client\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -152,6 +160,7 @@
       <workItem from="1743685300176" duration="6414000" />
       <workItem from="1743834123159" duration="5363000" />
       <workItem from="1744021571009" duration="7678000" />
+      <workItem from="1744297777734" duration="5850000" />
     </task>
     <task id="LOCAL-00001" summary="change port">
       <option name="closed" value="true" />
@@ -361,7 +370,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743840007585</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="refactored addition">
+      <option name="closed" value="true" />
+      <created>1744033333862</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1744033333862</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -379,7 +396,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="rewrite .css files to .scss, add style.scss" />
     <MESSAGE value="remove imports css files in components, add only 1 import to index.html" />
     <MESSAGE value="finish" />
     <MESSAGE value="add" />
@@ -404,6 +420,7 @@
     <MESSAGE value="save" />
     <MESSAGE value="refactored add form" />
     <MESSAGE value="refactored edit and delete form" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactored edit and delete form" />
+    <MESSAGE value="refactored addition" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored addition" />
   </component>
 </project>

@@ -3,7 +3,8 @@ import {BrowserRouter as Router} from "react-router-dom";
 import {Page} from "./components/pages/shared/Page";
 import {ModalWindow} from "./components/elements/shared/ModalWindow";
 import {GlobalContext} from "./components/contexts/shared/GlobalContext.tsx";
-import {HeaderWithFooter} from "./components/elements/shared/HeaderWithFooter.tsx";
+import {FrameLayout} from "./components/elements/shared/FrameLayout.tsx";
+import {Header} from "./components/elements/shared/Header.tsx";
 
 function App(): JSX.Element {
     const globalContext = useContext(GlobalContext);
@@ -15,23 +16,19 @@ function App(): JSX.Element {
     const {isAdminRoute} = globalContext;
 
     return (
-        <div className='border-wrapper'>
-            <div className="app-container">
-                <Router>
-                    <ModalWindow/>
-                    <div className="app-container__left">
-                        <div className="app-container__main">
-                            <Page/>
-                        </div>
+        <div className="app-container">
+            <Router>
+                <FrameLayout nav={!isAdminRoute() && (
+                    <div className="inFrame__navbar">
+                        <Header/>
                     </div>
-
-                    {!isAdminRoute() && (
-                        <div className="app-container__right">
-                            <HeaderWithFooter />
-                        </div>
-                    )}
-                </Router>
-            </div>
+                )}>
+                    <ModalWindow/>
+                    <div className="inFrame__content">
+                        <Page/>
+                    </div>
+                </FrameLayout>
+            </Router>
         </div>
     );
 
