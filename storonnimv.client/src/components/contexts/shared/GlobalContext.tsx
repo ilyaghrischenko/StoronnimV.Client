@@ -19,6 +19,8 @@ interface GlobalContextType {
     isAdmin: boolean;
     setIsAdmin: (isAdmin: boolean) => void;
     fetchIsAdmin: () => Promise<void>;
+    validationErrors: Record<string, string[]>;
+    setValidationErrors: (validationErrors: Record<string, string[]>) => void;
 }
 
 // Создаем контекст с типизацией
@@ -34,6 +36,8 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({ children }) => 
     const [modalTitle, setModalTitle] = useState<string>("");
 
     const [isAdmin, setIsAdmin] = useState<boolean>(false);
+
+    const [validationErrors, setValidationErrors] = useState<Record<string, string[]>>({} as Record<string, string[]>);
 
     const fetchIsAdmin = async () => {
         try {
@@ -113,7 +117,9 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({ children }) => 
         isAdminRoute,
         isAdmin,
         setIsAdmin,
-        fetchIsAdmin
+        fetchIsAdmin,
+        validationErrors,
+        setValidationErrors
     };
 
     return (
