@@ -1,20 +1,23 @@
-﻿import {FC} from "react";
-import {INewsShortItem} from "../../../models/news/INewsShortItem";
-import {Image, ListGroupItem} from "react-bootstrap";
+﻿import { FC } from "react";
+import { INewsShortItem } from "../../../models/news/INewsShortItem";
+import { Image, ListGroupItem } from "react-bootstrap";
 
 interface INewsListItemProps {
     newsItem: INewsShortItem;
 }
 
-const NewsListItem: FC<INewsListItemProps> = ({newsItem}) => {
+const NewsListItem: FC<INewsListItemProps> = ({ newsItem }) => {
     return (
         <ListGroupItem className='news-list-item'>
-            <Image className='news-list-item__photo' src={newsItem.photo} fluid />
-            <p className='news-list-item__title'>{newsItem.title}</p>
-            <p className='news-list-item__date'>{newsItem.date}</p>
-            <p className='news-list-item__priority'>{newsItem.priority}</p>
+            <div className='news-list-item__content'>
+                <Image className='news-list-item__photo' src={newsItem.photo} fluid />
+                <div className='news-list-item__overlay'>
+                    <p className='news-list-item__date'>{newsItem.date}</p>
+                    <p className='news-list-item__title'>{newsItem.title}</p>
+                </div>
+            </div>
         </ListGroupItem>
     );
 };
 
-export {NewsListItem};
+export { NewsListItem };
