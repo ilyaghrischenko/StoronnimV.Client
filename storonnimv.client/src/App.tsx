@@ -4,6 +4,7 @@ import {Page} from "./components/pages/shared/Page";
 import {ModalWindow} from "./components/elements/shared/ModalWindow";
 import {GlobalContext} from "./components/contexts/shared/GlobalContext.tsx";
 import {HeaderWithFooter} from "./components/elements/shared/HeaderWithFooter.tsx";
+import {ResolutionWrapper} from "./components/elements/shared/ResolutionWrapper.tsx";
 
 function App(): JSX.Element {
     const globalContext = useContext(GlobalContext);
@@ -15,24 +16,26 @@ function App(): JSX.Element {
     const {isAdminRoute} = globalContext;
 
     return (
-        <div className='border-wrapper'>
-            <div className="app-container">
-                <Router>
-                    <ModalWindow/>
-                    <div className="app-container__left">
-                        <div className="app-container__main">
-                            <Page/>
+        <ResolutionWrapper>
+            <div className='border-wrapper'>
+                <div className="app-container">
+                    <Router>
+                        <ModalWindow/>
+                        <div className="app-container__left">
+                            <div className="app-container__main">
+                                <Page/>
+                            </div>
                         </div>
-                    </div>
 
-                    {!isAdminRoute() && (
-                        <div className="app-container__right">
-                            <HeaderWithFooter />
-                        </div>
-                    )}
-                </Router>
+                        {!isAdminRoute() && (
+                            <div className="app-container__right">
+                                <HeaderWithFooter/>
+                            </div>
+                        )}
+                    </Router>
+                </div>
             </div>
-        </div>
+        </ResolutionWrapper>
     );
 
 }
