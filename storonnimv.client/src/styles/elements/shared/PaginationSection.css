@@ -1,30 +1,40 @@
 @charset "UTF-8";
-.pagination {
-  font-family: "Arial", sans-serif; /* Изменяем шрифт */
-  font-size: 16px; /* Устанавливаем размер шрифта */
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
-.pagination .page-item {
-  margin: 0 5px; /* Добавляем отступы между элементами пагинации */
+
+.pagination-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 20px;
+  color: #333;
+  transition: color 0.3s ease;
+  border: none; /* Убираем обводку */
 }
-.pagination .page-link {
-  padding: 8px 12px; /* Изменяем отступы внутри кнопок */
-  border-radius: 4px; /* Скругляем углы */
-  transition: background-color 0.3s ease; /* Плавный переход фона при ховере */
+
+.pagination-button:disabled {
+  cursor: not-allowed;
+  color: #aaa;
 }
-.pagination .page-link:hover {
-  background-color: #f0f0f0; /* Цвет фона при наведении */
+
+.pagination-button:hover:not(:disabled) {
+  color: #8a7d30; /* Цвет текста при ховере */
 }
-.pagination .page-item.active .page-link {
-  background-color: #007bff; /* Цвет фона для активной страницы */
-  color: white; /* Цвет текста для активной страницы */
+
+.pagination-button.active {
+  color: #fbd700; /* Цвет активной кнопки */
 }
-.pagination .page-item.disabled .page-link {
-  background-color: #e9ecef; /* Цвет фона для отключенной кнопки */
-  color: #6c757d; /* Цвет текста для отключенной кнопки */
-}
-.pagination .page-link svg {
-  width: 12px; /* Размеры ваших стрелок */
-  height: 12px;
+
+.pagination-button svg {
+  width: 20px;
+  height: 20px;
 }
 
 /*# sourceMappingURL=PaginationSection.css.map */

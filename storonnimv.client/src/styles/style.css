@@ -256,7 +256,6 @@ html, body {
   width: 80%;
 }
 
-/* Родитель уже имеет ограничение, под него и подстраиваемся */
 .news-list {
   display: flex;
   flex-direction: column;
