@@ -23,14 +23,14 @@
     height: 100%;
 
     &-main {
-      overflow: auto;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     &-navbar {
-      overflow: auto;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
