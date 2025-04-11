@@ -365,7 +365,6 @@ html, body {
   color: gold;
   margin: 0;
   opacity: 1;
-  text-shadow: 0 0 7px rgba(0, 0, 0, 0.9);
   transition: opacity 0.3s ease;
   position: absolute; /* Дата будет справа */
   right: 5%;
