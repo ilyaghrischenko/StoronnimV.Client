@@ -27,7 +27,7 @@ const NewsSlider: FC<NewsComponentProps> = ({className}) => {
 
 
     return (
-        <Container className={className}>
+        <Container className={`${className} news-slider`}>
             <Swiper
                 key={homeNewsList.length}
                 modules={[Navigation, Autoplay]}

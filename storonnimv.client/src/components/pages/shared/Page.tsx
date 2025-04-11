@@ -13,6 +13,7 @@ import { AuthForm } from "../../elements/admin/AuthForm.tsx";
 import { Error } from "../Error.tsx";
 import { ProtectedRoute } from "../../elements/admin/ProtectedRoute.tsx";
 import { AdminContainer } from "../../elements/admin/AdminContainer.tsx";
+import {Developers} from "../Developers.tsx";
 
 const Page: FC = () => {
     return (
@@ -55,6 +56,8 @@ const Page: FC = () => {
                     </ProtectedRoute>
                 }
             />
+
+            <Route path='/developers' element={<Developers />} />
 
             <Route path="/error" element={<Error />} />
             <Route path="*" element={<Navigate to="/error?statusCode=404&message=Not%20Found" />} />

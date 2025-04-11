@@ -55,6 +55,14 @@ html, body {
   color: white;
 }
 
+.big-shadow {
+  text-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2980392157), 0px 0px 20px rgba(0, 0, 0, 0.0980392157);
+}
+
+.small-shadow {
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
 .basic-button, .confirm-button {
   background-color: rgba(252, 205, 47, 0.8509803922);
 }
@@ -78,7 +86,8 @@ html, body {
 }
 .description-container__group-name {
   font-size: 135px;
-  text-align: justify;
+  text-align: center;
+  font-weight: bold;
 }
 
 .description-div {
@@ -88,39 +97,54 @@ html, body {
   margin: 5px;
 }
 .description-div__description {
+  text-align: justify;
   font-size: 20px;
-  text-align: center;
 }
 
-.short-members-list {
-  display: flex; /* Выводим элементы в ряд */
-  margin: 0 auto; /* Центрирование по горизонтали */
-  flex-wrap: wrap; /* Перенос на новую строку, если не помещаются */
-  flex-direction: row; /* Перенос на новую строку, если не помещаются */
-  gap: 15px; /* Расстояние между элементами */
-  justify-content: center; /* Центрирование элементов по горизонтали */
-  padding: 0;
-  width: 60%; /* Ширина контейнера */
-}
-.short-members-list__item {
+.short-members-container {
+  width: 90%;
   display: flex;
-  flex-direction: column; /* Располагаем фото сверху, текст снизу */
-  align-items: center; /* Центрируем содержимое */
-  width: 33%; /* Ширина и высота квадрата */
-  height: auto;
-  border: 1px solid #ccc; /* Рамка вокруг элемента (опционально) */
-  border-radius: 8px; /* Скругленные углы */
-  text-align: center; /* Текст по центру */
-  overflow: hidden; /* Обрезаем содержимое, выходящее за границы */
-  background-color: #f8f9fa; /* Цвет фона (опционально) */
+  flex-direction: column;
+  align-items: center;
 }
 
-.short-member-item-container__photo {
-  width: 100%; /* Занимает всю ширину блока */
-  height: auto; /* Автоматическая высота */
-  max-height: 70%; /* Ограниваем высоту фото 70% от квадрата */
-  object-fit: cover; /* Фото масштабируется и обрезается для сохранения пропорций */
+.swiper {
+  border-radius: 8px; /* Скругленные углы */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень */
+  padding: 16px;
 }
+
+.short-member-item-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-container {
+  width: 80%;
+  height: 15vw;
+  border-radius: 20px;
+  margin-bottom: 20%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+}
+.photo-container__full-name {
+  font-size: 40px;
+  font-weight: bold;
+  text-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2980392157), 0px 0px 20px rgba(0, 0, 0, 0.0980392157);
+}
+.photo-container__role {
+  font-size: 20px;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
 .member-modal {
   max-width: 100%;
   padding: 20px;
@@ -170,18 +194,21 @@ html, body {
 }
 
 .group-description-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 98%;
+  border-radius: 20px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
 }
 
-.news-home-list {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 5rem;
+.news-slider {
+  background: linear-gradient(90deg, rgba(139, 42, 42, 0.497) 0%, rgba(133, 42, 42, 0.497) 20%, rgba(194, 26, 26, 0.497) 50%, rgba(133, 42, 42, 0.497) 83.5%, rgba(139, 42, 42, 0.497) 100%);
 }
 
 .news-home-list-item-container {
@@ -229,13 +256,12 @@ html, body {
   align-items: center;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, rgba(139, 42, 42, 0.497) 0%, rgba(133, 42, 42, 0.497) 20%, rgba(194, 26, 26, 0.497) 50%, rgba(133, 42, 42, 0.497) 83.5%, rgba(139, 42, 42, 0.497) 100%);
 }
 
 .swiper-slide {
   display: flex;
-  border-radius: 8px; /* Округление углов */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   justify-content: center;
   align-items: center;
   position: relative;
@@ -570,6 +596,12 @@ html, body {
   font-size: 25px;
   text-decoration: none;
   color: black;
+}
+.navbar-container__dev {
+  margin-top: 70%;
+  width: 70%;
+  text-align: center;
+  font-size: 12px;
 }
 
 .page-loading {

@@ -37,7 +37,9 @@ const GroupDescription: FC = () => {
     return (
         <Container
             className='group-description-container'
-            style={{backgroundImage: `url(${fullInfo.groupPage.photoUrl})`}}
+            style={{
+                backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.8) 100%), url(${fullInfo.groupPage.photoUrl})`,
+            }}
         >
             {isAdmin && <GroupInfoEditButton />}
             <Description groupInfo={fullInfo.groupPage} />

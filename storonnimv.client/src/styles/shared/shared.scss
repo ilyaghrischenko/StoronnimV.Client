@@ -13,6 +13,14 @@
   color: $secondary-text-color;
 }
 
+.big-shadow {
+  text-shadow: 6px 6px 10px #0000004C, 0px 0px 20px #00000019;
+}
+
+.small-shadow {
+  text-shadow: 3px 3px 8px #00000033;
+}
+
 .basic-button, .confirm-button {
   background-color: $button-color;
 

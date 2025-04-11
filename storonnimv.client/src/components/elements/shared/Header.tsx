@@ -32,6 +32,10 @@ const Header: FC = () => {
                     <Nav.Link as={NavLink} to="/video/sections" className="navbar-container__link-item basic-button">
                         Відео
                     </Nav.Link>
+
+                    <Nav.Link as={NavLink} to="/developers" className="navbar-container__dev main-text">
+                        Розробники
+                    </Nav.Link>
                 </Container>
             </Navbar>
         </Container>
