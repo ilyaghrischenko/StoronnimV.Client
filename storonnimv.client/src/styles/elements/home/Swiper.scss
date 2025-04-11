@@ -1,3 +1,5 @@
+@import "../../shared/colors";
+
 .swiper {
   display: flex;
   justify-content: center;
@@ -14,4 +16,21 @@
   align-items: center;
   position: relative;
   overflow: hidden;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+}
+
+.swiper-button-prev {
+  transform: translateX(-45%);
+}
+
+.swiper-button-next {
+  transform: translateX(45%);
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  color: $button-color; /* Цвет стрелки */
 }
