@@ -20,10 +20,9 @@ const News: FC = () => {
 
     return (
         <NewsContextProvider>
-                <Container className="page">
-
-                    <NewsList/>
-                </Container>
+            <Container className="page">
+                <NewsList/>
+            </Container>
         </NewsContextProvider>
     );
 };

@@ -25,10 +25,10 @@ const ShortMembers: FC<IShortMembersProps> = ({ members }) => {
 
     return (
         <div>
-            {isAdmin && <Button onClick={() => OnShowModal(<AddMemberModal />)}>
+            {isAdmin &&
+            <Button onClick={() => OnShowModal(<AddMemberModal />)}>
                 <FaPlus/>
-            </Button>
-            }
+            </Button>}
             
             <List
                 className="short-members-list"

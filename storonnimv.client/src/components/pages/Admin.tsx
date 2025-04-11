@@ -9,11 +9,9 @@ interface IAdminProps {
 const Admin: FC<IAdminProps> = ({children}) => {
     return (
         <AdminContextProvider>
-            <div className='page-wrapper'>
-                <Container className='page'>
-                    {children}
-                </Container>
-            </div>
+            <Container className='page'>
+                {children}
+            </Container>
         </AdminContextProvider>
     );
 };

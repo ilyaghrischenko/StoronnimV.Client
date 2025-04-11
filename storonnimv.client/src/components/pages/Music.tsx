@@ -22,8 +22,7 @@ const Music: FC = () => {
 
     return (
         <MusicContextProvider>
-            <div className='page-wrapper'>
-                <Container className="music-page page">
+                <Container className="page">
                     {isAdmin && <Button
                         onClick={() => OnShowModal(<AddMusicPlatformModalContent/>)}
                     >
@@ -33,7 +32,6 @@ const Music: FC = () => {
                     <MusicPlatforms/>
                     <SoundCloudContainer/>
                 </Container>
-            </div>
         </MusicContextProvider>
     );
 };

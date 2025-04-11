@@ -70,23 +70,26 @@ html, body {
 }
 
 .description-container {
-  border: 2px solid #ccc; /* Рамка толщиной 2px с цветом #ccc */
-  border-radius: 8px; /* Скругление углов (по желанию) */
-  padding: 15px; /* Отступы внутри контейнера (по желанию) */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10%;
 }
-.description-container__photo {
-  display: block; /* Чтобы убрать поведение inline-элемента */
-  margin: 0 auto 50px auto; /* Центрирование по горизонтали */
-  width: 50%; /* Задание ширины в 70% */
-  max-width: 100%; /* Чтобы не выходило за пределы экрана */
-  height: auto; /* Сохранение пропорций */
+.description-container__group-name {
+  font-size: 135px;
+  text-align: justify;
 }
-.description-container__description {
-  display: block;
-  margin: 0 auto;
-  width: 80%;
+
+.description-div {
+  max-height: 120px;
+  width: 95%;
+  overflow-y: auto;
+  margin: 5px;
+}
+.description-div__description {
   font-size: 20px;
-  text-align: left;
+  text-align: center;
 }
 
 .short-members-list {
@@ -164,6 +167,13 @@ html, body {
 }
 .member-modal__social-networks__item-link:hover {
   text-decoration: underline;
+}
+
+.group-description-container {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
 }
 
 .news-home-list {

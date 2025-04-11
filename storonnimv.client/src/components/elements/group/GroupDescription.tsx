@@ -35,7 +35,10 @@ const GroupDescription: FC = () => {
     }
 
     return (
-        <Container>
+        <Container
+            className='group-description-container'
+            style={{backgroundImage: `url(${fullInfo.groupPage.photoUrl})`}}
+        >
             {isAdmin && <GroupInfoEditButton />}
             <Description groupInfo={fullInfo.groupPage} />
             <ShortMembers members={fullInfo.members} />

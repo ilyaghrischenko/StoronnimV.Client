@@ -20,11 +20,9 @@ const Group: FC = () => {
 
     return (
         <GroupContextProvider>
-            <div className='page-wrapper'>
-                <Container className='group-page page'>
-                    <GroupDescription/>
-                </Container>
-            </div>
+            <Container className='page'>
+                <GroupDescription/>
+            </Container>
         </GroupContextProvider>
     );
 };

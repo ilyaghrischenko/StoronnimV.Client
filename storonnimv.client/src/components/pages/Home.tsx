@@ -22,11 +22,11 @@ const Home: FC = () => {
 
     return (
         <HomeContextProvider>
-                <Container className='home-page page'>
-                    <ScheduleHomeContainer className='schedule-grid'/>
-                    <NewsSlider className='news-grid'/>
-                    <PromotionVideoHome className='video-grid'/>
-                </Container>
+            <Container className='home-page page'>
+                <ScheduleHomeContainer className='schedule-grid'/>
+                <NewsSlider className='news-grid'/>
+                <PromotionVideoHome className='video-grid'/>
+            </Container>
         </HomeContextProvider>
     );
 };

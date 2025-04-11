@@ -21,16 +21,14 @@ const Schedule: FC = () => {
 
     return (
         <ScheduleContextProvider>
-            <div className='page-wrapper'>
-                <Container className="schedule-page page">
-                    {isAdmin && (
-                        <Button onClick={() => OnShowModal(<AddScheduleModalContent/>)}>
-                            <FaPlus/>
-                        </Button>
-                    )}
-                    <SchedulesList/>
-                </Container>
-            </div>
+            <Container className="page">
+                {isAdmin && (
+                    <Button onClick={() => OnShowModal(<AddScheduleModalContent/>)}>
+                        <FaPlus/>
+                    </Button>
+                )}
+                <SchedulesList/>
+            </Container>
         </ScheduleContextProvider>
     );
 };
