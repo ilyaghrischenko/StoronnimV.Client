@@ -77,6 +77,22 @@ html, body {
   background-color: darkred;
 }
 
+.add-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  background-color: #ffb800;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+}
+.add-button:hover {
+  background-color: #ffc833;
+}
+
 .description-container {
   display: flex;
   flex-direction: column;
@@ -770,104 +786,139 @@ html, body {
 }
 
 .video-list-container {
-  padding: 20px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Отступы между элементами */
+  padding: 2rem; /* Отступы внутри контейнера */
+  align-items: center;
+  justify-content: center;
 }
 
 .video-list {
-  display: flex;
-  flex-wrap: wrap; /* Разрешаем элементам переноситься на новую строку */
-  justify-content: center; /* Центрируем видео в контейнере */
-  gap: 20px; /* Отступы между видео */
-  width: 80%; /* Ограничиваем ширину списка видео 80% */
-  margin: 0 auto; /* Центрируем контейнер */
-}
-.video-list__item {
-  width: 48%; /* Каждое видео будет занимать 48% ширины контейнера (2 видео в ряду) */
-  margin-bottom: 20px; /* Отступ снизу для разделения элементов */
-}
-.video-list__item-content {
-  width: 100%; /* Видео будет растягиваться на 100% доступной ширины внутри .video-list__item */
-  margin-bottom: 20px;
-}
-.video-list__item:only-child {
-  width: 80%;
-}
-.video-list__pagination {
-  display: flex;
-  justify-content: center; /* Центрируем пагинацию */
-  margin-top: 30px;
-  gap: 30px;
-}
-.video-list:only-child {
-  justify-content: center; /* Центрируем одно видео в ряду */
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 элемента в строке, с минимальной шириной 0 */
+  gap: 20px; /* Отступы между элементами */
+  width: 100%; /* Ширина 100% от родительского контейнера */
+  box-sizing: border-box; /* Чтобы учитывать паддинги и отступы */
 }
 
-@media (max-width: 768px) {
-  .video-list__item {
-    width: 100%; /* На мобильных устройствах видео будет занимать всю ширину */
-  }
+.video-list__item {
+  width: 100%; /* Карточка будет занимать 100% ширины своей ячейки */
+  box-sizing: border-box; /* Чтобы паддинги не выходили за пределы карточки */
+  overflow: hidden; /* Прячем все, что выходит за пределы карточки */
+  display: flex;
+  justify-content: center;
 }
+
 .video-list-item {
+  flex: 1 1 300px;
   max-width: 100%;
-  margin: 10px 0;
+  box-sizing: border-box;
+  position: relative;
+  background-color: #1c1c1c;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform 0.2s ease;
+  overflow: hidden;
+  justify-content: center;
 }
-.video-list-item__preview {
-  width: 100%; /* Видео адаптируется к ширине контейнера */
-  height: auto; /* Высота сохраняет пропорции */
-  border-radius: 8px; /* Закругление углов */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
+.video-list-item:hover {
+  transform: scale(1.01);
 }
 .video-list-item__title {
-  font-size: 1.5rem;
+  text-align: center;
   font-weight: bold;
-  margin-bottom: 10px; /* Отступ снизу от названия */
+  margin-bottom: 0.5rem;
+  white-space: nowrap; /* Запрещает перенос строки */
+  overflow: hidden; /* Прячет часть текста, выходящую за пределы */
+  text-overflow: ellipsis; /* Добавляет троеточие, если текст не помещается */
+  display: inline-block; /* Разрешает контролировать ширину */
+  max-width: 100%; /* Ограничивает ширину блока, чтобы он не растягивался */
+  width: 100%; /* Блок будет занимать всю доступную ширину */
+  box-sizing: border-box; /* Учитывает паддинги и границы при расчете ширины */
+}
+.video-list-item__video {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  border-radius: 0.75rem;
+  object-fit: cover;
+  background: black;
+}
+.video-list-item .btn-warning {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
 }
 
-.video-sections-container {
+.video-sections__container {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #000;
+  overflow: hidden;
+}
+.video-sections__grid {
   width: 100%;
-  padding: 20px;
-  gap: 20px;
-}
-
-.video-sections__top {
-  width: 80%;
-  height: auto;
+  flex: 1;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  overflow: hidden;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
-.video-sections__bottom {
+.video-sections__button {
+  flex: 1 1 200px;
+  max-width: 300px;
+  aspect-ratio: 1/1.1;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  text-align: center;
+  transition: transform 0.3s ease;
   display: flex;
-  width: 80%;
-  gap: 20px;
-}
-.video-sections__bottom-left, .video-sections__bottom-right {
-  width: 50%;
-  height: auto;
-  display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  overflow: hidden;
+}
+.video-sections__button:hover {
+  transform: scale(1.05);
 }
 .video-sections__image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
+  width: 100%;
+  height: auto;
+  max-height: 70%;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;
+}
+.video-sections__placeholder {
+  width: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+  color: #aaa;
+  font-size: 0.9rem;
+  border-radius: 8px;
 }
 .video-sections__title {
-  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  text-align: center;
   font-weight: bold;
-  margin-top: 10px;
+  line-height: 1.2;
 }
 
 .auth-form {

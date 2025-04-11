@@ -1,5 +1,4 @@
 ﻿import { FC, useContext, useEffect } from "react";
-import {Container, Pagination} from "react-bootstrap";
 import { GlobalContext } from "../../contexts/shared/GlobalContext";
 import { PageLoading } from "../shared/PageLoading";
 import { List } from "../shared/GenericList/List";
@@ -8,6 +7,7 @@ import { VideoContext } from "../../contexts/VideoContext";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import { IVideoModel } from "../../../models/video/IVideoModel";
 import { VideoListItem } from "./VideoListItem";
+import {PaginationSection} from "../shared/PaginationSection.tsx";
 
 const VideoList: FC = () => {
 
@@ -45,7 +45,7 @@ const VideoList: FC = () => {
         const savedPage = sessionStorage.getItem("videoCurrentPage");
         const page = savedPage ? Number(savedPage) : 1;
 
-        paginate(videoType, page);
+        paginate(videoType, page, 2);
     }, []);
 
     if (loading) {
@@ -53,7 +53,7 @@ const VideoList: FC = () => {
     }
 
     return (
-        <Container className="video-list-container">
+        <div className="video-list-container">
             <List
                 className="video-list"
                 items={videoList}
@@ -69,21 +69,12 @@ const VideoList: FC = () => {
             ></List>
 
             {/* Элементы управления пагинацией */}
-            <Container>
-                <Pagination className="video-list__pagination">
-                    {[...Array(totalPages)].map((_, index) => (
-                        <Pagination.Item
-                            key={index}
-                            className="video-list__pagination-item"
-                            onClick={() => paginate(videoType, index + 1)}
-                            active={currentPage === index + 1}
-                        >
-                            {index + 1}
-                        </Pagination.Item>
-                    ))}
-                </Pagination>
-            </Container>
-        </Container>
+            <PaginationSection
+                currentPage={currentPage}
+                totalPages={totalPages}
+                paginate={(page) => paginate(videoType, page, 2)}
+            />
+        </div>
     );
 };
 

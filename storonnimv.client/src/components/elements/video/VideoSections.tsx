@@ -1,63 +1,77 @@
-﻿import {FC} from "react";
-import {Link, useNavigate} from "react-router-dom";
-import {Button} from "react-bootstrap";
+﻿import { FC, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import { AddVideoModalContent } from "./forms/AddVideoModalContent.tsx";
+import { FaPlus } from "react-icons/fa";
+import { GlobalContext } from "../../contexts/shared/GlobalContext.tsx";
 
 interface VideoSectionsProps {
-    topImage?: string; // Изображение для верхнего большого раздела
-    bottomLeftImage?: string; // Изображение для нижнего левого раздела
-    bottomRightImage?: string; // Изображение для нижнего правого раздела
+    topImage?: string;
+    bottomLeftImage?: string;
+    bottomRightImage?: string;
 }
 
-const VideoSections: FC<VideoSectionsProps> = ({topImage, bottomLeftImage, bottomRightImage}) => {
-
-    const videoCategories = [
-        "Performance",
-        "Backstage",
-        "Repetition"
-    ];
+const VideoSections: FC<VideoSectionsProps> = ({ topImage, bottomLeftImage, bottomRightImage }) => {
+    const globalContext = useContext(GlobalContext)!;
+    const { isAdmin, OnShowModal } = globalContext;
     const navigate = useNavigate();
-    const handleClick = () => {
-        navigate(`/video/section?videoType=${videoCategories[0]}`, { replace: true });
+
+    const handleNavigate = (videoType: string) => {
+        navigate(`/video/section?videoType=${videoType}`);
     };
 
+    const isMainPage = window.location.pathname === "/video/sections";
+
     return (
-        <div className="video-sections-container page">
-            <Button variant="primary"
-                    type="submit"
-                    className="form-modal__button" onClick={handleClick}>
-                <div className="video-sections__top">
+        <div className="video-sections__container">
+            {isAdmin && isMainPage && (
+                <Button onClick={() => OnShowModal(<AddVideoModalContent />)} className="add-button">
+                    <FaPlus />
+                </Button>
+            )}
+
+            <div className="video-sections__grid">
+                <Button
+                    variant="light"
+                    className="video-sections__button"
+                    onClick={() => handleNavigate("Performance")}
+                >
                     {topImage ? (
-                        <img src={topImage} alt="Top Section" className="video-sections__image"/>
+                        <img src={topImage} alt="Top Section" className="video-sections__image" />
                     ) : (
-                        <p>Top Section (Add an image)</p>
+                        <p className="video-sections__placeholder">Top Section (Add an image)</p>
                     )}
-                    <h1 className="video-sections__title">Performances</h1>
-                </div>
-            </Button>
-            <div className="video-sections__bottom">
-                <Link className="video-sections__bottom-left" to={`/video/section?videoType=${videoCategories[1]}`}>
-                    <div>
-                        {bottomLeftImage ? (
-                            <img src={bottomLeftImage} alt="Bottom Left Section" className="video-sections__image"/>
-                        ) : (
-                            <p>Bottom Left Section (Add an image)</p>
-                        )}
-                        <h1 className="video-sections__title">Backstage</h1>
-                    </div>
-                </Link>
-                <Link className="video-sections__bottom-right" to={`/video/section?videoType=${videoCategories[2]}`}>
-                    <div>
-                        {bottomRightImage ? (
-                            <img src={bottomRightImage} alt="Bottom Right Section" className="video-sections__image"/>
-                        ) : (
-                            <p>Bottom Right Section (Add an image)</p>
-                        )}
-                        <h1 className="video-sections__title">Repetitions</h1>
-                    </div>
-                </Link>
+                    <h1 className="video-sections__title main-text">Performances</h1>
+                </Button>
+
+                <Button
+                    variant="light"
+                    className="video-sections__button"
+                    onClick={() => handleNavigate("Backstage")}
+                >
+                    {bottomLeftImage ? (
+                        <img src={bottomLeftImage} alt="Bottom Left Section" className="video-sections__image" />
+                    ) : (
+                        <p className="video-sections__placeholder">Bottom Left Section (Add an image)</p>
+                    )}
+                    <h1 className="video-sections__title main-text">Backstage</h1>
+                </Button>
+
+                <Button
+                    variant="light"
+                    className="video-sections__button"
+                    onClick={() => handleNavigate("Repetition")}
+                >
+                    {bottomRightImage ? (
+                        <img src={bottomRightImage} alt="Bottom Right Section" className="video-sections__image" />
+                    ) : (
+                        <p className="video-sections__placeholder">Bottom Right Section (Add an image)</p>
+                    )}
+                    <h1 className="video-sections__title main-text">Repetitions</h1>
+                </Button>
             </div>
         </div>
     );
 };
 
-export {VideoSections};
+export { VideoSections };

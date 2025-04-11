@@ -15,7 +15,7 @@ interface VideoContextType {
 }
 
 // Создаем контекст с типизацией
-const   VideoContext = createContext<VideoContextType | undefined>(undefined);
+const VideoContext = createContext<VideoContextType | undefined>(undefined);
 
 interface VideoContextProviderProps {
     children: ReactNode;
@@ -35,7 +35,7 @@ const VideoContextProvider: React.FC<VideoContextProviderProps> = ({children}) =
     const [totalPages, setTotalPages] = useState<number>(1);
 
     const fetchVideos =
-        async (videoType: string, pageNumber: number, pageSize: number = 9): Promise<void> => {
+        async (videoType: string, pageNumber: number, pageSize: number = 2): Promise<void> => {
             try {
                 const response = await sendRequest(
                     `https://localhost:44315/api/videos/page/${videoType}/${pageNumber}?pageSize=${pageSize}`
@@ -57,6 +57,7 @@ const VideoContextProvider: React.FC<VideoContextProviderProps> = ({children}) =
 
                 sessionStorage.setItem("videoCurrentPage", String(data.currentPage));
                 sessionStorage.setItem("videoTotalPages", String(data.totalPages));
+                sessionStorage.setItem("currentVideoType", videoType);
             } catch (error) {
                 console.error("Error while fetching videos: ", error);
                 setVideoList([]); // Обнуляем список в случае ошибки
@@ -69,6 +70,15 @@ const VideoContextProvider: React.FC<VideoContextProviderProps> = ({children}) =
         async (videoType: string, pageNumber: number = currentPage, pageSize: number = 5): Promise<void> => {
 
             const savedTotalPages = Number(sessionStorage.getItem("videoTotalPages")) || 0;
+            const savedVideoType = sessionStorage.getItem("currentVideoType");
+
+            if (savedVideoType !== videoType) {
+                // Сбрасываем текущую страницу на 1, если тип видео поменялся
+                setCurrentPage(1);
+                setTotalPages(0); // Также сбрасываем количество страниц
+                await fetchVideos(videoType, 1, pageSize); // Загружаем видео для первого типа
+                return;
+            }
 
             // Если videoList пуст, сбрасываем сохранённые totalPages и загружаем видео заново
             if (savedTotalPages === 0 || videoList.length === 0) {
