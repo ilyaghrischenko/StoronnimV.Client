@@ -11,6 +11,8 @@
   grid-row-gap: 10px;
   background-color: transparent;
   overflow: hidden;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 /* Сетка: расписание */
@@ -19,6 +21,7 @@
   border-radius: 8px; /* Скругленные углы */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень */
   padding: 16px;
+
 }
 
 /* Сетка: видео */

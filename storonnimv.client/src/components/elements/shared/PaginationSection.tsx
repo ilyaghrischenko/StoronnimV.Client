@@ -1,6 +1,6 @@
 import {FC} from "react";
 // @ts-ignore
-import ArrowIcon from "../../../assets/arrow.svg?react";
+import ArrowIcon from "../../../assets/arrow-left.svg?react";
 // @ts-ignore
 import ArrowRightIcon from "../../../assets/arrow_right.svg?react";
 
