@@ -1,43 +1,26 @@
 .video-list-container {
-  padding: 20px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Отступы между элементами */
+  padding: 2rem; /* Отступы внутри контейнера */
+  align-items: center;
+  justify-content: center;
 }
 
 .video-list {
-  display: flex;
-  flex-wrap: wrap; /* Разрешаем элементам переноситься на новую строку */
-  justify-content: center; /* Центрируем видео в контейнере */
-  gap: 20px; /* Отступы между видео */
-  width: 80%; /* Ограничиваем ширину списка видео 80% */
-  margin: 0 auto; /* Центрируем контейнер */
-
-  &__item {
-    width: 48%; /* Каждое видео будет занимать 48% ширины контейнера (2 видео в ряду) */
-    margin-bottom: 20px; /* Отступ снизу для разделения элементов */
-
-    &-content {
-      width: 100%; /* Видео будет растягиваться на 100% доступной ширины внутри .video-list__item */
-      margin-bottom: 20px;
-    }
-
-    &:only-child {
-      width: 80%;
-    }
-  }
-
-  &__pagination {
-    display: flex;
-    justify-content: center; /* Центрируем пагинацию */
-    margin-top: 30px;
-    gap: 30px;
-  }
-
-  &:only-child {
-    justify-content: center; /* Центрируем одно видео в ряду */
-  }
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 элемента в строке, с минимальной шириной 0 */
+  gap: 20px; /* Отступы между элементами */
+  width: 100%; /* Ширина 100% от родительского контейнера */
+  box-sizing: border-box; /* Чтобы учитывать паддинги и отступы */
 }
 
-@media (max-width: 768px) {
-  .video-list__item {
-    width: 100%; /* На мобильных устройствах видео будет занимать всю ширину */
-  }
+.video-list__item {
+  width: 100%; /* Карточка будет занимать 100% ширины своей ячейки */
+  box-sizing: border-box; /* Чтобы паддинги не выходили за пределы карточки */
+  overflow: hidden; /* Прячем все, что выходит за пределы карточки */
+  display: flex;
+  justify-content: center;
 }

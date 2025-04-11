@@ -28,3 +28,20 @@
     background-color: $cancel-button-hover-color;
   }
 }
+
+.add-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  background-color: #ffb800;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+
+  &:hover {
+    background-color: #ffc833;
+  }
+}
