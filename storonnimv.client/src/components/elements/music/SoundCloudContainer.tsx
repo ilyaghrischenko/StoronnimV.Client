@@ -1,7 +1,7 @@
-﻿import {FC, useContext, useEffect} from "react";
+﻿import {FC, useContext} from "react";
 import {MusicContext} from "../../contexts/MusicContext";
 import {PageLoading} from "../shared/PageLoading";
-import {Container} from "react-bootstrap";
+import ReactPlayer from 'react-player/soundcloud';
 
 const SoundCloudContainer: FC = () => {
     const musicContext = useContext(MusicContext);
@@ -10,11 +10,7 @@ const SoundCloudContainer: FC = () => {
         throw new Error("MusicContext must be used within a MusicContextProvider");
     }
 
-    const {loading, fetchEmbedData, embedHtml} = musicContext;
-
-    useEffect(() => {
-        fetchEmbedData();
-    }, []);
+    const {loading} = musicContext;
 
     if (loading) {
         return (
@@ -23,11 +19,16 @@ const SoundCloudContainer: FC = () => {
     }
 
     return (
-        <Container className='soundcloud-container'>
-            <Container
-                className="soundcloud-container__embed"
-                dangerouslySetInnerHTML={{ __html: embedHtml}}/>
-        </Container>
+        <div className='soundcloud-container'>
+            <h2>Слухайте нашу музику на SoundCloud</h2>
+            <ReactPlayer
+                url="https://soundcloud.com/apostolkremenchug"
+                width="100%"
+                height="166"
+                playing={false}
+                controls={true}
+            />
+        </div>
     );
 };
 

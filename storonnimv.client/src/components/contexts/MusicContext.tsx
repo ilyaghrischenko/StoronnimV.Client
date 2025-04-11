@@ -5,8 +5,6 @@ import {IMusicPlatformItem} from "../../models/music/IMusicPlatformItem";
 // Тип контекста
 interface MusicContextType {
     loading: boolean;
-    fetchEmbedData: () => Promise<void>;
-    embedHtml: string;
     musicPlatforms: IMusicPlatformItem[];
     fetchMusicPlatforms: () => Promise<void>;
 }
@@ -27,17 +25,6 @@ const MusicContextProvider: React.FC<MusicContextProviderProps> = ({ children })
 
     const { sendRequest, loading } = globalContext;
 
-    const [embedHtml, setEmbedHtml] = useState<string>('');
-
-    const fetchEmbedData = async () : Promise<void> => {
-        try {
-            const response = await sendRequest(`https://soundcloud.com/oembed?format=json&url=${encodeURIComponent('https://soundcloud.com/apostolkremenchug')}`)
-            setEmbedHtml(response.data.html);
-        } catch (error) {
-            console.error('Error fetching SoundCloud embed data', error);
-        }
-    };
-
     const [musicPlatforms, setMusicPlatforms] = useState<IMusicPlatformItem[]>([]);
 
     const fetchMusicPlatforms = async () : Promise<void> => {
@@ -54,8 +41,6 @@ const MusicContextProvider: React.FC<MusicContextProviderProps> = ({ children })
 
     const value: MusicContextType = {
         loading,
-        fetchEmbedData,
-        embedHtml,
         musicPlatforms,
         fetchMusicPlatforms
     };

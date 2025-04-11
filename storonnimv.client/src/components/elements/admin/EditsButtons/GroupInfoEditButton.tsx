@@ -14,7 +14,7 @@ const GroupInfoEditButton: FC = () => {
     };
 
     return (
-        <Button variant="primary" onClick={openEditModal}>
+        <Button className='add-button' variant="primary" onClick={openEditModal}>
             <FaEdit />
         </Button>
     );

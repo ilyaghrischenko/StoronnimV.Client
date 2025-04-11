@@ -152,13 +152,13 @@ html, body {
   align-items: center;
 }
 .photo-container__full-name {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: bold;
-  text-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2980392157), 0px 0px 20px rgba(0, 0, 0, 0.0980392157);
+  text-align: center;
 }
 .photo-container__role {
   font-size: 20px;
-  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 
 .member-modal {
@@ -287,13 +287,15 @@ html, body {
 .music-platform-item {
   background-size: cover;
   background-position: center;
-  height: 90px;
-  width: 170px;
+  background-repeat: no-repeat;
+  height: 100px;
+  width: 250px;
 }
 
 .music-platforms-container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -301,11 +303,9 @@ html, body {
 
 .soundcloud-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-.soundcloud-container__embed {
-  width: 80%;
 }
 
 .news-list {
@@ -1082,9 +1082,9 @@ th, td {
 .music-page {
   display: flex;
   flex-direction: column;
-  /*align-items: center;*/
-  /*justify-content: center;*/
-  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
 }
 
 .error-container {

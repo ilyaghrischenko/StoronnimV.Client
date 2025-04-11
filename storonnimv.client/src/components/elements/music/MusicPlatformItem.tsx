@@ -36,7 +36,7 @@ const MusicPlatformItem: FC<MusicPlatformItemProps> = ({item}) => {
             rel='noopener noreferrer'
             style={{backgroundImage: `url(${item.bgImageUrl})`}}
         >
-            {isAdmin && <Button onClick={(e : React.MouseEvent<HTMLButtonElement>) => {
+            {isAdmin && <Button onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                 e.preventDefault();
 
                 OnShowModal(<EditMusicPlatformModalContent item={item}/>)
@@ -44,7 +44,7 @@ const MusicPlatformItem: FC<MusicPlatformItemProps> = ({item}) => {
                 <FaEdit/>
             </Button>}
 
-            {isAdmin && <Button onClick={(e : React.MouseEvent<HTMLButtonElement>) => {
+            {isAdmin && <Button onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                 e.preventDefault();
 
                 OnShowModal(<DeleteMusicPlatformModalContent item={item}/>)

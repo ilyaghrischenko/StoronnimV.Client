@@ -1,6 +1,7 @@
 .music-platforms-container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 10px;

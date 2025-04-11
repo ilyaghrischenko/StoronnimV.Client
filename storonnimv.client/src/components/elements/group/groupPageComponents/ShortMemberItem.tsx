@@ -13,11 +13,11 @@ const ShortMemberItem: FC<IMemberItemProps> = ({member, onClick}) => {
             <Container
                 className='photo-container'
                 style={{
-                    backgroundImage: `url(${member.photoUrl})`
+                    backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 0.8) 100%), url(${member.photoUrl})`
                 }}
             >
-                <p className='photo-container__full-name main-text'>{member.fullName}</p>
-                <p className='photo-container__role secondary-text'>{member.role}</p>
+                <p className='photo-container__full-name main-text big-shadow'>{member.fullName}</p>
+                <p className='photo-container__role secondary-text small-shadow'>{member.role}</p>
             </Container>
         </div>
     );

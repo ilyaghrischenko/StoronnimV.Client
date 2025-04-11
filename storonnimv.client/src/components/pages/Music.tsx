@@ -22,15 +22,15 @@ const Music: FC = () => {
 
     return (
         <MusicContextProvider>
-                <Container className="page">
+                <Container className="music-page page">
                     {isAdmin && <Button
                         onClick={() => OnShowModal(<AddMusicPlatformModalContent/>)}
                     >
                         <FaPlusCircle className="me-2" />
                         Додати музичну платформу
                     </Button>}
-                    <MusicPlatforms/>
-                    <SoundCloudContainer/>
+                    <SoundCloudContainer />
+                    <MusicPlatforms />
                 </Container>
         </MusicContextProvider>
     );
