@@ -95,10 +95,11 @@ html, body {
 
 .description-container {
   display: flex;
+  gap: 30px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 10%;
+  padding-top: 5%;
 }
 .description-container__group-name {
   font-size: 135px;
@@ -107,21 +108,39 @@ html, body {
 }
 
 .description-div {
-  max-height: 120px;
+  position: relative;
   width: 95%;
-  overflow-y: auto;
+  max-height: 130px;
+  overflow: hidden;
   margin: 5px;
+}
+.description-div .scrolling-text {
+  display: inline-block;
+  animation: scrollYAlternate 20s linear infinite alternate;
 }
 .description-div__description {
   text-align: justify;
   font-size: 20px;
+  line-height: 1.6;
 }
 
+@keyframes scrollYAlternate {
+  0% {
+    transform: translateY(-100%);
+  }
+  80% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
 .short-members-container {
   width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 5%;
 }
 
 .swiper {

@@ -1,9 +1,10 @@
 .description-container {
   display: flex;
+  gap: 30px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 10%;
+  padding-top: 5%;
 
   &__group-name {
     font-size: 135px;
@@ -13,13 +14,32 @@
 }
 
 .description-div {
-  max-height: 120px;
+  position: relative;
   width: 95%;
-  overflow-y: auto;
+  max-height: 130px;
+  overflow: hidden;
   margin: 5px;
+
+  .scrolling-text {
+    display: inline-block;
+    animation: scrollYAlternate 20s linear infinite alternate;
+  }
 
   &__description {
     text-align: justify;
     font-size: 20px;
+    line-height: 1.6;
+  }
+}
+
+@keyframes scrollYAlternate {
+  0% {
+    transform: translateY(-100%); // Начинаем сверху (за пределами блока)
+  }
+  80% {
+    transform: translateY(0%); // Медленно спускаемся
+  }
+  100% {
+    transform: translateY(-100%); // Быстро поднимаемся обратно вверх
   }
 }
