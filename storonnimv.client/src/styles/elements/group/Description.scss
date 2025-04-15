@@ -22,24 +22,11 @@
 
   .scrolling-text {
     display: inline-block;
-    animation: scrollYAlternate 20s linear infinite alternate;
   }
 
   &__description {
     text-align: justify;
     font-size: 20px;
     line-height: 1.6;
-  }
-}
-
-@keyframes scrollYAlternate {
-  0% {
-    transform: translateY(-100%); // Начинаем сверху (за пределами блока)
-  }
-  80% {
-    transform: translateY(0%); // Медленно спускаемся
-  }
-  100% {
-    transform: translateY(-100%); // Быстро поднимаемся обратно вверх
   }
 }

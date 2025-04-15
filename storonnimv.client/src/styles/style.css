@@ -122,7 +122,6 @@ html, body {
 }
 .description-div .scrolling-text {
   display: inline-block;
-  animation: scrollYAlternate 20s linear infinite alternate;
 }
 .description-div__description {
   text-align: justify;
@@ -130,17 +129,6 @@ html, body {
   line-height: 1.6;
 }
 
-@keyframes scrollYAlternate {
-  0% {
-    transform: translateY(-100%);
-  }
-  80% {
-    transform: translateY(0%);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
-}
 .short-members-container {
   width: 90%;
   display: flex;
