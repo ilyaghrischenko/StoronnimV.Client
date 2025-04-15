@@ -31,8 +31,8 @@ const AddMusicPlatformModalContent: FC = () => {
             const response = await sendRequest("https://localhost:44315/api/admin/music", "POST", formData);
 
             if (response.status === 201) {
-                OnHideModal();
                 alert("Музична платформа додана!");
+                window.location.reload();
             } else {
                 alert("Помилка при додаванні музичної платформи");
             }

@@ -1,5 +1,5 @@
-﻿import { createContext, useState, ReactNode, FC } from "react";
-import axios, { AxiosResponse } from "axios";
+﻿import {createContext, FC, ReactNode, useState} from "react";
+import axios, {AxiosResponse} from "axios";
 
 // Определяем интерфейс для значения контекста
 interface GlobalContextType {
@@ -9,9 +9,12 @@ interface GlobalContextType {
         body?: any,
         headers?: Record<string, string>
     ) => Promise<AxiosResponse>;
-    loading: boolean;
-    showModal: boolean;
-    OnShowModal: (mContent: ReactNode, mTitle?: string) => void; 
+    pageLoading: boolean,
+    setPageLoading: (pageLoading: boolean) => void;
+    modalLoading: boolean,
+    setModalLoading: (modalLoading: boolean) => void;
+    showModal: boolean,
+    OnShowModal: (mContent: ReactNode, mTitle?: string) => void;
     OnHideModal: () => void;
     modalContent: ReactNode;
     modalTitle: string;
@@ -30,7 +33,7 @@ interface GlobalContextProviderProps {
     children: ReactNode;
 }
 
-const GlobalContextProvider: FC<GlobalContextProviderProps> = ({ children }) => {
+const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
     const [showModal, setShowModal] = useState<boolean>(false);
     const [modalContent, setModalContent] = useState<ReactNode>(null);
     const [modalTitle, setModalTitle] = useState<string>("");
@@ -45,8 +48,7 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({ children }) => 
 
             if (response.status === 200) {
                 setIsAdmin(true);
-            }
-            else {
+            } else {
                 setIsAdmin(false);
             }
         } catch (error) {
@@ -81,14 +83,8 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({ children }) => 
                 withCredentials: true
             };
 
-            // TODO: СДЕЛАТЬ ЧТО-ТО С АНИМАЦИЕЙ ЗАГРУЗКИ
-            setLoading(true);
-            const response = await axios(config);
-            setLoading(false);
-
-            return response;
+            return await axios(config);
         } catch (error: any) {
-            setLoading(false);
             if (error.response) {
                 // Если сервер вернул статус ошибки, но ответ доступен
                 return error.response;
@@ -99,7 +95,8 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({ children }) => 
         }
     }
 
-    const [loading, setLoading] = useState<boolean>(false);
+    const [pageLoading, setPageLoading] = useState<boolean>(false);
+    const [modalLoading, setModalLoading] = useState<boolean>(false);
 
     const isAdminRoute = (): boolean => {
         return window.location.pathname.startsWith("/admin");
@@ -113,7 +110,10 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({ children }) => 
         OnShowModal,
         OnHideModal,
         sendRequest,
-        loading,
+        pageLoading,
+        setPageLoading,
+        modalLoading,
+        setModalLoading,
         isAdminRoute,
         isAdmin,
         setIsAdmin,
@@ -129,4 +129,4 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({ children }) => 
     );
 };
 
-export { GlobalContextProvider, GlobalContext };
+export {GlobalContextProvider, GlobalContext};

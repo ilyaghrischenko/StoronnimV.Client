@@ -71,14 +71,16 @@ const ScheduleEditModal: FC<IScheduleEditModalProps> = ({item}) => {
             );
 
             if (response.status === 204) {
-                alert("ФОТО УСПІШНО ЗМІНЕНО");
-                OnHideModal();
-            }
-            else {
-                alert("ФОТО НЕ ЗМІНЕНО");
+                alert("Фото успішно змінено!");
+                window.location.reload();
+            } else {
+                alert("Помилка при зміні фото");
             }
         } catch (error) {
+            console.error("Помилка при зміні фото", error);
             alert("Помилка при зміні фото");
+        } finally {
+            OnHideModal();
         }
     };
 
@@ -90,7 +92,6 @@ const ScheduleEditModal: FC<IScheduleEditModalProps> = ({item}) => {
             formData.append("performanceDateTime", performanceDateTime);
             formData.append("description", description);
             formData.append("location", location);
-            console.dir(performanceDateTime);
 
             const response = await sendRequest(
                 "https://localhost:44315/api/admin/schedules",
@@ -100,14 +101,16 @@ const ScheduleEditModal: FC<IScheduleEditModalProps> = ({item}) => {
             );
 
             if (response.status === 204) {
-                alert("ДАНІ УСПІШНО ЗМІНЕНО");
-                OnHideModal();
-            }
-            else {
-                alert("ДАНІ НЕ ЗМІНЕНО");
+                alert("Дані успішно змінено!");
+                window.location.reload();
+            } else {
+                alert("Помилка при зміні даних");
             }
         } catch (error) {
-            alert("Помилка при зміні фото");
+            console.error("Помилка при зміні даних", error);
+            alert("Помилка при зміні даних");
+        } finally {
+            OnHideModal();
         }
     };
 
@@ -118,19 +121,19 @@ const ScheduleEditModal: FC<IScheduleEditModalProps> = ({item}) => {
                 handleEdit();
             }}>
                 <Form.Group controlId="formTitle">
-                    <Form.Label className="form-label" style={{color:"white"}}>Заголовок:</Form.Label>
+                    <Form.Label className="form-label" style={{color: "white"}}>Заголовок:</Form.Label>
                     <Form.Control
                         type="text"
                         value={title}
                         required
                         onChange={(e) => setTitle(e.target.value)}
                         className="form-control"
-                        style={{color:"black"}}
+                        style={{color: "black"}}
                     />
                 </Form.Group>
 
                 <Form.Group controlId="formDescription" className="mt-3">
-                    <Form.Label className="form-label" style={{color:"white"}}>Опис:</Form.Label>
+                    <Form.Label className="form-label" style={{color: "white"}}>Опис:</Form.Label>
                     <Form.Control
                         as="textarea"
                         rows={3}
@@ -138,31 +141,31 @@ const ScheduleEditModal: FC<IScheduleEditModalProps> = ({item}) => {
                         required
                         onChange={(e) => setDescription(e.target.value)}
                         className="form-control"
-                        style={{color:"black"}}
+                        style={{color: "black"}}
                     />
                 </Form.Group>
 
                 <Form.Group controlId="formLocation" className="mt-3">
-                    <Form.Label className="form-label" style={{color:"white"}}>Місце проведення:</Form.Label>
+                    <Form.Label className="form-label" style={{color: "white"}}>Місце проведення:</Form.Label>
                     <Form.Control
                         type="text"
                         value={location}
                         required
                         onChange={(e) => setLocation(e.target.value)}
                         className="form-control"
-                        style={{color:"black"}}
+                        style={{color: "black"}}
                     />
                 </Form.Group>
 
                 <Form.Group controlId="formPerformanceDateTime" className="mt-3">
-                    <Form.Label className="form-label" style={{color:"white"}}>Дата та час проведення:</Form.Label>
+                    <Form.Label className="form-label" style={{color: "white"}}>Дата та час проведення:</Form.Label>
                     <Form.Control
                         type="datetime-local"
                         value={formatDateTimeForInput(performanceDateTime)}
                         required
                         onChange={handleDateTimeChange}
                         className="form-control"
-                        style={{ color: "black" }}
+                        style={{color: "black"}}
                     />
                 </Form.Group>
 
@@ -176,14 +179,14 @@ const ScheduleEditModal: FC<IScheduleEditModalProps> = ({item}) => {
                 handlePhotoEdit();
             }}>
                 <Form.Group controlId="formPhoto" className="mt-3">
-                    <Form.Label className="form-label" style={{color:"white"}}>Фото:</Form.Label>
+                    <Form.Label className="form-label" style={{color: "white"}}>Фото:</Form.Label>
                     <Form.Control
                         type="file"
                         required
                         onChange={handlePhotoUpload}
                         accept="image/*"
                         className="form-control"
-                        style={{color:"black"}}
+                        style={{color: "black"}}
                     />
                 </Form.Group>
 

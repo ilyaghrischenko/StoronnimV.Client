@@ -11,14 +11,17 @@ interface ScheduleModalProps {
 }
 
 const ScheduleModal: FC<ScheduleModalProps> = ({ scheduleId }) => {
-    const { isAdmin } = useContext(GlobalContext)!;
-    const { fetchScheduleFullInfo, scheduleFullInfo, loading } = useContext(ScheduleContext)!;
+    const globalContext = useContext(GlobalContext)!;
+    const scheduleContext = useContext(ScheduleContext)!;
+
+    const { isAdmin, modalLoading} = globalContext;
+    const { fetchScheduleFullInfo, scheduleFullInfo} = scheduleContext;
 
     useEffect(() => {
         fetchScheduleFullInfo(scheduleId);
     }, [scheduleId]);
 
-    if (loading) {
+    if (modalLoading) {
         return <ModalLoading />;
     }
 

@@ -24,9 +24,9 @@ const NewsList: FC = () => {
         throw new Error("NewsContext must be used within a NewsContextProvider");
     }
 
-    const {OnShowModal, isAdmin} = globalContext;
+    const {OnShowModal, isAdmin, pageLoading} = globalContext;
 
-    const {newsList, currentPage, totalPages, paginate, loading} = newsContext;
+    const {newsList, currentPage, totalPages, paginate} = newsContext;
 
     useEffect(() => {
         const savedPage = sessionStorage.getItem("newsCurrentPage");
@@ -35,9 +35,9 @@ const NewsList: FC = () => {
         paginate(page, 6);
     }, []);
 
-    if (loading) {
+    if (pageLoading) {
         return (
-            <PageLoading/>
+            <PageLoading elementsCount={6} columns={3}/>
         );
     }
 

@@ -6,7 +6,6 @@ import {IMemberFullInfo} from "../../models/group/IMemberInfo.ts";
 interface GroupContextType {
     fetchGroupInfo: () => Promise<void>;
     fullInfo: IGroupPageFullInfo;
-    loading: boolean;
     memberFullInfo: IMemberFullInfo;
     fetchMemberInfo: (memberId: number) => Promise<void>;
 }
@@ -18,13 +17,9 @@ interface GroupContextProviderProps {
 }
 
 const GroupContextProvider: React.FC<GroupContextProviderProps> = ({children}) => {
-    const globalContext = useContext(GlobalContext);
+    const globalContext = useContext(GlobalContext)!;
 
-    if (!globalContext) {
-        throw new Error("GlobalContext must be used within a GlobalContextProvider");
-    }
-
-    const {sendRequest, loading} = globalContext;
+    const {sendRequest, setPageLoading, setModalLoading} = globalContext;
 
     const [fullInfo, setFullInfo] = useState<IGroupPageFullInfo>({
         groupPage: {
@@ -37,6 +32,7 @@ const GroupContextProvider: React.FC<GroupContextProviderProps> = ({children}) =
 
     const fetchGroupInfo = async (): Promise<void> => {
         try {
+            setPageLoading(true);
             const response = await sendRequest("https://localhost:44315/api/group");
 
             const data: IGroupPageFullInfo = response.data;
@@ -50,6 +46,8 @@ const GroupContextProvider: React.FC<GroupContextProviderProps> = ({children}) =
         } catch (error) {
             console.error("Error fetching news:", error);
             return;
+        } finally {
+            setPageLoading(false);
         }
     };
 
@@ -63,6 +61,7 @@ const GroupContextProvider: React.FC<GroupContextProviderProps> = ({children}) =
     });
     const fetchMemberInfo = async (memberId: number): Promise<void> => {
         try {
+            setModalLoading(true);
             const response = await sendRequest(`https://localhost:44315/api/group/member/${memberId}`);
 
             const data: IMemberFullInfo = response.data;
@@ -75,6 +74,8 @@ const GroupContextProvider: React.FC<GroupContextProviderProps> = ({children}) =
         } catch (error) {
             console.error("Error fetching news:", error);
             return;
+        } finally {
+            setModalLoading(false);
         }
     };
 
@@ -83,7 +84,6 @@ const GroupContextProvider: React.FC<GroupContextProviderProps> = ({children}) =
         fetchMemberInfo,
         fetchGroupInfo,
         fullInfo,
-        loading
     };
 
     return <GroupContext.Provider value={value}>{children}</GroupContext.Provider>;

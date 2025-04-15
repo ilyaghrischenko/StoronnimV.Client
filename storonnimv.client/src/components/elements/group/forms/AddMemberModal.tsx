@@ -3,7 +3,7 @@ import {Container, Form, Button} from "react-bootstrap";
 import {GlobalContext} from "../../../contexts/shared/GlobalContext.tsx";
 
 const AddMemberModal: FC = () => {
-    const {sendRequest, OnHideModal, loading} = useContext(GlobalContext)!;
+    const {sendRequest, OnHideModal} = useContext(GlobalContext)!;
 
     const [fullName, setFullName] = useState<string>("");
     const [description, setDescription] = useState<string>("");
@@ -34,12 +34,16 @@ const AddMemberModal: FC = () => {
             );
 
             if (response.status === 201) {
-                alert("ДОДАНО");
+                alert("Учасник успішно додано!");
+                window.location.reload();
+            } else {
+                alert("Помилка при додаванні учасника");
             }
-
-            OnHideModal();
         } catch (error) {
             console.error(error);
+            alert("Помилка при додаванні учасника");
+        } finally {
+            OnHideModal();
         }
     };
 
@@ -92,12 +96,11 @@ const AddMemberModal: FC = () => {
                     />
                 </Form.Group>
 
-                <Button
-                    className="form-modal__button form-modal__button--confirm"
-                    disabled={loading}
-                    type="submit"
-                >
-                    {loading ? "Завантаження..." : "Додати"}
+                <Button className="form-modal__button form-modal__button--confirm" type="submit">
+                    Додати
+                </Button>
+                <Button className="form-modal__button form-modal__button--cancel" onClick={OnHideModal}>
+                    Скасувати
                 </Button>
             </Form>
         </Container>

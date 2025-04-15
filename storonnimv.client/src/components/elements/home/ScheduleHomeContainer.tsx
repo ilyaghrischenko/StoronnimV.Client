@@ -1,6 +1,5 @@
 ﻿import {FC, useContext, useEffect} from "react";
 import {HomeContext} from "../../contexts/HomeContext";
-import {PageLoading} from "../shared/PageLoading";
 import {Container, Image} from "react-bootstrap";
 
 interface ScheduleHomeContainerProps {
@@ -8,23 +7,13 @@ interface ScheduleHomeContainerProps {
 }
 
 const ScheduleHomeContainer: FC<ScheduleHomeContainerProps> = ({className}) => {
-    const homeContext = useContext(HomeContext);
+    const homeContext = useContext(HomeContext)!;
 
-    if (!homeContext) {
-        throw new Error("HomeContext must be used within a HomeContextProvider");
-    }
-
-    const {loading, homeSchedule, fetchHomeSchedule, onClickHomeElementHandler} = homeContext;
+    const {homeSchedule, fetchHomeSchedule, onClickHomeElementHandler} = homeContext;
 
     useEffect(() => {
         fetchHomeSchedule();
     }, []);
-
-    if (loading) {
-        return (
-            <PageLoading/>
-        );
-    }
 
     return (
         <Container

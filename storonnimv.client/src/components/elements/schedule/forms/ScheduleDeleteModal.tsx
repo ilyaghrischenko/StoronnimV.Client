@@ -7,7 +7,9 @@ interface IScheduleDeleteModalProps {
 }
 
 const ScheduleDeleteModal: FC<IScheduleDeleteModalProps> = ({itemId}) => {
-    const {OnHideModal, sendRequest} = useContext(GlobalContext)!;
+    const globalContext = useContext(GlobalContext)!;
+
+    const {OnHideModal, sendRequest} = globalContext;
 
     const handleDelete = async () => {
         try {
@@ -17,29 +19,36 @@ const ScheduleDeleteModal: FC<IScheduleDeleteModalProps> = ({itemId}) => {
             );
 
             if (response.status === 204) {
-                alert('афішу успішно видалено!');
-                OnHideModal();
+                alert('Aфішу успішно видалено!');
+                window.location.reload();
             } else {
-                alert('афішу не видалено');
-                OnHideModal();
+                alert('Aфішу не видалено');
             }
         } catch (error) {
+            console.error('Помилка при видаленні афіші', error);
             alert("Помилка при видаленні афіші");
+        } finally {
+            OnHideModal();
         }
     };
 
     return (
-        <>
-            <p>Ви дійсно хочете видалити афішу?</p>
-            <div className="d-flex justify-content-between">
-                <Button variant="secondary" onClick={OnHideModal}>
-                    Скасувати
-                </Button>
-                <Button variant="danger" onClick={handleDelete}>
+        <div className="form-modal">
+            <h2 className="form-modal__title">Ви впевнені, що хочете видалити афішу?</h2>
+            <div className="form-modal__form">
+                <Button
+                    className="form-modal__button form-modal__button--delete"
+                    onClick={handleDelete}
+                >
                     Видалити
                 </Button>
+                <Button className="form-modal__button form-modal__button--cancel"
+                        onClick={OnHideModal}
+                >
+                    Скасувати
+                </Button>
             </div>
-        </>
+        </div>
     );
 };
 

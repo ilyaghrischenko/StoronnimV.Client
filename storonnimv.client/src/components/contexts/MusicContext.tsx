@@ -4,7 +4,6 @@ import {IMusicPlatformItem} from "../../models/music/IMusicPlatformItem";
 
 // Тип контекста
 interface MusicContextType {
-    loading: boolean;
     musicPlatforms: IMusicPlatformItem[];
     fetchMusicPlatforms: () => Promise<void>;
 }
@@ -17,18 +16,15 @@ interface MusicContextProviderProps {
 }
 
 const MusicContextProvider: React.FC<MusicContextProviderProps> = ({ children }) => {
-    const globalContext = useContext(GlobalContext);
+    const globalContext = useContext(GlobalContext)!;
 
-    if (!globalContext) {
-        throw new Error("GlobalContext must be used within a GlobalContextProvider");
-    }
-
-    const { sendRequest, loading } = globalContext;
+    const { sendRequest, setPageLoading } = globalContext;
 
     const [musicPlatforms, setMusicPlatforms] = useState<IMusicPlatformItem[]>([]);
 
     const fetchMusicPlatforms = async () : Promise<void> => {
         try {
+            setPageLoading(true);
             const response = await sendRequest('https://localhost:44315/api/music');
 
             const data: IMusicPlatformItem[] = response.data;
@@ -37,10 +33,12 @@ const MusicContextProvider: React.FC<MusicContextProviderProps> = ({ children })
         } catch (error) {
             console.error('Error fetching music platforms', error);
         }
+        finally {
+            setPageLoading(false);
+        }
     };
 
     const value: MusicContextType = {
-        loading,
         musicPlatforms,
         fetchMusicPlatforms
     };

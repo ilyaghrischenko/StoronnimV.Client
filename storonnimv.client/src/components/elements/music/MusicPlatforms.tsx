@@ -1,26 +1,24 @@
 ﻿import {FC, useContext, useEffect} from "react";
 import {ListGroup} from "react-bootstrap";
-
 import {MusicPlatformItem} from "./MusicPlatformItem";
 import {MusicContext} from "../../contexts/MusicContext";
-import {PageLoading} from "../shared/PageLoading";
+import {GlobalContext} from "../../contexts/shared/GlobalContext.tsx";
+import {ModalLoading} from "../shared/ModalLoading.tsx";
 
 const MusicPlatforms: FC = () => {
-    const musicContext = useContext(MusicContext);
+    const musicContext = useContext(MusicContext)!;
+    const globalContext = useContext(GlobalContext)!;
 
-    if (!musicContext) {
-        throw new Error("MusicContext must be used within a MusicContextProvider");
-    }
-
-    const {musicPlatforms, fetchMusicPlatforms, loading} = musicContext;
+    const {pageLoading} = globalContext;
+    const {musicPlatforms, fetchMusicPlatforms} = musicContext;
 
     useEffect(() => {
         fetchMusicPlatforms();
     }, []);
 
-    if (loading) {
+    if (pageLoading) {
         return (
-            <PageLoading elementsCount={3} columns={3} />
+            <ModalLoading/>
         );
     }
 

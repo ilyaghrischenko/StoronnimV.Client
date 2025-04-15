@@ -20,9 +20,8 @@ const NewsModal: FC<NewsModalProps> = ({newsId}) => {
         throw new Error("Context are not defined");
     }
 
-    const {newsFullItem, fetchNewsFullItem, loading} = newsContext;
-
-    const {isAdmin, OnShowModal} = globalContext;
+    const {isAdmin, OnShowModal, modalLoading} = globalContext;
+    const {newsFullItem, fetchNewsFullItem} = newsContext;
 
     useEffect(() => {
         if (newsId) {
@@ -30,8 +29,7 @@ const NewsModal: FC<NewsModalProps> = ({newsId}) => {
         }
     }, [newsId]);
 
-    // TODO: LOADING
-    if (loading) {
+    if (modalLoading) {
         return <ModalLoading/>;
     }
 

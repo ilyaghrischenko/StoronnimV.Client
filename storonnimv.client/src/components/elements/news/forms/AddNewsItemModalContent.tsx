@@ -113,6 +113,7 @@ const AddNewsItemModalContent: React.FC = () => {
                 </Form.Group>
 
                 <Button className="form-modal__button form-modal__button--confirm" type="submit">Додати новину</Button>
+                <Button className="form-modal__button form-modal__button--cancel" onClick={OnHideModal}>Скасувати</Button>
             </Form>
         </Container>
     );

@@ -13,11 +13,7 @@ interface NewsComponentProps {
 
 
 const NewsSlider: FC<NewsComponentProps> = ({className}) => {
-    const homeContext = useContext(HomeContext);
-
-    if (!homeContext) {
-        throw new Error("HomeContext must be used within a HomeContextProvider");
-    }
+    const homeContext = useContext(HomeContext)!;
 
     const {homeNewsList, fetchHomeNewsList} = homeContext;
 

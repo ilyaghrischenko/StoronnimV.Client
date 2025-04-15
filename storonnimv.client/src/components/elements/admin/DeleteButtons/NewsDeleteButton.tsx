@@ -34,11 +34,11 @@ const NewsDeleteButton: FC<NewsDeleteButtonProps> = ({ newsId, apiUrl }) => {
             <Container className="form-modal">
                 <h2 className="form-modal__title">Ви впевнені, що хочете видалити цю новину?</h2>
                 <Container className="form-modal__form">
+                    <Button className="form-modal__button form-modal__button--delete" onClick={handleDelete}>
+                        Видалити
+                    </Button>
                     <Button className="form-modal__button form-modal__button--cancel" onClick={OnHideModal}>
                         Скасувати
-                    </Button>
-                    <Button className="form-modal__button form-modal__button--confirm" onClick={handleDelete}>
-                        Видалити
                     </Button>
                 </Container>
             </Container>,

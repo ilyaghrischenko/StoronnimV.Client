@@ -6,7 +6,6 @@ import {IBasicAdmin} from "../../models/admin/IBasicAdmin.ts";
 
 interface AdminContextType {
     logIn: (logInRequest: ILogInRequest) => Promise<void>;
-    loading: boolean;
     deleteAdmin: (adminId: number) => Promise<void>;
     basicAdmins: IBasicAdmin[];
     fetchBasicAdmins: () => Promise<void>;
@@ -22,13 +21,9 @@ interface AdminContextProviderProps {
 }
 
 const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
-    const globalContext = useContext(GlobalContext);
+    const globalContext = useContext(GlobalContext)!;
 
-    if (!globalContext) {
-        throw new Error("GlobalContext must be used within a GlobalContextProvider");
-    }
-
-    const {sendRequest, loading, setIsAdmin, setValidationErrors} = globalContext;
+    const {sendRequest, setIsAdmin, setValidationErrors} = globalContext;
     const navigate = useNavigate();
 
     const logIn = async (logInRequest: ILogInRequest) => {
@@ -159,7 +154,6 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
 
     const value: AdminContextType = {
         logIn,
-        loading,
         deleteAdmin,
         basicAdmins,
         fetchBasicAdmins,
