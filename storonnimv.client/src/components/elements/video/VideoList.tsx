@@ -1,12 +1,12 @@
-﻿import { FC, useContext, useEffect } from "react";
-import { GlobalContext } from "../../contexts/shared/GlobalContext";
-import { PageLoading } from "../shared/PageLoading";
-import { List } from "../shared/GenericList/List";
-import { ListItem } from "../shared/GenericList/ListItem";
-import { VideoContext } from "../../contexts/VideoContext";
+﻿import {FC, useContext, useEffect} from "react";
+import {GlobalContext} from "../../contexts/shared/GlobalContext";
+import {PageLoading} from "../shared/PageLoading";
+import {List} from "../shared/GenericList/List";
+import {ListItem} from "../shared/GenericList/ListItem";
+import {VideoContext} from "../../contexts/VideoContext";
 import {useNavigate, useSearchParams} from "react-router-dom";
-import { IVideoModel } from "../../../models/video/IVideoModel";
-import { VideoListItem } from "./VideoListItem";
+import {IVideoModel} from "../../../models/video/IVideoModel";
+import {VideoListItem} from "./VideoListItem";
 import {PaginationSection} from "../shared/PaginationSection.tsx";
 
 const VideoList: FC = () => {
@@ -22,7 +22,7 @@ const VideoList: FC = () => {
 
     const navigate = useNavigate();
 
-    if(!videoCategories.includes(videoType)) {
+    if (!videoCategories.includes(videoType)) {
         navigate(`/error?statusCode=404&message=Video%20type%20not%20found`);
     }
 
@@ -39,7 +39,8 @@ const VideoList: FC = () => {
         throw new Error("VideoContext must be used within a VideoContextProvider");
     }
 
-    const { videoList, currentPage, totalPages, paginate, loading } = videoContext;
+    const {pageLoading} = globalContext;
+    const {videoList, currentPage, totalPages, paginate} = videoContext;
 
     useEffect(() => {
         const savedPage = sessionStorage.getItem("videoCurrentPage");
@@ -48,8 +49,8 @@ const VideoList: FC = () => {
         paginate(videoType, page, 2);
     }, []);
 
-    if (loading) {
-        return <PageLoading elementsCount={4}  columns={2} />;
+    if (pageLoading) {
+        return <PageLoading elementsCount={2} columns={2}/>;
     }
 
     return (
@@ -62,7 +63,7 @@ const VideoList: FC = () => {
                         className="video-list__item"
                         item={item}
                         renderItem={(item: IVideoModel) => (
-                            <VideoListItem videoItem={item} />
+                            <VideoListItem videoItem={item}/>
                         )}
                     />
                 )}
@@ -78,4 +79,4 @@ const VideoList: FC = () => {
     );
 };
 
-export { VideoList };
+export {VideoList};

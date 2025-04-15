@@ -11,7 +11,6 @@ interface VideoContextType {
     totalPages: number;
     fetchVideos: (videoType: string, pageNumber: number, pageSize?: number) => Promise<void>;
     paginate: (videoType: string, pageNumber?: number, pageSize?: number) => Promise<void>;
-    loading: boolean;
 }
 
 // Создаем контекст с типизацией
@@ -28,7 +27,7 @@ const VideoContextProvider: React.FC<VideoContextProviderProps> = ({children}) =
         throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const {sendRequest, loading} = globalContext;
+    const {sendRequest, setPageLoading} = globalContext;
 
     const [videoList, setVideoList] = useState<IVideoModel[]>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
@@ -37,6 +36,7 @@ const VideoContextProvider: React.FC<VideoContextProviderProps> = ({children}) =
     const fetchVideos =
         async (videoType: string, pageNumber: number, pageSize: number = 2): Promise<void> => {
             try {
+                setPageLoading(true);
                 const response = await sendRequest(
                     `https://localhost:44315/api/videos/page/${videoType}/${pageNumber}?pageSize=${pageSize}`
                 );
@@ -58,10 +58,12 @@ const VideoContextProvider: React.FC<VideoContextProviderProps> = ({children}) =
                 sessionStorage.setItem("videoCurrentPage", String(data.currentPage));
                 sessionStorage.setItem("videoTotalPages", String(data.totalPages));
                 sessionStorage.setItem("currentVideoType", videoType);
+                setPageLoading(false);
             } catch (error) {
                 console.error("Error while fetching videos: ", error);
                 setVideoList([]); // Обнуляем список в случае ошибки
                 sessionStorage.setItem("videoTotalPages", "0"); // Сбрасываем totalPages
+                setPageLoading(false);
             }
         };
 
@@ -98,7 +100,6 @@ const VideoContextProvider: React.FC<VideoContextProviderProps> = ({children}) =
         totalPages,
         fetchVideos,
         paginate,
-        loading
     };
 
     return (

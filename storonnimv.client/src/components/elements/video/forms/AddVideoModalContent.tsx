@@ -7,11 +7,10 @@ const AddVideoModalContent: FC = () => {
     const globalContext = useContext(GlobalContext);
     if (!globalContext) throw new Error("GlobalContext is not defined");
 
-    const {sendRequest, OnHideModal} = globalContext;
+    const {sendRequest, OnHideModal, modalLoading, setModalLoading} = globalContext;
 
     const [title, setTitle] = useState("");
     const [videoFile, setVideoFile] = useState<File | null>(null);
-    const [loading, setLoading] = useState(false);
     const [videoType, setVideoType] = useState("Performance");
 
     const route = "https://localhost:44315/";
@@ -27,7 +26,7 @@ const AddVideoModalContent: FC = () => {
         e.preventDefault();
         if (!isFormValid) return;
 
-        setLoading(true);
+        setModalLoading(true);
         const formData = new FormData();
         formData.append("Url", videoFile!);
         formData.append("Title", title);
@@ -46,11 +45,11 @@ const AddVideoModalContent: FC = () => {
             alert(`Помилка при додаванні відео`);
             console.error(error);
         } finally {
-            setLoading(false);
+            setModalLoading(false);
         }
     };
 
-    if (loading) return <ModalLoading/>;
+    if (modalLoading) return <ModalLoading/>;
 
     return (
         <Container className="form-modal">
@@ -97,9 +96,9 @@ const AddVideoModalContent: FC = () => {
                             variant="primary"
                             type="submit"
                             className="form-modal__button form-modal__button--confirm"
-                            disabled={!isFormValid || loading}
+                            disabled={!isFormValid}
                         >
-                            {loading ? "Завантаження..." : `Додати відео`}
+                            Додати відео
                         </Button>
                         <Button
                             variant="primary"
