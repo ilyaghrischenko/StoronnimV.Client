@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="fixed date time format">
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Home.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="push" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -413,7 +411,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744738104698</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="push">
+      <option name="closed" value="true" />
+      <created>1744738556426</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1744738556426</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -443,7 +449,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="porfavor" />
     <MESSAGE value="add edit and delete buttons" />
     <MESSAGE value="fix" />
     <MESSAGE value="add error page" />
@@ -468,6 +473,7 @@
     <MESSAGE value="add animation on description in group page" />
     <MESSAGE value="fix text animation" />
     <MESSAGE value="fixed date time format" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed date time format" />
+    <MESSAGE value="push" />
+    <option name="LAST_COMMIT_MESSAGE" value="push" />
   </component>
 </project>
