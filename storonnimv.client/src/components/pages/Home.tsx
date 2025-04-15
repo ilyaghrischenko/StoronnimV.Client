@@ -2,7 +2,6 @@
 import {HomeContextProvider} from "../contexts/HomeContext";
 import {Container} from "react-bootstrap";
 import {ScheduleHomeContainer} from "../elements/home/ScheduleHomeContainer";
-// import {NewsHomeList} from "../elements/home/NewsHomeList";
 import {PromotionVideoHome} from "../elements/home/PromotionVideoHome";
 import {NewsSlider} from "../elements/home/NewsSlider";
 import {GlobalContext} from "../contexts/shared/GlobalContext.tsx";
