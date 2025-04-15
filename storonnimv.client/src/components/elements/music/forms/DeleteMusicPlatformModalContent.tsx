@@ -8,7 +8,7 @@ interface DeleteMusicPlatformProps {
 }
 
 const DeleteMusicPlatformModalContent: FC<DeleteMusicPlatformProps> = ({item}) => {
-    const globalContext = useContext(GlobalContext) || null;
+    const globalContext = useContext(GlobalContext)!;
     const {sendRequest, OnHideModal} = globalContext!;
     const [musicPlatformId, setMusicPlatformId] = useState<string | null>(item.id.toString());
     const route = "https://localhost:44315/";
@@ -32,10 +32,11 @@ const DeleteMusicPlatformModalContent: FC<DeleteMusicPlatformProps> = ({item}) =
             } else {
                 alert("Помилка під час видалення музичної платформи!");
             }
-
-            OnHideModal();
         } catch (error) {
             console.error("Помилка під час видалення музичної платформи:", error);
+        }
+        finally {
+            OnHideModal();
         }
     };
 

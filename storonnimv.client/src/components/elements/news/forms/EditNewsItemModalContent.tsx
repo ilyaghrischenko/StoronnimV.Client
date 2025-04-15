@@ -356,7 +356,7 @@ const EditNewsItemModalContent: FC<EditNewsItemModalContentProps> = ({newsItem})
                     </Button>
                 </Form>
             </Container>
-            <Container className="form-modal form-modal__container">
+            <Container className="form-modal">
                 <Container className="form-modal__form">
                     <Button className="form-modal__button form-modal__button--cancel" onClick={OnHideModal}>
                         Скасувати

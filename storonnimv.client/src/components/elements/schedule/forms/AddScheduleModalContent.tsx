@@ -1,14 +1,9 @@
 import React, {FC, useContext, useState} from "react";
 import {Container, Form, Button} from "react-bootstrap";
-import {ModalLoading} from "../../shared/ModalLoading.tsx";
 import {GlobalContext} from "../../../contexts/shared/GlobalContext.tsx";
 
 const AddScheduleModalContent: FC = () => {
-    const globalContext = useContext(GlobalContext);
-
-    if (!globalContext) {
-        throw new Error("GlobalContext is not defined");
-    }
+    const globalContext = useContext(GlobalContext)!;
 
     const {sendRequest, OnHideModal} = globalContext;
 
@@ -17,7 +12,6 @@ const AddScheduleModalContent: FC = () => {
     const [location, setLocation] = useState<string>("");
     const [performanceDateTime, setPerformanceDateTime] = useState<string>("");
     const [photo, setPhoto] = useState<File | null>(null);
-    const [loading, setLoading] = useState<boolean>(false);
 
     const route = "https://localhost:44315/";
 
@@ -40,7 +34,6 @@ const AddScheduleModalContent: FC = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setLoading(true);
 
         const formData = new FormData();
         formData.append("title", title);
@@ -56,22 +49,19 @@ const AddScheduleModalContent: FC = () => {
                 "POST",
                 formData
             );
-            if (response.status === 200) {
+
+            if (response.status === 201) {
                 alert(`Афішу успішно додано!`);
                 window.location.reload();
             } else {
                 alert("Сталася помилка при додаванні афіши");
             }
-
-            OnHideModal();
         } catch (error) {
             alert(`Помилка при додаванні афіши ${error}`);
         } finally {
-            setLoading(false);
+            OnHideModal();
         }
     };
-
-    if (loading) return <ModalLoading/>;
 
     return (
         <Container className="form-modal">

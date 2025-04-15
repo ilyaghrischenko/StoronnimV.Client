@@ -7,8 +7,8 @@ interface IEditMemberModalProps {
     item: IMemberFullInfo;
 }
 
-const EditMemberModal: FC<IEditMemberModalProps> = ({ item }) => {
-    const { OnHideModal, sendRequest } = useContext(GlobalContext)!;
+const EditMemberModal: FC<IEditMemberModalProps> = ({item}) => {
+    const {OnHideModal, sendRequest} = useContext(GlobalContext)!;
 
     const [fullName, setFullName] = useState<string>(item.fullName);
     const [description, setDescription] = useState<string>(item.description);
@@ -41,12 +41,15 @@ const EditMemberModal: FC<IEditMemberModalProps> = ({ item }) => {
 
             if (response.status === 204) {
                 alert("Дані успішно змінено");
-                OnHideModal();
+                window.location.reload();
             } else {
                 alert("Сталася помилка при зміні");
             }
         } catch (error) {
             alert("Помилка при збереженні даних.");
+            console.error(error);
+        } finally {
+            OnHideModal();
         }
     };
 
@@ -67,88 +70,100 @@ const EditMemberModal: FC<IEditMemberModalProps> = ({ item }) => {
 
             if (response.status === 204) {
                 alert("Інформацію про учасника успішно оновлено!");
-                OnHideModal();
+                window.location.reload();
             } else {
                 alert("Помилка при оновленні інформації учасника.");
             }
         } catch (error) {
             alert("Помилка при збереженні даних.");
+            console.error(error);
+        } finally {
+            OnHideModal();
         }
     };
 
     return (
-        <div>
-            <Form onSubmit={(e) => {
-                e.preventDefault();
-                handlePhotoEdit();
-            }}>
-                <div className="d-flex align-items-center mb-3">
-                    <Form.Label className="me-3" style={{ color: "white" }}>
-                        Фото учасника:
-                    </Form.Label>
-                    <Form.Control
-                        type="file"
-                        accept="image/*"
-                        className="form-control"
-                        required
-                        onChange={handlePhotoUpload}
-                        style={{ color: "white", backgroundColor: "#333" }}
-                    />
-                </div>
+        <>
+            <div className="form-modal form-modal__container">
+                <h2 className="form-modal__title">Редагувати учасника</h2>
+                <Form className="form-modal__form"
+                      onSubmit={(e) => {
+                          e.preventDefault();
+                          handlePhotoEdit();
+                      }}>
+                    <Form.Group className="form-modal__group">
+                        <Form.Label className="form-modal__label">Фото учасника:</Form.Label>
+                        <Form.Control
+                            type="file"
+                            accept="image/*"
+                            className="form-modal__input"
+                            required
+                            onChange={handlePhotoUpload}
+                        />
+                    </Form.Group>
 
-                <Button type="submit" className="mt-3">
-                    Змінити фото
-                </Button>
-            </Form>
-            <Form onSubmit={(e) => {
-                e.preventDefault();
-                handleEdit();
-            }}>
-                <div className="d-flex align-items-center mb-3">
-                    <Form.Label className="me-3" style={{ color: "white" }}>
-                        Повне ім’я:
-                    </Form.Label>
-                    <Form.Control
-                        type="text"
-                        required
-                        value={fullName}
-                        onChange={(e) => setFullName(e.target.value)}
-                        className="form-control"
-                        style={{ color: "white", backgroundColor: "#333" }}
-                    />
-                </div>
-                <div className="d-flex align-items-center mb-3">
-                    <Form.Label className="me-3" style={{ color: "white" }}>
-                        Опис:
-                    </Form.Label>
-                    <Form.Control
-                        type="text"
-                        required
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        className="form-control"
-                        style={{ color: "white", backgroundColor: "#333" }}
-                    />
-                </div>
-                <div className="d-flex align-items-center mb-3">
-                    <Form.Label className="me-3" style={{ color: "white" }}>
-                        Роль:
-                    </Form.Label>
-                    <Form.Control
-                        type="text"
-                        required
-                        value={role}
-                        onChange={(e) => setRole(e.target.value)}
-                        className="form-control"
-                        style={{ color: "white", backgroundColor: "#333" }}
-                    />
-                </div>
+                    <Button type="submit" className="form-modal__button form-modal__button--confirm">
+                        Змінити фото
+                    </Button>
+                </Form>
+            </div>
+            <div className="form-modal form-modal__container">
+                <Form
+                    className="form-modal__form"
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        handleEdit();
+                    }}>
+                    <Form.Group className="form-modal__group">
+                        <Form.Label className="form-modal__label">
+                            Повне ім’я:
+                        </Form.Label>
+                        <Form.Control
+                            type="text"
+                            required
+                            value={fullName}
+                            onChange={(e) => setFullName(e.target.value)}
+                            className="form-modal__input"
+                        />
+                    </Form.Group>
+                    <Form.Group className="form-modal__group">
+                        <Form.Label className="form-modal__label">
+                            Опис:
+                        </Form.Label>
+                        <Form.Control
+                            type="text"
+                            required
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            className="form-modal__input"
+                        />
+                    </Form.Group>
+                    <Form.Group className="form-modal__group">
+                        <Form.Label className="form-modal__label">
+                            Роль:
+                        </Form.Label>
+                        <Form.Control
+                            type="text"
+                            required
+                            value={role}
+                            onChange={(e) => setRole(e.target.value)}
+                            className="form-modal__input"
+                        />
+                    </Form.Group>
 
-                <Button type="submit" className="mt-3">
-                    Змінити
-                </Button>
-            </Form>
-        </div>
+                    <Button type="submit" className="form-modal__button form-modal__button--confirm">
+                        Змінити
+                    </Button>
+                </Form>
+            </div>
+            <div className="form-modal">
+                <div className="form-modal__form">
+                    <Button className="form-modal__button form-modal__button--cancel" onClick={OnHideModal}>
+                        Скасувати
+                    </Button>
+                </div>
+            </div>
+        </>
     );
 };
 

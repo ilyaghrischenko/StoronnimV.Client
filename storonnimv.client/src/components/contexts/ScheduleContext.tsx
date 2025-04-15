@@ -7,7 +7,6 @@ import {IPaginationResponse} from "../../models/shared/IPaginationResponse.ts";
 // Тип контекста
 interface ScheduleContextType {
     schedules: IScheduleListItem[];
-    loading: boolean;
     fetchSchedules: (pageNumber: number, pageSize: number) => Promise<void>;
     scheduleFullInfo: ISchedule;
     fetchScheduleFullInfo: (scheduleId: number) => Promise<void>;
@@ -23,14 +22,10 @@ interface ScheduleContextProviderProps {
     children: ReactNode;
 }
 
-const ScheduleContextProvider: React.FC<ScheduleContextProviderProps> = ({ children }) => {
-    const globalContext = useContext(GlobalContext);
+const ScheduleContextProvider: React.FC<ScheduleContextProviderProps> = ({children}) => {
+    const globalContext = useContext(GlobalContext)!;
 
-    if (!globalContext) {
-        throw new Error("GlobalContext must be used within a GlobalContextProvider");
-    }
-
-    const { sendRequest, loading } = globalContext;
+    const {sendRequest, setPageLoading, setModalLoading} = globalContext;
 
     const [schedules, setSchedules] = useState<IScheduleListItem[]>([]);
     const [scheduleFullInfo, setScheduleFullInfo] = useState<ISchedule>({} as ISchedule);
@@ -41,20 +36,21 @@ const ScheduleContextProvider: React.FC<ScheduleContextProviderProps> = ({ child
     const paginate =
         async (pageNumber: number, pageSize: number = 3): Promise<void> => {
 
-        const savedTotalPagesString = sessionStorage.getItem("schedulesTotalPages");
-        const savedTotalPages = savedTotalPagesString ? Number(savedTotalPagesString) : 0;
+            const savedTotalPagesString = sessionStorage.getItem("schedulesTotalPages");
+            const savedTotalPages = savedTotalPagesString ? Number(savedTotalPagesString) : 0;
 
-        if (savedTotalPages === 0) {
-            await fetchSchedules(pageNumber, pageSize);
-        }
+            if (savedTotalPages === 0) {
+                await fetchSchedules(pageNumber, pageSize);
+            }
 
-        if (pageNumber >= 1 && pageNumber <= savedTotalPages) {
-            await fetchSchedules(pageNumber, pageSize);
+            if (pageNumber >= 1 && pageNumber <= savedTotalPages) {
+                await fetchSchedules(pageNumber, pageSize);
+            }
         }
-    }
 
     const fetchScheduleFullInfo = async (scheduleId: number): Promise<void> => {
         try {
+            setModalLoading(true);
             const response = await sendRequest(`https://localhost:44315/api/schedules/${scheduleId}`);
 
             const data: ISchedule = response.data;
@@ -63,36 +59,39 @@ const ScheduleContextProvider: React.FC<ScheduleContextProviderProps> = ({ child
         } catch (error) {
             console.error("Error fetching schedule full info:", error);
             return;
+        } finally {
+            setModalLoading(false);
         }
     };
 
     const fetchSchedules =
         async (pageNumber: number = currentPage, pageSize: number = 9): Promise<void> => {
+            try {
+                setPageLoading(true);
+                const response = await sendRequest(
+                    `https://localhost:44315/api/schedules/page/${pageNumber}?pageSize=${pageSize}`
+                );
 
-        try {
-            const response = await sendRequest(
-                `https://localhost:44315/api/schedules/page/${pageNumber}?pageSize=${pageSize}`
-            );
+                const data: IPaginationResponse<IScheduleListItem> = response.data;
 
-            const data: IPaginationResponse<IScheduleListItem> = response.data;
+                setSchedules(data.items);
+                setCurrentPage(data.currentPage);
+                setTotalPages(data.totalPages);
 
-            setSchedules(data.items);
-            setCurrentPage(data.currentPage);
-            setTotalPages(data.totalPages);
-
-            sessionStorage.setItem("schedulesCurrentPage", String(data.currentPage));
-            sessionStorage.setItem("schedulesTotalPages", String(data.totalPages));
-        } catch (error) {
-            console.error("Error while fetching schedules: ", error);
-        }
-    };
+                sessionStorage.setItem("schedulesCurrentPage", String(data.currentPage));
+                sessionStorage.setItem("schedulesTotalPages", String(data.totalPages));
+            } catch (error) {
+                console.error("Error while fetching schedules: ", error);
+            } finally {
+                setPageLoading(false);
+            }
+        };
 
     const value: ScheduleContextType = {
         fetchScheduleFullInfo,
         scheduleFullInfo,
         schedules,
         fetchSchedules,
-        loading,
         currentPage,
         totalPages,
         paginate
@@ -105,4 +104,4 @@ const ScheduleContextProvider: React.FC<ScheduleContextProviderProps> = ({ child
     );
 };
 
-export { ScheduleContextProvider, ScheduleContext };
+export {ScheduleContextProvider, ScheduleContext};

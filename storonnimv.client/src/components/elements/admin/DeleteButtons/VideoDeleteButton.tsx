@@ -44,7 +44,7 @@ const VideoDeleteButton: FC<VideoDeleteButtonProps> = ({ video, apiUrl }) => {
                     <Button
                         variant="danger"
                         onClick={handleDelete}
-                        className="form-modal__button form-modal__button--confirm"
+                        className="form-modal__button form-modal__button--delete"
                     >
                         Так, видалити
                     </Button>

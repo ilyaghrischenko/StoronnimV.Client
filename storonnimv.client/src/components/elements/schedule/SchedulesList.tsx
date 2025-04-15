@@ -7,22 +7,17 @@ import {IScheduleListItem} from "../../../models/schedule/IScheduleListItem";
 import {ListItem} from "../shared/GenericList/ListItem";
 import {GlobalContext} from "../../contexts/shared/GlobalContext";
 import {ScheduleModal} from "./ScheduleModal.tsx";
-import {Container} from "react-bootstrap";
+import {Button, Container} from "react-bootstrap";
 import {PaginationSection} from "../shared/PaginationSection.tsx";
+import {AddScheduleModalContent} from "./forms/AddScheduleModalContent.tsx";
+import {FaPlus} from "react-icons/fa";
 
 const SchedulesList: FC = () => {
-    const scheduleContext = useContext(ScheduleContext);
-    const globalContext = useContext(GlobalContext);
+    const scheduleContext = useContext(ScheduleContext)!;
+    const globalContext = useContext(GlobalContext)!;
 
-    if (!globalContext) {
-        throw new Error("GlobalContext must be used within a GlobalContextProvider");
-    }
-    if (!scheduleContext) {
-        throw new Error("ScheduleContext must be used within a ScheduleContextProvider");
-    }
-
-    const {paginate, schedules, currentPage, totalPages, loading} = scheduleContext;
-    const {OnShowModal} = globalContext;
+    const {OnShowModal, pageLoading, isAdmin} = globalContext;
+    const {paginate, schedules, currentPage, totalPages} = scheduleContext;
 
     useEffect(() => {
         const savedPage = sessionStorage.getItem("schedulesCurrentPage");
@@ -31,12 +26,19 @@ const SchedulesList: FC = () => {
         paginate(page);
     }, []);
 
-    if (loading) {
-        return <PageLoading elementsCount={4} columns={2}/>;
+    if (pageLoading) {
+        return <PageLoading elementsCount={1} columns={1}/>;
     }
 
     return (
         <Container>
+            {isAdmin && (
+                <Button
+                    className="add-button"
+                    onClick={() => OnShowModal(<AddScheduleModalContent/>)}>
+                    <FaPlus/>
+                </Button>
+            )}
             <List
                 className='schedules-list'
                 items={schedules}
@@ -60,7 +62,6 @@ const SchedulesList: FC = () => {
             />
 
             <PaginationSection
-                className="news-list__pagination"
                 currentPage={currentPage}
                 totalPages={totalPages}
                 paginate={paginate} />

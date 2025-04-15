@@ -57,10 +57,11 @@ const EditMusicPlatformModalContent: FC<EditMusicPlatformProps> = ({item}) => {
             } else {
                 alert("Сталася помилка при оновленні посилання на музичну платформу!")
             }
-
-            OnHideModal();
         } catch (error) {
             console.error("Помилка при оновленні музичної платформи:", error);
+        }
+        finally {
+            OnHideModal();
         }
     };
 

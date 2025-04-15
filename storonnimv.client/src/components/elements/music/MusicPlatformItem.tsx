@@ -11,11 +11,7 @@ interface MusicPlatformItemProps {
 }
 
 const MusicPlatformItem: FC<MusicPlatformItemProps> = ({item}) => {
-    const globalContext = useContext(GlobalContext);
-
-    if (!globalContext) {
-        throw new Error("GlobalContext must be used within a GlobalContextProvider");
-    }
+    const globalContext = useContext(GlobalContext)!;
 
     const {isAdmin, OnShowModal} = globalContext;
 
@@ -56,6 +52,3 @@ const MusicPlatformItem: FC<MusicPlatformItemProps> = ({item}) => {
 };
 
 export {MusicPlatformItem};
-
-
-// TODO : Сделать чтобы при нажимании на кнопку не перекидывало на муз. платформу + убрать видимость ссылки поверх кнопки

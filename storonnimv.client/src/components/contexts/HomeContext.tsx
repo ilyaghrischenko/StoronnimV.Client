@@ -7,7 +7,6 @@ import {useNavigate} from "react-router-dom";
 
 // Тип контекста
 interface HomeContextType {
-    loading: boolean;
     homeSchedule: IScheduleHomeItem;
     fetchHomeSchedule: () => Promise<void>;
     homeNewsList: IHomeNewsItem[];
@@ -24,14 +23,10 @@ interface HomeContextProviderProps {
     children: ReactNode;
 }
 
-const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) => {
-    const globalContext = useContext(GlobalContext);
+const HomeContextProvider: React.FC<HomeContextProviderProps> = ({children}) => {
+    const globalContext = useContext(GlobalContext)!;
 
-    if (!globalContext) {
-        throw new Error("GlobalContext must be used within a GlobalContextProvider");
-    }
-
-    const { sendRequest, loading } = globalContext;
+    const {sendRequest} = globalContext;
 
     const navigate = useNavigate();
 
@@ -43,7 +38,7 @@ const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) =
         location: ''
     });
 
-    const fetchHomeSchedule = async () : Promise<void> => {
+    const fetchHomeSchedule = async (): Promise<void> => {
         try {
             const response = await sendRequest('https://localhost:44315/api/home/schedule');
 
@@ -57,7 +52,7 @@ const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) =
 
     const [homeNewsList, setHomeNewsList] = useState<IHomeNewsItem[]>([]);
 
-    const fetchHomeNewsList = async () : Promise<void> => {
+    const fetchHomeNewsList = async (): Promise<void> => {
         try {
             const response = await sendRequest('https://localhost:44315/api/home/news/6');
 
@@ -69,13 +64,9 @@ const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) =
         }
     };
 
-    const [homePromotionVideo, setHomePromotionVideo] = useState<IVideoModel>({
-        id: 0,
-        title: '',
-        url: ''
-    });
+    const [homePromotionVideo, setHomePromotionVideo] = useState<IVideoModel>({} as IVideoModel);
 
-    const fetchHomePromotionVideo = async () : Promise<void> => {
+    const fetchHomePromotionVideo = async (): Promise<void> => {
         try {
             const response = await sendRequest('https://localhost:44315/api/home/video');
 
@@ -92,7 +83,6 @@ const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) =
     };
 
     const value: HomeContextType = {
-        loading,
         homeSchedule,
         fetchHomeSchedule,
         homeNewsList,
@@ -109,4 +99,4 @@ const HomeContextProvider: React.FC<HomeContextProviderProps> = ({ children }) =
     );
 };
 
-export { HomeContextProvider, HomeContext };
+export {HomeContextProvider, HomeContext};
