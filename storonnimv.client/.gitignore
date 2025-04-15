@@ -12,6 +12,8 @@ dist
 dist-ssr
 *.local
 
+../.idea/workspace.xml
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

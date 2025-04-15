@@ -229,6 +229,8 @@ html, body {
   align-items: center;
   height: 100%;
   width: 98%;
+  box-sizing: border-box;
+  overflow: hidden;
   border-radius: 20px;
   background-size: cover;
   background-position: center;

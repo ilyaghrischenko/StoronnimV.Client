@@ -19,16 +19,19 @@ const ScheduleEditModal: FC<IScheduleEditModalProps> = ({item}) => {
     const formatDateTimeForInput = (dateStr: string): string => {
         if (!dateStr) return "";
 
-        // Ожидаем формат "dd.MM.yyyy HH.mm" или "dd.MM.yyyy"
         const [datePart, timePart] = dateStr.split(" ");
-        const [day, month, year] = datePart.split(".");
+        const [day, month, year] = datePart?.split(".") ?? [];
 
         let hours = "00";
         let minutes = "00";
 
         if (timePart) {
-            [hours, minutes] = timePart.split(".");
+            const timeSplit = timePart.split(".");
+            hours = timeSplit[0] ?? "00";
+            minutes = timeSplit[1] ?? "00";
         }
+
+        if (!day || !month || !year) return ""; // захист від неправильного формату
 
         return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}T${hours.padStart(2, "0")}:${minutes.padStart(2, "0")}`;
     };
