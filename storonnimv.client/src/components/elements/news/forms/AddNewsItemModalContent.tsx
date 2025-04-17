@@ -4,11 +4,9 @@ import {Form, Button, Container} from "react-bootstrap";
 import {ModalLoading} from "../../shared/ModalLoading.tsx";
 
 const AddNewsItemModalContent: React.FC = () => {
-    const globalContext = useContext(GlobalContext);
-    if (!globalContext) {
-        throw new Error("GlobalContext is not defined");
-    }
-    const {sendRequest, OnHideModal} = globalContext;
+    const globalContext = useContext(GlobalContext)!;
+
+    const {sendRequest, OnHideModal, setModalLoading, modalLoading} = globalContext;
 
     const [formData, setFormData] = useState({
         title: "",
@@ -19,7 +17,6 @@ const AddNewsItemModalContent: React.FC = () => {
 
     const [photo, setPhoto] = useState<File | null>(null);
     const [video, setVideo] = useState<string>("");
-    const [loading, setLoading] = useState(false);
 
     const route = "https://localhost:44315/";
 
@@ -42,7 +39,7 @@ const AddNewsItemModalContent: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setLoading(true);
+        setModalLoading(true);
 
         const data = new FormData();
         Object.entries(formData).forEach(([key, value]) => data.append(key, value));
@@ -62,11 +59,11 @@ const AddNewsItemModalContent: React.FC = () => {
         } catch (error) {
             alert(`Помилка при додаванні новини ${error}`);
         } finally {
-            setLoading(false);
+            setModalLoading(false);
         }
     };
 
-    if (loading) return <ModalLoading/>;
+    if (modalLoading) return <ModalLoading/>;
 
     return (
         <Container className="form-modal">

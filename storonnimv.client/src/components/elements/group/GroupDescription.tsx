@@ -1,36 +1,26 @@
-﻿import { FC, useContext, useEffect } from "react";
-import { Container } from "react-bootstrap";
-import { Description } from "./groupPageComponents/Description";
-import { ShortMembers } from "./groupPageComponents/ShortMembers";
-import { GroupContext } from "../../contexts/GroupContext";
-import { PageLoading } from "../shared/PageLoading";
-import { GroupInfoEditButton } from "../admin/EditsButtons/GroupInfoEditButton";
+﻿import {FC, useContext, useEffect} from "react";
+import {Container} from "react-bootstrap";
+import {Description} from "./groupPageComponents/Description";
+import {ShortMembers} from "./groupPageComponents/ShortMembers";
+import {GroupContext} from "../../contexts/GroupContext";
+import {PageLoading} from "../shared/PageLoading";
+import {GroupInfoEditButton} from "../admin/EditsButtons/GroupInfoEditButton";
 import {GlobalContext} from "../../contexts/shared/GlobalContext.tsx";
 
 const GroupDescription: FC = () => {
-    const groupContext = useContext(GroupContext);
+    const groupContext = useContext(GroupContext)!;
+    const globalContext = useContext(GlobalContext)!;
 
-    if (!groupContext) {
-        throw new Error("GroupContext must be used within a GroupContextProvider");
-    }
-
-    const { fetchGroupInfo, fullInfo, loading } = groupContext;
-
-    const globalContext = useContext(GlobalContext);
-
-    if (!globalContext) {
-        throw new Error("GlobalContext must be used within a GlobalContextProvider");
-    }
-
-    const { isAdmin } = globalContext;
+    const {pageLoading, isAdmin} = globalContext;
+    const {fetchGroupInfo, fullInfo} = groupContext;
 
     useEffect(() => {
         fetchGroupInfo().then(r => console.log(r));
     }, []);
 
-    if (loading) {
+    if (pageLoading) {
         return (
-            <PageLoading elementsCount={1} columns={1} />
+            <PageLoading elementsCount={1} columns={1}/>
         );
     }
 
@@ -41,11 +31,11 @@ const GroupDescription: FC = () => {
                 backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.8) 100%), url(${fullInfo.groupPage.photoUrl})`,
             }}
         >
-            {isAdmin && <GroupInfoEditButton />}
-            <Description groupInfo={fullInfo.groupPage} />
-            <ShortMembers members={fullInfo.members} />
+            {isAdmin && <GroupInfoEditButton/>}
+            <Description groupInfo={fullInfo.groupPage}/>
+            <ShortMembers members={fullInfo.members}/>
         </Container>
     );
 };
 
-export { GroupDescription };
+export {GroupDescription};
