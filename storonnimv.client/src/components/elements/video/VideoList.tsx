@@ -64,7 +64,7 @@ const VideoList: FC = () => {
         >
             <button className="video-btn">
                 <span className="icon">&#x276E;</span>
-                <span className="label">VIDEO</span>
+                <span className="label small-shadow">VIDEO</span>
             </button>
 
             <List
@@ -79,9 +79,8 @@ const VideoList: FC = () => {
                         )}
                     />
                 )}
-            ></List>
+            />
 
-            {/* Элементы управления пагинацией */}
             <PaginationSection
                 currentPage={currentPage}
                 totalPages={totalPages}
