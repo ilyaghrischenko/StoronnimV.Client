@@ -50,7 +50,7 @@ const VideoList: FC = () => {
     }, []);
 
     if (pageLoading) {
-        return <PageLoading elementsCount={2} columns={2}/>;
+        return <PageLoading elementsCount={2} columns={2} />;
     }
 
     const onBackButtonClick = () => {

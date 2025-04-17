@@ -908,7 +908,7 @@ html, body {
   display: flex;
   align-items: center;
   padding: 5px 15px 5px 5px;
-  background-color: #FCCD2F;
+  background-color: rgba(252, 205, 47, 0.8509803922);
   border: none;
   border-radius: 20px;
   font-weight: bold;
@@ -917,9 +917,10 @@ html, body {
   cursor: pointer;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.2980392157), 0 0 10px rgba(0, 0, 0, 0.0980392157);
 }
-
+.video-btn:hover {
+  background-color: rgba(193, 157, 36, 0.8470588235);
+}
 .video-btn .icon {
-  background: #f7b733;
   border-radius: 50%;
   width: 36px;
   height: 36px;
@@ -930,7 +931,6 @@ html, body {
   margin-right: 10px;
   box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2980392157);
 }
-
 .video-btn .label {
   margin-right: 5px;
   letter-spacing: 1px;
