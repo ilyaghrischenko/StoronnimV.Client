@@ -1,7 +1,7 @@
 ﻿import { FC } from "react";
 import { INewsShortItem } from "../../../models/news/INewsShortItem";
 import { Image, ListGroupItem } from "react-bootstrap";
-import default_photo from "../../../assets/default-news-photo.png";
+import default_photo from "../../../assets/default-news-photo.jpg";
 
 interface INewsListItemProps {
     newsItem: INewsShortItem;

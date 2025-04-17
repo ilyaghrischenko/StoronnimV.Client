@@ -53,8 +53,20 @@ const VideoList: FC = () => {
         return <PageLoading elementsCount={2} columns={2}/>;
     }
 
+    const onBackButtonClick = () => {
+        navigate('/video/sections');
+    };
+
     return (
-        <div className="video-list-container">
+        <div
+            className="video-list-container"
+            onClick={onBackButtonClick}
+        >
+            <button className="video-btn">
+                <span className="icon">&#x276E;</span>
+                <span className="label">VIDEO</span>
+            </button>
+
             <List
                 className="video-list"
                 items={videoList}

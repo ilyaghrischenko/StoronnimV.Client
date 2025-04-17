@@ -15,7 +15,10 @@
 }
 
 .big-shadow {
-  text-shadow: 6px 6px 10px #0000004C, 0px 0px 20px #00000019;
+  text-shadow:
+          0 0 6px #0000004C,
+          0 0 10px #0000004C,
+          0 0 20px #00000019;
 }
 
 .small-shadow {
