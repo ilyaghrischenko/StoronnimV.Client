@@ -25,6 +25,10 @@
   text-shadow: 3px 3px 8px #00000033;
 }
 
+.home-container-border {
+  border: 2px solid $button-color;
+}
+
 .basic-button, .confirm-button {
   background-color: $button-color;
 

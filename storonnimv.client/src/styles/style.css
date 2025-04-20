@@ -69,6 +69,10 @@ html, body {
   text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
 }
 
+.home-container-border {
+  border: 2px solid rgba(252, 205, 47, 0.8509803922);
+}
+
 .basic-button, .confirm-button {
   background-color: rgba(252, 205, 47, 0.8509803922);
 }

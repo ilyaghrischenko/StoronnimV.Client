@@ -64,7 +64,7 @@ const VideoList: FC = () => {
         >
             <button className="video-btn">
                 <span className="icon">&#x276E;</span>
-                <span className="label small-shadow">VIDEO</span>
+                <span className="label small-shadow">НАЗАД</span>
             </button>
 
             <List

@@ -23,8 +23,8 @@ const Home: FC = () => {
         <HomeContextProvider>
             <Container className='home-page page'>
                 <ScheduleHomeContainer className='schedule-grid'/>
-                <NewsSlider className='news-grid'/>
-                <PromotionVideoHome className='video-grid'/>
+                <NewsSlider className='news-grid home-container-border'/>
+                <PromotionVideoHome className='video-grid home-container-border'/>
             </Container>
         </HomeContextProvider>
     );
