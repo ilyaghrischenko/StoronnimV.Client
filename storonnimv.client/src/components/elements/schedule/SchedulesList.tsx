@@ -31,7 +31,7 @@ const SchedulesList: FC = () => {
     }
 
     return (
-        <Container>
+        <Container className='schedules-list-container'>
             {isAdmin && (
                 <Button
                     className="add-button"

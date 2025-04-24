@@ -65,7 +65,7 @@ const ScheduleContextProvider: React.FC<ScheduleContextProviderProps> = ({childr
     };
 
     const fetchSchedules =
-        async (pageNumber: number = currentPage, pageSize: number = 9): Promise<void> => {
+        async (pageNumber: number = currentPage, pageSize: number = 3): Promise<void> => {
             try {
                 setPageLoading(true);
                 const response = await sendRequest(
