@@ -14,6 +14,10 @@
   color: $secondary-text-color;
 }
 
+.text-with-border {
+  -webkit-text-stroke: 0.2px black;
+}
+
 .big-shadow {
   text-shadow:
           0 0 6px #0000004C,

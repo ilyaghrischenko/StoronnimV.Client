@@ -15,7 +15,7 @@ const NewsListItem: FC<INewsListItemProps> = ({ newsItem }) => {
                        src={newsItem.photo === null
                            ? default_photo : newsItem.photo} fluid />
                 <div className='news-list-item__overlay'>
-                    <p className='news-list-item__date big-shadow'>{newsItem.date}</p>
+                    <p className='news-list-item__date big-shadow text-with-border'>{newsItem.date}</p>
                     <p className='news-list-item__title'>{newsItem.title}</p>
                 </div>
             </div>

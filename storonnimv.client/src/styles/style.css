@@ -61,6 +61,10 @@ html, body {
   color: white;
 }
 
+.text-with-border {
+  -webkit-text-stroke: 0.2px black;
+}
+
 .big-shadow {
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.2980392157), 0 0 10px rgba(0, 0, 0, 0.2980392157), 0 0 20px rgba(0, 0, 0, 0.0980392157);
 }
