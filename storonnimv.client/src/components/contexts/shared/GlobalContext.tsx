@@ -85,6 +85,9 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
 
             return await axios(config);
         } catch (error: any) {
+            if (error.response.status === 429) {
+                alert('To many requests');
+            }
             if (error.response) {
                 // Если сервер вернул статус ошибки, но ответ доступен
                 return error.response;

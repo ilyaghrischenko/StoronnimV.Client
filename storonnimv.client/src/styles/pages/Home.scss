@@ -6,7 +6,7 @@
   height: 100%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
   background-color: transparent;
@@ -36,7 +36,7 @@
   grid-area: 3 / 4 / 7 / 6;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 16px;
+  //padding: 16px;
 }
 
 /* Адаптивность: планшеты */
