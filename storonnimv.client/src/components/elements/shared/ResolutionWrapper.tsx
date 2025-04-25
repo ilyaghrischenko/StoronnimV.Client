@@ -7,7 +7,6 @@ interface IResolutionWrapperProps {
 }
 
 const ResolutionWrapper: FC<IResolutionWrapperProps> = ({ children }) => {
-    //TODO: max-height сделать ещё
     const isMobile = useMediaQuery("(max-width: 980px)");
 
     if (isMobile) return <MobileInDeveloping />;
