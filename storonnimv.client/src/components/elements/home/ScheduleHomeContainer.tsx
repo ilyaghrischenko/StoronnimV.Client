@@ -20,13 +20,6 @@ const ScheduleHomeContainer: FC<ScheduleHomeContainerProps> = ({className}) => {
             className={`schedule-home-container ${className}`}
             onClick={() => onClickHomeElementHandler('schedule')}>
                 <Image className='schedule-home-container__image' src={homeSchedule.photo}/>
-                {/*TODO: решить с этим*/}
-                {/*<p className='schedule-home-container__title'>{homeSchedule.title}</p>*/}
-
-                {/*<Container className='date-and-location-container'>*/}
-                {/*    <p className='date-and-location-container__location'>{homeSchedule.location}</p>*/}
-                {/*    <p className='date-and-location-container__date-time'>{homeSchedule.performanceDateTime}</p>*/}
-                {/*</Container>*/}
         </Container>
     );
 };
