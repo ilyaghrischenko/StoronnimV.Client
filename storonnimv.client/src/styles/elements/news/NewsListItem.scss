@@ -14,17 +14,10 @@
 
   .news-list-item__photo {
     width: 100%;
-    height: 200px;
+    height: clamp(200px, 30vh, 300px);
     object-fit: cover;
     border-radius: 10px;
     transition: transform 0.3s ease, opacity 0.3s ease;
-
-    @media (min-height: 700px) {
-      height: 250px;
-    }
-    @media (min-height: 1000px) {
-      height: 300px;
-    }
   }
 
 

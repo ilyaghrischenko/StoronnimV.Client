@@ -3,7 +3,7 @@ import {ListGroup} from "react-bootstrap";
 import {MusicPlatformItem} from "./MusicPlatformItem";
 import {MusicContext} from "../../contexts/MusicContext";
 import {GlobalContext} from "../../contexts/shared/GlobalContext.tsx";
-import {ModalLoading} from "../shared/ModalLoading.tsx";
+import PreloaderTile from "../shared/PreloaderTile.tsx";
 
 const MusicPlatforms: FC = () => {
     const musicContext = useContext(MusicContext)!;
@@ -16,17 +16,22 @@ const MusicPlatforms: FC = () => {
         fetchMusicPlatforms();
     }, []);
 
-    if (pageLoading) {
-        return (
-            <ModalLoading/>
-        );
-    }
-
     return (
-        <ListGroup className='music-platforms-container'>
-            {musicPlatforms.map((item) =>
-                <MusicPlatformItem item={item} key={item.id}/>)}
-        </ListGroup>
+        <>
+            {!pageLoading ?
+                <ListGroup className='music-platforms-container'>
+                    {musicPlatforms.map((item) =>
+                        <MusicPlatformItem item={item} key={item.id}/>)}
+                </ListGroup>
+                :
+                <ListGroup className='music-platforms-container'>
+                    {Array(3).fill(null).map(() =>
+                        <PreloaderTile className='preloader-tile__container-music-page position-relative'/>
+                    )
+                    }
+                </ListGroup>
+            }
+        </>
     );
 };
 

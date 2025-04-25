@@ -1,7 +1,5 @@
 .video-list-item {
-  flex: 1 1 300px; // базовая ширина — 300px, но может сжиматься и расширяться
-  max-width: 100%;
-  box-sizing: border-box;
+  flex: 1 1 300px; /* базовая ширина — 300px, но может сжиматься и расширяться */
   position: relative;
   background-color: #1c1c1c;
   border-radius: 1rem;
@@ -12,38 +10,33 @@
   transition: transform 0.2s ease;
   overflow: hidden;
   justify-content: center;
+  box-sizing: border-box; /* Учитывает паддинги и границы при расчете ширины и высоты */
 
-  &:hover {
-    transform: scale(1.01);
-  }
+  /* Возможность указать конкретные параметры ширины и высоты */
+  width: var(--video-item-width, clamp(200px, 50vw, 100%)); /* По умолчанию 100%, но можно переопределить */
+  height: var(--video-item-height, clamp(300px, 50vh, 600px)); /* По умолчанию auto, можно переопределить */
+}
 
-  &__title {
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    white-space: nowrap;       /* Запрещает перенос строки */
-    overflow: hidden;          /* Прячет часть текста, выходящую за пределы */
-    text-overflow: ellipsis;   /* Добавляет троеточие, если текст не помещается */
-    display: inline-block;     /* Разрешает контролировать ширину */
-    max-width: 100%;           /* Ограничивает ширину блока, чтобы он не растягивался */
-    width: 100%;               /* Блок будет занимать всю доступную ширину */
-    box-sizing: border-box;    /* Учитывает паддинги и границы при расчете ширины */
-  }
+.video-list-item__title {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  white-space: nowrap; /* Запрещает перенос строки */
+  overflow: hidden; /* Прячет часть текста, выходящую за пределы */
+  text-overflow: ellipsis; /* Добавляет троеточие, если текст не помещается */
+  width: 100%; /* Блок будет занимать всю доступную ширину */
+}
 
+.video-list-item__video {
+  width: auto;
+  height: clamp(200px, 38vh, 500px);
+  border-radius: 0.75rem;
+  object-fit: contain;
+  background: black;
+}
 
-
-  &__video {
-    width: 100%;
-    height: auto;
-    max-height: 300px;
-    border-radius: 0.75rem;
-    object-fit: cover;
-    background: black;
-  }
-
-  .btn-warning {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-  }
+.video-list-item .btn-warning {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
 }
