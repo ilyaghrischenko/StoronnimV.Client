@@ -60,9 +60,11 @@ const VideoList: FC = () => {
     return (
         <div
             className="video-list-container"
-            onClick={onBackButtonClick}
         >
-            <button className="video-btn">
+            <button
+                className="video-btn"
+                onClick={onBackButtonClick}
+            >
                 <span className="icon">&#x276E;</span>
                 <span className="label small-shadow">НАЗАД</span>
             </button>
