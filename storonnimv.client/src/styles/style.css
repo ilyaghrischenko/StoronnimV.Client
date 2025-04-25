@@ -1168,6 +1168,9 @@ th, td {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень */
   padding: 16px;
 }
+.news-grid:hover {
+  cursor: pointer;
+}
 
 /* Сетка: видео */
 .video-grid {
@@ -1176,12 +1179,18 @@ th, td {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 16px;
 }
+.video-grid:hover {
+  cursor: pointer;
+}
 
 /* Сетка: новости */
 .schedule-grid {
   grid-area: 3/4/7/6;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.schedule-grid:hover {
+  cursor: pointer;
 }
 
 /* Адаптивность: планшеты */

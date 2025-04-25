@@ -21,6 +21,10 @@
   border-radius: 8px; /* Скругленные углы */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень */
   padding: 16px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 /* Сетка: видео */
@@ -29,6 +33,10 @@
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 16px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 /* Сетка: новости */
@@ -36,7 +44,10 @@
   grid-area: 3 / 4 / 7 / 6;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  //padding: 16px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 /* Адаптивность: планшеты */
