@@ -17,6 +17,7 @@ const PromotionVideoHome: FC<PromotionVideoHomeProps> = ({className}) => {
 
     return (
         <Container className={`promotion-video-home-container ${className}`}>
+            //TODO: решить проблему с автозапуском
             <video
                 className='promotion-video-home-container__video'
                 controls

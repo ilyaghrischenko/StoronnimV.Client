@@ -2,15 +2,27 @@
   max-width: 100%;
   padding: 20px;
 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+
   &__photo {
     max-width: 50%;
     height: auto;
     border-radius: 8px;
-    margin: 0 auto;
+    margin: 0;
     display: block;
   }
 
   &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
     text-align: center;
     color: white;
 
