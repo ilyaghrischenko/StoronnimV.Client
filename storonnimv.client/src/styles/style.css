@@ -252,15 +252,14 @@ html, body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: clamp(200px, 30vh, 310px);
 }
 
 .news-home-list-item {
   position: relative;
   display: flex;
   flex-direction: column;
-  max-width: 100%;
-  height: auto;
+  width: 100%;
   overflow: hidden;
   border-radius: 10px;
   transition: background-color 0.3s ease;
@@ -271,9 +270,7 @@ html, body {
 }
 .news-home-list-item .news-home-list-item__photo {
   width: 100%;
-  min-height: 80%;
-  height: 100%;
-  max-height: 185px;
+  height: clamp(200px, 30vh, 310px);
   object-fit: cover;
   border-radius: 10px;
   transition: transform 0.3s ease, opacity 0.3s ease;
@@ -392,8 +389,9 @@ html, body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100px;
-  width: 250px;
+  border-radius: 10px;
+  height: clamp(100px, 30vh, 150px);
+  width: clamp(150px, 30vw, 300px);
 }
 
 .music-platforms-container {
@@ -452,20 +450,10 @@ html, body {
 }
 .news-list-item .news-list-item__photo {
   width: 100%;
-  height: 200px;
+  height: clamp(200px, 30vh, 300px);
   object-fit: cover;
   border-radius: 10px;
   transition: transform 0.3s ease, opacity 0.3s ease;
-}
-@media (min-height: 700px) {
-  .news-list-item .news-list-item__photo {
-    height: 250px;
-  }
-}
-@media (min-height: 1000px) {
-  .news-list-item .news-list-item__photo {
-    height: 300px;
-  }
 }
 .news-list-item .news-list-item__overlay {
   position: absolute;
@@ -884,6 +872,48 @@ html, body {
   height: 20px;
 }
 
+.preloader-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+.preloader-tile__container-news-page {
+  position: relative;
+  width: 100%;
+  height: clamp(200px, 30vh, 300px);
+}
+.preloader-tile__container-music-page {
+  height: clamp(100px, 30vh, 150px);
+  width: clamp(150px, 30vw, 300px);
+}
+.preloader-tile__container-group-page {
+  height: 100vh;
+  width: 100vw;
+}
+.preloader-tile__container-video-page {
+  width: clamp(200px, 50vw, 100%); /* По умолчанию 100%, но можно переопределить */
+  height: clamp(300px, 50vh, 600px); /* По умолчанию auto, можно переопределить */
+}
+.preloader-tile__animation {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(139, 42, 42, 0.497) 0%, rgba(133, 42, 42, 0.497) 20%, rgba(194, 26, 26, 0.497) 50%, rgba(133, 42, 42, 0.497) 83.5%, rgba(139, 42, 42, 0.497) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite ease-in-out;
+}
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
 .video-list-container {
   width: 100%;
   height: 100%;
@@ -937,18 +967,8 @@ html, body {
   box-sizing: border-box; /* Чтобы учитывать паддинги и отступы */
 }
 
-.video-list__item {
-  width: 100%; /* Карточка будет занимать 100% ширины своей ячейки */
-  box-sizing: border-box; /* Чтобы паддинги не выходили за пределы карточки */
-  overflow: hidden; /* Прячем все, что выходит за пределы карточки */
-  display: flex;
-  justify-content: center;
-}
-
 .video-list-item {
-  flex: 1 1 300px;
-  max-width: 100%;
-  box-sizing: border-box;
+  flex: 1 1 300px; /* базовая ширина — 300px, но может сжиматься и расширяться */
   position: relative;
   background-color: #1c1c1c;
   border-radius: 1rem;
@@ -959,10 +979,12 @@ html, body {
   transition: transform 0.2s ease;
   overflow: hidden;
   justify-content: center;
+  box-sizing: border-box; /* Учитывает паддинги и границы при расчете ширины и высоты */
+  /* Возможность указать конкретные параметры ширины и высоты */
+  width: var(--video-item-width, clamp(200px, 50vw, 100%)); /* По умолчанию 100%, но можно переопределить */
+  height: var(--video-item-height, clamp(300px, 50vh, 600px)); /* По умолчанию auto, можно переопределить */
 }
-.video-list-item:hover {
-  transform: scale(1.01);
-}
+
 .video-list-item__title {
   text-align: center;
   font-weight: bold;
@@ -970,19 +992,17 @@ html, body {
   white-space: nowrap; /* Запрещает перенос строки */
   overflow: hidden; /* Прячет часть текста, выходящую за пределы */
   text-overflow: ellipsis; /* Добавляет троеточие, если текст не помещается */
-  display: inline-block; /* Разрешает контролировать ширину */
-  max-width: 100%; /* Ограничивает ширину блока, чтобы он не растягивался */
   width: 100%; /* Блок будет занимать всю доступную ширину */
-  box-sizing: border-box; /* Учитывает паддинги и границы при расчете ширины */
 }
+
 .video-list-item__video {
-  width: 100%;
-  height: auto;
-  max-height: 300px;
+  width: auto;
+  height: clamp(200px, 38vh, 500px);
   border-radius: 0.75rem;
-  object-fit: cover;
+  object-fit: contain;
   background: black;
 }
+
 .video-list-item .btn-warning {
   position: absolute;
   top: 0.5rem;
@@ -990,10 +1010,8 @@ html, body {
 }
 
 .video-sections__container {
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  max-height: 100%;
+  width: 100vw;
+  height: 100vh;
   padding: 2rem;
   box-sizing: border-box;
   display: flex;
@@ -1013,8 +1031,8 @@ html, body {
 }
 .video-sections__button {
   flex: 1 1 200px;
-  max-width: 300px;
-  aspect-ratio: 1/1.1;
+  width: clamp(400px, 30vw, 500px);
+  height: clamp(300px, 50vh, 500px);
   background-color: transparent;
   border: none;
   padding: 0;
@@ -1029,11 +1047,11 @@ html, body {
 }
 .video-sections__image {
   width: 100%;
-  height: auto;
+  height: clamp(200px, 40vh, 400px);
   max-height: 70%;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 .video-sections__placeholder {
   width: 100%;

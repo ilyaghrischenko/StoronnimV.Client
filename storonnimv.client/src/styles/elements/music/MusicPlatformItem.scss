@@ -2,7 +2,8 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  border-radius: 10px;
 
-  height: 100px;
-  width: 250px;
+  height: clamp(100px, 30vh, 150px);
+  width: clamp(150px, 30vw, 300px);
 }

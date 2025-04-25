@@ -11,10 +11,10 @@ const NewsHomeListItem: FC<INewsHomeListItemProps> = ({item}) => {
     return (
         <Container className='news-home-list-item'>
             <div className="news-home-list-item__content">
-                <div className='news-home-list-item__darken'/>
                 <Image className='news-home-list-item__photo'
                    src={item.photo === null ?
                        default_photo : item.photo}/>
+                <div className='news-home-list-item__darken'/>
                 <div className='news-home-list-item__overlay'>
                     <p className='news-home-list-item__title'>{item.title}</p>
                 </div>

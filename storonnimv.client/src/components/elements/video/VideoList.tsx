@@ -1,6 +1,5 @@
 ﻿import {FC, useContext, useEffect} from "react";
 import {GlobalContext} from "../../contexts/shared/GlobalContext";
-import {PageLoading} from "../shared/PageLoading";
 import {List} from "../shared/GenericList/List";
 import {ListItem} from "../shared/GenericList/ListItem";
 import {VideoContext} from "../../contexts/VideoContext";
@@ -8,6 +7,7 @@ import {useNavigate, useSearchParams} from "react-router-dom";
 import {IVideoModel} from "../../../models/video/IVideoModel";
 import {VideoListItem} from "./VideoListItem";
 import {PaginationSection} from "../shared/PaginationSection.tsx";
+import PreloaderTile from "../shared/PreloaderTile.tsx";
 
 const VideoList: FC = () => {
 
@@ -49,10 +49,6 @@ const VideoList: FC = () => {
         paginate(videoType, page, 2);
     }, []);
 
-    if (pageLoading) {
-        return <PageLoading elementsCount={2} columns={2} />;
-    }
-
     const onBackButtonClick = () => {
         navigate('/video/sections');
     };
@@ -69,12 +65,12 @@ const VideoList: FC = () => {
                 <span className="label small-shadow">НАЗАД</span>
             </button>
 
+            {!pageLoading ?
             <List
                 className="video-list"
                 items={videoList}
                 renderItem={(item: IVideoModel) => (
                     <ListItem
-                        className="video-list__item"
                         item={item}
                         renderItem={(item: IVideoModel) => (
                             <VideoListItem videoItem={item}/>
@@ -82,6 +78,18 @@ const VideoList: FC = () => {
                     />
                 )}
             />
+                :
+                <List
+                    className="video-list"
+                    items={Array(2).fill(null)}
+                    renderItem={(item: typeof PreloaderTile) => (
+                        <ListItem
+                            item={item}
+                            renderItem={() => <PreloaderTile className='preloader-tile__container-video-page'/>}
+                        />
+                    )}
+                />
+            }
 
             <PaginationSection
                 currentPage={currentPage}
