@@ -532,11 +532,20 @@ html, body {
   max-width: 100%;
   padding: 20px;
 }
+.news-modal__title {
+  text-align: center;
+  margin-bottom: 50px;
+}
 .news-modal__photo {
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
+  float: left;
+  border-radius: 10px;
+  width: clamp(300px, 50%, 800px);
+  height: auto;
   display: block;
+}
+.news-modal__description {
+  font-size: 1.5rem;
+  color: white;
 }
 .news-modal__video {
   width: 100%;
@@ -545,18 +554,11 @@ html, body {
   display: block;
 }
 .news-modal__info {
-  text-align: center;
-}
-.news-modal__info-title {
-  font-size: 2rem;
-  margin: 10px 0;
-  color: white;
-}
-.news-modal__info-description {
-  font-size: 1.2rem;
-  margin: 20px 0;
-  white-space: pre-wrap;
-  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 .news-modal__details {
   text-align: center;

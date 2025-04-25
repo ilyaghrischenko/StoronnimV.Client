@@ -2,11 +2,22 @@
   max-width: 100%;
   padding: 20px;
 
+  &__title {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
   &__photo {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
+    float: left;
+    border-radius: 10px;
+    width: clamp(300px, 50%, 800px);
+    height: auto;
     display: block;
+  }
+
+  &__description {
+    font-size: 1.5rem;
+    color: white;
   }
 
   &__video {
@@ -17,20 +28,11 @@
   }
 
   &__info {
-    text-align: center;
-
-    &-title {
-      font-size: 2rem;
-      margin: 10px 0;
-      color: white;
-    }
-
-    &-description {
-      font-size: 1.2rem;
-      margin: 20px 0;
-      white-space: pre-wrap;
-      color: white;
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
   }
 
   &__details {
