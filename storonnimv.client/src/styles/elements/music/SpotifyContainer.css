@@ -1,7 +1,6 @@
 .spotify-container {
   width: clamp(300px, 30vw, 600px);
-  height: 900vh;
-  margin: 0 auto;
+  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,9 +8,7 @@
 .spotify-container__frame {
   width: 100%;
   height: 100%;
-  border: none;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 /*# sourceMappingURL=SpotifyContainer.css.map */
