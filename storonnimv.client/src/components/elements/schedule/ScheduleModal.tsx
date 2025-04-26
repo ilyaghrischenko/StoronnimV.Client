@@ -28,21 +28,27 @@ const ScheduleModal: FC<ScheduleModalProps> = ({ scheduleId }) => {
 
     return (
         <Container className="schedule-modal">
-            <Image className="schedule-modal__photo" src={scheduleFullInfo.photo} />
+            <div className='schedule-modal__container'>
+                <Image className="schedule-modal__photo" src={scheduleFullInfo.photo} />
 
-            <div className="schedule-modal__info">
-                <h1 className="schedule-modal__info-title">{scheduleFullInfo.title}</h1>
-                <h2 className="schedule-modal__info-datetime">{scheduleFullInfo.performanceDateTime}</h2>
-                <LocationMap address={scheduleFullInfo.location} />
-                <p className="schedule-modal__info-description">{scheduleFullInfo.description}</p>
+                <div className="schedule-modal__info">
+                    <h1 className="schedule-modal__info-title main-text">{scheduleFullInfo.title}</h1>
+                    <h2 className="schedule-modal__info-datetime">{scheduleFullInfo.performanceDateTime}</h2>
+                    <LocationMap address={scheduleFullInfo.location} />
 
-                {isAdmin && <ScheduleEditButton
-                    item={scheduleFullInfo}
-                />}
 
-                {isAdmin && <ScheduleDeleteButton
-                    item={scheduleFullInfo}
-                />}
+                    {isAdmin && <ScheduleEditButton
+                        item={scheduleFullInfo}
+                    />}
+
+                    {isAdmin && <ScheduleDeleteButton
+                        item={scheduleFullInfo}
+                    />}
+                </div>
+            </div>
+
+            <div className='schedule-modal__description-container'>
+                <p className="schedule-modal__description-container-description secondary-text">{scheduleFullInfo.description}</p>
             </div>
         </Container>
     );

@@ -596,16 +596,33 @@ html, body {
 }
 
 .schedule-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.schedule-modal__container {
   max-width: 100%;
   padding: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 10%;
+  gap: 15%;
+}
+.schedule-modal__description-container {
+  width: 80%;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+.schedule-modal__description-container-description {
+  width: 100%;
+  font-size: 1.5rem;
+  line-height: 1.5;
 }
 .schedule-modal__photo {
-  max-width: 50%;
+  width: clamp(250px, 35%, 1000px);
   height: auto;
   border-radius: 8px;
   margin: 0;
@@ -628,15 +645,6 @@ html, body {
 .schedule-modal__info-datetime {
   font-size: 1.5rem;
   color: #666;
-  margin-bottom: 10px;
-}
-.schedule-modal__info-description {
-  font-size: 1.2rem;
-  margin-bottom: 15px;
-}
-.schedule-modal__info-location {
-  font-size: 1.5rem;
-  font-weight: 600;
   margin-bottom: 10px;
 }
 
