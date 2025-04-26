@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   gap: 70px;
+  padding: 2rem;
 }
 
 .schedules-list {
@@ -15,9 +16,7 @@
 
   &__item {
     flex: 1 1 30%; // ✅ Автоматическая ширина с минимальной базой
-    width: 30%;
-    max-width: 450px; // ✅ Чтоб не превышала треть
-    min-width: 280px; // ✅ Чтобы не ломалось на маленьком экране
+    width: clamp(280px, 30%, 450px);
     display: flex;
     justify-content: center;
   }
