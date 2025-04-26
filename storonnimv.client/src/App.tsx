@@ -5,7 +5,6 @@ import {ModalWindow} from "./components/elements/shared/ModalWindow";
 import {GlobalContext} from "./components/contexts/shared/GlobalContext.tsx";
 import {FrameLayout} from "./components/elements/shared/FrameLayout.tsx";
 import {Header} from "./components/elements/shared/Header.tsx";
-import {ResolutionWrapper} from "./components/elements/shared/ResolutionWrapper.tsx";
 
 function App(): JSX.Element {
     const globalContext = useContext(GlobalContext);

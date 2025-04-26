@@ -1,11 +1,30 @@
-﻿import {FC} from "react";
-import {Container, Nav, Navbar} from "react-bootstrap";
+﻿import {FC, useContext} from "react";
+import {Button, Container, Nav, Navbar} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
 
 // @ts-ignore
 import Logo from '../../../assets/logo.svg?react';
+import {GlobalContext} from "../../contexts/shared/GlobalContext.tsx";
 
 const Header: FC = () => {
+    const { sendRequest, isAdmin, setIsAdmin } = useContext(GlobalContext)!;
+
+    const logout = async () => {
+        try {
+            const response = await sendRequest(
+                'https://localhost:44315/api/admin/logout',
+                'POST'
+            );
+
+            if (response.status === 200) {
+                setIsAdmin(false);
+                sessionStorage.removeItem('role');
+            }
+        } catch (error) {
+            console.error("Error while logging out: ", error);
+        }
+    };
+
     return (
         <Container
             className="header-container"
@@ -36,6 +55,10 @@ const Header: FC = () => {
                     <Nav.Link as={NavLink} to="/developers" className="navbar-container__dev main-text">
                         Розробники
                     </Nav.Link>
+
+                    {isAdmin && <Button onClick={logout} className="navbar-container__link-item main-text">
+                        Вийти
+                    </Button>}
                 </Container>
             </Navbar>
         </Container>
