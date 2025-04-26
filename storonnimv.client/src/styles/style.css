@@ -338,6 +338,9 @@ html, body {
   opacity: 1;
 }
 
+.promotion-video-home-container {
+  background-color: transparent;
+}
 .promotion-video-home-container__video {
   width: 100%;
   height: auto;

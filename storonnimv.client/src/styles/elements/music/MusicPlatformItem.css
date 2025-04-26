@@ -1,8 +1,10 @@
 .music-platform-item {
   background-size: cover;
   background-position: center;
-  height: 90px;
-  width: 170px;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  height: clamp(100px, 30vh, 150px);
+  width: clamp(150px, 30vw, 300px);
 }
 
 /*# sourceMappingURL=MusicPlatformItem.css.map */

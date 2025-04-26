@@ -17,16 +17,17 @@ const PromotionVideoHome: FC<PromotionVideoHomeProps> = ({className}) => {
 
     return (
         <Container className={`promotion-video-home-container ${className}`}>
-            //TODO: решить проблему с автозапуском
-            <video
-                className='promotion-video-home-container__video'
-                controls
-                preload="auto"
-                autoPlay
-                muted
-            >
-                <source src={homePromotionVideo.url} type='video/mp4' />
-            </video>
+            {homePromotionVideo.url && (
+                <video
+                    className='promotion-video-home-container__video'
+                    controls
+                    preload="auto"
+                    autoPlay
+                    muted
+                >
+                    <source src={homePromotionVideo.url} type='video/mp4' />
+                </video>
+            )}
         </Container>
     );
 };
