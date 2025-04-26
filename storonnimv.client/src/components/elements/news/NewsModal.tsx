@@ -42,7 +42,7 @@ const NewsModal: FC<NewsModalProps> = ({newsId}) => {
                 {newsFullItem?.photo && <Image className="news-modal__photo" src={newsFullItem.photo}/>}
                 <p
                     className="news-modal__description secondary-text"
-                    style={{textAlign: `${newsFullItem?.photo ? 'justify' : 'center'}`}}
+                    style={{textAlign: `${newsFullItem?.photo ? 'left' : 'center'}`}}
                 >
                     {newsFullItem?.description}
                 </p>

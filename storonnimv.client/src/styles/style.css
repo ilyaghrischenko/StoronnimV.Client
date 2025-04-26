@@ -536,7 +536,9 @@ html, body {
 }
 .news-modal__description {
   font-size: 1.5rem;
-  color: white;
+}
+.news-modal__description::first-letter {
+  text-transform: uppercase;
 }
 .news-modal__video {
   width: 100%;
