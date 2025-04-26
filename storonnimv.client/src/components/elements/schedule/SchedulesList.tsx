@@ -1,7 +1,6 @@
 ﻿import {FC, useContext, useEffect} from "react";
 import {ScheduleListItem} from "./ScheduleListItem";
 import {ScheduleContext, ScheduleContextProvider} from "../../contexts/ScheduleContext";
-import {PageLoading} from "../shared/PageLoading";
 import {List} from "../shared/GenericList/List";
 import {IScheduleListItem} from "../../../models/schedule/IScheduleListItem";
 import {ListItem} from "../shared/GenericList/ListItem";
@@ -11,6 +10,7 @@ import {Button, Container} from "react-bootstrap";
 import {PaginationSection} from "../shared/PaginationSection.tsx";
 import {AddScheduleModalContent} from "./forms/AddScheduleModalContent.tsx";
 import {FaPlus} from "react-icons/fa";
+import PreloaderTile from "../shared/PreloaderTile.tsx";
 
 const SchedulesList: FC = () => {
     const scheduleContext = useContext(ScheduleContext)!;
@@ -26,10 +26,6 @@ const SchedulesList: FC = () => {
         paginate(page);
     }, []);
 
-    if (pageLoading) {
-        return <PageLoading elementsCount={1} columns={1}/>;
-    }
-
     return (
         <Container className='schedules-list-container'>
             {isAdmin && (
@@ -39,6 +35,8 @@ const SchedulesList: FC = () => {
                     <FaPlus/>
                 </Button>
             )}
+
+            { !pageLoading ?
             <List
                 className='schedules-list'
                 items={schedules}
@@ -60,7 +58,19 @@ const SchedulesList: FC = () => {
                     />
                 )}
             />
-
+                :
+                <List
+                    className="schedules-list"
+                    items={Array(3).fill(null)}
+                    renderItem={(item: typeof PreloaderTile) => (
+                        <ListItem
+                            className='schedules-list__item'
+                            item={item}
+                            renderItem={() => <PreloaderTile className='preloader-tile__container-schedule-page'/>}
+                        />
+                    )}
+                />
+            }
             <PaginationSection
                 currentPage={currentPage}
                 totalPages={totalPages}

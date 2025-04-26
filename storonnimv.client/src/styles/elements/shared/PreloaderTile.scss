@@ -26,10 +26,14 @@
   }
 
   &__container-video-page {
-    width: clamp(200px, 50vw, 100%); /* По умолчанию 100%, но можно переопределить */
-    height: clamp(300px, 50vh, 600px); /* По умолчанию auto, можно переопределить */
+    width: clamp(200px, 50vw, 100%);
+    height: clamp(300px, 50vh, 600px);
   }
 
+  &__container-schedule-page {
+    width: clamp(200px, 26vw, 500px);
+    height: clamp(300px, 40vh, 550px);
+  }
 
   &__animation {
     width: 100%;

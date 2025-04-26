@@ -4,8 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="gitignore">
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/schedule/ScheduleModal.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/schedule/ScheduleModal.scss" afterDir="false" />
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="added preloader for schedules page. Page window min parameters added">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/SchedulesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/SchedulesList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/schedule/ScheduleList.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/schedule/ScheduleList.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/schedule/ScheduleListItem.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/schedule/ScheduleListItem.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/shared/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/shared/App.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/shared/App.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/shared/FrameLayout.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/shared/FrameLayout.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/shared/PreloaderTile.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/shared/PreloaderTile.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/pages/shared/Page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/pages/shared/Page.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/shared/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/shared/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/shared/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/shared/App.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css.map" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +41,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="design/news-modal-photo-border" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -63,7 +77,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "refactor/preloader-for-schedules",
     "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "/Users/admin/Documents/GitHub/StoronnimV.Client",
     "list.type.of.created.stylesheet": "SCSS",
@@ -73,7 +87,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/Users/admin/Documents/GitHub/StoronnimV.Client/storonnimv.client/node_modules/typescript/lib",
+    "ts.external.directory.path": "D:\\ForProgramming\\Projects\\MyProjects\\React\\StoronnimV.Client\\storonnimv.client\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -157,6 +171,7 @@
       <workItem from="1745008664899" duration="5200000" />
       <workItem from="1745061479860" duration="583000" />
       <workItem from="1745580206732" duration="14170000" />
+      <workItem from="1745650379324" duration="8941000" />
     </task>
     <task id="LOCAL-00001" summary="change port">
       <option name="closed" value="true" />
@@ -422,47 +437,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744900619853</updated>
     </task>
-    <task id="LOCAL-00034" summary="fixed home promotion video">
+    <task id="LOCAL-00034" summary="video section background to transparent">
       <option name="closed" value="true" />
-      <created>1745652965004</created>
+      <created>1745650626030</created>
       <option name="number" value="00034" />
       <option name="presentableId" value="LOCAL-00034" />
       <option name="project" value="LOCAL" />
-      <updated>1745652965004</updated>
+      <updated>1745650626030</updated>
     </task>
-    <task id="LOCAL-00035" summary="text">
-      <option name="closed" value="true" />
-      <created>1745654628524</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1745654628524</updated>
-    </task>
-    <task id="LOCAL-00036" summary="add map">
-      <option name="closed" value="true" />
-      <created>1745656738800</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1745656738800</updated>
-    </task>
-    <task id="LOCAL-00037" summary="merge">
-      <option name="closed" value="true" />
-      <created>1745657885997</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1745657885997</updated>
-    </task>
-    <task id="LOCAL-00038" summary="gitignore">
-      <option name="closed" value="true" />
-      <created>1745658765581</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1745658765581</updated>
-    </task>
-    <option name="localTasksCounter" value="39" />
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -495,6 +478,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="add edit and delete buttons" />
+    <MESSAGE value="fix" />
+    <MESSAGE value="add error page" />
     <MESSAGE value="fixes" />
     <MESSAGE value="finish all fixes" />
     <MESSAGE value="fix video sections images" />
@@ -515,11 +501,8 @@
     <MESSAGE value="end" />
     <MESSAGE value="GlobalContext.tsx, VideoContext.tsx, VideoList.tsx, AddVideoModalContent.tsx" />
     <MESSAGE value="push" />
-    <MESSAGE value="fixed home promotion video" />
-    <MESSAGE value="text" />
-    <MESSAGE value="add map" />
-    <MESSAGE value="merge" />
-    <MESSAGE value="gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="gitignore" />
+    <MESSAGE value="video section background to transparent" />
+    <MESSAGE value="added preloader for schedules page. Page window min parameters added" />
+    <option name="LAST_COMMIT_MESSAGE" value="added preloader for schedules page. Page window min parameters added" />
   </component>
 </project>

@@ -1,31 +1,4 @@
 @charset "UTF-8";
-html, body {
-  background-color: #080705;
-}
-
-.app-container {
-  display: flex;
-  flex-direction: row;
-  min-height: 100vh;
-  background-color: transparent;
-  font-size: 14px;
-  color: #FCCD2F;
-}
-.app-container__left {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-.app-container__main {
-  flex: 1;
-}
-.app-container__right {
-  display: flex;
-  flex-direction: column;
-  width: 15%;
-  min-height: 100vh;
-}
-
 .header-with-footer-container {
   display: flex;
   flex-direction: column;
@@ -567,6 +540,7 @@ html, body {
   justify-content: center;
   align-items: center;
   gap: 70px;
+  padding: 2rem;
 }
 
 .schedules-list {
@@ -577,9 +551,7 @@ html, body {
 }
 .schedules-list__item {
   flex: 1 1 30%;
-  width: 30%;
-  max-width: 450px;
-  min-width: 280px;
+  width: clamp(280px, 30%, 450px);
   display: flex;
   justify-content: center;
 }
@@ -588,8 +560,8 @@ html, body {
   width: 100%;
 }
 .schedule-list-item__photo {
-  width: 100%;
-  height: auto;
+  width: clamp(200px, 26vw, 500px);
+  height: clamp(300px, 100%, 550px);
   object-fit: cover;
   border-radius: 8px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
@@ -825,7 +797,9 @@ html, body {
   position: relative;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  min-width: 1100px;
+  min-height: 600px;
+  overflow: auto;
   background-color: black;
 }
 .frame__svg {
@@ -918,8 +892,12 @@ html, body {
   width: 100vw;
 }
 .preloader-tile__container-video-page {
-  width: clamp(200px, 50vw, 100%); /* По умолчанию 100%, но можно переопределить */
-  height: clamp(300px, 50vh, 600px); /* По умолчанию auto, можно переопределить */
+  width: clamp(200px, 50vw, 100%);
+  height: clamp(300px, 50vh, 600px);
+}
+.preloader-tile__container-schedule-page {
+  width: clamp(200px, 26vw, 500px);
+  height: clamp(300px, 40vh, 550px);
 }
 .preloader-tile__animation {
   width: 100%;
@@ -1169,9 +1147,8 @@ th, td {
 }
 
 .page {
-  width: 100%;
+  width: clamp(80vw, 100%, 110vw);
   height: 100%;
-  max-width: 100%;
   max-height: 100%;
   display: flex;
   justify-content: center;
@@ -1369,13 +1346,42 @@ th, td {
   padding: 0;
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  overflow-x: hidden;
+html, body {
+  min-width: 1100px;
+  min-height: 600px;
+  background-color: #080705;
+  display: flex;
+  flex-direction: column;
+}
+
+html {
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(252, 205, 47, 0.8509803922) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(252, 205, 47, 0.8509803922);
+  border-radius: 3px;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: row;
+  min-width: 1100px;
+  min-height: 600px;
+  background-color: transparent;
+  font-size: 14px;
+  color: #FCCD2F;
 }
 
 .inFrame__content {

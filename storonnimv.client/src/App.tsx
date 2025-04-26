@@ -17,7 +17,7 @@ function App(): JSX.Element {
     const {isAdminRoute} = globalContext;
 
     return (
-        <ResolutionWrapper>
+        // <ResolutionWrapper>
             <div className="app-container">
                 <Router>
                     <FrameLayout nav={!isAdminRoute() && (
@@ -32,7 +32,7 @@ function App(): JSX.Element {
                     </FrameLayout>
                 </Router>
             </div>
-        </ResolutionWrapper>
+        // </ResolutionWrapper>
     );
 
 }
