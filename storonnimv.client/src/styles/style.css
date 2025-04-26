@@ -617,6 +617,7 @@ html, body {
   overflow-wrap: break-word;
 }
 .schedule-modal__description-container-description {
+  text-align: center;
   width: 100%;
   font-size: 1.5rem;
   line-height: 1.5;
