@@ -1,6 +1,6 @@
 import {FC, useContext, useEffect} from "react";
 import {GroupContext} from "../../contexts/GroupContext.tsx";
-import {Col, Container, Row, Image, Button} from "react-bootstrap";
+import {Image, Button} from "react-bootstrap";
 import {ModalLoading} from "../shared/ModalLoading.tsx";
 import {GroupMemberEditButton} from "../admin/EditsButtons/GroupMemberEditButton.tsx";
 import {GroupMemberDeleteButton} from "../admin/DeleteButtons/GroupMemberDeleteButton.tsx";
@@ -23,8 +23,6 @@ const MemberModal: FC<MemberModalProps> = ({memberId}) => {
     const {isAdmin, OnShowModal, modalLoading} = globalContext;
     const {fetchMemberInfo, memberFullInfo} = groupContext;
 
-
-
     useEffect(() => {
         fetchMemberInfo(memberId);
     }, [memberId]);
@@ -34,32 +32,28 @@ const MemberModal: FC<MemberModalProps> = ({memberId}) => {
     }
 
     return (
-        <Container className="member-modal">
-            <Row className="mb-3">
-                <Col xs={12} className="text-center">
+        <div className="member-modal">
+            <div className='member-modal__up-container'>
+                <div className='member-modal__photo-container'>
                     <Image className="member-modal__photo" src={memberFullInfo.photoUrl}/>
-                </Col>
-            </Row>
+                </div>
 
-            <Row className="mb-3">
-                <Col xs={12} className="member-modal__info">
-                    <h1 className="member-modal__info-title">{memberFullInfo.fullName}</h1>
-                    <h2 className="member-modal__info-role">{memberFullInfo.role}</h2>
-                    <p className="member-modal__info-description">{memberFullInfo.description}</p>
-                </Col>
-            </Row>
+                <div className="member-modal__info">
+                    <h1 className="member-modal__info-title main-text">{memberFullInfo.fullName}</h1>
+                    <h2 className="member-modal__info-role secondary-text">{memberFullInfo.role}</h2>
 
-            <Row className="mb-3 d-flex justify-content-between">
-                <Col xs="auto">
-                    {isAdmin && <GroupMemberEditButton item={memberFullInfo}/>}
-                </Col>
-                <Col xs="auto">
-                    {isAdmin && <GroupMemberDeleteButton item={memberFullInfo}/>}
-                </Col>
-            </Row>
+                    {isAdmin &&
+                        <div>
+                            <GroupMemberEditButton item={memberFullInfo}/>
+                            <GroupMemberDeleteButton item={memberFullInfo}/>
+                        </div>}
+                </div>
+            </div>
 
-            <Row className="mt-3">
-                <Col xs={12} className="member-modal__social-networks">
+            <div className='member-modal__down-container'>
+                <p className="member-modal__description secondary-text">{memberFullInfo.description}</p>
+
+                <div className="member-modal__social-networks">
                     {isAdmin &&
                         <Button
                             variant="primary"
@@ -70,7 +64,7 @@ const MemberModal: FC<MemberModalProps> = ({memberId}) => {
 
                     {memberFullInfo.socials.map((socialNetwork) => (
                         <div key={socialNetwork.id} className="member-modal__social-networks__item">
-                            <p className="member-modal__social-networks__item-name">
+                            <p className="member-modal__social-networks__item-name secondary-text">
                                 {socialNetwork.socialNetwork}
                             </p>
                             <a
@@ -99,9 +93,9 @@ const MemberModal: FC<MemberModalProps> = ({memberId}) => {
                                 </Button>}
                         </div>
                     ))}
-                </Col>
-            </Row>
-        </Container>
+                </div>
+            </div>
+        </div>
     );
 };
 

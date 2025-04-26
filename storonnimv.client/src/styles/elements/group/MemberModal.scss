@@ -1,53 +1,73 @@
-// Основной контейнер модального окна
 .member-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(10px, 2vh, 40px);
   max-width: 100%;
-  padding: 20px;
+
+  &__up-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20%;
+  }
+
+  &__photo-container {
+    width: clamp(120px, 20vw, 300px);
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 1vw;
+  }
 
   &__photo {
     width: 100%;
-    max-width: 200px;
-    margin: 0 auto;
-    display: block;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1vw;
   }
 
   &__info {
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(10px, 2vh, 40px);
     text-align: center;
+  }
 
-    &-title {
-      margin: 10px 0;
-      color: white;
-    }
+  &__down-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(10px, 2vh, 40px);
+  }
 
-    &-role {
-      margin: 10px 0;
-      color: white;
-    }
-
-    &-description {
-      margin: 20px 0;
-      white-space: pre-wrap;
-      color: white;
-    }
+  &__description {
+    width: 90%;
+    text-align: center;
+    white-space: pre-wrap;
   }
 
   &__social-networks {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(10px, 2vh, 40px);
 
     &__item {
-      margin: 0 15px;
+      width: clamp(120px, 20vw, 250px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
-
-      &-name {
-        margin: 5px 0;
-        font-weight: bold;
-        color: white;
-      }
 
       &-link {
         color: #007bff;
         text-decoration: none;
+        word-break: break-word;
 
         &:hover {
           text-decoration: underline;
