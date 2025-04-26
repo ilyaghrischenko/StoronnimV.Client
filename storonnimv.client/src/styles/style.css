@@ -366,22 +366,23 @@
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 10px;
-  height: clamp(100px, 20vh, 150px);
-  width: clamp(150px, 20vw, 300px);
+  height: clamp(50px, 18vh, 1000px);
+  width: clamp(50px, 23vw, 1000px);
 }
 
 .music-platforms-container {
+  width: clamp(1px, 25vw, 10000px);
+  height: clamp(1px, 80vh, 10000px);
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 2%;
 }
 
 .spotify-container {
-  width: clamp(300px, 30vw, 600px);
-  height: 70vh;
+  width: clamp(300px, 45vw, 1000px);
+  height: 75vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1251,7 +1252,7 @@ th, td {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 15%;
+  gap: 5%;
 }
 
 .error-container {
