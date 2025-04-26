@@ -29,8 +29,8 @@ const Music: FC = () => {
                         <FaPlusCircle className="me-2" />
                         Додати музичну платформу
                     </Button>}
-                    <SpotifyContainer />
                     <MusicPlatforms />
+                    <SpotifyContainer />
                 </Container>
         </MusicContextProvider>
     );

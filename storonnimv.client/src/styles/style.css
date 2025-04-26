@@ -366,13 +366,13 @@
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 10px;
-  height: clamp(100px, 30vh, 150px);
-  width: clamp(150px, 30vw, 300px);
+  height: clamp(100px, 20vh, 150px);
+  width: clamp(150px, 20vw, 300px);
 }
 
 .music-platforms-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -1251,7 +1251,7 @@ th, td {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 80px;
+  gap: 15%;
 }
 
 .error-container {
