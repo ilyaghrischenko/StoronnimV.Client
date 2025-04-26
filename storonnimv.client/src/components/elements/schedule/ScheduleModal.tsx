@@ -5,6 +5,7 @@ import { ModalLoading } from "../shared/ModalLoading.tsx";
 import { ScheduleEditButton } from "../admin/EditsButtons/SheduleEditButton.tsx";
 import { ScheduleDeleteButton } from "../admin/DeleteButtons/ScheduleDeleteButton.tsx";
 import {GlobalContext} from "../../contexts/shared/GlobalContext.tsx";
+import {LocationMap} from "./LocationMap.tsx";
 
 interface ScheduleModalProps {
     scheduleId: number;
@@ -32,7 +33,7 @@ const ScheduleModal: FC<ScheduleModalProps> = ({ scheduleId }) => {
             <div className="schedule-modal__info">
                 <h1 className="schedule-modal__info-title">{scheduleFullInfo.title}</h1>
                 <h2 className="schedule-modal__info-datetime">{scheduleFullInfo.performanceDateTime}</h2>
-                <h3 className="schedule-modal__info-location">{scheduleFullInfo.location}</h3>
+                <LocationMap address={scheduleFullInfo.location} />
                 <p className="schedule-modal__info-description">{scheduleFullInfo.description}</p>
 
                 {isAdmin && <ScheduleEditButton
