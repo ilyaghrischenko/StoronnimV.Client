@@ -379,11 +379,17 @@
   gap: 10px;
 }
 
-.soundcloud-container {
+.spotify-container {
+  width: clamp(300px, 30vw, 600px);
+  height: 70vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.spotify-container__frame {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
 }
 
 .news-list {
@@ -1242,10 +1248,10 @@ th, td {
 }
 .music-page {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 100px;
+  gap: 80px;
 }
 
 .error-container {

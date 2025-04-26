@@ -1,7 +1,7 @@
 ﻿import {FC, useContext, useEffect} from "react";
 import {MusicContextProvider} from "../contexts/MusicContext";
 import {Button, Container} from "react-bootstrap";
-import {SoundCloudContainer} from "../elements/music/SoundCloudContainer";
+import {SpotifyContainer} from "../elements/music/SpotifyContainer.tsx";
 import {MusicPlatforms} from "../elements/music/MusicPlatforms";
 import {GlobalContext} from "../contexts/shared/GlobalContext.tsx";
 import {AddMusicPlatformModalContent} from "../elements/music/forms/AddMusicPlatformModalContent.tsx";
@@ -29,7 +29,7 @@ const Music: FC = () => {
                         <FaPlusCircle className="me-2" />
                         Додати музичну платформу
                     </Button>}
-                    <SoundCloudContainer />
+                    <SpotifyContainer />
                     <MusicPlatforms />
                 </Container>
         </MusicContextProvider>

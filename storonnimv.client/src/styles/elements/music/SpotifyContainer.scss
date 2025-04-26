@@ -1,0 +1,13 @@
+.spotify-container {
+  width: clamp(300px, 30vw, 600px);
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__frame {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+  }
+}
