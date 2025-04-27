@@ -943,6 +943,23 @@
   }
 }
 
+.empty-data-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.empty-data-container__image {
+  width: 20%;
+  height: auto;
+  filter: drop-shadow(10px 10px 15px black);
+}
+.empty-data-container__text {
+  font-size: 3rem;
+}
+
 .video-list-container {
   width: 100%;
   height: 100%;

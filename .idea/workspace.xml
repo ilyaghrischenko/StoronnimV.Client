@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="add logout">
+      <change afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/shared/NoData.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/shared/NoData.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/MemberModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/MemberModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/group/MemberModal.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/group/MemberModal.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/shared/ModalWindow.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/shared/ModalWindow.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/GroupDescription.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/GroupDescription.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/music/SpotifyContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/music/SpotifyContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +70,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;design/member-modal&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/if-empty-data&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/admin/Documents/GitHub/StoronnimV.Client&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
@@ -165,6 +167,7 @@
       <workItem from="1745650379324" duration="8941000" />
       <workItem from="1745671731929" duration="786000" />
       <workItem from="1745693983048" duration="3219000" />
+      <workItem from="1745761787797" duration="4264000" />
     </task>
     <task id="LOCAL-00001" summary="change port">
       <option name="closed" value="true" />

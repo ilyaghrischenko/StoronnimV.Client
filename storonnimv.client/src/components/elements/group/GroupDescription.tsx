@@ -6,6 +6,7 @@ import {GroupContext} from "../../contexts/GroupContext";
 import {GroupInfoEditButton} from "../admin/EditsButtons/GroupInfoEditButton";
 import {GlobalContext} from "../../contexts/shared/GlobalContext.tsx";
 import PreloaderTile from "../shared/PreloaderTile.tsx";
+import {NoData} from "../shared/NoData.tsx";
 
 const GroupDescription: FC = () => {
     const groupContext = useContext(GroupContext)!;
@@ -18,6 +19,10 @@ const GroupDescription: FC = () => {
         fetchGroupInfo();
     }, []);
 
+    const groupDataExists = fullInfo.groupPage;
+    const membersDataExists = fullInfo.members;
+    const showNoData = !groupDataExists && !membersDataExists;
+
     return (
         <>
             {!
@@ -29,8 +34,19 @@ const GroupDescription: FC = () => {
                     }}
                 >
                     {isAdmin && <GroupInfoEditButton/>}
-                    <Description groupInfo={fullInfo.groupPage}/>
-                    <ShortMembers members={fullInfo.members}/>
+
+                    {/* Показываем NoData, если нет данных по группе и участникам */}
+                    {showNoData ?
+                        <NoData />
+                    : (
+                        <>
+                            {/* Если нет данных по группе, показываем NoData только для группы */}
+                            {groupDataExists ? <Description groupInfo={fullInfo.groupPage} /> : <NoData/>}
+
+                            {/* Если нет данных по участникам, показываем NoData только для участников */}
+                            {membersDataExists ? <ShortMembers members={fullInfo.members} /> : <NoData/>}
+                        </>
+                    )}
                 </Container>
                 :
                 <Container className='group-description-container'>
