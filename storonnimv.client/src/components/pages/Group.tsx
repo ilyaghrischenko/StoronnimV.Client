@@ -20,7 +20,6 @@ const Group: FC = () => {
 
     return (
         <GroupContextProvider>
-            {/*TODO: убрать прокрутку страницы и добавить анимацию на прокрутку текста описания*/}
             <Container className='page'>
                 <GroupDescription/>
             </Container>
