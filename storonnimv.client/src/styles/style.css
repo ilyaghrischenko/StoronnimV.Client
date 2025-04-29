@@ -64,20 +64,30 @@
   background-color: darkred;
 }
 
-.add-button {
+.admin-button {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
   z-index: 10;
-  background-color: #ffb800;
+  background-color: rgba(252, 205, 47, 0.8509803922);
   color: #000;
-  border: none;
+  border: 3px solid black;
   border-radius: 8px;
   padding: 0.5rem 0.75rem;
   font-size: 1rem;
 }
-.add-button:hover {
-  background-color: #ffc833;
+.admin-button__add {
+  top: 1rem;
+  right: 8rem;
+}
+.admin-button__edit {
+  top: 1rem;
+  right: 4rem;
+}
+.admin-button__delete {
+  top: 1rem;
+  right: 1rem;
+}
+.admin-button:hover {
+  background-color: rgba(193, 157, 36, 0.8470588235);
 }
 
 .description-container {
@@ -116,6 +126,7 @@
   flex-direction: column;
   align-items: center;
   padding-top: 5%;
+  position: relative;
 }
 
 .swiper {
@@ -562,33 +573,56 @@
   color: gray;
 }
 
-.schedules-list-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 70px;
-  padding: 2rem;
-}
-
 .schedules-list {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: stretch;
-  gap: 20px;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+.schedules-list__container {
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  overflow: hidden;
+}
+.schedules-list__grid {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 .schedules-list__item {
-  flex: 1 1 30%;
-  width: clamp(280px, 30%, 450px);
+  flex: 1 1 200px;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  text-align: center;
+  transition: transform 0.3s ease;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .schedule-list-item {
   width: 100%;
 }
 .schedule-list-item__photo {
-  width: clamp(200px, 26vw, 500px);
+  width: clamp(200px, 90%, 500px);
   height: clamp(300px, 100%, 550px);
   object-fit: cover;
   border-radius: 8px;
@@ -924,7 +958,7 @@
   height: clamp(300px, 50vh, 600px);
 }
 .preloader-tile__container-schedule-page {
-  width: clamp(200px, 26vw, 500px);
+  width: clamp(250px, 26vw, 500px);
   height: clamp(300px, 40vh, 550px);
 }
 .preloader-tile__animation {
@@ -966,7 +1000,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px; /* Отступы между элементами */
-  padding: 2rem; /* Отступы внутри контейнера */
+  padding: 3%; /* Отступы внутри контейнера */
   align-items: center;
   justify-content: center;
 }
@@ -1014,50 +1048,72 @@
 }
 
 .video-list-item {
-  flex: 1 1 300px; /* базовая ширина — 300px, но может сжиматься и расширяться */
+  flex: 1 1 300px;
   position: relative;
   background-color: #1c1c1c;
   border-radius: 1rem;
-  padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  transition: transform 0.2s ease;
-  overflow: hidden;
+  align-items: center;
   justify-content: center;
-  box-sizing: border-box; /* Учитывает паддинги и границы при расчете ширины и высоты */
-  /* Возможность указать конкретные параметры ширины и высоты */
-  width: var(--video-item-width, clamp(200px, 50vw, 100%)); /* По умолчанию 100%, но можно переопределить */
-  height: var(--video-item-height, clamp(300px, 50vh, 600px)); /* По умолчанию auto, можно переопределить */
+  gap: 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+  width: 100%;
+  min-height: 400px; /* Минимальная высота */
+  max-height: 700px; /* Максимальная высота, если надо */
 }
 
 .video-list-item__title {
   text-align: center;
   font-weight: bold;
+  font-size: 22px;
   margin-bottom: 0.5rem;
-  white-space: nowrap; /* Запрещает перенос строки */
-  overflow: hidden; /* Прячет часть текста, выходящую за пределы */
-  text-overflow: ellipsis; /* Добавляет троеточие, если текст не помещается */
-  width: 100%; /* Блок будет занимать всю доступную ширину */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
 }
 
 .video-list-item__video {
-  width: auto;
-  height: clamp(200px, 38vh, 500px);
+  width: 90%;
+  height: auto; /* Автоматическая высота! */
+  max-height: 300px; /* Чтобы видео не вылезало */
   border-radius: 0.75rem;
   object-fit: contain;
   background: black;
 }
 
-.video-list-item .btn-warning {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+/* Новый блок для кнопок админа */
+.video-list-item__admin-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.video-list-item__admin-buttons h3 {
+  font-size: 14px;
+  color: #aaa;
+  margin: 0;
+}
+
+/* Стили для кнопок */
+.video-list-item__admin-buttons .btn {
+  width: 100%;
+  max-width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .video-sections__container {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   padding: 2rem;
   box-sizing: border-box;
   display: flex;
@@ -1112,7 +1168,7 @@
 }
 .video-sections__title {
   margin-top: 0.5rem;
-  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-size: 26px;
   text-align: center;
   font-weight: bold;
   line-height: 1.2;
@@ -1192,7 +1248,7 @@ th, td {
 }
 
 .page {
-  width: clamp(80vw, 100%, 110vw);
+  width: 100%;
   height: 100%;
   max-height: 100%;
   display: flex;

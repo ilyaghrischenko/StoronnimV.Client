@@ -7,7 +7,7 @@ interface EditMusicPlatformProps {
     item: IMusicPlatformItem;
 }
 
-const EditMusicPlatformModalContent: FC<EditMusicPlatformProps> = ({item}) => {
+const EditMusicPlatformModal: FC<EditMusicPlatformProps> = ({item}) => {
     const {OnHideModal, sendRequest} = useContext(GlobalContext)!;
 
     const [newPlatformUrl, setNewPlatformUrl] = useState<string | null>(item.platformUrl);
@@ -151,4 +151,4 @@ const EditMusicPlatformModalContent: FC<EditMusicPlatformProps> = ({item}) => {
 
 }
 
-export {EditMusicPlatformModalContent};
+export {EditMusicPlatformModal};

@@ -1,7 +1,7 @@
 ﻿import { FC, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import { AddVideoModalContent } from "./forms/AddVideoModalContent.tsx";
+import { AddVideoModal } from "./forms/AddVideoModal.tsx";
 import { FaPlus } from "react-icons/fa";
 import { GlobalContext } from "../../contexts/shared/GlobalContext.tsx";
 
@@ -25,7 +25,10 @@ const VideoSections: FC<VideoSectionsProps> = ({ topImage, bottomLeftImage, bott
     return (
         <div className="video-sections__container">
             {isAdmin && isMainPage && (
-                <Button onClick={() => OnShowModal(<AddVideoModalContent />)} className="add-button">
+                <Button
+                    className="admin-button admin-button__add"
+                    onClick={() => OnShowModal(<AddVideoModal />)}
+                >
                     <FaPlus />
                 </Button>
             )}

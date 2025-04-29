@@ -5,16 +5,15 @@ import {IVideoModel} from "../../../../models/video/IVideoModel.tsx";
 
 interface VideoEditButtonProps {
     video: IVideoModel;
-    apiUrl: string;
-    onClose: () => void;
 }
 
-const VideoEditButton: FC<VideoEditButtonProps> = ({video, apiUrl, onClose}) => {
-    const globalContext = useContext(GlobalContext);
+const EditVideoModal: FC<VideoEditButtonProps> = ({video}) => {
+    const globalContext = useContext(GlobalContext)!;
     const [editedVideo, setEditedVideo] = useState<IVideoModel>(video);
 
-    if (!globalContext) return null;
-    const {sendRequest} = globalContext;
+    const {sendRequest, OnHideModal} = globalContext;
+
+    const route = "https://localhost:44315/api/admin/videos";
 
     useEffect(() => {
         setEditedVideo(video);
@@ -36,14 +35,14 @@ const VideoEditButton: FC<VideoEditButtonProps> = ({video, apiUrl, onClose}) => 
             formData.append("type", editedVideo.type);
 
             const response = await sendRequest(
-                `${apiUrl}`,
+                `${route}`,
                 "PATCH",
                 formData,
                 {"Content-Type": "application/json"}
             );
 
             if (response.status === 204) {
-                onClose();
+                OnHideModal();
                 alert("Збережено!");
                 window.location.reload();
             } else {
@@ -57,7 +56,9 @@ const VideoEditButton: FC<VideoEditButtonProps> = ({video, apiUrl, onClose}) => 
     return (
         <Container className="form-modal">
             <h2 className="form-modal__title">Редагувати відео</h2>
-            <Container className="form-modal__form">
+            <Form className="form-modal__form"
+                  onSubmit={handleSave}
+            >
                 <Form.Group className="form-modal__group">
                     <Form.Label className="form-modal__label">Заголовок:</Form.Label>
                     <Form.Control
@@ -82,17 +83,15 @@ const VideoEditButton: FC<VideoEditButtonProps> = ({video, apiUrl, onClose}) => 
                         <option value="Repetition">Repetition</option>
                     </Form.Select>
                 </Form.Group>
-                <Container className="d-flex justify-content-end">
-                    <Button className="form-modal__button form-modal__button--cancel" onClick={onClose}>
-                        Закрити
-                    </Button>
-                    <Button className="form-modal__button form-modal__button--confirm" onClick={handleSave}>
-                        Зберегти
-                    </Button>
-                </Container>
-            </Container>
+                <Button className="form-modal__button form-modal__button--confirm" type='submit'>
+                    Зберегти
+                </Button>
+                <Button className="form-modal__button form-modal__button--cancel" onClick={OnHideModal}>
+                    Закрити
+                </Button>
+            </Form>
         </Container>
     );
 };
 
-export {VideoEditButton};
+export {EditVideoModal};

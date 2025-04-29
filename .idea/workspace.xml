@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="news list no data" />
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="removed button modals, added modal contents for admin`s forms. Added styles for all admin forms">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/groupPageComponents/ShortMembers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/groupPageComponents/ShortMembers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/NewsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/NewsList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/NewsModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/NewsModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/ScheduleModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/ScheduleModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/SchedulesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/SchedulesList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/VideoSections.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/VideoSections.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/group/GroupMembers.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/group/GroupMembers.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/shared/shared.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/shared/shared.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css.map" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,8 +29,8 @@
         <option value="package.json" />
         <option value="TypeScript File" />
         <option value="tsconfig.json" />
-        <option value="TypeScript JSX File" />
         <option value="SCSS File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -39,7 +51,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/ilyaghrischenko/StoronnimV.Client.git&quot;,
-    &quot;accountId&quot;: &quot;765801ca-fc3b-49ed-a339-54d2eff00169&quot;
+    &quot;accountId&quot;: &quot;f8f43f91-6ace-4e90-97df-a0c4ba8c89f6&quot;
   }
 }</component>
   <component name="ProblemsViewState">
@@ -57,35 +69,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/add-promotion-video",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/Users/admin/Documents/GitHub/StoronnimV.Client",
-    "list.type.of.created.stylesheet": "SCSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/Users/admin/Documents/GitHub/StoronnimV.Client/storonnimv.client/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;refactor/admin-modals-n-buttons&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/admin/Documents/GitHub/StoronnimV.Client&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\ForProgramming\\Projects\\MyProjects\\React\\StoronnimV.Client\\storonnimv.client\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\ForProgramming\Projects\MyProjects\React\StoronnimV.Client\storonnimv.client\src\assets" />
       <recent name="D:\ForProgramming\Projects\MyProjects\React\StoronnimV.Client\storonnimv.client\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/storonnimv.client/src/assets" />
-      <recent name="D:\ForProgramming\Projects\MyProjects\React\StoronnimV.Client\storonnimv.client\src\assets" />
-      <recent name="D:\ForProgramming\Projects\MyProjects\React\StoronnimV.Client\storonnimv.client\src\styles\shared" />
-      <recent name="D:\ForProgramming\Projects\MyProjects\React\StoronnimV.Client\storonnimv.client\src\components\elements\group\forms" />
-      <recent name="D:\ForProgramming\Projects\MyProjects\React\StoronnimV.Client\storonnimv.client\src\components\elements\music\forms" />
+      <recent name="D:\ForProgramming\Projects\MyProjects\React\StoronnimV.Client\storonnimv.client\src\components\elements\video\forms" />
+      <recent name="D:\ForProgramming\Projects\MyProjects\React\StoronnimV.Client\storonnimv.client\src\components\elements\group\forms\social" />
+      <recent name="D:\ForProgramming\Projects\MyProjects\React\StoronnimV.Client\storonnimv.client\src\components\elements\group\forms\member" />
+      <recent name="D:\ForProgramming\Projects\MyProjects\React\StoronnimV.Client\storonnimv.client\src\components\elements\group\forms\group" />
+      <recent name="D:\ForProgramming\Projects\MyProjects\React\StoronnimV.Client\storonnimv.client\src\components\elements\schedule\forms" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -156,10 +168,14 @@
       <workItem from="1745061479860" duration="583000" />
       <workItem from="1745580206732" duration="14170000" />
       <workItem from="1745650379324" duration="8941000" />
-      <workItem from="1745671731929" duration="786000" />
-      <workItem from="1745693983048" duration="3219000" />
-      <workItem from="1745761787797" duration="8314000" />
-      <workItem from="1745935885460" duration="4324000" />
+      <workItem from="1745665986331" duration="4552000" />
+      <workItem from="1745679491517" duration="5232000" />
+      <workItem from="1745937880295" duration="80000" />
+      <workItem from="1745938003966" duration="499000" />
+      <workItem from="1745938532990" duration="1348000" />
+      <workItem from="1745940248729" duration="44000" />
+      <workItem from="1745940319430" duration="297000" />
+      <workItem from="1745940648753" duration="4802000" />
     </task>
     <task id="LOCAL-00001" summary="change port">
       <option name="closed" value="true" />
@@ -433,103 +449,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745650626030</updated>
     </task>
-    <task id="LOCAL-00035" summary="add spotify-container">
+    <task id="LOCAL-00035" summary="removed button modals, added modal contents for admin`s forms. Added styles for all admin forms">
       <option name="closed" value="true" />
-      <created>1745665696196</created>
+      <created>1745943845955</created>
       <option name="number" value="00035" />
       <option name="presentableId" value="LOCAL-00035" />
       <option name="project" value="LOCAL" />
-      <updated>1745665696196</updated>
+      <updated>1745943845955</updated>
     </task>
-    <task id="LOCAL-00036" summary="merge">
-      <option name="closed" value="true" />
-      <created>1745665729992</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1745665729992</updated>
-    </task>
-    <task id="LOCAL-00037" summary="change music">
-      <option name="closed" value="true" />
-      <created>1745674891305</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1745674891305</updated>
-    </task>
-    <task id="LOCAL-00038" summary="add logout">
-      <option name="closed" value="true" />
-      <created>1745676320753</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1745676320753</updated>
-    </task>
-    <task id="LOCAL-00039" summary="add component for no data and add it to group page">
-      <option name="closed" value="true" />
-      <created>1745766291309</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1745766291309</updated>
-    </task>
-    <task id="LOCAL-00040" summary="no data component">
-      <option name="closed" value="true" />
-      <created>1745936962458</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1745936962458</updated>
-    </task>
-    <task id="LOCAL-00041" summary="push">
-      <option name="closed" value="true" />
-      <created>1745937552672</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1745937552672</updated>
-    </task>
-    <task id="LOCAL-00042" summary="group description no data">
-      <option name="closed" value="true" />
-      <created>1745937775450</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1745937775450</updated>
-    </task>
-    <task id="LOCAL-00043" summary="music platforms no data">
-      <option name="closed" value="true" />
-      <created>1745938040860</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1745938040860</updated>
-    </task>
-    <task id="LOCAL-00044" summary="home schedule no data">
-      <option name="closed" value="true" />
-      <created>1745938300834</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1745938300834</updated>
-    </task>
-    <task id="LOCAL-00045" summary="home news slider no data">
-      <option name="closed" value="true" />
-      <created>1745938500170</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1745938500170</updated>
-    </task>
-    <task id="LOCAL-00046" summary="news list no data">
-      <option name="closed" value="true" />
-      <created>1745938619544</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1745938619544</updated>
-    </task>
-    <option name="localTasksCounter" value="47" />
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -562,6 +490,16 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix" />
+    <MESSAGE value="add error page" />
+    <MESSAGE value="fixes" />
+    <MESSAGE value="finish all fixes" />
+    <MESSAGE value="fix video sections images" />
+    <MESSAGE value="save before token logic change" />
+    <MESSAGE value="changed" />
+    <MESSAGE value="add useEffect to every page for fetching isAdmin" />
+    <MESSAGE value="fixed" />
+    <MESSAGE value="add query params for Error.tsx" />
     <MESSAGE value="video addition edited" />
     <MESSAGE value="commit" />
     <MESSAGE value="save" />
@@ -573,20 +511,10 @@
     <MESSAGE value="css" />
     <MESSAGE value="end" />
     <MESSAGE value="GlobalContext.tsx, VideoContext.tsx, VideoList.tsx, AddVideoModalContent.tsx" />
+    <MESSAGE value="push" />
     <MESSAGE value="video section background to transparent" />
     <MESSAGE value="added preloader for schedules page. Page window min parameters added" />
-    <MESSAGE value="add spotify-container" />
-    <MESSAGE value="merge" />
-    <MESSAGE value="change music" />
-    <MESSAGE value="add logout" />
-    <MESSAGE value="add component for no data and add it to group page" />
-    <MESSAGE value="no data component" />
-    <MESSAGE value="push" />
-    <MESSAGE value="group description no data" />
-    <MESSAGE value="music platforms no data" />
-    <MESSAGE value="home schedule no data" />
-    <MESSAGE value="home news slider no data" />
-    <MESSAGE value="news list no data" />
-    <option name="LAST_COMMIT_MESSAGE" value="news list no data" />
+    <MESSAGE value="removed button modals, added modal contents for admin`s forms. Added styles for all admin forms" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed button modals, added modal contents for admin`s forms. Added styles for all admin forms" />
   </component>
 </project>

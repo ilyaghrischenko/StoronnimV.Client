@@ -1,7 +1,7 @@
 import React, {FC, useContext, useState} from "react";
 import {Button, Form} from "react-bootstrap";
-import {IMemberFullInfo} from "../../../../models/group/IMemberInfo.ts";
-import {GlobalContext} from "../../../contexts/shared/GlobalContext.tsx";
+import {IMemberFullInfo} from "../../../../../models/group/IMemberInfo.ts";
+import {GlobalContext} from "../../../../contexts/shared/GlobalContext.tsx";
 
 interface IEditMemberModalProps {
     item: IMemberFullInfo;

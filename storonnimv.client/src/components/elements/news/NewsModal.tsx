@@ -4,9 +4,9 @@ import {GlobalContext} from "../../contexts/shared/GlobalContext.tsx";
 import {NewsContext} from "../../contexts/NewsContext.tsx";
 import {Container, Image, Button} from "react-bootstrap";
 import {ModalLoading} from "../shared/ModalLoading.tsx";
-import {NewsDeleteButton} from "../admin/DeleteButtons/NewsDeleteButton.tsx";
-import {EditNewsItemModalContent} from "./forms/EditNewsItemModalContent.tsx";
-import {FaEdit} from "react-icons/fa";
+import {EditNewsItemModal} from "./forms/EditNewsItemModal.tsx";
+import {FaEdit, FaTrash} from "react-icons/fa";
+import {DeleteNewsItemModal} from "./forms/DeleteNewsItemModal.tsx";
 
 interface NewsModalProps {
     newsId?: number;
@@ -59,15 +59,20 @@ const NewsModal: FC<NewsModalProps> = ({newsId}) => {
             </div>
 
             {newsFullItem && isAdmin && (
-                <Container className="d-flex justify-content-end gap-2">
+                <>
                     <Button
-                        className="btn btn-warning position-fixed bottom-0 right-0 m-3"
-                        onClick={() => OnShowModal(<EditNewsItemModalContent newsItem={newsFullItem}/>)}
+                        className="admin-button admin-button__edit"
+                        onClick={() => OnShowModal(<EditNewsItemModal newsItem={newsFullItem}/>)}
                     >
                         <FaEdit/>
                     </Button>
-                    <NewsDeleteButton newsId={newsFullItem.id} apiUrl="https://localhost:44315/api/admin/news"/>
-                </Container>
+                    <Button
+                        className="admin-button admin-button__delete"
+                        onClick={() => OnShowModal(<DeleteNewsItemModal newsItem={newsFullItem}/>)}
+                    >
+                        <FaTrash/>
+                    </Button>
+                </>
             )}
         </Container>
     );

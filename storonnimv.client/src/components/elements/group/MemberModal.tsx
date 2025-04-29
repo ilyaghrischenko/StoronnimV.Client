@@ -2,15 +2,15 @@ import {FC, useContext, useEffect} from "react";
 import {GroupContext} from "../../contexts/GroupContext.tsx";
 import {Image, Button} from "react-bootstrap";
 import {ModalLoading} from "../shared/ModalLoading.tsx";
-import {GroupMemberEditButton} from "../admin/EditsButtons/GroupMemberEditButton.tsx";
-import {GroupMemberDeleteButton} from "../admin/DeleteButtons/GroupMemberDeleteButton.tsx";
 import {GlobalContext} from "../../contexts/shared/GlobalContext.tsx";
-import {FaEdit} from "react-icons/fa";
+import {FaEdit, FaTrash} from "react-icons/fa";
 import {MdDeleteForever} from "react-icons/md";
-import {SocialEditModal} from "./forms/SocialEditModal.tsx";
-import {SocialDeleteModal} from "./forms/SocialDeleteModal.tsx";
+import {EditSocialModal} from "./forms/social/EditSocialModal.tsx";
+import {DeleteSocialModal} from "./forms/social/DeleteSocialModal.tsx";
 import {IoAddCircleSharp} from "react-icons/io5";
-import {SocialAddModal} from "./forms/SocialAddModal.tsx";
+import {AddSocialModal} from "./forms/social/AddSocialModal.tsx";
+import {DeleteMemberModal} from "./forms/member/DeleteMemberModal.tsx";
+import {EditMemberModal} from "./forms/member/EditMemberModal.tsx";
 
 interface MemberModalProps {
     memberId: number;
@@ -43,10 +43,23 @@ const MemberModal: FC<MemberModalProps> = ({memberId}) => {
                     <h2 className="member-modal__info-role secondary-text">{memberFullInfo.role}</h2>
 
                     {isAdmin &&
-                        <div>
-                            <GroupMemberEditButton item={memberFullInfo}/>
-                            <GroupMemberDeleteButton item={memberFullInfo}/>
-                        </div>}
+                        <>
+                            <Button onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                                e.preventDefault();
+
+                                OnShowModal(<EditMemberModal item={memberFullInfo}/>)
+                            }}>
+                                <FaEdit/>
+                            </Button>
+
+                            <Button onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                                e.preventDefault();
+
+                                OnShowModal(<DeleteMemberModal item={memberFullInfo}/>)
+                            }}>
+                                <FaTrash/>
+                            </Button>
+                        </>}
                 </div>
             </div>
 
@@ -57,7 +70,7 @@ const MemberModal: FC<MemberModalProps> = ({memberId}) => {
                     {isAdmin &&
                         <Button
                             variant="primary"
-                            onClick={() => OnShowModal(<SocialAddModal memberId={memberId}/>)}
+                            onClick={() => OnShowModal(<AddSocialModal memberId={memberId}/>)}
                         >
                             <IoAddCircleSharp/>
                         </Button>}
@@ -79,7 +92,7 @@ const MemberModal: FC<MemberModalProps> = ({memberId}) => {
                             {isAdmin &&
                                 <Button
                                     variant="primary"
-                                    onClick={() => OnShowModal(<SocialEditModal item={socialNetwork}/>)}
+                                    onClick={() => OnShowModal(<EditSocialModal item={socialNetwork}/>)}
                                 >
                                     <FaEdit/>
                                 </Button>}
@@ -87,7 +100,7 @@ const MemberModal: FC<MemberModalProps> = ({memberId}) => {
                             {isAdmin &&
                                 <Button
                                     variant="primary"
-                                    onClick={() => OnShowModal(<SocialDeleteModal itemId={socialNetwork.id}/>)}
+                                    onClick={() => OnShowModal(<DeleteSocialModal itemId={socialNetwork.id}/>)}
                                 >
                                     <MdDeleteForever/>
                                 </Button>}

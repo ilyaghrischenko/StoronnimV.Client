@@ -2,9 +2,9 @@
 import {Button, ListGroupItem} from "react-bootstrap";
 import {IMusicPlatformItem} from "../../../models/music/IMusicPlatformItem";
 import {GlobalContext} from "../../contexts/shared/GlobalContext.tsx";
-import {EditMusicPlatformModalContent} from "./forms/EditMusicPlatformModalContent.tsx";
+import {EditMusicPlatformModal} from "./forms/EditMusicPlatformModal.tsx";
 import {FaEdit, FaTrash} from "react-icons/fa";
-import {DeleteMusicPlatformModalContent} from "./forms/DeleteMusicPlatformModalContent.tsx";
+import {DeleteMusicPlatformModal} from "./forms/DeleteMusicPlatformModal.tsx";
 
 interface MusicPlatformItemProps {
     item: IMusicPlatformItem;
@@ -35,7 +35,7 @@ const MusicPlatformItem: FC<MusicPlatformItemProps> = ({item}) => {
             {isAdmin && <Button onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                 e.preventDefault();
 
-                OnShowModal(<EditMusicPlatformModalContent item={item}/>)
+                OnShowModal(<EditMusicPlatformModal item={item}/>)
             }}>
                 <FaEdit/>
             </Button>}
@@ -43,7 +43,7 @@ const MusicPlatformItem: FC<MusicPlatformItemProps> = ({item}) => {
             {isAdmin && <Button onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                 e.preventDefault();
 
-                OnShowModal(<DeleteMusicPlatformModalContent item={item}/>)
+                OnShowModal(<DeleteMusicPlatformModal item={item}/>)
             }}>
                 <FaTrash/>
             </Button>}

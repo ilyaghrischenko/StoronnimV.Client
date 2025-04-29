@@ -1,7 +1,7 @@
 import React, {FC, useContext, useState} from "react";
 import {Button, Form} from "react-bootstrap";
-import {GlobalContext} from "../../../contexts/shared/GlobalContext.tsx";
-import {IGroupPageFullInfo} from "../../../../models/group/IGroupInfo.ts";
+import {GlobalContext} from "../../../../contexts/shared/GlobalContext.tsx";
+import {IGroupPageFullInfo} from "../../../../../models/group/IGroupInfo.ts";
 
 interface IEditGroupModalProps {
     fullInfo: IGroupPageFullInfo;

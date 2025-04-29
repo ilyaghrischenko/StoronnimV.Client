@@ -2,7 +2,7 @@
   width: 100%; // ✅ чтобы тянулся на весь размер .schedules-list__item
 
   &__photo {
-    width: clamp(200px, 26vw, 500px);
+    width: clamp(200px, 90%, 500px);
     height: clamp(300px, 100%, 550px);
     object-fit: cover; // ✅ Лучше, чем fill
     border-radius: 8px;

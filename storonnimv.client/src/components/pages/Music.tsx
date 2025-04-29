@@ -4,7 +4,7 @@ import {Button, Container} from "react-bootstrap";
 import {SpotifyContainer} from "../elements/music/SpotifyContainer.tsx";
 import {MusicPlatforms} from "../elements/music/MusicPlatforms";
 import {GlobalContext} from "../contexts/shared/GlobalContext.tsx";
-import {AddMusicPlatformModalContent} from "../elements/music/forms/AddMusicPlatformModalContent.tsx";
+import {AddMusicPlatformModal} from "../elements/music/forms/AddMusicPlatformModal.tsx";
 import {FaPlusCircle} from "react-icons/fa";
 
 const Music: FC = () => {
@@ -24,7 +24,7 @@ const Music: FC = () => {
         <MusicContextProvider>
                 <Container className="music-page page">
                     {isAdmin && <Button
-                        onClick={() => OnShowModal(<AddMusicPlatformModalContent/>)}
+                        onClick={() => OnShowModal(<AddMusicPlatformModal/>)}
                     >
                         <FaPlusCircle className="me-2" />
                         Додати музичну платформу
