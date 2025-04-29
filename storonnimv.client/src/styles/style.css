@@ -957,7 +957,7 @@
   filter: drop-shadow(10px 10px 15px black);
 }
 .empty-data-container__text {
-  font-size: 3rem;
+  font-size: 2.5vw;
 }
 
 .video-list-container {

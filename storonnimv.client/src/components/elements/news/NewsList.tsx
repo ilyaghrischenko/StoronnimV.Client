@@ -12,12 +12,13 @@ import {PaginationSection} from "../shared/PaginationSection.tsx";
 import {AddNewsItemModalContent} from "./forms/AddNewsItemModalContent.tsx";
 import {FaPlus} from "react-icons/fa";
 import PreloaderTile from "../shared/PreloaderTile.tsx";
+import {NoData} from "../shared/NoData.tsx";
 
 const NewsList: FC = () => {
     const newsContext = useContext(NewsContext)!;
     const globalContext = useContext(GlobalContext)!;
 
-    const {OnShowModal, isAdmin, pageLoading} = globalContext;
+    const {OnShowModal, isAdmin, pageLoading, checkIfNoData} = globalContext;
 
     const {newsList, currentPage, totalPages, paginate} = newsContext;
 
@@ -28,6 +29,9 @@ const NewsList: FC = () => {
         paginate(page, 6);
     }, []);
 
+    if (checkIfNoData(() => !newsList || newsList.length === 0)) {
+        return <NoData />
+    }
 
     return (
         <Container className="news-list">

@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="add logout">
-      <change afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/shared/NoData.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/shared/NoData.scss" afterDir="false" />
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="home news slider no data">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/GroupDescription.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/GroupDescription.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/music/SpotifyContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/music/SpotifyContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/shared/GlobalContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/shared/GlobalContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/NewsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/NewsList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,24 +62,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/if-empty-data&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/admin/Documents/GitHub/StoronnimV.Client&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/admin/Documents/GitHub/StoronnimV.Client/storonnimv.client/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "feature/if-empty-data",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/Users/admin/Documents/GitHub/StoronnimV.Client",
+    "list.type.of.created.stylesheet": "SCSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/Users/admin/Documents/GitHub/StoronnimV.Client/storonnimv.client/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\ForProgramming\Projects\MyProjects\React\StoronnimV.Client\storonnimv.client\src\assets" />
@@ -167,7 +163,8 @@
       <workItem from="1745650379324" duration="8941000" />
       <workItem from="1745671731929" duration="786000" />
       <workItem from="1745693983048" duration="3219000" />
-      <workItem from="1745761787797" duration="4264000" />
+      <workItem from="1745761787797" duration="8314000" />
+      <workItem from="1745935885460" duration="2634000" />
     </task>
     <task id="LOCAL-00001" summary="change port">
       <option name="closed" value="true" />
@@ -473,7 +470,63 @@
       <option name="project" value="LOCAL" />
       <updated>1745676320753</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="add component for no data and add it to group page">
+      <option name="closed" value="true" />
+      <created>1745766291309</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1745766291309</updated>
+    </task>
+    <task id="LOCAL-00040" summary="no data component">
+      <option name="closed" value="true" />
+      <created>1745936962458</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1745936962458</updated>
+    </task>
+    <task id="LOCAL-00041" summary="push">
+      <option name="closed" value="true" />
+      <created>1745937552672</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1745937552672</updated>
+    </task>
+    <task id="LOCAL-00042" summary="group description no data">
+      <option name="closed" value="true" />
+      <created>1745937775450</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1745937775450</updated>
+    </task>
+    <task id="LOCAL-00043" summary="music platforms no data">
+      <option name="closed" value="true" />
+      <created>1745938040860</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1745938040860</updated>
+    </task>
+    <task id="LOCAL-00044" summary="home schedule no data">
+      <option name="closed" value="true" />
+      <created>1745938300834</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1745938300834</updated>
+    </task>
+    <task id="LOCAL-00045" summary="home news slider no data">
+      <option name="closed" value="true" />
+      <created>1745938500170</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1745938500170</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -506,12 +559,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="finish all fixes" />
-    <MESSAGE value="fix video sections images" />
-    <MESSAGE value="save before token logic change" />
-    <MESSAGE value="changed" />
-    <MESSAGE value="add useEffect to every page for fetching isAdmin" />
-    <MESSAGE value="fixed" />
     <MESSAGE value="add query params for Error.tsx" />
     <MESSAGE value="video addition edited" />
     <MESSAGE value="commit" />
@@ -524,13 +571,19 @@
     <MESSAGE value="css" />
     <MESSAGE value="end" />
     <MESSAGE value="GlobalContext.tsx, VideoContext.tsx, VideoList.tsx, AddVideoModalContent.tsx" />
-    <MESSAGE value="push" />
     <MESSAGE value="video section background to transparent" />
     <MESSAGE value="added preloader for schedules page. Page window min parameters added" />
     <MESSAGE value="add spotify-container" />
     <MESSAGE value="merge" />
     <MESSAGE value="change music" />
     <MESSAGE value="add logout" />
-    <option name="LAST_COMMIT_MESSAGE" value="add logout" />
+    <MESSAGE value="add component for no data and add it to group page" />
+    <MESSAGE value="no data component" />
+    <MESSAGE value="push" />
+    <MESSAGE value="group description no data" />
+    <MESSAGE value="music platforms no data" />
+    <MESSAGE value="home schedule no data" />
+    <MESSAGE value="home news slider no data" />
+    <option name="LAST_COMMIT_MESSAGE" value="home news slider no data" />
   </component>
 </project>

@@ -24,6 +24,7 @@ interface GlobalContextType {
     fetchIsAdmin: () => Promise<void>;
     validationErrors: Record<string, string[]>;
     setValidationErrors: (validationErrors: Record<string, string[]>) => void;
+    checkIfNoData: (callback: () => boolean) => boolean;
 }
 
 // Создаем контекст с типизацией
@@ -71,7 +72,7 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
     async function sendRequest(
         apiUrl: string,
         method: string = "GET",
-        body: any = null,
+        body: unknown = null,
         headers: Record<string, string> = {}
     ): Promise<AxiosResponse> {
         try {
@@ -84,7 +85,7 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
             };
 
             return await axios(config);
-        } catch (error: any) {
+        } catch (error: unknown) {
             if (error.response.status === 429) {
                 alert('To many requests');
             }
@@ -105,6 +106,11 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
         return window.location.pathname.startsWith("/admin");
     };
 
+    const checkIfNoData = (callback: () => boolean) => {
+        const isEmpty = callback();
+        return isEmpty && !pageLoading;
+    };
+
     // Значение контекста
     const value: GlobalContextType = {
         modalTitle,
@@ -122,7 +128,8 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
         setIsAdmin,
         fetchIsAdmin,
         validationErrors,
-        setValidationErrors
+        setValidationErrors,
+        checkIfNoData
     };
 
     return (
