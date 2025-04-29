@@ -48,6 +48,7 @@ const VideoContextProvider: React.FC<VideoContextProviderProps> = ({children}) =
                     console.warn(`No videos found for category: ${videoType}`);
                     setVideoList([]);  // Обнуляем список
                     sessionStorage.setItem("videoTotalPages", "0"); // Сбрасываем totalPages
+                    setPageLoading(false);
                     return;
                 }
 

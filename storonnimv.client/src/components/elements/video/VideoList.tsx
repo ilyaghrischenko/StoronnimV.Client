@@ -8,6 +8,7 @@ import {IVideoModel} from "../../../models/video/IVideoModel";
 import {VideoListItem} from "./VideoListItem";
 import {PaginationSection} from "../shared/PaginationSection.tsx";
 import PreloaderTile from "../shared/PreloaderTile.tsx";
+import {NoData} from "../shared/NoData.tsx";
 
 const VideoList: FC = () => {
 
@@ -39,7 +40,7 @@ const VideoList: FC = () => {
         throw new Error("VideoContext must be used within a VideoContextProvider");
     }
 
-    const {pageLoading} = globalContext;
+    const {pageLoading, checkIfNoData} = globalContext;
     const {videoList, currentPage, totalPages, paginate} = videoContext;
 
     useEffect(() => {
@@ -52,6 +53,10 @@ const VideoList: FC = () => {
     const onBackButtonClick = () => {
         navigate('/video/sections');
     };
+
+    if (checkIfNoData(() => !videoList || videoList.length === 0)) {
+        return <NoData message='Відео немає' />;
+    }
 
     return (
         <div

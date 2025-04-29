@@ -11,12 +11,13 @@ import {PaginationSection} from "../shared/PaginationSection.tsx";
 import {AddScheduleModalContent} from "./forms/AddScheduleModalContent.tsx";
 import {FaPlus} from "react-icons/fa";
 import PreloaderTile from "../shared/PreloaderTile.tsx";
+import {NoData} from "../shared/NoData.tsx";
 
 const SchedulesList: FC = () => {
     const scheduleContext = useContext(ScheduleContext)!;
     const globalContext = useContext(GlobalContext)!;
 
-    const {OnShowModal, pageLoading, isAdmin} = globalContext;
+    const {OnShowModal, pageLoading, isAdmin, checkIfNoData} = globalContext;
     const {paginate, schedules, currentPage, totalPages} = scheduleContext;
 
     useEffect(() => {
@@ -25,6 +26,10 @@ const SchedulesList: FC = () => {
 
         paginate(page);
     }, []);
+
+    if (checkIfNoData(() => !schedules || schedules.length === 0)) {
+        return <NoData message='Афіш немає' />;
+    }
 
     return (
         <Container className='schedules-list-container'>

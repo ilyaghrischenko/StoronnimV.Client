@@ -26,7 +26,7 @@ const NewsSlider: FC<NewsComponentProps> = ({className}) => {
     }, []);
 
     if (checkIfNoData(() => !homeNewsList || homeNewsList.length === 0)) {
-        return <NoData className={className} message='Даних про новини немає' />
+        return <NoData className={className} message='Важливих новин немає' />
     }
 
     return (

@@ -36,7 +36,7 @@ const GroupDescription: FC = () => {
                     {isAdmin && <GroupInfoEditButton/>}
 
                     {checkIfNoData(() => showNoData) ?
-                        <NoData message='Дані на цій сторінці відсутні' />
+                        <NoData message='Дані про групу відсутні' />
                     : (
                         <>
                             {checkIfNoData(() => groupDataExists) ? <Description groupInfo={fullInfo.groupPage} /> : <NoData message='Опис групи відсутній' />}

@@ -30,7 +30,7 @@ const NewsList: FC = () => {
     }, []);
 
     if (checkIfNoData(() => !newsList || newsList.length === 0)) {
-        return <NoData />
+        return <NoData message='Новин немає' />
     }
 
     return (
