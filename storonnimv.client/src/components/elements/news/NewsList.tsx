@@ -31,7 +31,9 @@ const NewsList: FC = () => {
 
     return (
         <Container className="news-list">
-            {isAdmin && <Button onClick={() => OnShowModal(<AddNewsItemModal/>)}>
+            {isAdmin && <Button
+                className="admin-button admin-button__add"
+                onClick={() => OnShowModal(<AddNewsItemModal/>)}>
                 <FaPlus/>
             </Button>}
             {!pageLoading ? <List

@@ -59,20 +59,20 @@ const NewsModal: FC<NewsModalProps> = ({newsId}) => {
             </div>
 
             {newsFullItem && isAdmin && (
-                <Container className="d-flex justify-content-end gap-2">
+                <>
                     <Button
-                        className="btn btn-warning position-fixed bottom-0 right-0 m-3"
+                        className="admin-button admin-button__edit"
                         onClick={() => OnShowModal(<EditNewsItemModal newsItem={newsFullItem}/>)}
                     >
                         <FaEdit/>
                     </Button>
                     <Button
-                        className="btn btn-warning position-fixed bottom-0 right-0 m-3"
+                        className="admin-button admin-button__delete"
                         onClick={() => OnShowModal(<DeleteNewsItemModal newsItem={newsFullItem}/>)}
                     >
                         <FaTrash/>
                     </Button>
-                </Container>
+                </>
             )}
         </Container>
     );

@@ -51,24 +51,30 @@
 .admin-button {
   position: absolute;
   z-index: 10;
-  background-color: #ffb800;
+  background-color: $button-color;
   color: #000;
-  border: none;
+  border: 3px solid black ;
   border-radius: 8px;
   padding: 0.5rem 0.75rem;
   font-size: 1rem;
 
   &__add {
     top: 1rem;
-    right: 1rem;
+    right: 8rem;
   }
 
   &__edit {
     top: 1rem;
-    right: 3rem;
+    right: 4rem;
   }
 
+  &__delete {
+    top: 1rem;
+    right: 1rem;
+  }
+
+
   &:hover {
-    background-color: #ffc833;
+    background-color: $button-hover-color;
   }
 }

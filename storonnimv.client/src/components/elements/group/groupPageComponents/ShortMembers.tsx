@@ -26,7 +26,9 @@ const ShortMembers: FC<IShortMembersProps> = ({members}) => {
     return (
         <div className='short-members-container'>
             {isAdmin &&
-                <Button onClick={() => OnShowModal(<AddMemberModal/>)}>
+                <Button
+                    className='admin-button admin-button__add'
+                    onClick={() => OnShowModal(<AddMemberModal/>)}>
                     <FaPlus/>
                 </Button>}
 

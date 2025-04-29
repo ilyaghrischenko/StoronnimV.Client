@@ -67,23 +67,27 @@
 .admin-button {
   position: absolute;
   z-index: 10;
-  background-color: #ffb800;
+  background-color: rgba(252, 205, 47, 0.8509803922);
   color: #000;
-  border: none;
+  border: 3px solid black;
   border-radius: 8px;
   padding: 0.5rem 0.75rem;
   font-size: 1rem;
 }
 .admin-button__add {
   top: 1rem;
-  right: 1rem;
+  right: 8rem;
 }
 .admin-button__edit {
   top: 1rem;
-  right: 3rem;
+  right: 4rem;
+}
+.admin-button__delete {
+  top: 1rem;
+  right: 1rem;
 }
 .admin-button:hover {
-  background-color: #ffc833;
+  background-color: rgba(193, 157, 36, 0.8470588235);
 }
 
 .description-container {
@@ -122,6 +126,7 @@
   flex-direction: column;
   align-items: center;
   padding-top: 5%;
+  position: relative;
 }
 
 .swiper {

@@ -25,7 +25,10 @@ const VideoSections: FC<VideoSectionsProps> = ({ topImage, bottomLeftImage, bott
     return (
         <div className="video-sections__container">
             {isAdmin && isMainPage && (
-                <Button onClick={() => OnShowModal(<AddVideoModal />)} className="add-button">
+                <Button
+                    className="admin-button admin-button__add"
+                    onClick={() => OnShowModal(<AddVideoModal />)}
+                >
                     <FaPlus />
                 </Button>
             )}

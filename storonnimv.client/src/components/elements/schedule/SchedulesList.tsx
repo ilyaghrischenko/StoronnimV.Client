@@ -31,7 +31,7 @@ const SchedulesList: FC = () => {
             <div className='schedules-list-container'>
                 {isAdmin && (
                     <Button
-                        className="add-button"
+                        className="admin-button admin-button__add"
                         onClick={() => OnShowModal(<AddScheduleModal/>)}>
                         <FaPlus/>
                     </Button>

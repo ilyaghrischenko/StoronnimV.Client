@@ -4,52 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="added preloader for schedules page. Page window min parameters added">
-      <change afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/member/DeleteMemberModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/forms/DeleteNewsItemModal.tsx" afterDir="false" />
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="removed button modals, added modal contents for admin`s forms. Added styles for all admin forms">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/DeleteButtons/GroupMemberDeleteButton.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/DeleteButtons/MusicDeleteButton.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/DeleteButtons/NewsDeleteButton.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/DeleteButtons/ScheduleDeleteButton.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/DeleteButtons/VideoDeleteButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/forms/DeleteVideoModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/EditsButtons/GroupInfoEditButton.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/EditsButtons/GroupMemberEditButton.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/EditsButtons/SheduleEditButton.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/admin/EditsButtons/VideoEditButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/forms/EditVideoModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/GroupDescription.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/GroupDescription.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/MemberModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/MemberModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/AddMemberModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/member/AddMemberModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/EditGroupModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/group/EditGroupModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/EditMemberModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/member/EditMemberModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/SocialAddModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/social/AddSocialModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/SocialDeleteModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/social/DeleteSocialModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/SocialEditModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/social/EditSocialModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/groupPageComponents/ShortMembers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/groupPageComponents/ShortMembers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/music/MusicPlatformItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/music/MusicPlatformItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/music/forms/AddMusicPlatformModalContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/music/forms/AddMusicPlatformModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/music/forms/DeleteMusicPlatformModalContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/music/forms/DeleteMusicPlatformModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/music/forms/EditMusicPlatformModalContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/music/forms/EditMusicPlatformModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/NewsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/NewsList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/NewsModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/NewsModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/forms/AddNewsItemModalContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/forms/AddNewsItemModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/forms/EditNewsItemModalContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/forms/EditNewsItemModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/ScheduleModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/ScheduleModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/SchedulesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/SchedulesList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/forms/AddScheduleModalContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/forms/AddScheduleModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/forms/ScheduleDeleteModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/forms/DeleteScheduleModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/forms/ScheduleEditModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/forms/EditScheduleModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/VideoListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/VideoListItem.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/VideoSections.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/VideoSections.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/forms/AddVideoModalContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/forms/AddVideoModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Music.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Music.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/schedule/ScheduleList.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/schedule/ScheduleList.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/schedule/ScheduleListItem.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/schedule/ScheduleListItem.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/shared/PreloaderTile.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/shared/PreloaderTile.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/video/VideoList.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/video/VideoList.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/video/VideoListItem.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/video/VideoListItem.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/video/VideoSections.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/video/VideoSections.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/pages/shared/Page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/pages/shared/Page.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/group/GroupMembers.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/group/GroupMembers.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/shared/shared.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/shared/shared.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css.map" afterDir="false" />
@@ -212,7 +175,7 @@
       <workItem from="1745938532990" duration="1348000" />
       <workItem from="1745940248729" duration="44000" />
       <workItem from="1745940319430" duration="297000" />
-      <workItem from="1745940648753" duration="2887000" />
+      <workItem from="1745940648753" duration="4802000" />
     </task>
     <task id="LOCAL-00001" summary="change port">
       <option name="closed" value="true" />
@@ -486,7 +449,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745650626030</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="removed button modals, added modal contents for admin`s forms. Added styles for all admin forms">
+      <option name="closed" value="true" />
+      <created>1745943845955</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1745943845955</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -519,7 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add edit and delete buttons" />
     <MESSAGE value="fix" />
     <MESSAGE value="add error page" />
     <MESSAGE value="fixes" />
@@ -544,6 +514,7 @@
     <MESSAGE value="push" />
     <MESSAGE value="video section background to transparent" />
     <MESSAGE value="added preloader for schedules page. Page window min parameters added" />
-    <option name="LAST_COMMIT_MESSAGE" value="added preloader for schedules page. Page window min parameters added" />
+    <MESSAGE value="removed button modals, added modal contents for admin`s forms. Added styles for all admin forms" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed button modals, added modal contents for admin`s forms. Added styles for all admin forms" />
   </component>
 </project>
