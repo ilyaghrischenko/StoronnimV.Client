@@ -2,19 +2,20 @@ import {FC, useContext} from "react";
 import {Button} from "react-bootstrap";
 import {GlobalContext} from "../../../contexts/shared/GlobalContext.tsx";
 
-interface IScheduleDeleteModalProps {
+interface DeleteScheduleModalProps {
     itemId: number;
 }
 
-const ScheduleDeleteModal: FC<IScheduleDeleteModalProps> = ({itemId}) => {
+const DeleteScheduleModal: FC<DeleteScheduleModalProps> = ({itemId}) => {
     const globalContext = useContext(GlobalContext)!;
 
     const {OnHideModal, sendRequest} = globalContext;
+    const route = 'https://localhost:44315/api/admin/schedules/';
 
     const handleDelete = async () => {
         try {
             const response = await sendRequest(
-                `https://localhost:44315/api/admin/schedules/${itemId}`,
+                `${route}${itemId}`,
                 'DELETE'
             );
 
@@ -52,4 +53,4 @@ const ScheduleDeleteModal: FC<IScheduleDeleteModalProps> = ({itemId}) => {
     );
 };
 
-export {ScheduleDeleteModal};
+export {DeleteScheduleModal};

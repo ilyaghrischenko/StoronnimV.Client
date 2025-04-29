@@ -3,7 +3,7 @@ import {GlobalContext} from "../../../contexts/shared/GlobalContext.tsx";
 import {Form, Button, Container} from "react-bootstrap";
 import {ModalLoading} from "../../shared/ModalLoading.tsx";
 
-const AddNewsItemModalContent: React.FC = () => {
+const AddNewsItemModal: React.FC = () => {
     const globalContext = useContext(GlobalContext)!;
 
     const {sendRequest, OnHideModal, setModalLoading, modalLoading} = globalContext;
@@ -116,4 +116,4 @@ const AddNewsItemModalContent: React.FC = () => {
     );
 };
 
-export {AddNewsItemModalContent};
+export {AddNewsItemModal};

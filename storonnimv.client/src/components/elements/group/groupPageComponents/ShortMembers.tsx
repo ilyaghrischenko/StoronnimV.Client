@@ -2,7 +2,7 @@
 import {FC, useContext} from "react";
 import {ShortMemberItem} from "./ShortMemberItem";
 import {GlobalContext} from "../../../contexts/shared/GlobalContext";
-import {AddMemberModal} from "../forms/AddMemberModal.tsx";
+import {AddMemberModal} from "../forms/member/AddMemberModal.tsx";
 import {Button} from "react-bootstrap";
 import {FaPlus} from "react-icons/fa";
 import {Swiper, SwiperSlide} from "swiper/react";

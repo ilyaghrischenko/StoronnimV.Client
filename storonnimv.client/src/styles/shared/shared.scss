@@ -19,10 +19,9 @@
 }
 
 .big-shadow {
-  text-shadow:
-          0 0 6px #0000004C,
-          0 0 10px #0000004C,
-          0 0 20px #00000019;
+  text-shadow: 0 0 6px #0000004C,
+  0 0 10px #0000004C,
+  0 0 20px #00000019;
 }
 
 .small-shadow {
@@ -49,10 +48,8 @@
   }
 }
 
-.add-button {
+.admin-button {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
   z-index: 10;
   background-color: #ffb800;
   color: #000;
@@ -60,6 +57,16 @@
   border-radius: 8px;
   padding: 0.5rem 0.75rem;
   font-size: 1rem;
+
+  &__add {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  &__edit {
+    top: 1rem;
+    right: 3rem;
+  }
 
   &:hover {
     background-color: #ffc833;

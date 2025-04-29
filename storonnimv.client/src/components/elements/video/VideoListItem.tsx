@@ -2,26 +2,16 @@
 import { Button } from "react-bootstrap";
 import { IVideoModel } from "../../../models/video/IVideoModel";
 import { GlobalContext } from "../../contexts/shared/GlobalContext";
-import { VideoEditButton } from "../admin/EditsButtons/VideoEditButton";
-import { VideoDeleteButton } from "../admin/DeleteButtons/VideoDeleteButton";
-import { FaEdit } from "react-icons/fa";
+import { EditVideoModal } from "./forms/EditVideoModal.tsx";
+import { DeleteVideoModal } from "./forms/DeleteVideoModal.tsx";
+import {FaEdit, FaTrash} from "react-icons/fa";
 
 interface IVideoListItemProps {
     videoItem: IVideoModel;
 }
 
 const VideoListItem: React.FC<IVideoListItemProps> = ({ videoItem }) => {
-    const { OnShowModal, OnHideModal, isAdmin } = useContext(GlobalContext)!;
-
-    const handleShowEditModal = () => {
-        OnShowModal(
-            <VideoEditButton
-                video={videoItem}
-                apiUrl="https://localhost:44315/api/admin/videos"
-                onClose={OnHideModal}
-            />
-        );
-    };
+    const { OnShowModal, isAdmin } = useContext(GlobalContext)!;
 
     return (
         <div className="video-list-item">
@@ -35,20 +25,21 @@ const VideoListItem: React.FC<IVideoListItemProps> = ({ videoItem }) => {
                 Ваш браузер не підтримує тег video.
             </video>
             {isAdmin && (
-                <>
+                <div className="video-list-item__admin-buttons">
                     <h3>Video id: {videoItem.id}</h3>
                     <Button
-                        className="btn btn-warning position-absolute top-0 end-0 m-2"
-                        onClick={handleShowEditModal}
+                        onClick={() => OnShowModal(<EditVideoModal video={videoItem}/>)}
                         title="Редагувати відео"
                     >
-                       <FaEdit/> 
+                        <FaEdit/>
                     </Button>
-                    <VideoDeleteButton
-                        video={videoItem}
-                        apiUrl="https://localhost:44315/api/admin/videos"
-                    />
-                </>
+                    <Button
+                        onClick={() => OnShowModal(<DeleteVideoModal video={videoItem} />)}
+                        title="Видалити відео"
+                    >
+                        <FaTrash/>
+                    </Button>
+                </div>
             )}
         </div>
     );

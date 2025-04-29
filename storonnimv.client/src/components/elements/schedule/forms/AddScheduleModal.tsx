@@ -2,7 +2,7 @@ import React, {FC, useContext, useState} from "react";
 import {Container, Form, Button} from "react-bootstrap";
 import {GlobalContext} from "../../../contexts/shared/GlobalContext.tsx";
 
-const AddScheduleModalContent: FC = () => {
+const AddScheduleModal: FC = () => {
     const globalContext = useContext(GlobalContext)!;
 
     const {sendRequest, OnHideModal} = globalContext;
@@ -142,4 +142,4 @@ const AddScheduleModalContent: FC = () => {
         ;
 };
 
-export {AddScheduleModalContent};
+export {AddScheduleModal};

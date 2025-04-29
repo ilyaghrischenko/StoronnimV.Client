@@ -3,7 +3,7 @@ import {GlobalContext} from "../../../contexts/shared/GlobalContext.tsx";
 import {Container, Row, Col, Form, Button} from "react-bootstrap";
 import {ModalLoading} from "../../shared/ModalLoading.tsx";
 
-const AddVideoModalContent: FC = () => {
+const AddVideoModal: FC = () => {
     const globalContext = useContext(GlobalContext);
     if (!globalContext) throw new Error("GlobalContext is not defined");
 
@@ -114,4 +114,4 @@ const AddVideoModalContent: FC = () => {
     );
 };
 
-export {AddVideoModalContent};
+export {AddVideoModal};

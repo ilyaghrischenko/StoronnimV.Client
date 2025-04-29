@@ -1,6 +1,6 @@
 import React, {useContext, useState, FC} from "react";
 import {Container, Form, Button} from "react-bootstrap";
-import {GlobalContext} from "../../../contexts/shared/GlobalContext.tsx";
+import {GlobalContext} from "../../../../contexts/shared/GlobalContext.tsx";
 
 const AddMemberModal: FC = () => {
     const {sendRequest, OnHideModal} = useContext(GlobalContext)!;

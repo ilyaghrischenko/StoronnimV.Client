@@ -6,9 +6,9 @@ import {IScheduleListItem} from "../../../models/schedule/IScheduleListItem";
 import {ListItem} from "../shared/GenericList/ListItem";
 import {GlobalContext} from "../../contexts/shared/GlobalContext";
 import {ScheduleModal} from "./ScheduleModal.tsx";
-import {Button, Container} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import {PaginationSection} from "../shared/PaginationSection.tsx";
-import {AddScheduleModalContent} from "./forms/AddScheduleModalContent.tsx";
+import {AddScheduleModal} from "./forms/AddScheduleModal.tsx";
 import {FaPlus} from "react-icons/fa";
 import PreloaderTile from "../shared/PreloaderTile.tsx";
 
@@ -27,55 +27,58 @@ const SchedulesList: FC = () => {
     }, []);
 
     return (
-        <Container className='schedules-list-container'>
-            {isAdmin && (
-                <Button
-                    className="add-button"
-                    onClick={() => OnShowModal(<AddScheduleModalContent/>)}>
-                    <FaPlus/>
-                </Button>
-            )}
-
-            { !pageLoading ?
-            <List
-                className='schedules-list'
-                items={schedules}
-                renderItem={(schedule: IScheduleListItem) => (
-                    <ListItem
-                        className='schedules-list__item'
-                        item={schedule}
-                        key={schedule.id}
-                        renderItem={(schedule: IScheduleListItem) => (
-                            <ScheduleListItem key={schedule.id} schedule={schedule}/>
-                        )}
-                        onClick={() =>
-                            OnShowModal(
-                                <ScheduleContextProvider>
-                                    <ScheduleModal scheduleId={schedule.id}/>
-                                </ScheduleContextProvider>
-                            )
-                        }
-                    />
+        <div className='schedules-list'>
+            <div className='schedules-list-container'>
+                {isAdmin && (
+                    <Button
+                        className="add-button"
+                        onClick={() => OnShowModal(<AddScheduleModal/>)}>
+                        <FaPlus/>
+                    </Button>
                 )}
-            />
-                :
-                <List
-                    className="schedules-list"
-                    items={Array(3).fill(null)}
-                    renderItem={(item: typeof PreloaderTile) => (
-                        <ListItem
-                            className='schedules-list__item'
-                            item={item}
-                            renderItem={() => <PreloaderTile className='preloader-tile__container-schedule-page'/>}
-                        />
-                    )}
-                />
-            }
+
+                {!pageLoading ?
+                    <List
+                        className='schedules-list__grid'
+                        items={schedules}
+                        renderItem={(schedule: IScheduleListItem) => (
+                            <ListItem
+                                className='schedules-list__item'
+                                item={schedule}
+                                key={schedule.id}
+                                renderItem={(schedule: IScheduleListItem) => (
+                                    <ScheduleListItem key={schedule.id} schedule={schedule}/>
+                                )}
+                                onClick={() =>
+                                    OnShowModal(
+                                        <ScheduleContextProvider>
+                                            <ScheduleModal scheduleId={schedule.id}/>
+                                        </ScheduleContextProvider>
+                                    )
+                                }
+                            />
+                        )}
+                    />
+                    :
+                    <List
+                        className="schedules-list__grid"
+                        items={Array(3).fill(null)}
+                        renderItem={(item: typeof PreloaderTile) => (
+                            <ListItem
+                                className='schedules-list__item'
+                                item={item}
+                                renderItem={() => <PreloaderTile className='preloader-tile__container-schedule-page'/>}
+                            />
+                        )}
+                    />
+                }
+            </div>
+
             <PaginationSection
                 currentPage={currentPage}
                 totalPages={totalPages}
-                paginate={paginate} />
-        </Container>
+                paginate={paginate}/>
+        </div>
     );
 };
 

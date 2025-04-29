@@ -7,7 +7,7 @@ interface EditNewsItemModalContentProps {
     newsItem: INewsFullItem;
 }
 
-const EditNewsItemModalContent: FC<EditNewsItemModalContentProps> = ({newsItem}) => {
+const EditNewsItemModal: FC<EditNewsItemModalContentProps> = ({newsItem}) => {
     const globalContext = useContext(GlobalContext);
     const [editedNews, setEditedNews] = useState<INewsFullItem>(newsItem);
     const [initialNews, setInitialNews] = useState<INewsFullItem>(newsItem);
@@ -367,4 +367,4 @@ const EditNewsItemModalContent: FC<EditNewsItemModalContentProps> = ({newsItem})
     );
 };
 
-export {EditNewsItemModalContent};
+export {EditNewsItemModal};

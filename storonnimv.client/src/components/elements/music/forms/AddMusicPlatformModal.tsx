@@ -2,7 +2,7 @@ import React, {useState, useContext, FC} from "react";
 import {Button, Form, Container} from "react-bootstrap";
 import {GlobalContext} from "../../../contexts/shared/GlobalContext.tsx";
 
-const AddMusicPlatformModalContent: FC = () => {
+const AddMusicPlatformModal: FC = () => {
     const [platformUrl, setPlatformUrl] = useState<string>("");
     const [bgImage, setBgImage] = useState<File | null>(null);
 
@@ -85,4 +85,4 @@ const AddMusicPlatformModalContent: FC = () => {
     );
 };
 
-export {AddMusicPlatformModalContent};
+export {AddMusicPlatformModal};

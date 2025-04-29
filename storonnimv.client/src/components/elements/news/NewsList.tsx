@@ -9,7 +9,7 @@ import {INewsShortItem} from "../../../models/news/INewsShortItem";
 import {GlobalContext} from "../../contexts/shared/GlobalContext";
 import {NewsModal} from "./NewsModal.tsx";
 import {PaginationSection} from "../shared/PaginationSection.tsx";
-import {AddNewsItemModalContent} from "./forms/AddNewsItemModalContent.tsx";
+import {AddNewsItemModal} from "./forms/AddNewsItemModal.tsx";
 import {FaPlus} from "react-icons/fa";
 import PreloaderTile from "../shared/PreloaderTile.tsx";
 
@@ -31,7 +31,7 @@ const NewsList: FC = () => {
 
     return (
         <Container className="news-list">
-            {isAdmin && <Button onClick={() => OnShowModal(<AddNewsItemModalContent/>)}>
+            {isAdmin && <Button onClick={() => OnShowModal(<AddNewsItemModal/>)}>
                 <FaPlus/>
             </Button>}
             {!pageLoading ? <List

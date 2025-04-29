@@ -7,7 +7,7 @@ interface DeleteMusicPlatformProps {
     item: IMusicPlatformItem;
 }
 
-const DeleteMusicPlatformModalContent: FC<DeleteMusicPlatformProps> = ({item}) => {
+const DeleteMusicPlatformModal: FC<DeleteMusicPlatformProps> = ({item}) => {
     const globalContext = useContext(GlobalContext)!;
     const {sendRequest, OnHideModal} = globalContext!;
     const [musicPlatformId, setMusicPlatformId] = useState<string | null>(item.id.toString());
@@ -58,4 +58,4 @@ const DeleteMusicPlatformModalContent: FC<DeleteMusicPlatformProps> = ({item}) =
     );
 };
 
-export {DeleteMusicPlatformModalContent};
+export {DeleteMusicPlatformModal};

@@ -1,49 +1,59 @@
-import { FC, useContext, useEffect } from "react";
-import { ScheduleContext } from "../../contexts/ScheduleContext.tsx";
-import { Container, Image } from "react-bootstrap";
-import { ModalLoading } from "../shared/ModalLoading.tsx";
-import { ScheduleEditButton } from "../admin/EditsButtons/SheduleEditButton.tsx";
-import { ScheduleDeleteButton } from "../admin/DeleteButtons/ScheduleDeleteButton.tsx";
+import {FC, useContext, useEffect} from "react";
+import {ScheduleContext} from "../../contexts/ScheduleContext.tsx";
+import {Button, Container, Image} from "react-bootstrap";
+import {ModalLoading} from "../shared/ModalLoading.tsx";
+import {DeleteScheduleModal} from "./forms/DeleteScheduleModal.tsx";
 import {GlobalContext} from "../../contexts/shared/GlobalContext.tsx";
 import {LocationMap} from "./LocationMap.tsx";
+import {FaEdit, FaTrash} from "react-icons/fa";
+import {EditScheduleModal} from "./forms/EditScheduleModal.tsx";
 
 interface ScheduleModalProps {
     scheduleId: number;
 }
 
-const ScheduleModal: FC<ScheduleModalProps> = ({ scheduleId }) => {
+const ScheduleModal: FC<ScheduleModalProps> = ({scheduleId}) => {
     const globalContext = useContext(GlobalContext)!;
     const scheduleContext = useContext(ScheduleContext)!;
 
-    const { isAdmin, modalLoading} = globalContext;
-    const { fetchScheduleFullInfo, scheduleFullInfo} = scheduleContext;
+    const {isAdmin, modalLoading, OnShowModal} = globalContext;
+    const {fetchScheduleFullInfo, scheduleFullInfo} = scheduleContext;
 
     useEffect(() => {
         fetchScheduleFullInfo(scheduleId);
     }, [scheduleId]);
 
     if (modalLoading) {
-        return <ModalLoading />;
+        return <ModalLoading/>;
     }
 
     return (
         <Container className="schedule-modal">
             <div className='schedule-modal__container'>
-                <Image className="schedule-modal__photo" src={scheduleFullInfo.photo} />
+                <Image className="schedule-modal__photo" src={scheduleFullInfo.photo}/>
 
                 <div className="schedule-modal__info">
                     <h1 className="schedule-modal__info-title main-text">{scheduleFullInfo.title}</h1>
                     <h2 className="schedule-modal__info-datetime">{scheduleFullInfo.performanceDateTime}</h2>
-                    <LocationMap address={scheduleFullInfo.location} />
+                    <LocationMap address={scheduleFullInfo.location}/>
 
+                    {isAdmin &&
+                        <>
+                            <Button
+                                className="btn btn-warning position-fixed bottom-0 right-0 m-3"
+                                onClick={() => OnShowModal(<EditScheduleModal item={scheduleFullInfo}/>)}
+                            >
+                                <FaEdit/>
+                            </Button>
 
-                    {isAdmin && <ScheduleEditButton
-                        item={scheduleFullInfo}
-                    />}
-
-                    {isAdmin && <ScheduleDeleteButton
-                        item={scheduleFullInfo}
-                    />}
+                            <Button
+                                className="btn btn-warning position-fixed bottom-0 right-0 m-3"
+                                onClick={() => OnShowModal(<DeleteScheduleModal itemId={scheduleFullInfo.id}/>)}
+                            >
+                                <FaTrash/>
+                            </Button>
+                        </>
+                    }
                 </div>
             </div>
 
@@ -54,4 +64,4 @@ const ScheduleModal: FC<ScheduleModalProps> = ({ scheduleId }) => {
     );
 };
 
-export { ScheduleModal };
+export {ScheduleModal};
