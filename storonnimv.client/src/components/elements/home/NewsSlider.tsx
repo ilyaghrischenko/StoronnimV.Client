@@ -6,6 +6,8 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Autoplay} from "swiper/modules";
 import {NewsHomeListItem} from "./NewsHomeListItem.tsx";
 import {Container} from "react-bootstrap";
+import {NoData} from "../shared/NoData.tsx";
+import {GlobalContext} from "../../contexts/shared/GlobalContext.tsx";
 
 interface NewsComponentProps {
     className?: string;
@@ -13,14 +15,19 @@ interface NewsComponentProps {
 
 
 const NewsSlider: FC<NewsComponentProps> = ({className}) => {
+    const globalContext = useContext(GlobalContext)!;
     const homeContext = useContext(HomeContext)!;
 
+    const {checkIfNoData} = globalContext;
     const {homeNewsList, fetchHomeNewsList} = homeContext;
 
     useEffect(() => {
         fetchHomeNewsList();
     }, []);
 
+    if (checkIfNoData(() => !homeNewsList || homeNewsList.length === 0)) {
+        return <NoData className={className} message='Даних про новини немає' />
+    }
 
     return (
         <Container className={`${className} news-slider`}>
