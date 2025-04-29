@@ -54,10 +54,6 @@ const VideoList: FC = () => {
         navigate('/video/sections');
     };
 
-    if (checkIfNoData(() => !videoList || videoList.length === 0)) {
-        return <NoData message='Відео немає' />;
-    }
-
     return (
         <div
             className="video-list-container"
@@ -71,6 +67,7 @@ const VideoList: FC = () => {
             </button>
 
             {!pageLoading ?
+                (!checkIfNoData(() => !videoList || videoList.length === 0) ?
             <List
                 className="video-list"
                 items={videoList}
@@ -82,7 +79,7 @@ const VideoList: FC = () => {
                         )}
                     />
                 )}
-            />
+            /> : <NoData message='Відео немає' />)
                 :
                 <List
                     className="video-list"
@@ -96,11 +93,12 @@ const VideoList: FC = () => {
                 />
             }
 
+            {!checkIfNoData(() => !videoList || videoList.length === 0) &&
             <PaginationSection
                 currentPage={currentPage}
                 totalPages={totalPages}
                 paginate={(page) => paginate(videoType, page, 2)}
-            />
+            />}
         </div>
     );
 };

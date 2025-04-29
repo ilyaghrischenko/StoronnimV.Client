@@ -234,6 +234,7 @@
   text-align: center;
 }
 .member-modal__down-container {
+  font-size: 1.5rem;
   width: 100%;
   display: flex;
   flex-direction: column;
