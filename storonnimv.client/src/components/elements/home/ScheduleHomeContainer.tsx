@@ -1,14 +1,18 @@
 ﻿import {FC, useContext, useEffect} from "react";
 import {HomeContext} from "../../contexts/HomeContext";
 import {Container, Image} from "react-bootstrap";
+import {NoData} from "../shared/NoData.tsx";
+import {GlobalContext} from "../../contexts/shared/GlobalContext.tsx";
 
 interface ScheduleHomeContainerProps {
     className?: string;
 }
 
 const ScheduleHomeContainer: FC<ScheduleHomeContainerProps> = ({className}) => {
+    const globalContext = useContext(GlobalContext)!;
     const homeContext = useContext(HomeContext)!;
 
+    const {checkIfNoData} = globalContext;
     const {homeSchedule, fetchHomeSchedule, onClickHomeElementHandler} = homeContext;
 
     useEffect(() => {
@@ -19,7 +23,7 @@ const ScheduleHomeContainer: FC<ScheduleHomeContainerProps> = ({className}) => {
         <Container
             className={`schedule-home-container ${className}`}
             onClick={() => onClickHomeElementHandler('schedule')}>
-                <Image className='schedule-home-container__image' src={homeSchedule.photo}/>
+                {checkIfNoData(() => !!homeSchedule.photo) ? <Image className='schedule-home-container__image' src={homeSchedule.photo}/> : <NoData message='Даних про афішу немає' />}
         </Container>
     );
 };
