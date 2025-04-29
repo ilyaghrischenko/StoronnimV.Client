@@ -64,7 +64,7 @@
   background-color: darkred;
 }
 
-.admin-button {
+.admin-button, .admin-button__delete--video, .admin-button__delete--music, .admin-button__delete--social, .admin-button__delete, .admin-button__edit--video, .admin-button__edit--music, .admin-button__edit--social, .admin-button__edit, .admin-button__add--social, .admin-button__add {
   position: absolute;
   z-index: 10;
   background-color: rgba(252, 205, 47, 0.8509803922);
@@ -74,20 +74,53 @@
   padding: 0.5rem 0.75rem;
   font-size: 1rem;
 }
+.admin-button:hover, .admin-button__delete--video:hover, .admin-button__delete--music:hover, .admin-button__delete--social:hover, .admin-button__delete:hover, .admin-button__edit--video:hover, .admin-button__edit--music:hover, .admin-button__edit--social:hover, .admin-button__edit:hover, .admin-button__add--social:hover, .admin-button__add:hover {
+  background-color: rgba(193, 157, 36, 0.8470588235);
+}
+
 .admin-button__add {
   top: 1rem;
   right: 8rem;
 }
+.admin-button__add--social {
+  padding: 0.3rem 0.3rem;
+  right: 1rem;
+}
+
 .admin-button__edit {
   top: 1rem;
   right: 4rem;
 }
+.admin-button__edit--social {
+  padding: 0.3rem 0.3rem;
+  right: 2rem;
+}
+.admin-button__edit--music {
+  padding: 0.5rem 0.5rem;
+  right: 2.5rem;
+}
+.admin-button__edit--video {
+  padding: 0.5rem 0.5rem;
+  top: 3rem;
+  right: 3rem;
+}
+
 .admin-button__delete {
   top: 1rem;
   right: 1rem;
 }
-.admin-button:hover {
-  background-color: rgba(193, 157, 36, 0.8470588235);
+.admin-button__delete--social {
+  padding: 0.3rem 0.3rem;
+  right: 0;
+}
+.admin-button__delete--music {
+  padding: 0.5rem 0.5rem;
+  right: 0;
+}
+.admin-button__delete--video {
+  padding: 0.5rem 0.5rem;
+  top: 3rem;
+  right: 0.5rem;
 }
 
 .description-container {
@@ -213,10 +246,12 @@
   white-space: pre-wrap;
 }
 .member-modal__social-networks {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: clamp(10px, 2vh, 40px);
+  position: relative;
 }
 .member-modal__social-networks__item {
   width: clamp(120px, 20vw, 250px);
@@ -224,6 +259,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  position: relative;
 }
 .member-modal__social-networks__item-link {
   color: #007bff;
@@ -397,6 +433,7 @@
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 10px;
+  position: relative;
   height: clamp(50px, 18vh, 1000px);
   width: clamp(50px, 23vw, 1000px);
 }

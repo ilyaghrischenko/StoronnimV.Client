@@ -5,7 +5,7 @@ import {SpotifyContainer} from "../elements/music/SpotifyContainer.tsx";
 import {MusicPlatforms} from "../elements/music/MusicPlatforms";
 import {GlobalContext} from "../contexts/shared/GlobalContext.tsx";
 import {AddMusicPlatformModal} from "../elements/music/forms/AddMusicPlatformModal.tsx";
-import {FaPlusCircle} from "react-icons/fa";
+import {FaPlus} from "react-icons/fa";
 
 const Music: FC = () => {
     const globalContext = useContext(GlobalContext);
@@ -22,18 +22,19 @@ const Music: FC = () => {
 
     return (
         <MusicContextProvider>
-                <Container className="music-page page">
-                    {isAdmin && <Button
+            <Container className="music-page page">
+                {isAdmin &&
+                    <Button
+                        className='admin-button__add'
                         onClick={() => OnShowModal(<AddMusicPlatformModal/>)}
                     >
-                        <FaPlusCircle className="me-2" />
-                        Додати музичну платформу
+                        <FaPlus/>
                     </Button>}
-                    <MusicPlatforms />
-                    <SpotifyContainer />
-                </Container>
+                <MusicPlatforms/>
+                <SpotifyContainer/>
+            </Container>
         </MusicContextProvider>
     );
 };
 
-export { Music };
+export {Music};

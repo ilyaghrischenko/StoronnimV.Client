@@ -1,6 +1,6 @@
 .spotify-container {
-  width: clamp(300px, 30vw, 600px);
-  height: 70vh;
+  width: clamp(300px, 45vw, 1000px);
+  height: 75vh;
   display: flex;
   justify-content: center;
   align-items: center;

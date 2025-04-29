@@ -25,28 +25,35 @@ const MusicPlatformItem: FC<MusicPlatformItemProps> = ({item}) => {
 
     return (
         <ListGroupItem
-            className='music-platform-item position-relative'
+            className='music-platform-item'
             as='a'
             href={formatUrl(item.platformUrl)}
             target='_blank'
             rel='noopener noreferrer'
             style={{backgroundImage: `url(${item.bgImageUrl})`}}
         >
-            {isAdmin && <Button onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                e.preventDefault();
+            {isAdmin &&
+                <>
+                    <Button
+                        className='admin-button__edit--music'
+                        onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                            e.preventDefault();
 
-                OnShowModal(<EditMusicPlatformModal item={item}/>)
-            }}>
-                <FaEdit/>
-            </Button>}
+                            OnShowModal(<EditMusicPlatformModal item={item}/>)
+                        }}>
+                        <FaEdit/>
+                    </Button>
 
-            {isAdmin && <Button onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                e.preventDefault();
+                    <Button
+                        className='admin-button__delete--music'
+                        onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                        e.preventDefault();
 
-                OnShowModal(<DeleteMusicPlatformModal item={item}/>)
-            }}>
-                <FaTrash/>
-            </Button>}
+                        OnShowModal(<DeleteMusicPlatformModal item={item}/>)
+                    }}>
+                        <FaTrash/>
+                    </Button>
+                </>}
         </ListGroupItem>
     );
 };

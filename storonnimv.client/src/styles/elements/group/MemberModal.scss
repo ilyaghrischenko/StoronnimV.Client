@@ -51,10 +51,12 @@
   }
 
   &__social-networks {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: clamp(10px, 2vh, 40px);
+    position: relative;
 
     &__item {
       width: clamp(120px, 20vw, 250px);
@@ -62,6 +64,7 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
+      position: relative;
 
       &-link {
         color: #007bff;
