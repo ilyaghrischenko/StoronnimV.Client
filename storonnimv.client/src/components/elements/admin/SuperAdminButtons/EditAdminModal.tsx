@@ -50,7 +50,6 @@ const EditAdminModal: React.FC<EditAdminModalProps> = ({admin, onLoginEdit, onPa
     };
 
     return (
-        //TODO: стили дописать для форм
         <Modal.Dialog className='form-modal'>
             <Modal.Header>
                 <Modal.Title className='form-modal__title'>Змінити дані Адміністратора</Modal.Title>

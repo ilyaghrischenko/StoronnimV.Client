@@ -18,7 +18,6 @@ const AddAdminModal: React.FC<IAddAdminModalProps> = ({onAdding}) => {
     const handleAddAdmin = async () => {
         setModalLoading(true);
         try {
-            //TODO:не работает. и стили дописать для форм
             await onAdding(login, password); // Ждем завершения добавления
             alert("Адмін успішно доданий!");
             window.location.reload();
