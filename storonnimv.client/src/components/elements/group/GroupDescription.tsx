@@ -12,15 +12,15 @@ const GroupDescription: FC = () => {
     const groupContext = useContext(GroupContext)!;
     const globalContext = useContext(GlobalContext)!;
 
-    const {pageLoading, isAdmin} = globalContext;
+    const {pageLoading, isAdmin, checkIfNoData} = globalContext;
     const {fetchGroupInfo, fullInfo} = groupContext;
 
     useEffect(() => {
         fetchGroupInfo();
     }, []);
 
-    const groupDataExists = fullInfo.groupPage;
-    const membersDataExists = fullInfo.members;
+    const groupDataExists = !!fullInfo.groupPage;
+    const membersDataExists = !!fullInfo.members;
     const showNoData = !groupDataExists && !membersDataExists;
 
     return (
@@ -35,16 +35,12 @@ const GroupDescription: FC = () => {
                 >
                     {isAdmin && <GroupInfoEditButton/>}
 
-                    {/* Показываем NoData, если нет данных по группе и участникам */}
-                    {showNoData ?
-                        <NoData />
+                    {checkIfNoData(() => showNoData) ?
+                        <NoData message='Дані на цій сторінці відсутні' />
                     : (
                         <>
-                            {/* Если нет данных по группе, показываем NoData только для группы */}
-                            {groupDataExists ? <Description groupInfo={fullInfo.groupPage} /> : <NoData/>}
-
-                            {/* Если нет данных по участникам, показываем NoData только для участников */}
-                            {membersDataExists ? <ShortMembers members={fullInfo.members} /> : <NoData/>}
+                            {checkIfNoData(() => groupDataExists) ? <Description groupInfo={fullInfo.groupPage} /> : <NoData message='Опис групи відсутній' />}
+                            {checkIfNoData(() => membersDataExists) ? <ShortMembers members={fullInfo.members} /> : <NoData message='Дані про учасників відсутні'/>}
                         </>
                     )}
                 </Container>
