@@ -50,72 +50,68 @@ const EditAdminModal: React.FC<EditAdminModalProps> = ({admin, onLoginEdit, onPa
     };
 
     return (
-        <Modal.Dialog>
-            <Modal.Header closeButton>
-                <Modal.Title style={{color: "white"}} className="me-3">Змінити дані Адміністратора</Modal.Title>
+        <Modal.Dialog className='form-modal'>
+            <Modal.Header>
+                <Modal.Title className='form-modal__title'>Змінити дані Адміністратора</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form>
-
-                    <Form.Group className="mb-3">
-                        <Form.Label style={{color: "white"}} className="me-3">Новий Логін: </Form.Label>
+                <Form className='form-modal__form'>
+                    <Form.Group className="form-modal__group">
+                        <Form.Label className='form-modal__label'>Новий Логін: </Form.Label>
                         <Form.Control
                             type="text"
                             value={login}
                             onChange={(e) => setLogin(e.target.value)}
-                            style={{color: "white", backgroundColor: "#333"}}
+                            className='form-modal__input'
                         />
                     </Form.Group>
-                    <Button variant="primary" onClick={() => handleLoginEdit(login)} disabled={modalLoading}
-                            className="mb-3">
+                    <Button className="form-modal__button form-modal__button--confirm" variant="primary" onClick={() => handleLoginEdit(login)} disabled={modalLoading}>
                         {modalLoading ? "Завантаження..." : "Змінити логін"}
                     </Button>
 
-                    ]
-                    <Form.Group className="mb-3">
-                        <Form.Label style={{color: "white"}} className="me-3">Старий Пароль: </Form.Label>
+                    <Form.Group className="form-modal__group">
+                        <Form.Label className='form-modal__label'>Старий Пароль: </Form.Label>
                         <Form.Control
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            style={{color: "white", backgroundColor: "#333"}}
+                            className='form-modal__input'
                             placeholder="Введіть старий пароль"
                         />
                     </Form.Group>
-                    <Form.Group className="mb-3">
-                        <Form.Label style={{color: "white"}} className="me-3">Новий Пароль: </Form.Label>
+                    <Form.Group className="form-modal__group">
+                        <Form.Label className='form-modal__label'>Новий Пароль: </Form.Label>
                         <Form.Control
                             type="password"
                             value={newPassword}
                             onChange={(e) => setNewPassword(e.target.value)}
-                            style={{color: "white", backgroundColor: "#333"}}
+                            className='form-modal__input'
                             placeholder="Введіть новий пароль"
                         />
                     </Form.Group>
-                    <Form.Group className="mb-3">
-                        <Form.Label style={{color: "white"}} className="me-3">Підтвердження пароля: </Form.Label>
+                    <Form.Group className="form-modal__group">
+                        <Form.Label className='form-modal__label'>Підтвердження пароля: </Form.Label>
                         <Form.Control
                             type="password"
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
-                            style={{color: "white", backgroundColor: "#333"}}
+                            className='form-modal__input'
                             placeholder="Підтвердження пароля"
                         />
                     </Form.Group>
-                    <Button variant="primary" onClick={() => handlePasswordEdit(newPassword, confirmPassword)}
-                            disabled={modalLoading}>
-                        {modalLoading ? "Завантаження..." : "Змінити пароль"}
-                    </Button>
 
                     {validationErrors && Object.keys(validationErrors).length > 0 &&
                         <ValidationErrors errors={validationErrors}/>}
+
+                    <Button className="form-modal__button form-modal__button--confirm" variant="primary" onClick={() => handlePasswordEdit(newPassword, confirmPassword)}
+                            disabled={modalLoading}>
+                        {modalLoading ? "Завантаження..." : "Змінити пароль"}
+                    </Button>
+                    <Button className="form-modal__button form-modal__button--cancel" variant="secondary" onClick={OnHideModal}>
+                        Закрити
+                    </Button>
                 </Form>
             </Modal.Body>
-            <Modal.Footer>
-                <Button variant="secondary" onClick={OnHideModal}>
-                    Закрити
-                </Button>
-            </Modal.Footer>
         </Modal.Dialog>
     );
 };

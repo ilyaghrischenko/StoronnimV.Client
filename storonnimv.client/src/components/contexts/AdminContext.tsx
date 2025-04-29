@@ -68,6 +68,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
     };
 
     const addAdmin = async (login: string, password: string) => {
+        alert('admin adding!');
         try {
             const response = await sendRequest(
                 "https://localhost:44315/api/super-admin/basic-admins",
@@ -80,7 +81,6 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
                 const addedAdmin: IBasicAdmin = response.data;
                 setBasicAdmins((prevAdmins) => [...prevAdmins, addedAdmin]);
 
-                alert('АДМІНА ДОДАНО');
             } else if (response.status === 400) {
                 setValidationErrors(response.data.errors);
             }

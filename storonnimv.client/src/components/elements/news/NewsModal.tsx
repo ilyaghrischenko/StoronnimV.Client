@@ -37,12 +37,13 @@ const NewsModal: FC<NewsModalProps> = ({newsId}) => {
         <Container className="news-modal">
             <h1 className="news-modal__title main-text">{newsFullItem?.title}</h1>
 
-            //TODO: отступы сделать от фотки ровные
-            <div>
-                {newsFullItem?.photo && <Image className="news-modal__photo" src={newsFullItem.photo}/>}
+            <div className='news-modal__main'>
+                <div className='news-modal__photo-container'>
+                    {newsFullItem?.photo && <Image className="news-modal__photo" src={newsFullItem.photo}/>}
+                </div>
                 <p
                     className="news-modal__description secondary-text"
-                    style={{textAlign: `${newsFullItem?.photo ? 'left' : 'center'}`}}
+                    // style={{textAlign: `${newsFullItem?.photo ? 'left' : 'center'}`}}
                 >
                     {newsFullItem?.description}
                 </p>

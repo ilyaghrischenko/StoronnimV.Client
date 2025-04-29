@@ -575,15 +575,30 @@
   text-align: center;
   margin-bottom: 50px;
 }
+.news-modal__photo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.news-modal__main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
 .news-modal__photo {
-  float: left;
-  border-radius: 10px;
-  width: clamp(300px, 50%, 800px);
-  height: auto;
-  display: block;
+  border-radius: 8px;
+  width: 70%;
+  height: 100%;
+  object-fit: cover;
 }
 .news-modal__description {
   font-size: 1.5rem;
+  flex: 1;
+  text-align: center;
+  word-break: break-word;
 }
 .news-modal__description::first-letter {
   text-transform: uppercase;

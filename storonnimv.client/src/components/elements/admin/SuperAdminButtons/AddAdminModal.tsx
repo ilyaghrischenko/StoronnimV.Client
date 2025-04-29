@@ -31,48 +31,51 @@ const AddAdminModal: React.FC<IAddAdminModalProps> = ({onAdding}) => {
     };
 
     return (
-        <Modal.Dialog>
-            <Modal.Header closeButton>
-                <Modal.Title style={{color: "white"}} className="me-3">Додати Адміна</Modal.Title>
+        <Modal.Dialog className='form-modal'>
+            <Modal.Header>
+                <Modal.Title className="form-modal__title">Додати Адміна</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form>
-                    <Form.Group controlId="formLogin" className="mb-3">
-                        <Form.Label style={{color: "white"}} className="me-3">Логін: </Form.Label>
+                <Form className='form-modal__form'
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    handleAddAdmin();
+                }}>
+                    <Form.Group controlId="formLogin" className="form-modal__group">
+                        <Form.Label className='form-modal__label'>Логін: </Form.Label>
                         <Form.Control
                             type="text"
                             placeholder="Введіть логін"
                             value={login}
                             onChange={(e) => setLogin(e.target.value)}
                             required
-                            style={{color: "white", backgroundColor: "#333"}}
+                            className='form-modal__input'
                         />
                     </Form.Group>
 
-                    <Form.Group controlId="formPassword" className="mb-3">
-                        <Form.Label style={{color: "white"}} className="me-3">Пароль: </Form.Label>
+                    <Form.Group controlId="formPassword" className="form-modal__group">
+                        <Form.Label className='form-modal__label'>Пароль: </Form.Label>
                         <Form.Control
                             type="password"
                             placeholder="Введіть пароль"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                            style={{color: "white", backgroundColor: "#333"}}
+                            className='form-modal__input'
                         />
                     </Form.Group>
 
                     {validationErrors && Object.keys(validationErrors).length > 0 &&
                         <ValidationErrors errors={validationErrors}/>}
+
+                    <Button className="form-modal__button form-modal__button--cancel" variant="secondary" onClick={OnHideModal}>
+                        Закрити
+                    </Button>
+                    <Button className="form-modal__button form-modal__button--confirm" type='submit' variant="primary" disabled={modalLoading}>
+                        {modalLoading ? "Завантаження..." : "Додати"}
+                    </Button>
                 </Form>
             </Modal.Body>
-            <Modal.Footer>
-                <Button variant="secondary" onClick={OnHideModal}>
-                    Закрити
-                </Button>
-                <Button variant="primary" onClick={handleAddAdmin} disabled={modalLoading}>
-                    {modalLoading ? "Завантаження..." : "Додати"}
-                </Button>
-            </Modal.Footer>
         </Modal.Dialog>
     );
 };
