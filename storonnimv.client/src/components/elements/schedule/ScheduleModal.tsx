@@ -40,14 +40,14 @@ const ScheduleModal: FC<ScheduleModalProps> = ({scheduleId}) => {
                     {isAdmin &&
                         <>
                             <Button
-                                className="admin-button admin-button__edit"
+                                className="admin-button__edit"
                                 onClick={() => OnShowModal(<EditScheduleModal item={scheduleFullInfo}/>)}
                             >
                                 <FaEdit/>
                             </Button>
 
                             <Button
-                                className="admin-button admin-button__delete"
+                                className="admin-button__delete"
                                 onClick={() => OnShowModal(<DeleteScheduleModal itemId={scheduleFullInfo.id}/>)}
                             >
                                 <FaTrash/>

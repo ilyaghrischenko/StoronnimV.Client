@@ -20,7 +20,7 @@ const MusicPlatforms: FC = () => {
     return (
         <>
             {!pageLoading ?
-                (!checkIfNoData(() => !musicPlatforms || musicPlatforms.length === 0) ?
+                (checkIfNoData(() => !musicPlatforms || musicPlatforms.length === 0) ?
                  <NoData style={{div: {width: '25%'}, text: {fontSize: '1.5vw'}, image: {width: '40%'}}} message='Музичних платформ немає' /> : <ListGroup className='music-platforms-container'>
                         {musicPlatforms.map((item) =>
                             <MusicPlatformItem item={item} key={item.id}/>)}

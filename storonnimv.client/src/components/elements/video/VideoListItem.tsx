@@ -25,21 +25,23 @@ const VideoListItem: React.FC<IVideoListItemProps> = ({ videoItem }) => {
                 Ваш браузер не підтримує тег video.
             </video>
             {isAdmin && (
-                <div className="video-list-item__admin-buttons">
+                <>
                     <h3>Video id: {videoItem.id}</h3>
                     <Button
+                        className="admin-button__edit--video"
                         onClick={() => OnShowModal(<EditVideoModal video={videoItem}/>)}
                         title="Редагувати відео"
                     >
                         <FaEdit/>
                     </Button>
                     <Button
+                        className="admin-button__delete--video"
                         onClick={() => OnShowModal(<DeleteVideoModal video={videoItem} />)}
                         title="Видалити відео"
                     >
                         <FaTrash/>
                     </Button>
-                </div>
+                </>
             )}
         </div>
     );

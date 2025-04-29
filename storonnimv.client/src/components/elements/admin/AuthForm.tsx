@@ -27,42 +27,44 @@ const AuthForm: FC = () => {
     };
 
     return (
-        <Form
-            onSubmit={handleSubmit}
-            className='auth-form'
-        >
-            <Form.Group
-                controlId="formAdminLogin"
-                className='form-group'
+        <div>
+            <Form
+                onSubmit={handleSubmit}
+                className='form-modal__form'
             >
-                <Form.Label className='form-group__label'>Login:</Form.Label>
-                <Form.Control
-                    className='form-group__control'
-                    type="text"
-                    onChange={(e) => setLogin(e.target.value)}
-                    required
-                />
-            </Form.Group>
-            <Form.Group
-                className='form-group'
-                controlId="formAdminPassword"
-            >
-                <Form.Label className='form-group__label'>Password:</Form.Label>
-                <Form.Control
-                    className='form-group__control'
-                    type="password"
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-            </Form.Group>
-            <Button
-                className='auth-form__button button'
-                variant="primary"
-                type="submit"
-            >
-                Увійти
-            </Button>
-        </Form>
+                <Form.Group
+                    controlId="formAdminLogin"
+                    className='form-modal__group'
+                >
+                    <Form.Label className='form-group__label'>Login:</Form.Label>
+                    <Form.Control
+                        className='form-modal__input'
+                        type="text"
+                        onChange={(e) => setLogin(e.target.value)}
+                        required
+                    />
+                </Form.Group>
+                <Form.Group
+                    className='form-modal__group'
+                    controlId="formAdminPassword"
+                >
+                    <Form.Label className='form-group__label'>Password:</Form.Label>
+                    <Form.Control
+                        className='form-modal__input'
+                        type="password"
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                </Form.Group>
+                <Button
+                    className='form-modal__button form-modal__button--cancel'
+                    variant="primary"
+                    type="submit"
+                >
+                    Увійти
+                </Button>
+            </Form>
+        </div>
     );
 };
 

@@ -53,28 +53,76 @@
   z-index: 10;
   background-color: $button-color;
   color: #000;
-  border: 3px solid black ;
+  border: 3px solid black;
   border-radius: 8px;
   padding: 0.5rem 0.75rem;
   font-size: 1rem;
-
-  &__add {
-    top: 1rem;
-    right: 8rem;
-  }
-
-  &__edit {
-    top: 1rem;
-    right: 4rem;
-  }
-
-  &__delete {
-    top: 1rem;
-    right: 1rem;
-  }
-
 
   &:hover {
     background-color: $button-hover-color;
   }
 }
+
+.admin-button__add {
+  @extend .admin-button;
+  top: 1rem;
+  right: 8rem;
+
+  &--social {
+    @extend .admin-button;
+    padding: 0.3rem 0.3rem;
+    right: 1rem;
+  }
+}
+
+.admin-button__edit {
+  @extend .admin-button;
+  top: 1rem;
+  right: 4rem;
+
+  &--social {
+    @extend .admin-button;
+    padding: 0.3rem 0.3rem;
+    right: 2rem;
+  }
+
+  &--music {
+    @extend .admin-button;
+    padding: 0.5rem 0.5rem;
+    right: 2.5rem;
+  }
+
+  &--video {
+    @extend .admin-button;
+    padding: 0.5rem 0.5rem;
+    top: 3rem;
+    right: 3rem;
+  }
+}
+
+.admin-button__delete {
+  @extend .admin-button;
+  top: 1rem;
+  right: 1rem;
+
+  &--social {
+    @extend .admin-button;
+    padding: 0.3rem 0.3rem;
+    right: 0;
+  }
+
+  &--music {
+    @extend .admin-button;
+    padding: 0.5rem 0.5rem;
+    right: 0;
+  }
+
+  &--video {
+    @extend .admin-button;
+    padding: 0.5rem 0.5rem;
+    top: 3rem;
+    right: 0.5rem;
+  }
+}
+
+

@@ -61,13 +61,13 @@ const NewsModal: FC<NewsModalProps> = ({newsId}) => {
             {newsFullItem && isAdmin && (
                 <>
                     <Button
-                        className="admin-button admin-button__edit"
+                        className="admin-button__edit"
                         onClick={() => OnShowModal(<EditNewsItemModal newsItem={newsFullItem}/>)}
                     >
                         <FaEdit/>
                     </Button>
                     <Button
-                        className="admin-button admin-button__delete"
+                        className="admin-button__delete"
                         onClick={() => OnShowModal(<DeleteNewsItemModal newsItem={newsFullItem}/>)}
                     >
                         <FaTrash/>

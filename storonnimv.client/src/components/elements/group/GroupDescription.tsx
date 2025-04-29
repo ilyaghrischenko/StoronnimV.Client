@@ -35,7 +35,7 @@ const GroupDescription: FC = () => {
                     }}
                 >
                     {isAdmin && <Button
-                        className="admin-button admin-button__edit"
+                        className="admin-button__edit"
                         onClick={() => OnShowModal(<EditGroupModal fullInfo={fullInfo}/>)}
                     >
                         <FaEdit/>
