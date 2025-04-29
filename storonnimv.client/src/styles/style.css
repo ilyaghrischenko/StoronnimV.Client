@@ -171,18 +171,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: clamp(10px, 2vh, 40px);
-  max-width: 100%;
+  gap: 3rem;
+  width: 100%;
 }
 .member-modal__up-container {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  gap: 20%;
 }
 .member-modal__photo-container {
-  width: clamp(120px, 20vw, 300px);
+  width: clamp(120px, 25vw, 500px);
   aspect-ratio: 1/1;
   overflow: hidden;
   border-radius: 1vw;
@@ -194,7 +193,7 @@
   border-radius: 1vw;
 }
 .member-modal__info {
-  width: 10%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -634,19 +633,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 1rem;
+  width: 100%;
 }
 .schedule-modal__container {
-  max-width: 100%;
-  padding: 20px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 15%;
+  gap: 3rem;
 }
 .schedule-modal__description-container {
-  width: 80%;
+  width: 100%;
   word-break: break-word;
   overflow-wrap: break-word;
 }
@@ -656,36 +655,45 @@
   font-size: 1.5rem;
   line-height: 1.5;
 }
-.schedule-modal__photo {
-  width: clamp(250px, 35%, 1000px);
-  height: auto;
-  border-radius: 8px;
-  margin: 0;
-  display: block;
-}
-.schedule-modal__info {
+.schedule-modal__photo-container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  width: 47%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  border-radius: 1vw;
+}
+.schedule-modal__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1vw;
+}
+.schedule-modal__info {
+  width: 47%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
   text-align: center;
   color: white;
 }
 .schedule-modal__info-title {
+  width: 100%;
   font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 10px;
 }
 .schedule-modal__info-datetime {
+  width: 100%;
   font-size: 1.5rem;
   color: #666;
-  margin-bottom: 10px;
 }
 
 .location-map-container {
-  width: clamp(280px, 22vw, 350px);
-  height: clamp(180px, 30vh, 400px);
+  width: clamp(280px, 35vw, 2050px);
+  height: clamp(180px, 45vh, 2050px);
 }
 .location-map-container__frame {
   width: 100%;

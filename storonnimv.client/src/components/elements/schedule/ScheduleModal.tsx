@@ -30,7 +30,9 @@ const ScheduleModal: FC<ScheduleModalProps> = ({scheduleId}) => {
     return (
         <Container className="schedule-modal">
             <div className='schedule-modal__container'>
-                <Image className="schedule-modal__photo" src={scheduleFullInfo.photo}/>
+                <div className='schedule-modal__photo-container'>
+                    <Image className="schedule-modal__photo" src={scheduleFullInfo.photo}/>
+                </div>
 
                 <div className="schedule-modal__info">
                     <h1 className="schedule-modal__info-title main-text">{scheduleFullInfo.title}</h1>
