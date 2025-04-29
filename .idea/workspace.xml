@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="news list no data">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/VideoContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/VideoContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/GroupDescription.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/GroupDescription.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/home/NewsSlider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/home/NewsSlider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/home/PromotionVideoHome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/home/PromotionVideoHome.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/home/ScheduleHomeContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/home/ScheduleHomeContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/music/MusicPlatforms.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/music/MusicPlatforms.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/SchedulesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/SchedulesList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/shared/NoData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/shared/NoData.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/VideoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/VideoList.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="news list no data" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,7 +61,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/if-empty-data",
+    "git-widget-placeholder": "feature/add-promotion-video",
     "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "/Users/admin/Documents/GitHub/StoronnimV.Client",
     "list.type.of.created.stylesheet": "SCSS",

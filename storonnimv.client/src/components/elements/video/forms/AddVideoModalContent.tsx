@@ -76,6 +76,7 @@ const AddVideoModalContent: FC = () => {
                                 onChange={(e) => setVideoType(e.target.value)}
                                 className="form-modal__select"
                             >
+                                <option value="Promotion">Promotion</option>
                                 <option value="Performance">Performance</option>
                                 <option value="Backstage">Backstage</option>
                                 <option value="Repetition">Repetition</option>
