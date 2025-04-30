@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "photo": "./src/assets/group-socials/instagram.jpg",
+    "name": "instagram",
+    "url": "https://www.instagram.com/cristiano/"
+  },
+  {
+    "id": 2,
+    "photo": "./src/assets/group-socials/facebook.jpg",
+    "name": "facebook",
+    "url": "https://www.facebook.com/Cristiano/?locale=uk_UA"
+  },
+  {
+    "id": 3,
+    "photo": "./src/assets/group-socials/youtube.jpg",
+    "name": "youtube",
+    "url": "https://www.youtube.com/@cristiano"
+  }
+]
