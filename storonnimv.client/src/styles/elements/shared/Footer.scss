@@ -1,6 +1,24 @@
 .footer-container {
+  width: 90%;
+  height: clamp(1px, 10vh, 40%);
+  overflow-y: scroll;
+  align-self: center;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
-  background-color: gray;
+  align-items: center;
+  gap: 1rem;
+
+  &__link {
+    width: 15%;
+    height: auto;
+
+    &-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+  }
 }
