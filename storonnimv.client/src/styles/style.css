@@ -468,6 +468,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 2rem;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
@@ -482,7 +483,6 @@
   grid-template-columns: repeat(3, 1fr); /* 3 равных колонки */
   gap: 20px;
   width: 100%;
-  max-width: 90%; /* ограничение, чтобы сетка не расползалась */
   margin-bottom: 30px;
   justify-content: center;
   box-sizing: border-box;
@@ -677,7 +677,8 @@
 .schedule-list-item__photo {
   width: clamp(200px, 90%, 500px);
   height: clamp(300px, 100%, 550px);
-  object-fit: cover;
+  aspect-ratio: 9/10;
+  object-fit: fill;
   border-radius: 8px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
@@ -721,7 +722,7 @@
 .schedule-modal__photo {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 1vw;
 }
 .schedule-modal__info {

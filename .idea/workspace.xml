@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="removed button modals, added modal contents for admin`s forms. Added styles for all admin forms">
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="refactored size styles for music and video pages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/VideoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/VideoList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/VideoListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/VideoListItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Music.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Music.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/music/MusicPlatformItem.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/music/MusicPlatformItem.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/music/MusicPlatforms.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/music/MusicPlatforms.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/music/SpotifyContainer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/music/SpotifyContainer.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/video/VideoListItem.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/video/VideoListItem.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/pages/Music.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/pages/Music.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/pages/shared/Page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/pages/shared/Page.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/news/NewsList.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/news/NewsList.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/schedule/ScheduleListItem.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/schedule/ScheduleListItem.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/schedule/ScheduleModal.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/schedule/ScheduleModal.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css.map" afterDir="false" />
     </list>
@@ -178,7 +172,7 @@
       <workItem from="1745940319430" duration="297000" />
       <workItem from="1745940648753" duration="4802000" />
       <workItem from="1745958118942" duration="622000" />
-      <workItem from="1746109623531" duration="1957000" />
+      <workItem from="1746109623531" duration="3263000" />
     </task>
     <task id="LOCAL-00001" summary="change port">
       <option name="closed" value="true" />
@@ -460,7 +454,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745943845955</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="refactored size styles for music and video pages">
+      <option name="closed" value="true" />
+      <created>1746111637925</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1746111637925</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -493,7 +495,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add error page" />
     <MESSAGE value="fixes" />
     <MESSAGE value="finish all fixes" />
     <MESSAGE value="fix video sections images" />
@@ -518,6 +519,7 @@
     <MESSAGE value="removed button modals, added modal contents for admin`s forms. Added styles for all admin forms" />
     <MESSAGE value="fixed news modal and admin modals" />
     <MESSAGE value="push" />
-    <option name="LAST_COMMIT_MESSAGE" value="push" />
+    <MESSAGE value="refactored size styles for music and video pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored size styles for music and video pages" />
   </component>
 </project>
