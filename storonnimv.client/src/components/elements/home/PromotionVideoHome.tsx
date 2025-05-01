@@ -32,6 +32,7 @@ const PromotionVideoHome: FC<PromotionVideoHomeProps> = ({className}) => {
                     preload="auto"
                     autoPlay
                     muted
+                    loop
                 >
                     <source src={homePromotionVideo.url} type='video/mp4' />
                 </video>
