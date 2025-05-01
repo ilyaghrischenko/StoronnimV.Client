@@ -37,7 +37,7 @@ const AddVideoModal: FC = () => {
                 `${route}api/admin/videos`,
                 "POST",
                 formData);
-            if (response.status === 200) {
+            if (response.status === 201) {
                 alert(`Відео успішно додано!`);
                 OnHideModal();
             }

@@ -4,7 +4,7 @@ import {Page} from "./components/pages/shared/Page";
 import {ModalWindow} from "./components/elements/shared/ModalWindow";
 import {GlobalContext} from "./components/contexts/shared/GlobalContext.tsx";
 import {FrameLayout} from "./components/elements/shared/FrameLayout.tsx";
-import {Header} from "./components/elements/shared/Header.tsx";
+import {HeaderWithFooter} from "./components/elements/shared/HeaderWithFooter.tsx";
 
 function App(): JSX.Element {
     const globalContext = useContext(GlobalContext);
@@ -21,7 +21,7 @@ function App(): JSX.Element {
                 <Router>
                     <FrameLayout nav={!isAdminRoute() && (
                         <div className="inFrame__navbar">
-                            <Header/>
+                            <HeaderWithFooter/>
                         </div>
                     )}>
                         <ModalWindow/>
