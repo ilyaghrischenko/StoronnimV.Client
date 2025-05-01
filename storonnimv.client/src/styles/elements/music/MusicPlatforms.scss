@@ -1,6 +1,8 @@
 .music-platforms-container {
-  width: clamp(1px, 25vw, 10000px);
-  height: clamp(1px, 80vh, 10000px);
+  width: clamp(200px, 30%, 10000px);
+  height: clamp(200px, 90%, 10000px);
+  min-width: 200px;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;

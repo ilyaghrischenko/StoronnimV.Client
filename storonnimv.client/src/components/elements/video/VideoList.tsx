@@ -55,9 +55,7 @@ const VideoList: FC = () => {
     };
 
     return (
-        <div
-            className="video-list-container"
-        >
+        <div className="video-list-container">
             <button
                 className="video-btn"
                 onClick={onBackButtonClick}
@@ -68,18 +66,18 @@ const VideoList: FC = () => {
 
             {!pageLoading ?
                 (!checkIfNoData(() => !videoList || videoList.length === 0) ?
-            <List
-                className="video-list"
-                items={videoList}
-                renderItem={(item: IVideoModel) => (
-                    <ListItem
-                        item={item}
+                    <List
+                        className="video-list"
+                        items={videoList}
                         renderItem={(item: IVideoModel) => (
-                            <VideoListItem videoItem={item}/>
+                            <ListItem
+                                item={item}
+                                renderItem={(item: IVideoModel) => (
+                                    <VideoListItem videoItem={item}/>
+                                )}
+                            />
                         )}
-                    />
-                )}
-            /> : <NoData message='Відео немає' />)
+                    /> : <NoData message='Відео немає'/>)
                 :
                 <List
                     className="video-list"
@@ -94,11 +92,11 @@ const VideoList: FC = () => {
             }
 
             {!checkIfNoData(() => !videoList || videoList.length === 0) &&
-            <PaginationSection
-                currentPage={currentPage}
-                totalPages={totalPages}
-                paginate={(page) => paginate(videoType, page, 2)}
-            />}
+                <PaginationSection
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    paginate={(page) => paginate(videoType, page, 2)}
+                />}
         </div>
     );
 };

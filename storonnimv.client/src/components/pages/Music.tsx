@@ -22,16 +22,18 @@ const Music: FC = () => {
 
     return (
         <MusicContextProvider>
-            <Container className="music-page page">
-                {isAdmin &&
-                    <Button
-                        className='admin-button__add'
-                        onClick={() => OnShowModal(<AddMusicPlatformModal/>)}
-                    >
-                        <FaPlus/>
-                    </Button>}
-                <MusicPlatforms/>
-                <SpotifyContainer/>
+            <Container className="page">
+                <div className='music-page'>
+                    {isAdmin &&
+                        <Button
+                            className='admin-button__add'
+                            onClick={() => OnShowModal(<AddMusicPlatformModal/>)}
+                        >
+                            <FaPlus/>
+                        </Button>}
+                    <MusicPlatforms/>
+                    <SpotifyContainer/>
+                </div>
             </Container>
         </MusicContextProvider>
     );

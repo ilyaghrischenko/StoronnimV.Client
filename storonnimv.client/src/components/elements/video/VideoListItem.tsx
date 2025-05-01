@@ -15,7 +15,10 @@ const VideoListItem: React.FC<IVideoListItemProps> = ({ videoItem }) => {
 
     return (
         <div className="video-list-item">
-            <h3 className="video-list-item__title main-text">{videoItem.title}</h3>
+            <h3
+                className="video-list-item__title main-text"
+                title={videoItem.title}
+            >{videoItem.title}</h3>
             <video
                 className="video-list-item__video"
                 controls

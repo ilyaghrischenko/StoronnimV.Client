@@ -15,7 +15,6 @@
 
   width: 100%;
   min-height: 400px; /* Минимальная высота */
-  max-height: 700px; /* Максимальная высота, если надо */
 }
 
 .video-list-item__title {
@@ -26,12 +25,13 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 100%;
+  width: 80%;
 }
 
 .video-list-item__video {
   width: 90%;
   height: auto; /* Автоматическая высота! */
+  aspect-ratio: 16/9;
   max-height: 300px; /* Чтобы видео не вылезало */
   border-radius: 0.75rem;
   object-fit: contain;
