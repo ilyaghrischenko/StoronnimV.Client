@@ -10,13 +10,17 @@
     font-size: 135px;
     text-align: center;
     font-weight: bold;
+
+    @media screen and (max-width: 1200px) {
+      font-size: 100px;
+    }
   }
 }
 
 .description-div {
   position: relative;
   width: 95%;
-  max-height: 130px;
+  max-height: 190px;
   overflow: hidden;
   margin: 5px;
 

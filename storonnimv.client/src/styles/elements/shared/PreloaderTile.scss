@@ -10,14 +10,13 @@
   transition: background-color 0.3s ease;
 
   &__container-news-page {
-    position: relative;
     width: 100%;
     height: clamp(200px, 30vh, 300px);
   }
 
   &__container-music-page {
-    height: clamp(100px, 30vh, 150px);
-    width: clamp(150px, 30vw, 300px);
+    height: clamp(200px, 10%, 1000px);
+    width: clamp(200px, 100%, 1000px);
   }
 
   &__container-group-page {
@@ -31,8 +30,9 @@
   }
 
   &__container-schedule-page {
-    width: clamp(250px, 26vw, 500px);
-    height: clamp(300px, 40vh, 550px);
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 9/10;
   }
 
   &__animation {

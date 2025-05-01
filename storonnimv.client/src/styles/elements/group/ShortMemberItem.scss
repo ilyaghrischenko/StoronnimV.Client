@@ -8,8 +8,10 @@
 
 
 .photo-container {
-  width: 80%;
-  height: 15vw;
+  width: 75%;
+  height: auto;
+
+  aspect-ratio: 2/1.8;
 
   border-radius: 20px;
   margin-bottom: 20%;

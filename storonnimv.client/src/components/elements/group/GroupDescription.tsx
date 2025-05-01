@@ -26,8 +26,7 @@ const GroupDescription: FC = () => {
 
     return (
         <>
-            {!
-                pageLoading ?
+            {!pageLoading ?
                 <Container
                     className='group-description-container'
                     style={{
@@ -42,17 +41,21 @@ const GroupDescription: FC = () => {
                     </Button>}
 
                     {checkIfNoData(() => showNoData) ?
-                        <NoData message='Дані про групу відсутні' />
+                        <NoData message='Дані про групу відсутні'/>
                         : (
                             <>
-                                {checkIfNoData(() => groupDataExists) ? <Description groupInfo={fullInfo.groupPage} /> : <NoData message='Опис групи відсутній' />}
-                                {checkIfNoData(() => membersDataExists) ? <ShortMembers members={fullInfo.members} /> : <NoData message='Дані про учасників відсутні'/>}
+                                {checkIfNoData(() => groupDataExists) ?
+                                    <Description groupInfo={fullInfo.groupPage}/> :
+                                    <NoData message='Опис групи відсутній'/>}
+                                {checkIfNoData(() => membersDataExists) ?
+                                    <ShortMembers members={fullInfo.members}/> :
+                                    <NoData message='Дані про учасників відсутні'/>}
                             </>
                         )}
                 </Container>
                 :
                 <Container className='group-description-container'>
-                        <PreloaderTile className='preloader-tile__container-group-page'/>
+                    <PreloaderTile className='preloader-tile__container-group-page'/>
                 </Container>
             }
         </>

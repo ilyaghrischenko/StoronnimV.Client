@@ -136,11 +136,16 @@
   text-align: center;
   font-weight: bold;
 }
+@media screen and (max-width: 1200px) {
+  .description-container__group-name {
+    font-size: 100px;
+  }
+}
 
 .description-div {
   position: relative;
   width: 95%;
-  max-height: 130px;
+  max-height: 190px;
   overflow: hidden;
   margin: 5px;
 }
@@ -158,7 +163,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 5%;
+  padding-top: 3%;
   position: relative;
 }
 
@@ -177,8 +182,9 @@
 }
 
 .photo-container {
-  width: 80%;
-  height: 15vw;
+  width: 75%;
+  height: auto;
+  aspect-ratio: 2/1.8;
   border-radius: 20px;
   margin-bottom: 20%;
   background-size: cover;
@@ -277,8 +283,6 @@
   align-items: center;
   height: 100%;
   width: 98%;
-  box-sizing: border-box;
-  overflow: hidden;
   border-radius: 20px;
   background-size: cover;
   background-position: center;
@@ -650,6 +654,7 @@
 }
 .schedules-list__grid {
   width: 100%;
+  height: 100%;
   flex: 1;
   display: flex;
   justify-content: space-around;
@@ -1004,13 +1009,12 @@
   transition: background-color 0.3s ease;
 }
 .preloader-tile__container-news-page {
-  position: relative;
   width: 100%;
   height: clamp(200px, 30vh, 300px);
 }
 .preloader-tile__container-music-page {
-  height: clamp(100px, 30vh, 150px);
-  width: clamp(150px, 30vw, 300px);
+  height: clamp(200px, 10%, 1000px);
+  width: clamp(200px, 100%, 1000px);
 }
 .preloader-tile__container-group-page {
   height: 100vh;
@@ -1021,8 +1025,9 @@
   height: clamp(300px, 50vh, 600px);
 }
 .preloader-tile__container-schedule-page {
-  width: clamp(250px, 26vw, 500px);
-  height: clamp(300px, 40vh, 550px);
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 9/10;
 }
 .preloader-tile__animation {
   width: 100%;
@@ -1070,6 +1075,7 @@
 
 .video-btn {
   position: absolute;
+  z-index: 10;
   top: 1px;
   left: 35px;
   display: flex;
@@ -1318,7 +1324,7 @@ th, td {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-y: auto;
+  overflow-y: hidden;
   overflow-x: hidden;
   position: relative;
   scrollbar-width: none;
@@ -1338,7 +1344,7 @@ th, td {
 .page > * {
   max-width: 100%;
   max-height: 100%;
-  overflow: auto;
+  overflow: hidden;
   box-sizing: border-box;
 }
 

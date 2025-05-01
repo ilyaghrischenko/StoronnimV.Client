@@ -44,7 +44,7 @@ const VideoSections: FC<VideoSectionsProps> = ({ topImage, bottomLeftImage, bott
                     ) : (
                         <p className="video-sections__placeholder">Top Section (Add an image)</p>
                     )}
-                    <h1 className="video-sections__title main-text">Performances</h1>
+                    <h1 className="video-sections__title main-text">Виступи</h1>
                 </Button>
 
                 <Button
@@ -57,7 +57,7 @@ const VideoSections: FC<VideoSectionsProps> = ({ topImage, bottomLeftImage, bott
                     ) : (
                         <p className="video-sections__placeholder">Bottom Left Section (Add an image)</p>
                     )}
-                    <h1 className="video-sections__title main-text">Backstage</h1>
+                    <h1 className="video-sections__title main-text">За лаштунками</h1>
                 </Button>
 
                 <Button
@@ -70,7 +70,7 @@ const VideoSections: FC<VideoSectionsProps> = ({ topImage, bottomLeftImage, bott
                     ) : (
                         <p className="video-sections__placeholder">Bottom Right Section (Add an image)</p>
                     )}
-                    <h1 className="video-sections__title main-text">Repetitions</h1>
+                    <h1 className="video-sections__title main-text">Репетиції</h1>
                 </Button>
             </div>
         </div>

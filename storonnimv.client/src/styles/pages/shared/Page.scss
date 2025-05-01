@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-y: auto;
+  overflow-y: hidden;
   overflow-x: hidden;
   position: relative;
 
@@ -33,7 +33,7 @@
   > * {
     max-width: 100%;
     max-height: 100%;
-    overflow: auto;
+    overflow: hidden;
     box-sizing: border-box;
   }
 }
