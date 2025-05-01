@@ -64,7 +64,7 @@
   background-color: darkred;
 }
 
-.admin-button, .footer-container__item .group-socials-admin-buttons-container__delete, .footer-container__item .group-socials-admin-buttons-container__edit, .admin-button__delete--video, .admin-button__delete--music, .admin-button__delete--social, .admin-button__delete, .admin-button__edit--video, .admin-button__edit--music, .admin-button__edit--social, .admin-button__edit, .admin-button__add--social, .admin-button__add {
+.admin-button, .footer-container__item .group-socials-admin-buttons-container__delete, .footer-container__item .group-socials-admin-buttons-container__edit, .footer-container__add-button, .admin-button__delete--video, .admin-button__delete--music, .admin-button__delete--social, .admin-button__delete, .admin-button__edit--video, .admin-button__edit--music, .admin-button__edit--social, .admin-button__edit, .admin-button__add--social, .admin-button__add {
   position: absolute;
   z-index: 10;
   background-color: rgba(252, 205, 47, 0.8509803922);
@@ -74,7 +74,7 @@
   padding: 0.5rem 0.75rem;
   font-size: 1rem;
 }
-.admin-button:hover, .footer-container__item .group-socials-admin-buttons-container__delete:hover, .footer-container__item .group-socials-admin-buttons-container__edit:hover, .admin-button__delete--video:hover, .admin-button__delete--music:hover, .admin-button__delete--social:hover, .admin-button__delete:hover, .admin-button__edit--video:hover, .admin-button__edit--music:hover, .admin-button__edit--social:hover, .admin-button__edit:hover, .admin-button__add--social:hover, .admin-button__add:hover {
+.admin-button:hover, .footer-container__item .group-socials-admin-buttons-container__delete:hover, .footer-container__item .group-socials-admin-buttons-container__edit:hover, .footer-container__add-button:hover, .admin-button__delete--video:hover, .admin-button__delete--music:hover, .admin-button__delete--social:hover, .admin-button__delete:hover, .admin-button__edit--video:hover, .admin-button__edit--music:hover, .admin-button__edit--social:hover, .admin-button__edit:hover, .admin-button__add--social:hover, .admin-button__add:hover {
   background-color: rgba(193, 157, 36, 0.8470588235);
 }
 
@@ -763,6 +763,9 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
+}
+.footer-container__add-button {
+  position: relative;
 }
 .footer-container__item {
   width: 20%;

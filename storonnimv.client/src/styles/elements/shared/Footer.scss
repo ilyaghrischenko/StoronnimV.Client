@@ -10,6 +10,11 @@
   align-items: center;
   gap: 1rem;
 
+  &__add-button {
+    @extend .admin-button;
+    position: relative;
+  }
+
   &__item {
     width: 20%;
     display: flex;
