@@ -10,8 +10,35 @@
   align-items: center;
   gap: 1rem;
 
+  &__item {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .group-socials-admin-buttons-container {
+      position: relative;
+      top: 0;
+      right: 0;
+      z-index: 10;
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.5rem;
+
+      &__edit {
+        @extend .admin-button;
+        @extend .admin-button__edit--social;
+      }
+
+      &__delete {
+        @extend .admin-button;
+        @extend .admin-button__delete--social;
+      }
+    }
+  }
+
   &__link {
-    width: 15%;
+    width: 90%;
     height: auto;
 
     &-photo {
