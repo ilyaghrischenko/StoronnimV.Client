@@ -23,7 +23,9 @@ const ScheduleHomeContainer: FC<ScheduleHomeContainerProps> = ({className}) => {
         <Container
             className={`schedule-home-container ${className}`}
             onClick={() => onClickHomeElementHandler('schedule')}>
-                {checkIfNoData(() => !!homeSchedule.photo) ? <Image className='schedule-home-container__image' src={homeSchedule.photo}/> : <NoData message='Афіш немає' />}
+                {checkIfNoData(() => !!homeSchedule.photo) ?
+                    <Image className='schedule-home-container__image' src={homeSchedule.photo}/>
+                    : <NoData message='Афіш немає' />}
         </Container>
     );
 };
