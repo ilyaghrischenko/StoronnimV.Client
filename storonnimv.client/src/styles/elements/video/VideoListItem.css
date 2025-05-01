@@ -1,44 +1,66 @@
 @charset "UTF-8";
 .video-list-item {
-  flex: 1 1 300px; /* базовая ширина — 300px, но может сжиматься и расширяться */
+  flex: 1 1 300px;
   position: relative;
   background-color: #1c1c1c;
   border-radius: 1rem;
-  padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  transition: transform 0.2s ease;
-  overflow: hidden;
+  align-items: center;
   justify-content: center;
-  box-sizing: border-box; /* Учитывает паддинги и границы при расчете ширины и высоты */
-  /* Возможность указать конкретные параметры ширины и высоты */
-  width: var(--video-item-width, clamp(200px, 50vw, 100%)); /* По умолчанию 100%, но можно переопределить */
-  height: var(--video-item-height, clamp(300px, 50vh, 600px)); /* По умолчанию auto, можно переопределить */
+  gap: 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+  width: 100%;
+  min-height: 400px; /* Минимальная высота */
 }
 
 .video-list-item__title {
   text-align: center;
   font-weight: bold;
+  font-size: 22px;
   margin-bottom: 0.5rem;
-  white-space: nowrap; /* Запрещает перенос строки */
-  overflow: hidden; /* Прячет часть текста, выходящую за пределы */
-  text-overflow: ellipsis; /* Добавляет троеточие, если текст не помещается */
-  width: 100%; /* Блок будет занимать всю доступную ширину */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80%;
 }
 
 .video-list-item__video {
-  width: auto;
-  height: clamp(200px, 38vh, 500px);
+  width: 90%;
+  height: auto; /* Автоматическая высота! */
+  aspect-ratio: 16/9;
+  max-height: 300px; /* Чтобы видео не вылезало */
   border-radius: 0.75rem;
   object-fit: contain;
   background: black;
 }
 
-.video-list-item .btn-warning {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+/* Новый блок для кнопок админа */
+.video-list-item__admin-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.video-list-item__admin-buttons h3 {
+  font-size: 14px;
+  color: #aaa;
+  margin: 0;
+}
+
+/* Стили для кнопок */
+.video-list-item__admin-buttons .btn {
+  width: 100%;
+  max-width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*# sourceMappingURL=VideoListItem.css.map */

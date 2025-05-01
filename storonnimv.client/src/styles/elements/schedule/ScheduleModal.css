@@ -1,32 +1,64 @@
+.schedule-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+.schedule-modal__container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+.schedule-modal__description-container {
+  width: 100%;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+.schedule-modal__description-container-description {
+  text-align: center;
+  width: 100%;
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+.schedule-modal__photo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 47%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  border-radius: 1vw;
+}
 .schedule-modal__photo {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 15px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 1vw;
+}
+.schedule-modal__info {
+  width: 47%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  color: white;
 }
 .schedule-modal__info-title {
+  width: 100%;
   font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 10px;
 }
 .schedule-modal__info-datetime {
+  width: 100%;
   font-size: 1.5rem;
   color: #666;
-  margin-bottom: 10px;
-}
-.schedule-modal__info-description {
-  font-size: 1.2rem;
-  margin-bottom: 15px;
-}
-.schedule-modal__info-location {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-.schedule-modal__info-status {
-  font-size: 1.3rem;
-  color: #ff5c5c;
-  margin-bottom: 10px;
 }
 
 /*# sourceMappingURL=ScheduleModal.css.map */
