@@ -1,5 +1,5 @@
 ﻿import {createContext, FC, ReactNode, useState} from "react";
-import axios, {AxiosResponse} from "axios";
+import axios, {AxiosError, AxiosResponse} from "axios";
 
 // Определяем интерфейс для значения контекста
 interface GlobalContextType {
@@ -25,6 +25,7 @@ interface GlobalContextType {
     validationErrors: Record<string, string[]>;
     setValidationErrors: (validationErrors: Record<string, string[]>) => void;
     checkIfNoData: (callback: () => boolean) => boolean;
+    serverRoute: string;
 }
 
 // Создаем контекст с типизацией
@@ -43,9 +44,11 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
 
     const [validationErrors, setValidationErrors] = useState<Record<string, string[]>>({} as Record<string, string[]>);
 
+    const serverRoute = 'http://152.67.71.175:8081/api';
+
     const fetchIsAdmin = async () => {
         try {
-            const response = await sendRequest("https://localhost:44315/api/admin/isAdmin");
+            const response = await sendRequest(`${serverRoute}/admin/isAdmin`);
 
             if (response.status === 200) {
                 setIsAdmin(true);
@@ -85,15 +88,16 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
             };
 
             return await axios(config);
-        } catch (error: unknown) {
-            if (error.response.status === 429) {
-                alert('To many requests');
+        } catch (err: unknown) {
+            const error = err as AxiosError;
+
+            if (error.response?.status === 429) {
+                alert('Too many requests');
             }
+
             if (error.response) {
-                // Если сервер вернул статус ошибки, но ответ доступен
                 return error.response;
             } else {
-                // Если ошибка сети или другая проблема
                 throw new Error(error.message || "Network error");
             }
         }
@@ -129,7 +133,8 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
         fetchIsAdmin,
         validationErrors,
         setValidationErrors,
-        checkIfNoData
+        checkIfNoData,
+        serverRoute
     };
 
     return (

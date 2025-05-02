@@ -8,7 +8,7 @@ interface IEditMemberModalProps {
 }
 
 const EditMemberModal: FC<IEditMemberModalProps> = ({item}) => {
-    const {OnHideModal, sendRequest} = useContext(GlobalContext)!;
+    const {OnHideModal, sendRequest, serverRoute} = useContext(GlobalContext)!;
 
     const [fullName, setFullName] = useState<string>(item.fullName);
     const [description, setDescription] = useState<string>(item.description);
@@ -34,7 +34,7 @@ const EditMemberModal: FC<IEditMemberModalProps> = ({item}) => {
             formData.append("photo", photo);
 
             const response = await sendRequest(
-                "https://localhost:44315/api/admin/group-page/members/photo",
+                `${serverRoute}/admin/group-page/members/photo`,
                 "PATCH",
                 formData
             );
@@ -62,7 +62,7 @@ const EditMemberModal: FC<IEditMemberModalProps> = ({item}) => {
             formData.append("role", role);
 
             const response = await sendRequest(
-                "https://localhost:44315/api/admin/group-pages/members",
+                `${serverRoute}/admin/group-pages/members`,
                 "PATCH",
                 formData,
                 {"Content-Type": "application/json"}

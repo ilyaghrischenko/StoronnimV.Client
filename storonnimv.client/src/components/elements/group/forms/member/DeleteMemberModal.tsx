@@ -10,12 +10,12 @@ interface DeleteMemberModalProps {
 const DeleteMemberModal: FC<DeleteMemberModalProps> = ({item}) => {
     const globalContext = useContext(GlobalContext)!;
 
-    const {sendRequest, OnHideModal} = globalContext;
+    const {sendRequest, OnHideModal, serverRoute} = globalContext;
 
     const handleDelete = async () => {
         try {
             const response = await sendRequest(
-                `https://localhost:44315/api/admin/group/members/${item.id}`,
+                `${serverRoute}/admin/group/members/${item.id}`,
                 "DELETE"
             );
 

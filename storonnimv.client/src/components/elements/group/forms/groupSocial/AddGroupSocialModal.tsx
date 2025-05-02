@@ -5,7 +5,7 @@ import {GlobalContext} from "../../../../contexts/shared/GlobalContext.tsx";
 const AddGroupSocialModal: FC = () => {
     const globalContext = useContext(GlobalContext)!;
 
-    const {OnHideModal, sendRequest, setModalLoading} = globalContext;
+    const {OnHideModal, sendRequest, setModalLoading, serverRoute} = globalContext;
 
     const [photo, setPhoto] = useState<File | null>(null);
     const [name, setName] = useState<string>("Other");
@@ -33,7 +33,7 @@ const AddGroupSocialModal: FC = () => {
 
         try {
             const response = await sendRequest(
-                "https://localhost:44315/api/admin/group-socials",
+                `${serverRoute}/admin/group-socials`,
                 "POST",
                 formData
             );

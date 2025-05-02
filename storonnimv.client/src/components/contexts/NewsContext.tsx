@@ -23,7 +23,7 @@ interface NewsContextProviderProps {
 const NewsContextProvider: FC<NewsContextProviderProps> = ({children}) => {
     const globalContext = useContext(GlobalContext)!;
 
-    const {sendRequest, setPageLoading, setModalLoading} = globalContext;
+    const {sendRequest, setPageLoading, setModalLoading, serverRoute} = globalContext;
 
     const [newsList, setNewsList] = useState<INewsShortItem[]>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
@@ -34,7 +34,7 @@ const NewsContextProvider: FC<NewsContextProviderProps> = ({children}) => {
         try {
             setModalLoading(true);
             const response = await sendRequest(
-                `https://localhost:44315/api/news/${id}`
+                `${serverRoute}/news/${id}`
             );
 
             const data: INewsFullItem = response.data;
@@ -51,7 +51,7 @@ const NewsContextProvider: FC<NewsContextProviderProps> = ({children}) => {
         try {
             setPageLoading(true);
             const response = await sendRequest(
-                `https://localhost:44315/api/news/page/${pageNumber}?pageSize=${pageSize}`
+                `${serverRoute}/news/page/${pageNumber}?pageSize=${pageSize}`
             );
 
             const data: IPaginationResponse<INewsShortItem> = response.data;

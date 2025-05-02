@@ -8,7 +8,7 @@ interface IEditGroupModalProps {
 }
 
 const EditGroupModal: FC<IEditGroupModalProps> = ({fullInfo}) => {
-    const {OnHideModal, sendRequest} = useContext(GlobalContext)!;
+    const {OnHideModal, sendRequest, serverRoute} = useContext(GlobalContext)!;
 
     const [description, setDescription] = useState<string>(fullInfo.groupPage.description);
     const [photo, setPhoto] = useState<File>({} as File);
@@ -27,7 +27,7 @@ const EditGroupModal: FC<IEditGroupModalProps> = ({fullInfo}) => {
             formData.append("description", description);
 
             const response = await sendRequest(
-                "https://localhost:44315/api/admin/group-pages",
+                `${serverRoute}/admin/group-pages`,
                 "PATCH",
                 formData,
                 {"Content-Type": "application/json"}
@@ -54,7 +54,7 @@ const EditGroupModal: FC<IEditGroupModalProps> = ({fullInfo}) => {
             formData.append("photo", photo);
 
             const response = await sendRequest(
-                "https://localhost:44315/api/admin/group-page/photo",
+                `${serverRoute}/admin/group-page/photo`,
                 "PATCH",
                 formData
             );

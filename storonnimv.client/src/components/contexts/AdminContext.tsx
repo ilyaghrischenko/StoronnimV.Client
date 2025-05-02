@@ -23,13 +23,13 @@ interface AdminContextProviderProps {
 const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
     const globalContext = useContext(GlobalContext)!;
 
-    const {sendRequest, setIsAdmin, setValidationErrors} = globalContext;
+    const {sendRequest, setIsAdmin, setValidationErrors, serverRoute} = globalContext;
     const navigate = useNavigate();
 
     const logIn = async (logInRequest: ILogInRequest) => {
         try {
             const response = await sendRequest(
-                'https://localhost:44315/api/account/login',
+                `${serverRoute}/account/login`,
                 'POST',
                 JSON.stringify({login: logInRequest.login, password: logInRequest.password}),
                 {'Content-Type': 'application/json'}
@@ -56,7 +56,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
 
     const fetchBasicAdmins = async () => {
         try {
-            const response = await sendRequest("https://localhost:44315/api/super-admin/basic-admins");
+            const response = await sendRequest(`${serverRoute}/super-admin/basic-admins`);
 
             if (response.status === 200) {
                 const data: IBasicAdmin[] = response.data;
@@ -71,7 +71,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
         alert('admin adding!');
         try {
             const response = await sendRequest(
-                "https://localhost:44315/api/super-admin/basic-admins",
+                `${serverRoute}/super-admin/basic-admins`,
                 "POST",
                 JSON.stringify({login, password}),
                 {"Content-Type": "application/json"}
@@ -92,7 +92,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
     const deleteAdmin = async (adminId: number) => {
         try {
             const response = await sendRequest(
-                `https://localhost:44315/api/super-admin/basic-admins/${adminId}`,
+                `${serverRoute}/super-admin/basic-admins/${adminId}`,
                 'DELETE'
             );
 
@@ -107,7 +107,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
     const editAdminLogin = async (adminId: number, newLogin: string) => {
         try {
             const response = await sendRequest(
-                `https://localhost:44315/api/super-admin/basic-admins/${adminId}/login`,
+                `${serverRoute}/super-admin/basic-admins/${adminId}/login`,
                 'PATCH',
                 JSON.stringify({newLogin}),
                 {'Content-Type': 'application/json'}
@@ -138,7 +138,7 @@ const AdminContextProvider: FC<AdminContextProviderProps> = ({children}) => {
 
         try {
             const response = await sendRequest(
-                `https://localhost:44315/api/super-admin/basic-admins/${adminId}/password`,
+                `${serverRoute}/super-admin/basic-admins/${adminId}/password`,
                 'PATCH',
                 JSON.stringify({oldPassword, newPassword}),
                 {'Content-Type': 'application/json'}

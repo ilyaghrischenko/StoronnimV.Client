@@ -7,12 +7,12 @@ import Logo from '../../../assets/logo.svg?react';
 import {GlobalContext} from "../../contexts/shared/GlobalContext.tsx";
 
 const Header: FC = () => {
-    const { sendRequest, isAdmin, setIsAdmin } = useContext(GlobalContext)!;
+    const { sendRequest, isAdmin, setIsAdmin, serverRoute } = useContext(GlobalContext)!;
 
     const logout = async () => {
         try {
             const response = await sendRequest(
-                'https://localhost:44315/api/admin/logout',
+                `${serverRoute}/admin/logout`,
                 'POST'
             );
 

@@ -10,12 +10,13 @@ interface DeleteNewsItemModalProps {
 const DeleteNewsItemModal: FC<DeleteNewsItemModalProps> = ({newsItem}) => {
     const globalContext = useContext(GlobalContext)!;
 
-    const {sendRequest, OnHideModal} = globalContext;
-    const route = 'https://localhost:44315/api/admin/news';
+    const {sendRequest, OnHideModal, serverRoute} = globalContext;
 
     const handleDelete = async () => {
         try {
-            const response = await sendRequest(`${route}/${newsItem.id}`, "DELETE");
+            const response = await sendRequest(
+                `${serverRoute}/admin/news/${newsItem.id}`,
+                "DELETE");
             if (response.status === 204) {
                 OnHideModal();
                 window.location.reload();

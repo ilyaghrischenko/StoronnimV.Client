@@ -18,14 +18,14 @@ interface MusicContextProviderProps {
 const MusicContextProvider: React.FC<MusicContextProviderProps> = ({ children }) => {
     const globalContext = useContext(GlobalContext)!;
 
-    const { sendRequest, setPageLoading } = globalContext;
+    const { sendRequest, setPageLoading, serverRoute } = globalContext;
 
     const [musicPlatforms, setMusicPlatforms] = useState<IMusicPlatformItem[]>([]);
 
     const fetchMusicPlatforms = async () : Promise<void> => {
         try {
             setPageLoading(true);
-            const response = await sendRequest('https://localhost:44315/api/music');
+            const response = await sendRequest(`${serverRoute}/music`);
 
             const data: IMusicPlatformItem[] = response.data;
 

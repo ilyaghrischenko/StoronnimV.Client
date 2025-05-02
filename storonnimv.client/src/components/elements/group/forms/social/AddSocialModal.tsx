@@ -7,7 +7,7 @@ interface ISocialAddModalProps {
 }
 
 const AddSocialModal: FC<ISocialAddModalProps> = ({memberId}) => {
-    const {sendRequest, OnHideModal} = useContext(GlobalContext)!;
+    const {sendRequest, OnHideModal, serverRoute} = useContext(GlobalContext)!;
 
     const [name, setName] = useState<string>("");
     const [url, setUrl] = useState<string>("");
@@ -20,7 +20,7 @@ const AddSocialModal: FC<ISocialAddModalProps> = ({memberId}) => {
 
         try {
             const response = await sendRequest(
-                "https://localhost:44315/api/admin/socials",
+                `${serverRoute}/admin/socials`,
                 'POST',
                 formData,
                 {"Content-Type": "application/json"}

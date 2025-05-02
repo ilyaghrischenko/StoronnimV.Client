@@ -9,12 +9,12 @@ interface IDeleteGroupSocialModalProps {
 const DeleteGroupSocialModal: FC<IDeleteGroupSocialModalProps> = ({ itemId }) => {
     const globalContext = useContext(GlobalContext)!;
 
-    const {OnHideModal, sendRequest} = globalContext;
+    const {OnHideModal, sendRequest, serverRoute} = globalContext;
 
     const handleDelete = async () => {
         try {
             const response = await sendRequest(
-                `https://localhost:44315/api/admin/group-socials/${itemId}`,
+                `${serverRoute}/admin/group-socials/${itemId}`,
                 'DELETE'
             );
 

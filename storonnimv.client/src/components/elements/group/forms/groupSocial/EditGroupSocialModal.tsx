@@ -8,7 +8,7 @@ interface IEditGroupSocialModalProps {
 }
 
 const EditGroupSocialModal: FC<IEditGroupSocialModalProps> = ({item}) => {
-    const {OnHideModal, sendRequest} = useContext(GlobalContext)!;
+    const {OnHideModal, sendRequest, serverRoute} = useContext(GlobalContext)!;
 
     const [linkUrl, setLinkUrl] = useState<string>(item.linkUrl);
 
@@ -19,7 +19,7 @@ const EditGroupSocialModal: FC<IEditGroupSocialModalProps> = ({item}) => {
 
         try {
             const response = await sendRequest(
-                "https://localhost:44315/api/admin/group-socials",
+                `${serverRoute}/admin/group-socials`,
                 "PATCH",
                 formData,
                 {"Content-Type": "application/json"}

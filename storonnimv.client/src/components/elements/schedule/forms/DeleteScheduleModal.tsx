@@ -9,13 +9,12 @@ interface DeleteScheduleModalProps {
 const DeleteScheduleModal: FC<DeleteScheduleModalProps> = ({itemId}) => {
     const globalContext = useContext(GlobalContext)!;
 
-    const {OnHideModal, sendRequest} = globalContext;
-    const route = 'https://localhost:44315/api/admin/schedules/';
+    const {OnHideModal, sendRequest, serverRoute} = globalContext;
 
     const handleDelete = async () => {
         try {
             const response = await sendRequest(
-                `${route}${itemId}`,
+                `${serverRoute}/admin/schedules/${itemId}`,
                 'DELETE'
             );
 

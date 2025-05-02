@@ -6,13 +6,9 @@ const AddMusicPlatformModal: FC = () => {
     const [platformUrl, setPlatformUrl] = useState<string>("");
     const [bgImage, setBgImage] = useState<File | null>(null);
 
-    const globalContext = useContext(GlobalContext);
+    const globalContext = useContext(GlobalContext)!;
 
-    if (!globalContext) {
-        throw new Error("GlobalContext is not defined.");
-    }
-
-    const {sendRequest, OnHideModal} = globalContext;
+    const {sendRequest, OnHideModal, serverRoute} = globalContext;
 
     const handleChangePhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
@@ -28,7 +24,10 @@ const AddMusicPlatformModal: FC = () => {
             formData.append("platformUrl", platformUrl);
             if (bgImage) formData.append("bgImageUrl", bgImage);
 
-            const response = await sendRequest("https://localhost:44315/api/admin/music", "POST", formData);
+            const response = await sendRequest(
+                `${serverRoute}/admin/music`,
+                "POST",
+                formData);
 
             if (response.status === 201) {
                 alert("Музична платформа додана!");

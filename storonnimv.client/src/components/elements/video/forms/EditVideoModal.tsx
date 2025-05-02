@@ -11,9 +11,7 @@ const EditVideoModal: FC<VideoEditButtonProps> = ({video}) => {
     const globalContext = useContext(GlobalContext)!;
     const [editedVideo, setEditedVideo] = useState<IVideoModel>(video);
 
-    const {sendRequest, OnHideModal} = globalContext;
-
-    const route = "https://localhost:44315/api/admin/videos";
+    const {sendRequest, OnHideModal, serverRoute} = globalContext;
 
     useEffect(() => {
         setEditedVideo(video);
@@ -35,7 +33,7 @@ const EditVideoModal: FC<VideoEditButtonProps> = ({video}) => {
             formData.append("type", editedVideo.type);
 
             const response = await sendRequest(
-                `${route}`,
+                `${serverRoute}/admin/videos`,
                 "PATCH",
                 formData,
                 {"Content-Type": "application/json"}

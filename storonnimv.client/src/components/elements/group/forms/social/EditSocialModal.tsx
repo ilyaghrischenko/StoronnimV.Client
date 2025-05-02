@@ -8,7 +8,7 @@ interface ISocialEditModalProps {
 }
 
 const EditSocialModal: FC<ISocialEditModalProps> = ({item}) => {
-    const {sendRequest, OnHideModal} = useContext(GlobalContext)!;
+    const {sendRequest, OnHideModal, serverRoute} = useContext(GlobalContext)!;
 
     const [name, setName] = useState<string>(item.socialNetwork);
     const [url, setUrl] = useState<string>(item.url);
@@ -21,7 +21,7 @@ const EditSocialModal: FC<ISocialEditModalProps> = ({item}) => {
             formData.append("url", url);
 
             const response = await sendRequest(
-                "https://localhost:44315/api/admin/socials",
+                `${serverRoute}/admin/socials`,
                 "PATCH",
                 formData,
                 {"Content-Type": "application/json"}

@@ -10,12 +10,11 @@ interface DeleteVideoModalProps {
 const DeleteVideoModal: FC<DeleteVideoModalProps> = ({ video}) => {
     const globalContext = useContext(GlobalContext)!;
 
-    const { OnHideModal, sendRequest } = globalContext;
-    const route = "https://localhost:44315/api/admin/videos";
+    const { OnHideModal, sendRequest, serverRoute } = globalContext;
 
     const handleDelete = async () => {
         try {
-            const response = await sendRequest(`${route}/${video.id}`, "DELETE");
+            const response = await sendRequest(`${serverRoute}/admin/videos/${video.id}`, "DELETE");
 
             if (response.status === 204) {
                 console.log("Відео успішно видалено:", video);

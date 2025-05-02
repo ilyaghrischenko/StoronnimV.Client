@@ -7,12 +7,12 @@ interface ISocialDeleteModalProps {
 }
 
 const DeleteSocialModal: FC<ISocialDeleteModalProps> = ({ itemId }) => {
-    const {OnHideModal, sendRequest} = useContext(GlobalContext)!;
+    const {OnHideModal, sendRequest, serverRoute} = useContext(GlobalContext)!;
 
     const handleDelete = async () => {
         try {
             const response = await sendRequest(
-                `https://localhost:44315/api/admin/socials/${itemId}`,
+                `${serverRoute}/admin/socials/${itemId}`,
                 'DELETE'
             );
 

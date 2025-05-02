@@ -11,7 +11,7 @@ import {AddGroupSocialModal} from "../group/forms/groupSocial/AddGroupSocialModa
 const Footer: FC = () => {
     const globalContext = useContext(GlobalContext)!;
 
-    const {isAdmin, OnShowModal, sendRequest, setPageLoading} = globalContext;
+    const {isAdmin, OnShowModal, sendRequest, setPageLoading, serverRoute} = globalContext;
 
     const [groupSocials, setGroupSocials] = useState<IGroupSocial[]>([]);
 
@@ -19,7 +19,7 @@ const Footer: FC = () => {
         try {
             setPageLoading(true);
 
-            const response = await sendRequest("https://localhost:44315/api/group-socials");
+            const response = await sendRequest(`${serverRoute}/group-socials`);
 
             const data: IGroupSocial[] = response.data;
             setGroupSocials(data);

@@ -27,7 +27,7 @@ const VideoContextProvider: React.FC<VideoContextProviderProps> = ({children}) =
         throw new Error("GlobalContext must be used within a GlobalContextProvider");
     }
 
-    const {sendRequest, setPageLoading} = globalContext;
+    const {sendRequest, setPageLoading, serverRoute} = globalContext;
 
     const [videoList, setVideoList] = useState<IVideoModel[]>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
@@ -38,7 +38,7 @@ const VideoContextProvider: React.FC<VideoContextProviderProps> = ({children}) =
             try {
                 setPageLoading(true);
                 const response = await sendRequest(
-                    `https://localhost:44315/api/videos/page/${videoType}/${pageNumber}?pageSize=${pageSize}`
+                    `${serverRoute}/videos/page/${videoType}/${pageNumber}?pageSize=${pageSize}`
                 );
 
                 const data: IPaginationResponse<IVideoModel> = response.data;

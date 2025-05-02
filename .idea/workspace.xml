@@ -5,7 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="push before admin methods">
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/home/PromotionVideoHome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/home/PromotionVideoHome.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/AdminContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/AdminContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/GroupContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/GroupContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/HomeContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/HomeContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/MusicContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/MusicContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/NewsContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/NewsContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/ScheduleContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/ScheduleContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/VideoContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/VideoContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/shared/GlobalContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/contexts/shared/GlobalContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/group/EditGroupModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/group/EditGroupModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/groupSocial/AddGroupSocialModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/groupSocial/AddGroupSocialModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/groupSocial/DeleteGroupSocialModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/groupSocial/DeleteGroupSocialModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/groupSocial/EditGroupSocialModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/groupSocial/EditGroupSocialModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/member/AddMemberModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/member/AddMemberModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/member/DeleteMemberModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/member/DeleteMemberModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/member/EditMemberModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/member/EditMemberModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/social/AddSocialModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/social/AddSocialModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/social/DeleteSocialModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/social/DeleteSocialModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/social/EditSocialModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/group/forms/social/EditSocialModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/music/forms/AddMusicPlatformModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/music/forms/AddMusicPlatformModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/forms/DeleteNewsItemModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/news/forms/DeleteNewsItemModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/forms/DeleteScheduleModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/forms/DeleteScheduleModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/forms/EditScheduleModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/schedule/forms/EditScheduleModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/shared/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/shared/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/shared/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/shared/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/forms/DeleteVideoModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/forms/DeleteVideoModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/forms/EditVideoModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/elements/video/forms/EditVideoModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/BasicAdminsPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/BasicAdminsPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css.map" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +56,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/group-socials" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -41,7 +70,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/ilyaghrischenko/StoronnimV.Client.git&quot;,
-    &quot;accountId&quot;: &quot;765801ca-fc3b-49ed-a339-54d2eff00169&quot;
+    &quot;accountId&quot;: &quot;f8f43f91-6ace-4e90-97df-a0c4ba8c89f6&quot;
   }
 }</component>
   <component name="ProblemsViewState">
@@ -63,7 +92,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "server/server-routes",
     "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "/Users/admin/Documents/GitHub/StoronnimV.Client",
     "list.type.of.created.stylesheet": "SCSS",
@@ -73,7 +102,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/Users/admin/Documents/GitHub/StoronnimV.Client/storonnimv.client/node_modules/typescript/lib",
+    "ts.external.directory.path": "D:\\ForProgramming\\Projects\\MyProjects\\React\\StoronnimV.Client\\storonnimv.client\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -170,6 +199,8 @@
       <workItem from="1746021479149" duration="1674000" />
       <workItem from="1746047792212" duration="4216000" />
       <workItem from="1746105945665" duration="8284000" />
+      <workItem from="1746175142313" duration="1043000" />
+      <workItem from="1746182648613" duration="1253000" />
     </task>
     <task id="LOCAL-00001" summary="change port">
       <option name="closed" value="true" />

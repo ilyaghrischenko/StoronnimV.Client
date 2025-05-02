@@ -8,7 +8,7 @@ interface IScheduleEditModalProps {
 }
 
 const EditScheduleModal: FC<IScheduleEditModalProps> = ({item}) => {
-    const {OnHideModal, sendRequest} = useContext(GlobalContext)!;
+    const {OnHideModal, sendRequest, serverRoute} = useContext(GlobalContext)!;
 
     const [title, setTitle] = useState<string>(item.title);
     const [description, setDescription] = useState<string>(item.description);
@@ -65,7 +65,7 @@ const EditScheduleModal: FC<IScheduleEditModalProps> = ({item}) => {
             formData.append("photo", photo);
 
             const response = await sendRequest(
-                "https://localhost:44315/api/admin/schedules/photo",
+                `${serverRoute}/admin/schedules/photo`,
                 "PATCH",
                 formData
             );
@@ -94,7 +94,7 @@ const EditScheduleModal: FC<IScheduleEditModalProps> = ({item}) => {
             formData.append("location", location);
 
             const response = await sendRequest(
-                "https://localhost:44315/api/admin/schedules",
+                `${serverRoute}/admin/schedules`,
                 "PATCH",
                 formData,
                 {"Content-Type": "application/json"}

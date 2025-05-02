@@ -19,7 +19,7 @@ interface GroupContextProviderProps {
 const GroupContextProvider: React.FC<GroupContextProviderProps> = ({children}) => {
     const globalContext = useContext(GlobalContext)!;
 
-    const {sendRequest, setPageLoading, setModalLoading} = globalContext;
+    const {sendRequest, setPageLoading, setModalLoading, serverRoute} = globalContext;
 
     const [fullInfo, setFullInfo] = useState<IGroupPageFullInfo>({
         groupPage: {
@@ -33,7 +33,7 @@ const GroupContextProvider: React.FC<GroupContextProviderProps> = ({children}) =
     const fetchGroupInfo = async (): Promise<void> => {
         try {
             setPageLoading(true);
-            const response = await sendRequest("https://localhost:44315/api/group");
+            const response = await sendRequest(`${serverRoute}/group`);
 
             const data: IGroupPageFullInfo = response.data;
 
@@ -62,7 +62,7 @@ const GroupContextProvider: React.FC<GroupContextProviderProps> = ({children}) =
     const fetchMemberInfo = async (memberId: number): Promise<void> => {
         try {
             setModalLoading(true);
-            const response = await sendRequest(`https://localhost:44315/api/group/member/${memberId}`);
+            const response = await sendRequest(`${serverRoute}/group/member/${memberId}`);
 
             const data: IMemberFullInfo = response.data;
 

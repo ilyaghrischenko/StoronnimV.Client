@@ -25,7 +25,7 @@ interface ScheduleContextProviderProps {
 const ScheduleContextProvider: React.FC<ScheduleContextProviderProps> = ({children}) => {
     const globalContext = useContext(GlobalContext)!;
 
-    const {sendRequest, setPageLoading, setModalLoading} = globalContext;
+    const {sendRequest, setPageLoading, setModalLoading, serverRoute} = globalContext;
 
     const [schedules, setSchedules] = useState<IScheduleListItem[]>([]);
     const [scheduleFullInfo, setScheduleFullInfo] = useState<ISchedule>({} as ISchedule);
@@ -51,7 +51,7 @@ const ScheduleContextProvider: React.FC<ScheduleContextProviderProps> = ({childr
     const fetchScheduleFullInfo = async (scheduleId: number): Promise<void> => {
         try {
             setModalLoading(true);
-            const response = await sendRequest(`https://localhost:44315/api/schedules/${scheduleId}`);
+            const response = await sendRequest(`${serverRoute}/schedules/${scheduleId}`);
 
             const data: ISchedule = response.data;
 
@@ -69,7 +69,7 @@ const ScheduleContextProvider: React.FC<ScheduleContextProviderProps> = ({childr
             try {
                 setPageLoading(true);
                 const response = await sendRequest(
-                    `https://localhost:44315/api/schedules/page/${pageNumber}?pageSize=${pageSize}`
+                    `${serverRoute}/schedules/page/${pageNumber}?pageSize=${pageSize}`
                 );
 
                 const data: IPaginationResponse<IScheduleListItem> = response.data;

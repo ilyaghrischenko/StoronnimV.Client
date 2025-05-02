@@ -3,7 +3,7 @@ import {Container, Form, Button} from "react-bootstrap";
 import {GlobalContext} from "../../../../contexts/shared/GlobalContext.tsx";
 
 const AddMemberModal: FC = () => {
-    const {sendRequest, OnHideModal} = useContext(GlobalContext)!;
+    const {sendRequest, OnHideModal, serverRoute} = useContext(GlobalContext)!;
 
     const [fullName, setFullName] = useState<string>("");
     const [description, setDescription] = useState<string>("");
@@ -28,7 +28,7 @@ const AddMemberModal: FC = () => {
             formData.append("photoUrl", photo);
 
             const response = await sendRequest(
-                "https://localhost:44315/api/admin/group/members",
+                `${serverRoute}/admin/group/members`,
                 "POST",
                 formData
             );
