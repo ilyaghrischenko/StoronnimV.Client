@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="server route changed and moved into GlobalContext.tsx">
-      <change afterPath="$PROJECT_DIR$/storonnimv.client/routes.ts" afterDir="false" />
-    </list>
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="add config file" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -174,7 +172,7 @@
       <workItem from="1746182648613" duration="1804000" />
       <workItem from="1746464006794" duration="2835000" />
       <workItem from="1746545419991" duration="623000" />
-      <workItem from="1746900419977" duration="304000" />
+      <workItem from="1746900419977" duration="826000" />
     </task>
     <task id="LOCAL-00001" summary="change port">
       <option name="closed" value="true" />
@@ -504,7 +502,23 @@
       <option name="project" value="LOCAL" />
       <updated>1746188004962</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="add config file">
+      <option name="closed" value="true" />
+      <created>1746900864033</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1746900864033</updated>
+    </task>
+    <task id="LOCAL-00043" summary="add config file">
+      <option name="closed" value="true" />
+      <created>1746900999106</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1746900999106</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -537,7 +551,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="finish all fixes" />
     <MESSAGE value="fix video sections images" />
     <MESSAGE value="save before token logic change" />
     <MESSAGE value="changed" />
@@ -562,6 +575,7 @@
     <MESSAGE value="push" />
     <MESSAGE value="push before admin methods" />
     <MESSAGE value="server route changed and moved into GlobalContext.tsx" />
-    <option name="LAST_COMMIT_MESSAGE" value="server route changed and moved into GlobalContext.tsx" />
+    <MESSAGE value="add config file" />
+    <option name="LAST_COMMIT_MESSAGE" value="add config file" />
   </component>
 </project>
