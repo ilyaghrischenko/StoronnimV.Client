@@ -1,0 +1,71 @@
+.header-container {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+    border: none;
+  }
+
+  // Скрыть скроллбар в Firefox
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Размещаем блоки с левым и правым контентом */
+  align-items: center;
+  gap: 40px;
+
+  &__brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__logo {
+    width: 100vw;
+    max-width: 85%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  &__link-item {
+    width: 70%;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 25px;
+    text-decoration: none;
+    color: black;
+  }
+
+  &__dev {
+    margin-top: 70%;
+    width: 70%;
+    text-align: center;
+    font-size: 12px;
+  }
+}
