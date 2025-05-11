@@ -44,7 +44,7 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
 
     const [validationErrors, setValidationErrors] = useState<Record<string, string[]>>({} as Record<string, string[]>);
 
-    const serverRoute = 'https://storonnimv-h9ftbdb4hhd6eza4.northeurope-01.azurewebsites.net/api';
+    const serverRoute = 'https://api.storonnimv.com/api';
 
     const fetchIsAdmin = async () => {
         try {
