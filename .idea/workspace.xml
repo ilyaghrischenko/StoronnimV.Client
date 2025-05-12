@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="add">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="add helmet to home page" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -179,23 +176,7 @@
       <workItem from="1746908487962" duration="2488000" />
       <workItem from="1746955331170" duration="1724000" />
       <workItem from="1746971649254" duration="667000" />
-      <workItem from="1747047249111" duration="11042000" />
-    </task>
-    <task id="LOCAL-00018" summary="save before token logic change">
-      <option name="closed" value="true" />
-      <created>1742828124626</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1742828124626</updated>
-    </task>
-    <task id="LOCAL-00019" summary="changed">
-      <option name="closed" value="true" />
-      <created>1742903861078</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1742903861079</updated>
+      <workItem from="1747047249111" duration="11392000" />
     </task>
     <task id="LOCAL-00020" summary="add useEffect to every page for fetching isAdmin">
       <option name="closed" value="true" />
@@ -573,7 +554,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747059118289</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="add favicon">
+      <option name="closed" value="true" />
+      <created>1747060543386</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1747060543386</updated>
+    </task>
+    <task id="LOCAL-00068" summary="add helmet to home page">
+      <option name="closed" value="true" />
+      <created>1747060766966</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1747060766966</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -618,8 +615,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactored add form" />
-    <MESSAGE value="refactored edit and delete form" />
     <MESSAGE value="refactored addition" />
     <MESSAGE value="FrameLayout.css commit" />
     <MESSAGE value="NewsListItem.tsx added styles" />
@@ -643,6 +638,8 @@
     <MESSAGE value="add helmet" />
     <MESSAGE value="add canonical" />
     <MESSAGE value="add" />
-    <option name="LAST_COMMIT_MESSAGE" value="add" />
+    <MESSAGE value="add favicon" />
+    <MESSAGE value="add helmet to home page" />
+    <option name="LAST_COMMIT_MESSAGE" value="add helmet to home page" />
   </component>
 </project>
