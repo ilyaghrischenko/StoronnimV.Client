@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="fix" />
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="add helmet">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Developers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Developers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Error.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Error.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Group.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Group.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Music.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Music.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/News.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/News.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Schedule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Schedule.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Video.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Video.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/main.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -176,23 +188,7 @@
       <workItem from="1746908487962" duration="2488000" />
       <workItem from="1746955331170" duration="1724000" />
       <workItem from="1746971649254" duration="667000" />
-      <workItem from="1747047249111" duration="6972000" />
-    </task>
-    <task id="LOCAL-00013" summary="add edit and delete buttons">
-      <option name="closed" value="true" />
-      <created>1738093845226</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1738093845227</updated>
-    </task>
-    <task id="LOCAL-00014" summary="fix">
-      <option name="closed" value="true" />
-      <created>1738160077183</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1738160077183</updated>
+      <workItem from="1747047249111" duration="9118000" />
     </task>
     <task id="LOCAL-00015" summary="add error page">
       <option name="closed" value="true" />
@@ -570,7 +566,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747055559939</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="fix">
+      <option name="closed" value="true" />
+      <created>1747055750497</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055750497</updated>
+    </task>
+    <task id="LOCAL-00063" summary="fix">
+      <option name="closed" value="true" />
+      <created>1747055952945</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055952945</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -615,7 +627,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="video addition edited" />
     <MESSAGE value="commit" />
     <MESSAGE value="save" />
     <MESSAGE value="refactored add form" />
@@ -640,6 +651,7 @@
     <MESSAGE value="add sitemap.xml" />
     <MESSAGE value="add robots.txt" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="add helmet" />
+    <option name="LAST_COMMIT_MESSAGE" value="add helmet" />
   </component>
 </project>

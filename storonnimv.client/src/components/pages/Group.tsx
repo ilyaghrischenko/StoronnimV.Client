@@ -3,6 +3,7 @@ import {GroupContextProvider} from "../contexts/GroupContext";
 import {Container} from "react-bootstrap";
 import {GroupDescription} from "../elements/group/GroupDescription";
 import {GlobalContext} from "../contexts/shared/GlobalContext.tsx";
+import {Helmet} from "react-helmet-async";
 
 
 const Group: FC = () => {
@@ -20,6 +21,11 @@ const Group: FC = () => {
 
     return (
         <GroupContextProvider>
+            <Helmet>
+                <title>Група - Стороннім В</title>
+                <meta name="description" content="Дізнайтеся більше про учасників та сам гурт Стороннім В." />
+            </Helmet>
+
             <Container className='page'>
                 <GroupDescription/>
             </Container>

@@ -6,6 +6,7 @@ import {MusicPlatforms} from "../elements/music/MusicPlatforms";
 import {GlobalContext} from "../contexts/shared/GlobalContext.tsx";
 import {AddMusicPlatformModal} from "../elements/music/forms/AddMusicPlatformModal.tsx";
 import {FaPlus} from "react-icons/fa";
+import {Helmet} from "react-helmet-async";
 
 const Music: FC = () => {
     const globalContext = useContext(GlobalContext);
@@ -22,6 +23,11 @@ const Music: FC = () => {
 
     return (
         <MusicContextProvider>
+            <Helmet>
+                <title>Музика - Стороннім В</title>
+                <meta name="description" content="Слухайте музику гурту Стороннім В онлайн." />
+            </Helmet>
+
             <Container className="page">
                 <div className='music-page'>
                     {isAdmin &&

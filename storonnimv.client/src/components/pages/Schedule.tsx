@@ -3,6 +3,7 @@ import {ScheduleContextProvider} from "../contexts/ScheduleContext";
 import {Container} from "react-bootstrap";
 import {SchedulesList} from "../elements/schedule/SchedulesList";
 import {GlobalContext} from "../contexts/shared/GlobalContext.tsx";
+import {Helmet} from "react-helmet-async";
 
 const Schedule: FC = () => {
     const globalContext = useContext(GlobalContext);
@@ -19,6 +20,11 @@ const Schedule: FC = () => {
 
     return (
         <ScheduleContextProvider>
+            <Helmet>
+                <title>Афіша - Стороннім В</title>
+                <meta name="description" content="Будьте в курсі усіх виступів гурту Стороннім В." />
+            </Helmet>
+
             <Container className="page">
                 <SchedulesList/>
             </Container>
