@@ -32,5 +32,10 @@
       "route": "/video/section",
       "rewrite": "/index.html"
     }
-  ]
+  ],
+
+  "mimeTypes": {
+    ".xml": "application/xml",
+    ".txt": "text/plain"
+  }
 }
