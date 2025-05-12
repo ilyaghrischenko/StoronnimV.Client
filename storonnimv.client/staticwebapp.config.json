@@ -31,14 +31,6 @@
     {
       "route": "/video/section",
       "rewrite": "/index.html"
-    },
-    {
-      "route": "/robots",
-      "rewrite": "/robots.txt"
-    },
-    {
-      "route": "/sitemap",
-      "rewrite": "/sitemap.xml"
     }
   ]
 }

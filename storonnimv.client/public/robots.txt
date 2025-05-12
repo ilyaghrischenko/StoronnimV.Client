@@ -2,6 +2,5 @@ User-agent: *
 Disallow: /admin/basic-admins
 Disallow: /admin
 Allow: /
-Allow: /sitemap
 
-Sitemap: https://storonnimv.com/sitemap
+Sitemap: https://storonnimv.com/sitemap.xml

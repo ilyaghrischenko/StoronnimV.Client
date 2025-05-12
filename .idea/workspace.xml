@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="fix" />
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="fix">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/public/robots.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/staticwebapp.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/staticwebapp.config.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -176,23 +180,7 @@
       <workItem from="1746908487962" duration="2488000" />
       <workItem from="1746955331170" duration="1724000" />
       <workItem from="1746971649254" duration="667000" />
-      <workItem from="1747047249111" duration="3897000" />
-    </task>
-    <task id="LOCAL-00008" summary="remove window.location.href, replace on navigate">
-      <option name="closed" value="true" />
-      <created>1737724965387</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1737724965387</updated>
-    </task>
-    <task id="LOCAL-00009" summary="add hiding header and footer on admin pages">
-      <option name="closed" value="true" />
-      <created>1737726208058</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1737726208058</updated>
+      <workItem from="1747047249111" duration="5315000" />
     </task>
     <task id="LOCAL-00010" summary="change">
       <option name="closed" value="true" />
@@ -570,7 +558,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747052171625</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="fix">
+      <option name="closed" value="true" />
+      <created>1747052386901</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1747052386901</updated>
+    </task>
+    <task id="LOCAL-00058" summary="fix">
+      <option name="closed" value="true" />
+      <created>1747052909585</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1747052909585</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
