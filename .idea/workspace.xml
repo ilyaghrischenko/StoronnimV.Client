@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="add helmet" />
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="add">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,10 +85,10 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/storonnimv.client/public" />
+      <recent name="$PROJECT_DIR$/storonnimv.client" />
       <recent name="D:\ForProgramming\Projects\MyProjects\React\StoronnimV.Client\storonnimv.client\src\components\elements\video\forms" />
       <recent name="D:\ForProgramming\Projects\MyProjects\React\StoronnimV.Client\storonnimv.client\src\components\elements\group\forms\social" />
       <recent name="D:\ForProgramming\Projects\MyProjects\React\StoronnimV.Client\storonnimv.client\src\components\elements\group\forms\member" />
-      <recent name="D:\ForProgramming\Projects\MyProjects\React\StoronnimV.Client\storonnimv.client\src\components\elements\group\forms\group" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -176,23 +179,7 @@
       <workItem from="1746908487962" duration="2488000" />
       <workItem from="1746955331170" duration="1724000" />
       <workItem from="1746971649254" duration="667000" />
-      <workItem from="1747047249111" duration="9434000" />
-    </task>
-    <task id="LOCAL-00016" summary="fixes">
-      <option name="closed" value="true" />
-      <created>1740417476338</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1740417476338</updated>
-    </task>
-    <task id="LOCAL-00017" summary="fix video sections images">
-      <option name="closed" value="true" />
-      <created>1740500995098</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1740500995102</updated>
+      <workItem from="1747047249111" duration="11042000" />
     </task>
     <task id="LOCAL-00018" summary="save before token logic change">
       <option name="closed" value="true" />
@@ -570,7 +557,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747057870743</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="add canonical">
+      <option name="closed" value="true" />
+      <created>1747058864932</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1747058864932</updated>
+    </task>
+    <task id="LOCAL-00066" summary="add">
+      <option name="closed" value="true" />
+      <created>1747059118288</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1747059118289</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -615,8 +618,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="commit" />
-    <MESSAGE value="save" />
     <MESSAGE value="refactored add form" />
     <MESSAGE value="refactored edit and delete form" />
     <MESSAGE value="refactored addition" />
@@ -640,6 +641,8 @@
     <MESSAGE value="add robots.txt" />
     <MESSAGE value="fix" />
     <MESSAGE value="add helmet" />
-    <option name="LAST_COMMIT_MESSAGE" value="add helmet" />
+    <MESSAGE value="add canonical" />
+    <MESSAGE value="add" />
+    <option name="LAST_COMMIT_MESSAGE" value="add" />
   </component>
 </project>
