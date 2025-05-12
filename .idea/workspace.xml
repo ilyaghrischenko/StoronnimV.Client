@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="push">
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="change server route">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storonnimv.client/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,14 +178,8 @@
       <workItem from="1746900419977" duration="2611000" />
       <workItem from="1746908487962" duration="2488000" />
       <workItem from="1746955331170" duration="1724000" />
-    </task>
-    <task id="LOCAL-00001" summary="change port">
-      <option name="closed" value="true" />
-      <created>1737205109283</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1737205109283</updated>
+      <workItem from="1746971649254" duration="667000" />
+      <workItem from="1747047249111" duration="301000" />
     </task>
     <task id="LOCAL-00002" summary="changes class name to BEM methodology partly">
       <option name="closed" value="true" />
@@ -570,7 +565,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746910237566</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="change server route">
+      <option name="closed" value="true" />
+      <created>1746971695399</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1746971695399</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -603,7 +606,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="save before token logic change" />
     <MESSAGE value="changed" />
     <MESSAGE value="add useEffect to every page for fetching isAdmin" />
     <MESSAGE value="fixed" />
@@ -628,6 +630,7 @@
     <MESSAGE value="add config file" />
     <MESSAGE value="add more routes" />
     <MESSAGE value="push" />
-    <option name="LAST_COMMIT_MESSAGE" value="push" />
+    <MESSAGE value="change server route" />
+    <option name="LAST_COMMIT_MESSAGE" value="change server route" />
   </component>
 </project>
