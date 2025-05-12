@@ -12,14 +12,11 @@ dist
 dist-ssr
 *.local
 
-../.idea/workspace.xml
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 ../.idea
 ../.idea/*
-*.xml
 .DS_Store
 *.suo
 *.ntvs*
