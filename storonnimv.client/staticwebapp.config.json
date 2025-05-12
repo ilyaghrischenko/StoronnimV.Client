@@ -33,11 +33,11 @@
       "rewrite": "/index.html"
     },
     {
-      "route": "/robots.txt",
+      "route": "/robots",
       "rewrite": "/robots.txt"
     },
     {
-      "route": "/sitemap.xml",
+      "route": "/sitemap",
       "rewrite": "/sitemap.xml"
     }
   ]
