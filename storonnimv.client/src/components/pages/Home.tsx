@@ -5,6 +5,7 @@ import {ScheduleHomeContainer} from "../elements/home/ScheduleHomeContainer";
 import {PromotionVideoHome} from "../elements/home/PromotionVideoHome";
 import {NewsSlider} from "../elements/home/NewsSlider";
 import {GlobalContext} from "../contexts/shared/GlobalContext.tsx";
+import {Helmet} from "react-helmet-async";
 
 const Home: FC = () => {
     const globalContext = useContext(GlobalContext);
@@ -21,6 +22,11 @@ const Home: FC = () => {
 
     return (
         <HomeContextProvider>
+            <Helmet>
+                <title>Стороннім В</title>
+                <meta name="description" content="УкраЇнська рок група Стороннім В" />
+            </Helmet>
+
             <Container className='home-page page'>
                 <ScheduleHomeContainer className='schedule-grid'/>
                 <NewsSlider className='news-grid home-container-border'/>
