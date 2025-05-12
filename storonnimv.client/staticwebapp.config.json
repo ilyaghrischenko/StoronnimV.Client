@@ -14,7 +14,7 @@
     },
     {
       "route": "/news",
-      "rewrite": "/index.html",
+      "rewrite": "/index.html"
     },
     {
       "route": "/music",
@@ -31,6 +31,14 @@
     {
       "route": "/video/section",
       "rewrite": "/index.html"
+    },
+    {
+      "route": "/robots.txt",
+      "rewrite": "/robots.txt"
+    },
+    {
+      "route": "/sitemap.xml",
+      "rewrite": "/sitemap.xml"
     }
   ]
 }
