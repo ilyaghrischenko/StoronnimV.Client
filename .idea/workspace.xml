@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="add helmet">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Developers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Developers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Error.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Error.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Group.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Group.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Music.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Music.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/News.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/News.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Schedule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Schedule.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Video.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/components/pages/Video.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/main.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="add helmet" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -188,15 +176,7 @@
       <workItem from="1746908487962" duration="2488000" />
       <workItem from="1746955331170" duration="1724000" />
       <workItem from="1746971649254" duration="667000" />
-      <workItem from="1747047249111" duration="9118000" />
-    </task>
-    <task id="LOCAL-00015" summary="add error page">
-      <option name="closed" value="true" />
-      <created>1738161647022</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1738161647022</updated>
+      <workItem from="1747047249111" duration="9434000" />
     </task>
     <task id="LOCAL-00016" summary="fixes">
       <option name="closed" value="true" />
@@ -582,7 +562,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747055952945</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="add helmet">
+      <option name="closed" value="true" />
+      <created>1747057870743</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1747057870743</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
