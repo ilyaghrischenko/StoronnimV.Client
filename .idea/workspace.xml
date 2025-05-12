@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="add helmet to home page" />
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="add fav" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -176,15 +176,7 @@
       <workItem from="1746908487962" duration="2488000" />
       <workItem from="1746955331170" duration="1724000" />
       <workItem from="1746971649254" duration="667000" />
-      <workItem from="1747047249111" duration="11392000" />
-    </task>
-    <task id="LOCAL-00020" summary="add useEffect to every page for fetching isAdmin">
-      <option name="closed" value="true" />
-      <created>1742991584104</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1742991584105</updated>
+      <workItem from="1747047249111" duration="11794000" />
     </task>
     <task id="LOCAL-00021" summary="fixed">
       <option name="closed" value="true" />
@@ -570,7 +562,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747060766966</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="add fav">
+      <option name="closed" value="true" />
+      <created>1747061164604</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1747061164604</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -615,7 +615,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactored addition" />
     <MESSAGE value="FrameLayout.css commit" />
     <MESSAGE value="NewsListItem.tsx added styles" />
     <MESSAGE value="css" />
@@ -640,6 +639,7 @@
     <MESSAGE value="add" />
     <MESSAGE value="add favicon" />
     <MESSAGE value="add helmet to home page" />
-    <option name="LAST_COMMIT_MESSAGE" value="add helmet to home page" />
+    <MESSAGE value="add fav" />
+    <option name="LAST_COMMIT_MESSAGE" value="add fav" />
   </component>
 </project>
