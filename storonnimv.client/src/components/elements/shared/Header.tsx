@@ -25,10 +25,12 @@ const Header: FC = () => {
         }
     };
 
-    const [pressedButtonName, setPressedButtonName] = useState<string>('');
+    const savedPressedButtonName = sessionStorage.getItem('pressedButtonName') ?? '';
+    const [pressedButtonName, setPressedButtonName] = useState<string>(savedPressedButtonName);
 
     const navLinkOnClick = (name: string) => {
         setPressedButtonName(name);
+        sessionStorage.setItem('pressedButtonName', name);
     };
 
     return (
@@ -37,7 +39,12 @@ const Header: FC = () => {
         >
             <Navbar bg="dark" variant="dark" expand="lg">
                 <Container className="navbar-container">
-                    <Navbar.Brand as={NavLink} to="/" className="navbar-container__brand">
+                    <Navbar.Brand
+                        as={NavLink}
+                        to="/"
+                        className="navbar-container__brand"
+                        onClick={() => navLinkOnClick('')}
+                    >
                         <Logo className='navbar-container__logo' />
                     </Navbar.Brand>
 
