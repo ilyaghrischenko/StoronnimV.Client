@@ -184,6 +184,9 @@
   align-items: center;
   justify-content: center;
 }
+.short-member-item-container:hover {
+  cursor: pointer;
+}
 
 .photo-container {
   width: 75%;
@@ -694,6 +697,9 @@
   border-radius: 8px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
+.schedule-list-item__photo:hover {
+  cursor: pointer;
+}
 
 .schedule-modal {
   display: flex;
@@ -1194,6 +1200,9 @@
   object-fit: contain;
   background: black;
 }
+.video-list-item__video:hover {
+  cursor: pointer;
+}
 
 /* Новый блок для кнопок админа */
 .video-list-item__admin-buttons {
@@ -1254,6 +1263,7 @@
   align-items: center;
 }
 .video-sections__button:hover {
+  cursor: pointer;
   transform: scale(1.05);
 }
 .video-sections__image {

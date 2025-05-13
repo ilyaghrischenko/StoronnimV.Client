@@ -11,8 +11,6 @@
     overflow: hidden;
   }
 
-
-
   &__grid {
     width: 100%;
     flex: 1;
@@ -37,6 +35,7 @@
     align-items: center;
 
     &:hover {
+      cursor: pointer;
       transform: scale(1.05);
     }
   }

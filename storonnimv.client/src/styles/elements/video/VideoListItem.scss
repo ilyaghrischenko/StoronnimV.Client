@@ -36,6 +36,10 @@
   border-radius: 0.75rem;
   object-fit: contain;
   background: black;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 /* Новый блок для кнопок админа */
