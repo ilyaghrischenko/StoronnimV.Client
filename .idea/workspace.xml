@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="fixed pressed header button">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/group/ShortMemberItem.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/group/ShortMemberItem.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/schedule/ScheduleListItem.scss" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/elements/schedule/ScheduleListItem.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/storonnimv.client/src/styles/style.css.map" afterDir="false" />
-    </list>
+    <list default="true" id="c08e6ba7-7a14-4c18-8e1b-a45827e7dce3" name="Changes" comment="hover" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -183,15 +177,7 @@
       <workItem from="1746955331170" duration="1724000" />
       <workItem from="1746971649254" duration="667000" />
       <workItem from="1747047249111" duration="11794000" />
-      <workItem from="1747171311105" duration="356000" />
-    </task>
-    <task id="LOCAL-00025" summary="save">
-      <option name="closed" value="true" />
-      <created>1743690881207</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1743690881207</updated>
+      <workItem from="1747171311105" duration="1184000" />
     </task>
     <task id="LOCAL-00026" summary="refactored add form">
       <option name="closed" value="true" />
@@ -577,7 +563,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747161908350</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="hover">
+      <option name="closed" value="true" />
+      <created>1747171858120</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1747171858120</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -622,7 +616,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="end" />
     <MESSAGE value="GlobalContext.tsx, VideoContext.tsx, VideoList.tsx, AddVideoModalContent.tsx" />
     <MESSAGE value="video section background to transparent" />
     <MESSAGE value="added preloader for schedules page. Page window min parameters added" />
@@ -647,6 +640,7 @@
     <MESSAGE value="asdasjbdlasibclhsdv s,ljdhvkslriuhgbilasurfdgh;" />
     <MESSAGE value="fixed styles ScheduleListItem.scss" />
     <MESSAGE value="fixed pressed header button" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed pressed header button" />
+    <MESSAGE value="hover" />
+    <option name="LAST_COMMIT_MESSAGE" value="hover" />
   </component>
 </project>

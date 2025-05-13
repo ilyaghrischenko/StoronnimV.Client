@@ -92,7 +92,7 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
             const error = err as AxiosError;
 
             if (error.response?.status === 429) {
-                alert('Too many requests');
+                alert('Дуже багато запитів на сервер за короткий термін. Спробуйте пізніше.');
             }
 
             if (error.response) {
