@@ -27,13 +27,13 @@ const SchedulesList: FC = () => {
         paginate(page);
     }, []);
 
-    if (checkIfNoData(() => !schedules || schedules.length === 0)) {
-        return <NoData message='Афіш немає' />;
-    }
+    // if (checkIfNoData(() => !schedules || schedules.length === 0)) {
+    //     return <NoData message='Афіш немає' />;
+    // }
 
     return (
         <div className='schedules-list'>
-            <div className='schedules-list-container'>
+            <div className='schedules-list__container'>
                 {isAdmin && (
                     <Button
                         className="admin-button__add"
@@ -42,13 +42,12 @@ const SchedulesList: FC = () => {
                     </Button>
                 )}
 
-                {!pageLoading ?
+                {pageLoading ?
                     <List
                         className='schedules-list__grid'
                         items={schedules}
                         renderItem={(schedule: IScheduleListItem) => (
                             <ListItem
-                                className='schedules-list__item'
                                 item={schedule}
                                 key={schedule.id}
                                 renderItem={(schedule: IScheduleListItem) => (
@@ -66,11 +65,10 @@ const SchedulesList: FC = () => {
                     />
                     :
                     <List
-                        className="schedules-list__grid"
+                        className="schedules-list__items"
                         items={Array(3).fill(null)}
                         renderItem={(item: typeof PreloaderTile) => (
                             <ListItem
-                                className='schedules-list__item'
                                 item={item}
                                 renderItem={() => <PreloaderTile className='preloader-tile__container-schedule-page'/>}
                             />
