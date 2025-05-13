@@ -40,6 +40,10 @@
   }
 }
 
+.basic-button-pressed, .confirm-button-pressed {
+  background-color: $button-hover-color;
+}
+
 .cancel-button {
   background-color: $cancel-button-color;
 

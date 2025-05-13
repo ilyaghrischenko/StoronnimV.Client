@@ -31,6 +31,10 @@
     {
       "route": "/video/section",
       "rewrite": "/index.html"
+    },
+    {
+      "route": "/developers",
+      "rewrite": "/index.html"
     }
   ]
 }

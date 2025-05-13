@@ -57,6 +57,10 @@
   background-color: rgba(193, 157, 36, 0.8470588235);
 }
 
+.basic-button-pressed, .confirm-button-pressed {
+  background-color: rgba(193, 157, 36, 0.8470588235);
+}
+
 .cancel-button {
   background-color: red;
 }
