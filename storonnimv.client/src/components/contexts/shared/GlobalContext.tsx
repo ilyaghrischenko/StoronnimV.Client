@@ -44,7 +44,7 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
 
     const [validationErrors, setValidationErrors] = useState<Record<string, string[]>>({} as Record<string, string[]>);
 
-    const serverRoute = process.env.VITE_API_URL;
+    const serverRoute = import.meta.env.VITE_API_URL;
 
     if (!serverRoute) {
         throw new Error("VITE_API_URL is not defined");
