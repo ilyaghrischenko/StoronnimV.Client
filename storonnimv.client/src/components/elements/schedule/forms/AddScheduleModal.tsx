@@ -5,15 +5,13 @@ import {GlobalContext} from "../../../contexts/shared/GlobalContext.tsx";
 const AddScheduleModal: FC = () => {
     const globalContext = useContext(GlobalContext)!;
 
-    const {sendRequest, OnHideModal} = globalContext;
+    const {sendRequest, OnHideModal, serverRoute} = globalContext;
 
     const [title, setTitle] = useState<string>("");
     const [description, setDescription] = useState<string>("");
     const [location, setLocation] = useState<string>("");
     const [performanceDateTime, setPerformanceDateTime] = useState<string>("");
     const [photo, setPhoto] = useState<File | null>(null);
-
-    const route = "https://localhost:44315/";
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const {name, value} = e.target;
@@ -45,7 +43,7 @@ const AddScheduleModal: FC = () => {
 
         try {
             const response = await sendRequest(
-                `${route}api/admin/schedules`,
+                `${serverRoute}/admin/schedules`,
                 "POST",
                 formData
             );

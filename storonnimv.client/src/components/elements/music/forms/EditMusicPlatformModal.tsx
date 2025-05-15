@@ -8,14 +8,12 @@ interface EditMusicPlatformProps {
 }
 
 const EditMusicPlatformModal: FC<EditMusicPlatformProps> = ({item}) => {
-    const {OnHideModal, sendRequest} = useContext(GlobalContext)!;
+    const {OnHideModal, sendRequest, serverRoute} = useContext(GlobalContext)!;
 
     const [newPlatformUrl, setNewPlatformUrl] = useState<string | null>(item.platformUrl);
     const [initialPlatformUrl, setInitialPlatformUrl] = useState<string | null>(item.platformUrl);
 
     const [bgImage, setBgImage] = useState<File | null>(null);
-
-    const route = "https://localhost:44315/";
 
     useEffect(() => {
         setNewPlatformUrl(item.platformUrl);
@@ -45,7 +43,7 @@ const EditMusicPlatformModal: FC<EditMusicPlatformProps> = ({item}) => {
             }
 
             const response = await sendRequest(
-                `${route}api/admin/music-platforms`,
+                `${serverRoute}/admin/music-platforms`,
                 "PATCH",
                 JSON.stringify(data),
                 {"Content-Type": "application/json"}
@@ -74,7 +72,7 @@ const EditMusicPlatformModal: FC<EditMusicPlatformProps> = ({item}) => {
             data.append("photo", bgImage!);
 
             const response = await sendRequest(
-                `${route}api/admin/music-platforms/photo`,
+                `${serverRoute}/admin/music-platforms/photo`,
                 "PATCH",
                 data
             )

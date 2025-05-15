@@ -9,9 +9,8 @@ interface DeleteMusicPlatformProps {
 
 const DeleteMusicPlatformModal: FC<DeleteMusicPlatformProps> = ({item}) => {
     const globalContext = useContext(GlobalContext)!;
-    const {sendRequest, OnHideModal} = globalContext!;
+    const {sendRequest, OnHideModal, serverRoute} = globalContext!;
     const [musicPlatformId, setMusicPlatformId] = useState<string | null>(item.id.toString());
-    const route = "https://localhost:44315/";
 
     useEffect(() => {
         setMusicPlatformId(item.id.toString());
@@ -22,7 +21,7 @@ const DeleteMusicPlatformModal: FC<DeleteMusicPlatformProps> = ({item}) => {
             e.preventDefault();
 
             const response = await sendRequest(
-                `${route}api/admin/music/${musicPlatformId}`,
+                `${serverRoute}/admin/music/${musicPlatformId}`,
                 "DELETE",
             );
 

@@ -7,13 +7,11 @@ const AddVideoModal: FC = () => {
     const globalContext = useContext(GlobalContext);
     if (!globalContext) throw new Error("GlobalContext is not defined");
 
-    const {sendRequest, OnHideModal, modalLoading, setModalLoading} = globalContext;
+    const {sendRequest, OnHideModal, modalLoading, setModalLoading, serverRoute} = globalContext;
 
     const [title, setTitle] = useState("");
     const [videoFile, setVideoFile] = useState<File | null>(null);
     const [videoType, setVideoType] = useState("Performance");
-
-    const route = "https://localhost:44315/";
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
@@ -34,7 +32,7 @@ const AddVideoModal: FC = () => {
 
         try {
             const response = await sendRequest(
-                `${route}api/admin/videos`,
+                `${serverRoute}/admin/videos`,
                 "POST",
                 formData);
             if (response.status === 201) {

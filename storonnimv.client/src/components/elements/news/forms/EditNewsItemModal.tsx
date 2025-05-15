@@ -13,7 +13,6 @@ const EditNewsItemModal: FC<EditNewsItemModalContentProps> = ({newsItem}) => {
     const [initialNews, setInitialNews] = useState<INewsFullItem>(newsItem);
     const [newPhoto, setNewPhoto] = useState<File | null>(null);
     const [newVideoId, setNewVideoId] = useState<string | null>(null);
-    const route = "https://localhost:44315/";
 
     useEffect(() => {
         setEditedNews(newsItem);
@@ -25,7 +24,7 @@ const EditNewsItemModal: FC<EditNewsItemModalContentProps> = ({newsItem}) => {
         return null;
     }
 
-    const {sendRequest, OnHideModal} = globalContext;
+    const {sendRequest, OnHideModal, serverRoute} = globalContext;
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const {name, value} = e.target;
@@ -79,7 +78,7 @@ const EditNewsItemModal: FC<EditNewsItemModalContentProps> = ({newsItem}) => {
             const id = JSON.stringify(editedNews.id);
 
             const response = await sendRequest(
-                `${route}api/admin/news/delete-photo`,
+                `${serverRoute}/admin/news/delete-photo`,
                 "PATCH",
                 id,
                 {"Content-Type": "application/json"}
@@ -102,7 +101,7 @@ const EditNewsItemModal: FC<EditNewsItemModalContentProps> = ({newsItem}) => {
             const id = JSON.stringify(editedNews.id);
 
             const response = await sendRequest(
-                `${route}api/admin/news/delete-video`,
+                `${serverRoute}/admin/news/delete-video`,
                 "PATCH",
                 id,
                 {"Content-Type": "application/json"}
@@ -130,7 +129,7 @@ const EditNewsItemModal: FC<EditNewsItemModalContentProps> = ({newsItem}) => {
             formData.append("date", editedNews.date);
 
             const response = await sendRequest(
-                `${route}api/admin/news`,
+                `${serverRoute}/admin/news`,
                 "PATCH",
                 formData,
                 {"Content-Type": "application/json"}
@@ -156,7 +155,7 @@ const EditNewsItemModal: FC<EditNewsItemModalContentProps> = ({newsItem}) => {
             formData.append("photo", newPhoto!);
 
             const response = await sendRequest(
-                `${route}api/admin/news/photo`,
+                `${serverRoute}/admin/news/photo`,
                 "PATCH",
                 formData
             );
@@ -181,7 +180,7 @@ const EditNewsItemModal: FC<EditNewsItemModalContentProps> = ({newsItem}) => {
             formData.append("videoId", newVideoId!);
 
             const response = await sendRequest(
-                `${route}api/admin/news/video`,
+                `${serverRoute}/admin/news/video`,
                 "PATCH",
                 formData,
                 {"Content-Type": "application/json"}

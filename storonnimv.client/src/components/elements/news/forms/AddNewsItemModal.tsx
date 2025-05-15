@@ -6,7 +6,7 @@ import {ModalLoading} from "../../shared/ModalLoading.tsx";
 const AddNewsItemModal: React.FC = () => {
     const globalContext = useContext(GlobalContext)!;
 
-    const {sendRequest, OnHideModal, setModalLoading, modalLoading} = globalContext;
+    const {sendRequest, OnHideModal, setModalLoading, modalLoading, serverRoute} = globalContext;
 
     const [formData, setFormData] = useState({
         title: "",
@@ -17,8 +17,6 @@ const AddNewsItemModal: React.FC = () => {
 
     const [photo, setPhoto] = useState<File | null>(null);
     const [video, setVideo] = useState<string>("");
-
-    const route = "https://localhost:44315/";
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setFormData({...formData, [e.target.name]: e.target.value});
@@ -47,7 +45,7 @@ const AddNewsItemModal: React.FC = () => {
         if (video !== "" && /^\d+$/.test(video)) data.append("videoId", video);
 
         try {
-            const response = await sendRequest(`${route}api/admin/news`, "POST", data);
+            const response = await sendRequest(`${serverRoute}/admin/news`, "POST", data);
             if (response.status === 201) {
                 window.location.reload();
                 OnHideModal();
