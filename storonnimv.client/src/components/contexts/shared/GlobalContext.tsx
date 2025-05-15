@@ -44,7 +44,11 @@ const GlobalContextProvider: FC<GlobalContextProviderProps> = ({children}) => {
 
     const [validationErrors, setValidationErrors] = useState<Record<string, string[]>>({} as Record<string, string[]>);
 
-    const serverRoute = 'https://api.storonnimv.com/api';
+    const serverRoute = process.env.REACT_APP_API_URL;
+
+    if (!serverRoute) {
+        throw new Error("REACT_APP_API_URL is not defined");
+    }
 
     const fetchIsAdmin = async () => {
         try {
