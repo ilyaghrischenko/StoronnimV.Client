@@ -1,6 +1,5 @@
 ﻿import {createContext, FC, ReactNode, useState} from "react";
 import axios, {AxiosError, AxiosResponse} from "axios";
-import {loadEnv} from "vite";
 
 // Определяем интерфейс для значения контекста
 interface GlobalContextType {
