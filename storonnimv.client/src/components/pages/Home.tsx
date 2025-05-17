@@ -8,6 +8,8 @@ import {GlobalContext} from "../contexts/shared/GlobalContext.tsx";
 import {Helmet} from "react-helmet-async";
 
 const Home: FC = () => {
+    sessionStorage.setItem('pressedButtonName', '');
+
     const globalContext = useContext(GlobalContext);
 
     if (!globalContext) {

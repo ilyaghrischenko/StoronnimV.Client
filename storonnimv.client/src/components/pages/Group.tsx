@@ -7,6 +7,8 @@ import {Helmet} from "react-helmet-async";
 
 
 const Group: FC = () => {
+    sessionStorage.setItem('pressedButtonName', 'group');
+
     const globalContext = useContext(GlobalContext);
 
     if (!globalContext) {

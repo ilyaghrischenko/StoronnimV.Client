@@ -9,6 +9,8 @@ interface VideoProps {
 }
 
 const Video: FC<VideoProps> = ({children}) => {
+    sessionStorage.setItem('pressedButtonName', 'video/sections');
+
     const globalContext = useContext(GlobalContext);
 
     if (!globalContext) {

@@ -9,6 +9,8 @@ import {FaPlus} from "react-icons/fa";
 import {Helmet} from "react-helmet-async";
 
 const Music: FC = () => {
+    sessionStorage.setItem('pressedButtonName', 'music');
+
     const globalContext = useContext(GlobalContext);
 
     if (!globalContext) {

@@ -7,6 +7,8 @@ import {Helmet} from "react-helmet-async";
 
 
 const News: FC = () => {
+    sessionStorage.setItem('pressedButtonName', 'news');
+
     const globalContext = useContext(GlobalContext);
 
     if (!globalContext) {

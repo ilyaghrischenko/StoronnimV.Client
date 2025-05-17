@@ -6,6 +6,8 @@ import {GlobalContext} from "../contexts/shared/GlobalContext.tsx";
 import {Helmet} from "react-helmet-async";
 
 const Schedule: FC = () => {
+    sessionStorage.setItem('pressedButtonName', 'schedule');
+
     const globalContext = useContext(GlobalContext);
 
     if (!globalContext) {
