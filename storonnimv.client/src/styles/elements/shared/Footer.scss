@@ -54,3 +54,24 @@
     }
   }
 }
+
+@include respond-to(mobile) {
+  .footer-container {
+    width: 100%;
+    height: auto;
+    padding: 16px 0;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    text-align: center;
+  }
+
+  .footer-container__item {
+    width: 100%;
+  }
+
+  .footer-container__link {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
